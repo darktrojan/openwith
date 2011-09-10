@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://openwith/content/openwith.css" type="text/css" ?>
+
+<!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<menupopup id="menu_View_Popup">
+		<menuseparator id="openwith-viewmenuseparator" />
+		<menuitem id="openwith-viewmenuplaceholder" label="&openwith-placeholder.label;" />
+		<menu id="openwith-viewsubmenu" label="&openwith-submenu.label;">
+			<menupopup id="openwith-viewsubmenupopup" />
+		</menu>
+	</menupopup>
+
+	<menupopup id="contentAreaContextMenu">
+		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertafter="context-openlinkintab">
+			<menupopup id="openwith-contextlinksubmenupopup" />
+		</menu>
+		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertafter="context-openlinkintab" />
+		<menuseparator id="openwith-contextmenuseparator" />
+		<menuitem id="openwith-contextmenuplaceholder" label="&openwith-placeholder.label;" />
+		<menu id="openwith-contextsubmenu" label="&openwith-submenu.label;">
+			<menupopup id="openwith-contextsubmenupopup" />
+		</menu>
+	</menupopup>
+
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbaritem id="openwith-toolbarbox" class="openwith-toolbarbox-seamonkey chromeclass-toolbar-additional" label="&openwith-name;">
+			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;"
+				image="chrome://openwith/content/openwith16.png" type="menu">
+				<menupopup id="openwith-toolbar-menu" />
+			</toolbarbutton>
+		</toolbaritem>
+	</toolbarpalette>
+
+	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />
+
+</overlay>

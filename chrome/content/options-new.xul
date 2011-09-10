@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://openwith/content/options.css" type="text/css"?>
+ 
+<!DOCTYPE prefwindow SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<prefwindow id="openwith-options" title="&openwith-options.title;" ondialogaccept="doAccept ();"
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="openwith-strings" src="chrome://openwith/locale/openwith.properties"/>
+	</stringbundleset>
+
+	<prefpane id="openwith-display-pane" label="&openwith-display-pane.label;" image="chrome://openwith/content/display.png">
+		<preferences>
+			<preference id="openwith-viewmenu-pref" name="extensions.openwith.viewmenu" type="bool" />
+			<preference id="openwith-contextmenu-pref" name="extensions.openwith.contextmenu" type="bool" />
+			<preference id="openwith-contextmenulink-pref" name="extensions.openwith.contextmenulink" type="bool" />
+			<preference id="openwith-tabmenu-pref" name="extensions.openwith.tabmenu" type="bool" />
+			<preference id="openwith-tabbar-pref" name="extensions.openwith.tabbar" type="bool" />
+		</preferences>
+
+		<vbox>
+			<label>&openwith-display-pane.options.label;</label>
+			<checkbox class="indent" preference="openwith-viewmenu-pref" label="&openwith-display-pane.viewmenu.label;" />
+			<checkbox class="indent" preference="openwith-contextmenu-pref" label="&openwith-display-pane.contextmenu.label;" />
+			<checkbox class="indent" preference="openwith-contextmenulink-pref" label="&openwith-display-pane.contextmenulink.label;" />
+			<checkbox id="openwith-tabmenu" class="indent" preference="openwith-tabmenu-pref" label="&openwith-display-pane.tabmenu.label;" />
+			<checkbox id="openwith-tabbar" class="indent" preference="openwith-tabbar-pref" label="&openwith-display-pane.tabbar.label;" />
+		</vbox>
+	</prefpane>
+
+	<prefpane id="openwith-manualentry-pane" label="&openwith-manualentry-pane.label;" image="chrome://openwith/content/manual.png">
+		<menupopup id="openwith-manualentry-menu" onpopupshowing="modifyContextMenu (event);">
+			<menuitem id="openwith-manualentry-menu-hide" label="Hide" accesskey="H" oncommand="hideItem ();" />
+			<menuitem id="openwith-manualentry-menu-show" label="Show" accesskey="S" oncommand="showItem ();" />
+			<menuitem id="openwith-manualentry-menu-rename" label="Rename…" accesskey="n" oncommand="renameItem ();" />
+			<menuitem id="openwith-manualentry-menu-edit" label="Edit Command…" accesskey="C" />
+			<menuitem id="openwith-manualentry-menu-remove" label="Remove item" accesskey="R" />
+			<menuseparator />
+			<menuitem label="Add new item…" accesskey="A" oncommand="addNewItem ();" />
+		</menupopup>
+		<richlistbox id="openwith-manualentry-pane.list" flex="1" style="width: 40em; height: 20em"
+					 context="openwith-manualentry-menu" disableKeyNavigation="true" />
+	</prefpane>
+
+	<script src="chrome://openwith/content/options.js"></script>
+
+</prefwindow>

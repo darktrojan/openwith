@@ -1,0 +1,39 @@
+<!ENTITY openwith-name "Отвори помоћу">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
+		these are placeholders for where the menu items will appear 
+
+
+-->
+<!ENTITY openwith-dropdown.tooltip "Отвори помоћу…">
+<!ENTITY openwith-options.title "Open With - опције">
+<!ENTITY openwith-display-pane.viewmenu.label "Приказ менија">
+<!ENTITY openwith-display-pane.contextmenu.label "Главни приручни мени">
+<!ENTITY openwith-display-pane.contextmenulink.label "Главни приручни мени (везе)">
+<!ENTITY openwith-display-pane.tabmenu.label "Приручни мени језичака">
+<!ENTITY openwith-display-pane.tabbar.label "Трака са језичцима">
+<!ENTITY openwith-display-pane.toolbar.label "Трака са алаткама">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
+		these are placeholders for where the menu items will appear 
+
+-->
+<!ENTITY openwith-placeholder.label "Open With ставке">
+<!ENTITY openwith-linkplaceholder.label "Open With ставке везе">
+<!ENTITY openwith-submenu.label "Отвори помоћу">
+<!ENTITY openwith-linksubmenu.label "Отвори везу помоћу">
+<!ENTITY openwith-display-choose.label "Изаберите како да се ставке приказују:">
+<!ENTITY openwith-display-none.label "не приказуј">
+<!ENTITY openwith-display-menuitems.label "прикажи као ставке менија">
+<!ENTITY openwith-display-submenu.label "прикажи као подменије">
+<!ENTITY openwith-display-buttons.label "прикажи као дугмиће">
+<!ENTITY openwith-display-dropdown.label "прикажи као падајући мени">
+<!ENTITY openwith-browserlist.label "Изаберите ставке које желите да прикажете:">
+<!ENTITY openwith-browserlist-show.label "Прикажи">
+<!ENTITY openwith-browserlist-hide.label "Сакриј">
+<!ENTITY openwith-browserlist-rename.label "Преименуј…">
+<!ENTITY openwith-browserlist-editcommand.label "Команда…">
+<!ENTITY openwith-browserlist-editparams.label "Аргументи…">
+<!ENTITY openwith-browserlist-remove.label "Уклони">
+<!ENTITY openwith-browserlist-add.label "Додај…">
+<!ENTITY openwith-browserlist-moveup.tooltip "Помери нагоре">
+<!ENTITY openwith-browserlist-movedown.tooltip "Помери надоле">
+<!ENTITY openwith-browserlist-restoreorder.label "Подразумевани редослед">

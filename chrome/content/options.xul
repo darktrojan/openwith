@@ -1,0 +1,30 @@
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/javascript"><![CDATA[
+
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+
+Cu.import ('resource://openwith/openwith.jsm');
+
+const REAL_OPTIONS_URL = 'about:openwith';
+const BROWSER_TYPE = 'navigator:browser';
+
+window.onload = function () {
+	var topWindow = window.QueryInterface (Ci.nsIInterfaceRequestor)
+						.getInterface (Ci.nsIWebNavigation)
+						.QueryInterface (Ci.nsIDocShellTreeItem)
+						.rootTreeItem
+						.QueryInterface (Ci.nsIInterfaceRequestor)
+						.getInterface (Ci.nsIDOMWindow);
+
+	if (topWindow.document.documentURI == 'chrome://openwith/content/options.xul') {
+		OpenWithCore.openOptionsTab ();
+		setTimeout (window.close, 0);
+	} else {
+		location.replace (REAL_OPTIONS_URL);
+	}
+};
+
+//]]></script>
+</window>

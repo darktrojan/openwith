@@ -1,0 +1,13 @@
+pref("extensions.openwith.viewmenu", true);
+pref("extensions.openwith.viewmenu.submenu", false);
+pref("extensions.openwith.tabmenu", false);
+pref("extensions.openwith.tabmenu.submenu", false);
+pref("extensions.openwith.tabbar", false);
+pref("extensions.openwith.tabbar.menu", false);
+pref("extensions.openwith.toolbar", false);
+pref("extensions.openwith.toolbar.menu", true);
+pref("extensions.openwith.contextmenu", false);
+pref("extensions.openwith.contextmenu.submenu", false);
+pref("extensions.openwith.contextmenulink", false);
+pref("extensions.openwith.contextmenulink.submenu", false);
+pref("extensions.openwith.hide", "firefox.exe");

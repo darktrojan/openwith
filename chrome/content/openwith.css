@@ -1,0 +1,46 @@
+.openwith-tabbarbox-firefox {
+	padding: 0 0 2px 0;
+}
+#TabsToolbar .openwith-tabbarbox-firefox {
+	padding: 0;
+}
+
+#openwith-tabbarbox > toolbarbutton {
+	-moz-appearance: toolbarbutton;
+	min-width: 0; /* seamonkey 2.1 */
+	margin: 0;
+	padding: 0 3px;
+	box-shadow: none;
+}
+
+#TabsToolbar #openwith-toolbarbox > toolbarbutton:not([type="menu"]) {
+	margin-left: 0;
+	margin-right: 0;
+}
+toolbar:not(#TabsToolbar) #openwith-toolbarbox > toolbarbutton:not([type="menu"]) {
+	margin: 0;
+}
+toolbar:not(#TabsToolbar) #openwith-toolbarbox > toolbarbutton:not([type="menu"]) {
+	padding: 3px;
+}
+toolbar:not(#TabsToolbar) #openwith-toolbarbox > toolbarbutton:not([type="menu"]):not(:hover) {
+	border-color: transparent;
+	background: none;
+	box-shadow: none;
+}
+
+#openwith-tabbarbox > toolbarbutton > .toolbarbutton-icon,
+#openwith-toolbarbox > toolbarbutton > .toolbarbutton-icon {
+	width: 16px;
+	height: 16px;
+}
+#openwith-tabbarbox > toolbarbutton > .toolbarbutton-text,
+#openwith-toolbarbox > toolbarbutton > .toolbarbutton-text {
+	visibility: collapse;
+}
+/*
+.openwith-tabbarbox-seamonkey > toolbarbutton > .toolbarbutton-icon,
+.openwith-toolbarbox-seamonkey > toolbarbutton > .toolbarbutton-icon {
+	margin: 0 3px !important;
+}
+*/

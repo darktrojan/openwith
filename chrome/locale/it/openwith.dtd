@@ -1,0 +1,38 @@
+<!ENTITY openwith-name "Open With">
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
+
+-->
+<!ENTITY openwith-dropdown.tooltip "Open With…">
+<!ENTITY openwith-options.title "Impostazioni di Open With">
+<!ENTITY openwith-display-pane.viewmenu.label "Menu principale 'Visualizza'">
+<!ENTITY openwith-display-pane.contextmenu.label "Menu contestuale delle pagine web">
+<!ENTITY openwith-display-pane.contextmenulink.label "Menu contestuale dei link">
+<!ENTITY openwith-display-pane.tabmenu.label "Menu contestuale delle schede">
+<!ENTITY openwith-display-pane.tabbar.label "Barra delle schede">
+<!ENTITY openwith-display-pane.toolbar.label "Barra degli strumenti">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
+		these are placeholders for where the menu items will appear 
+
+-->
+<!ENTITY openwith-placeholder.label "Elementi di Open With">
+<!ENTITY openwith-linkplaceholder.label "Link di Open With">
+<!ENTITY openwith-submenu.label "Apri tramite Open With con">
+<!ENTITY openwith-linksubmenu.label "Apri il link tramite Open With con">
+<!ENTITY openwith-display-choose.label "Selezionare come visualizzare gli elementi di Open With">
+<!ENTITY openwith-display-none.label "non visualizzare in alcuna maniera">
+<!ENTITY openwith-display-menuitems.label "visualizza come elementi di menu">
+<!ENTITY openwith-display-submenu.label "visualizza come sotto-menu">
+<!ENTITY openwith-display-buttons.label "visualizza come pulsanti">
+<!ENTITY openwith-display-dropdown.label "visualizza come menu a discesa">
+<!ENTITY openwith-browserlist.label "Selezionare quali elementi visualizzare">
+<!ENTITY openwith-browserlist-show.label "Mostra">
+<!ENTITY openwith-browserlist-hide.label "Nascondi">
+<!ENTITY openwith-browserlist-rename.label "Rinomina…">
+<!ENTITY openwith-browserlist-editcommand.label "Modifica comando…">
+<!ENTITY openwith-browserlist-editparams.label "Modifica parametri…">
+<!ENTITY openwith-browserlist-remove.label "Elimina">
+<!ENTITY openwith-browserlist-add.label "Aggiungi…">
+<!ENTITY openwith-browserlist-moveup.tooltip "Sposta su">
+<!ENTITY openwith-browserlist-movedown.tooltip "Sposta giù">
+<!ENTITY openwith-browserlist-restoreorder.label "Ordine predefinito">

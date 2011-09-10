@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<!DOCTYPE bindings SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+	<binding id="browser" extends="chrome://global/content/bindings/richlistbox.xml#richlistitem">
+		<content>
+			<vbox flex="1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+				<hbox flex="1">
+					<vbox align="start">
+						<spacer flex="1" />
+						<image class="browserIcon" xbl:inherits="src=icon" />
+						<spacer flex="1" />
+					</vbox>
+					<vbox flex="1">
+						<hbox>
+							<label class="browserName" crop="end" flex="1" xbl:inherits="value=name" />
+							<spacer flex="5000" />
+						</hbox>
+						<hbox>
+							<label crop="start" flex="1" xbl:inherits="value=command" />
+							<label xbl:inherits="value=params" />
+							<spacer flex="5000" />
+						</hbox>
+					</vbox>
+				</hbox>
+				<hbox class="buttons" flex="1" pack="end">
+					<button class="upbutton" style="min-width: 0;"
+						image="chrome://openwith/content/moveup.png"
+						oncommand="moveUp (this);"
+						tooltiptext="&openwith-browserlist-moveup.tooltip;" />
+					<button class="downbutton" style="min-width: 0;"
+						image="chrome://openwith/content/movedown.png"
+						oncommand="moveDown (this);"
+						tooltiptext="&openwith-browserlist-movedown.tooltip;" />
+					<button class="show" label="&openwith-browserlist-show.label;"
+						xbl:inherits="collapsed=manual"
+						oncommand="setHidden (document.getBindingParent (this), false);" />
+					<button class="hide" label="&openwith-browserlist-hide.label;"
+						xbl:inherits="collapsed=manual"
+						oncommand="setHidden (document.getBindingParent (this), true);" />
+					<button label="&openwith-browserlist-rename.label;"
+						xbl:inherits="collapsed=auto"
+						oncommand="changeAttribute (document.getBindingParent (this), 'name');" />
+					<button label="&openwith-browserlist-editcommand.label;"
+						xbl:inherits="collapsed=auto"
+						oncommand="editCommand (document.getBindingParent (this));" />
+					<button label="&openwith-browserlist-editparams.label;"
+						xbl:inherits="collapsed=auto"
+						oncommand="changeAttribute (document.getBindingParent (this), 'params');" />
+					<button label="&openwith-browserlist-remove.label;"
+						xbl:inherits="collapsed=auto"
+						oncommand="removeItem (document.getBindingParent (this));" />
+				</hbox>
+			</vbox>
+		</content>
+	</binding>
+
+</bindings>

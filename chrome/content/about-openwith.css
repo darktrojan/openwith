@@ -1,0 +1,38 @@
+richlistitem {
+	border-bottom: 1px dotted #c0c0c0;
+	padding: 4px;
+	-moz-binding: url(chrome://openwith/content/about-openwith.xml#browser);
+}
+richlistbox:focus > richlistitem[selected="true"] {
+	background-image: url(chrome://mozapps/skin/extensions/itemEnabledFader.png);
+	color: highlighttext;
+}
+.browserIcon {
+	width: 32px;
+	height: 32px;
+}
+.browserName {
+	font-weight: bold;
+}
+.buttons {
+	visibility: collapse;
+	margin-top: 3px;
+}
+.buttons > button {
+	margin: 0 2px;
+}
+richlistitem[selected="true"] .buttons {
+	visibility: visible;
+}
+richlistitem[browserHidden="true"] {
+	color: graytext;
+}
+richlistitem[browserHidden="true"] .browserIcon {
+	opacity: 0.5;
+}
+richlistitem[browserHidden="true"] button.hide,
+richlistitem[browserHidden="false"] button.show,
+richlistitem:first-child .upbutton,
+richlistitem:last-child .downbutton {
+	visibility: collapse;
+}

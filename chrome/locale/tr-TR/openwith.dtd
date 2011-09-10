@@ -1,0 +1,35 @@
+<!ENTITY openwith-name "Birlikte Aç">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!ENTITY openwith-dropdown.tooltip "Birlikte Aç...">
+<!ENTITY openwith-options.title "Birlikte Aç Seçenekleri">
+<!ENTITY openwith-display-pane.viewmenu.label "Menüyü göster">
+<!ENTITY openwith-display-pane.contextmenu.label "Ana Ek menü">
+<!ENTITY openwith-display-pane.contextmenulink.label "Ana Ek menü(linkler)">
+<!ENTITY openwith-display-pane.tabmenu.label "Sekme ek menüsü">
+<!ENTITY openwith-display-pane.tabbar.label "Sekme çubuğu">
+<!ENTITY openwith-display-pane.toolbar.label "Araç çubuğu">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
+		these are placeholders for where the menu items will appear 
+
+-->
+<!ENTITY openwith-placeholder.label "Birlikte Aç Nesneleri">
+<!ENTITY openwith-linkplaceholder.label "Birlikte Aç link nesneleri">
+<!ENTITY openwith-submenu.label "Birlikte Aç">
+<!ENTITY openwith-linksubmenu.label "Linki Beraber Aç">
+<!ENTITY openwith-display-choose.label "Open With'in nesneleri nasıl göstereceğini seçin:">
+<!ENTITY openwith-display-none.label "Gösterme">
+<!ENTITY openwith-display-menuitems.label "Menü öğesi olarak göster">
+<!ENTITY openwith-display-submenu.label "Alt menü olarak göster">
+<!ENTITY openwith-display-buttons.label "Buton olarak göster">
+<!ENTITY openwith-display-dropdown.label "Açılır menü olarak göster">
+<!ENTITY openwith-browserlist.label "Gösterilecek nesneleri seçin:">
+<!ENTITY openwith-browserlist-show.label "Göster">
+<!ENTITY openwith-browserlist-hide.label "Gizle">
+<!ENTITY openwith-browserlist-rename.label "Yeniden adlandır...">
+<!ENTITY openwith-browserlist-editcommand.label "Komut...">
+<!ENTITY openwith-browserlist-editparams.label "Argumanlar...">
+<!ENTITY openwith-browserlist-remove.label "Kaldır">
+<!ENTITY openwith-browserlist-add.label "Ekle...">
+<!ENTITY openwith-browserlist-moveup.tooltip "Yukarı">
+<!ENTITY openwith-browserlist-movedown.tooltip "Yukarıya">
+<!ENTITY openwith-browserlist-restoreorder.label "Varsayılan">

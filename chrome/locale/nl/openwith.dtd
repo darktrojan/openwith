@@ -1,0 +1,35 @@
+<!ENTITY openwith-name "Open With">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!ENTITY openwith-dropdown.tooltip "Openen met…">
+<!ENTITY openwith-options.title "Open With-opties">
+<!ENTITY openwith-display-pane.viewmenu.label "Menu Beeld">
+<!ENTITY openwith-display-pane.contextmenu.label "Hoofdcontextmenu">
+<!ENTITY openwith-display-pane.contextmenulink.label "Hoofdcontextmenu (koppelingen)">
+<!ENTITY openwith-display-pane.tabmenu.label "Tabbladcontextmenu">
+<!ENTITY openwith-display-pane.tabbar.label "Tabbalk">
+<!ENTITY openwith-display-pane.toolbar.label "Werkbalk">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
+		these are placeholders for where the menu items will appear 
+
+-->
+<!ENTITY openwith-placeholder.label "Open With-onderdelen">
+<!ENTITY openwith-linkplaceholder.label "Open With-koppelingsonderdelen">
+<!ENTITY openwith-submenu.label "Openen met">
+<!ENTITY openwith-linksubmenu.label "Koppeling openen met">
+<!ENTITY openwith-display-choose.label "Kies hoe Open With-onderdelen dienen te worden weergegeven:">
+<!ENTITY openwith-display-none.label "Niet weergeven">
+<!ENTITY openwith-display-menuitems.label "Weergeven als menu-onderdelen">
+<!ENTITY openwith-display-submenu.label "Weergeven als submenu">
+<!ENTITY openwith-display-buttons.label "Weergeven als knoppen">
+<!ENTITY openwith-display-dropdown.label "Weergeven als drop-downmenu">
+<!ENTITY openwith-browserlist.label "Kies welke onderdelen worden weergegeven:">
+<!ENTITY openwith-browserlist-show.label "Weergeven">
+<!ENTITY openwith-browserlist-hide.label "Verbergen">
+<!ENTITY openwith-browserlist-rename.label "Hernoemen…">
+<!ENTITY openwith-browserlist-editcommand.label "Opdracht…">
+<!ENTITY openwith-browserlist-editparams.label "Argumenten…">
+<!ENTITY openwith-browserlist-remove.label "Verwijderen">
+<!ENTITY openwith-browserlist-add.label "Toevoegen…">
+<!ENTITY openwith-browserlist-moveup.tooltip "Omhoog">
+<!ENTITY openwith-browserlist-movedown.tooltip "Omlaag">
+<!ENTITY openwith-browserlist-restoreorder.label "Standaardvolgorde">
