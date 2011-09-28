@@ -4,7 +4,11 @@
 
 <!DOCTYPE page SYSTEM "chrome://openwith/locale/openwith.dtd">
 
-<page title="&openwith-options.title;" orient="horizontal" style="padding: 8px" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<page title="&openwith-options.title;" orient="horizontal" style="padding: 8px"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png" style="display: none"/> 
 
 <hbox flex="1">
 	<spacer flex="1" />
