@@ -32,7 +32,7 @@
 		<em:localized locale="ar">
 			<Description>
 				<em:locale>ar</em:locale>
-				<em:name>??? ????????</em:name>
+				<em:name>فتح بإستخدام</em:name>
 				<em:description>فتح بإستخدآم يضيف خيار لقائمتك وتبويب لفتح الصفحة الحالية في متصفح آخر.</em:description>
 				<em:creator>Geoff Lankow</em:creator>
 				<em:translator>Natty Dreed</em:translator>
@@ -42,7 +42,7 @@
 			<Description>
 				<em:locale>es-ES</em:locale>
 				<em:name>Abrir Con</em:name>
-				<em:description>Abrir Con a�ñade opciones a tus barras de menús y pestañas para abrir la página en otro navegador.</em:description>
+				<em:description>Abrir Con añade opciones a tus barras de menús y pestañas para abrir la página en otro navegador.</em:description>
 				<em:creator>Geoff Lankow</em:creator>
 				<em:translator>RigoNet</em:translator>
 			</Description>
@@ -60,7 +60,7 @@
 			<Description>
 				<em:locale>is-IS</em:locale>
 				<em:name>Opna me</em:name>
-				<em:description>'Opna me�ð' bætir færslum í valmyndir og flipaslá svo þú getir opnað vefsíður í öðrum vafra.</em:description>
+				<em:description>'Opna með' bætir færslum í valmyndir og flipaslá svo þú getir opnað vefsíður í öðrum vafra.</em:description>
 				<em:creator>Geoff Lankow</em:creator>
 				<em:translator>Sveinn  Felli</em:translator>
 			</Description>
@@ -69,7 +69,7 @@
 			<Description>
 				<em:locale>ja-JP</em:locale>
 				<em:name>Open With</em:name>
-				<em:description>#genid12</em:description>
+				<em:description>この拡張機能により表示メニュー、タブメニュー、コンテクストメニュー、そしてタブバーに閲覧中のページを他のブラウザで開くという項目を加えることができます。</em:description>
 				<em:creator>Geoff Lankow</em:creator>
 				<em:translator>Hidekazu N.</em:translator>
 			</Description>
@@ -87,9 +87,9 @@
 			<Description>
 				<em:locale>tr-TR</em:locale>
 				<em:name>Open With (Birlikte A)</em:name>
-				<em:description>Open With men�ünüze ve sekme çubuğunuza gezdiğiniz saydayı başka tarayıcı ile görmeniz için seçenekler ekler.</em:description>
+				<em:description>Open With menünüze ve sekme çubuğunuza gezdiğiniz saydayı başka tarayıcı ile görmeniz için seçenekler ekler.</em:description>
 				<em:creator>Geoff Lankow</em:creator>
-				<em:translator>Serdar ?ahin</em:translator>
+				<em:translator>Serdar Şahin</em:translator>
 			</Description>
 		</em:localized>
 		<em:localized locale="zh-CN">
