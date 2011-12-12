@@ -380,21 +380,11 @@ var OpenWithCore = {
 		if (this.prefs.getPrefType ('version') == Ci.nsIPrefBranch.PREF_STRING) {
 			oldVersion = prefs.getCharPref ('version');
 		}
-		if ('@mozilla.org/extensions/manager;1' in Cc) {
-			currentVersion = Cc ['@mozilla.org/extensions/manager;1']
-					.getService (Ci.nsIExtensionManager).getItemForID (ID).version;
+		Cu.import ('resource://gre/modules/AddonManager.jsm');
+		AddonManager.getAddonByID (ID, function (addon) {
+			currentVersion = addon.version;
 			prefs.setCharPref ('version', currentVersion);
-			doUpdate ();
-		} else {
-			Cu.import ('resource://gre/modules/AddonManager.jsm');
-			AddonManager.getAddonByID (ID, function (addon) {
-				currentVersion = addon.version;
-				prefs.setCharPref ('version', currentVersion);
-				doUpdate ();
-			});
-		}
 
-		function doUpdate () {
 			let appname = Services.appinfo.name;
 			let appversion = parseFloat (Services.appinfo.version);
 			if (appname == 'Firefox' && appversion >= 4) {
@@ -448,7 +438,7 @@ var OpenWithCore = {
 				}
 			}
 			self.showNotifications ();
-		}
+		});
 	},
 	openOptionsTab: function () {
 		let recentWindow = Services.wm.getMostRecentWindow (BROWSER_TYPE);
