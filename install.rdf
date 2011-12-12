@@ -11,7 +11,7 @@
 		<em:homepageURL>http://www.darktrojan.net/software/addons/openwith/</em:homepageURL>
 		<em:iconURL>chrome://openwith/content/openwith32.png</em:iconURL>
 		<em:icon64URL>chrome://openwith/content/openwith64.png</em:icon64URL>
-		<em:optionsURL>chrome://openwith/content/options.xul</em:optionsURL>
+		<em:optionsURL>about:openwith</em:optionsURL>
 		<em:optionsType>3</em:optionsType>
 
 		<em:targetApplication>
