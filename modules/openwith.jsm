@@ -359,13 +359,11 @@ var OpenWithCore = {
 		}
 	},
 	versionUpdate: function () {
-		let self = this;
-
 		if (this.prefs.getPrefType ('version') == Ci.nsIPrefBranch.PREF_STRING) {
 			oldVersion = this.prefs.getCharPref ('version');
 		}
 		Cu.import ('resource://gre/modules/AddonManager.jsm');
-		AddonManager.getAddonByID (ID, function (addon) {
+		AddonManager.getAddonByID (ID, (function(addon) {
 			currentVersion = addon.version;
 			this.prefs.setCharPref ('version', currentVersion);
 
@@ -421,8 +419,8 @@ var OpenWithCore = {
 					this.prefs.setCharPref ('hide', appname);
 				}
 			}
-			self.showNotifications ();
-		});
+			this.showNotifications ();
+		}).bind(this));
 	},
 	openOptionsTab: function () {
 		let recentWindow = Services.wm.getMostRecentWindow (BROWSER_TYPE);
@@ -459,29 +457,28 @@ var OpenWithCore = {
 		}
 	},
 	showNotifications: function () {
-		let self = this;
 		let recentWindow = Services.wm.getMostRecentWindow (BROWSER_TYPE);
 		let notifyBox = recentWindow.gBrowser.getNotificationBox ();
 
-		recentWindow.setTimeout (function () {
-			if (self.list.length == 0) {
-				let label = self.strings.GetStringFromName ('noBrowsersSetUp');
+		recentWindow.setTimeout((function() {
+			if (this.list.length == 0) {
+				let label = this.strings.GetStringFromName ('noBrowsersSetUp');
 				let value = 'openwith-nobrowsers';
 				let buttons = [{
-					label: self.strings.GetStringFromName ('buttonLabel'),
-					accessKey: self.strings.GetStringFromName ('buttonAccessKey'),
+					label: this.strings.GetStringFromName ('buttonLabel'),
+					accessKey: this.strings.GetStringFromName ('buttonAccessKey'),
 					popup: null,
-					callback: self.openOptionsTab
+					callback: this.openOptionsTab
 				}];
 				notifyBox.appendNotification (label, value,
 						'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 			} else {
-				self.showDonateReminder (notifyBox, function (aNotificationBar, aButton) {
+				this.showDonateReminder (notifyBox, function (aNotificationBar, aButton) {
 					let url = 'https://addons.mozilla.org/addon/11097/about';
 					recentWindow.gBrowser.selectedTab = recentWindow.gBrowser.addTab (url);
 				});
 			}
-		}, 1000);
+		}).bind(this), 1000);
 	},
 	showDonateReminder: function (notifyBox, callback) {
 		if (oldVersion == 0 || parseFloat (oldVersion) >= parseFloat (currentVersion)) {
