@@ -16,7 +16,6 @@ chrome/content/openwith-mail.xul
 chrome/content/openwith16.png
 chrome/content/openwith32.png
 chrome/content/openwith64.png
-chrome/content/options.xul
 chrome/locale/*
 chrome/locale/ar/*
 #chrome/locale/bg-BG/*
