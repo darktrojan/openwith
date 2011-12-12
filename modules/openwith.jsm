@@ -10,6 +10,7 @@ const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
 
 Cu.import ('resource://gre/modules/Services.jsm');
+Cu.import ('resource://gre/modules/XPCOMUtils.jsm');
 
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
@@ -21,8 +22,6 @@ if (WINDOWS) {
 	var locAppDir = null;
 }
 
-var prefs = null;
-var strings = null;
 let currentVersion = 0;
 let oldVersion = 0;
 
@@ -31,20 +30,6 @@ var OpenWithCore = {
 	TARGET_STANDARD: 1,
 	TARGET_LINK: 2,
 	TARGET_TAB: 3,
-
-	get prefs () {
-		if (!prefs) {
-			prefs = Services.prefs.getBranch ('extensions.openwith.').QueryInterface (Ci.nsIPrefBranch2);
-			prefs.addObserver ('', this, false);
-		}
-		return prefs;
-	},
-	get strings () {
-		if (!strings) {
-			strings = Services.strings.createBundle ('chrome://openwith/locale/openwith.properties');
-		}
-		return strings;
-	},
 
 	list: [],
 	suppressLoadList: false,
@@ -131,20 +116,20 @@ var OpenWithCore = {
 				continue;
 			}
 			let value;
-			if (prefs.getPrefType (name + ".name") == Ci.nsIPrefBranch.PREF_STRING) {
-				value = prefs.getCharPref (name + ".name");
+			if (this.prefs.getPrefType (name + ".name") == Ci.nsIPrefBranch.PREF_STRING) {
+				value = this.prefs.getCharPref (name + ".name");
 			} else {
 				value = name.substring (7).replace (/_/g, ' ');
 			}
-			let command = prefs.getCharPref (name);
+			let command = this.prefs.getCharPref (name);
 			let params = command.indexOf ('"') >= 0 ? command.replace (/^"[^"]+"\s*/, '').split (' ') : [];
 			if (params.length > 0 && params [0] == '') {
 				params.shift ();
 			}
 			command = command.replace (/^"/, '').replace (/".*$/, '');
 			let icon;
-			if (prefs.getPrefType (name + ".icon") == Ci.nsIPrefBranch.PREF_STRING) {
-				 icon = prefs.getCharPref (name + ".icon");
+			if (this.prefs.getPrefType (name + ".icon") == Ci.nsIPrefBranch.PREF_STRING) {
+				 icon = this.prefs.getCharPref (name + ".icon");
 			} else {
 				let file = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
 				file.initWithPath (command);
@@ -159,8 +144,8 @@ var OpenWithCore = {
 				params: params,
 				icon: icon,
 				hidden: false,
-				useFilePath: prefs.getPrefType (name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL
-								&& prefs.getBoolPref (name + '.usefilepath')
+				useFilePath: this.prefs.getPrefType (name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL
+								&& this.prefs.getBoolPref (name + '.usefilepath')
 			});
 		}
 
@@ -255,7 +240,7 @@ var OpenWithCore = {
 
 			let keyName = item.keyName;
 			let label = this.strings.formatStringFromName ('openWithLabel', [item.name], 1);
-			let linkLabel = strings.formatStringFromName ('openLinkWithLabel', [item.name], 1);
+			let linkLabel = this.strings.formatStringFromName ('openLinkWithLabel', [item.name], 1);
 
 			for (let j = 0, jCount = locations.length; j < jCount; j++) {
 				let location = locations [j];
@@ -269,7 +254,7 @@ var OpenWithCore = {
 					labelToUse = label;
 				}
 
-				if (prefs.getBoolPref (location.prefName)) {
+				if (this.prefs.getBoolPref (location.prefName)) {
 					let menuItem = location.factory (document, item, labelToUse, location.targetType);
 					menuItem.id = 'openwith_' + keyName + location.suffix;
 					if (location.container.push) { //array
@@ -376,31 +361,30 @@ var OpenWithCore = {
 	versionUpdate: function () {
 		let self = this;
 
-		// prefs is defined after the first call to this.prefs
 		if (this.prefs.getPrefType ('version') == Ci.nsIPrefBranch.PREF_STRING) {
-			oldVersion = prefs.getCharPref ('version');
+			oldVersion = this.prefs.getCharPref ('version');
 		}
 		Cu.import ('resource://gre/modules/AddonManager.jsm');
 		AddonManager.getAddonByID (ID, function (addon) {
 			currentVersion = addon.version;
-			prefs.setCharPref ('version', currentVersion);
+			this.prefs.setCharPref ('version', currentVersion);
 
 			let appname = Services.appinfo.name;
 			let appversion = parseFloat (Services.appinfo.version);
 			if (appname == 'Firefox' && appversion >= 4) {
 				let shouldUpdateToolbar = false;
-				if (prefs.prefHasUserValue ('tabbar')) {
-					let value = prefs.getBoolPref ('tabbar');
-					prefs.setBoolPref ('toolbar', value);
-					prefs.setBoolPref ('toolbar.menu', !value);
-					prefs.clearUserPref ('tabbar');
+				if (this.prefs.prefHasUserValue ('tabbar')) {
+					let value = this.prefs.getBoolPref ('tabbar');
+					this.prefs.setBoolPref ('toolbar', value);
+					this.prefs.setBoolPref ('toolbar.menu', !value);
+					this.prefs.clearUserPref ('tabbar');
 					shouldUpdateToolbar = true;
 				}
-				if (prefs.prefHasUserValue ('tabbar.menu')) {
-					let value = prefs.getBoolPref ('tabbar.menu');
-					prefs.setBoolPref ('toolbar.menu', value);
-					prefs.setBoolPref ('toolbar', !value);
-					prefs.clearUserPref ('tabbar.menu');
+				if (this.prefs.prefHasUserValue ('tabbar.menu')) {
+					let value = this.prefs.getBoolPref ('tabbar.menu');
+					this.prefs.setBoolPref ('toolbar.menu', value);
+					this.prefs.setBoolPref ('toolbar', !value);
+					this.prefs.clearUserPref ('tabbar.menu');
 					shouldUpdateToolbar = true;
 				}
 				if (shouldUpdateToolbar) {
@@ -432,9 +416,9 @@ var OpenWithCore = {
 			}
 			if (parseFloat (oldVersion) < 4.2) {
 				if (WINDOWS && appname == 'SeaMonkey') {
-					prefs.setCharPref ('hide', 'seamonkey.exe');
+					this.prefs.setCharPref ('hide', 'seamonkey.exe');
 				} else if (OS_X) {
-					prefs.setCharPref ('hide', appname);
+					this.prefs.setCharPref ('hide', appname);
 				}
 			}
 			self.showNotifications ();
@@ -518,10 +502,18 @@ var OpenWithCore = {
 			popup: null,
 			callback: callback
 		}];
-		prefs.setIntPref ('donationreminder', Date.now () / 1000);
+		this.prefs.setIntPref ('donationreminder', Date.now () / 1000);
 		notifyBox.appendNotification (label, value,
 				'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 	}
 }
+XPCOMUtils.defineLazyGetter(OpenWithCore, "prefs", function() {
+	let prefs = Services.prefs.getBranch ('extensions.openwith.').QueryInterface (Ci.nsIPrefBranch2);
+	prefs.addObserver('', OpenWithCore, false);
+	return prefs;
+});
+XPCOMUtils.defineLazyGetter(OpenWithCore, "strings", function() {
+	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
+});
 
 OpenWithCore.versionUpdate ();
