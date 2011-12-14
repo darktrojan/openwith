@@ -271,7 +271,7 @@ var OpenWithCore = {
 		let params = item.params;
 		let icon = item.icon;
 		var menuItem = document.createElementNS (XULNS, 'menuitem');
-		menuItem.setAttribute ('class', 'openwith menuitem-iconic');
+		menuItem.setAttribute ('class', 'openwith menuitem-iconic menuitem-with-favicon');
 		menuItem.setAttribute ('image', icon);
 		menuItem.setAttribute ('label', label);
 		switch (targetType) {
