@@ -196,7 +196,10 @@ var OpenWithCore = {
 					return Services.io.newFileURI (relTest).spec;
 				}
 			}
-			let absPaths = ['/usr/share/icons/default.kde4/' + size + 'x' + size + '/apps/' + file.leafName + '.png'];
+			let absPaths = [
+				'/usr/share/icons/default.kde4/' + size + 'x' + size + '/apps/' + file.leafName + '.png',
+				'/usr/share/icons/hicolor/' + size + 'x' + size + '/apps/' + file.leafName + '.png'
+			];
 			for (let i = 0, iCount = absPaths.length; i < iCount; i++) {
 				let absTest = new FileUtils.File(absPaths [i]);
 				if (absTest.exists ()) {

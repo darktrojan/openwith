@@ -4,16 +4,22 @@ const Cu = Components.utils;
 
 Cu.import ('resource://openwith/openwith.jsm');
 Cu.import ('resource://gre/modules/Services.jsm');
+Cu.import ("resource://gre/modules/FileUtils.jsm");
 
 let browserWindow = Services.wm.getMostRecentWindow ("navigator:browser");
 
 let fp = Cc ["@mozilla.org/filepicker;1"].createInstance (Ci.nsIFilePicker);
 fp.init (this, document.title, Ci.nsIFilePicker.modeOpen);
 fp.appendFilters (Ci.nsIFilePicker.filterApps);
-if (Services.dirsvc.has ("ProgF"))
+if (Services.dirsvc.has ("ProgF")) {
 	fp.displayDirectory = Services.dirsvc.get ("ProgF", Ci.nsIFile);
-else if (Services.dirsvc.has ("LocApp"))
+} else if (Services.dirsvc.has ("LocApp")) {
 	fp.displayDirectory = Services.dirsvc.get ("LocApp", Ci.nsIFile);
+} else {
+	let appsDir = new FileUtils.File("/usr/share/applications");
+	if (appsDir.exists())
+		fp.displayDirectory = appsDir;
+}
 
 function $(id) {
 	return document.getElementById (id);
@@ -85,7 +91,10 @@ function loadBrowserList () {
 				item.setAttribute ('browserHidden', entry [a]);
 				break;
 			case 'icon':
-				item.setAttribute (a, entry [a].replace (/16/g, '32'));
+				let icon = entry[a];
+				icon = icon.replace('?size=menu', '?size=dnd');
+				icon = icon.replace(/16/g, '32');
+				item.setAttribute (a, icon);
 				break;
 			case 'params':
 				item.setAttribute (a, entry [a].join (' '));
@@ -137,8 +146,7 @@ function setHidden (item, hidden) {
 
 function editCommand (item) {
 	let command = item.getAttribute ('command');
-	let file = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
-	file.initWithPath (command);
+	let file = new FileUtils.File(command);
 	fp.defaultString = file.leafName;
 	fp.displayDirectory = file.parent;
 	if (fp.show () == Ci.nsIFilePicker.returnOK) {
@@ -157,8 +165,7 @@ function changeAttribute (item, attrName) {
 		text = OpenWithCore.strings.GetStringFromName ('namePromptText');
 		break;
 	case 'params':
-		let file = Cc ['@mozilla.org/file/local;1'].createInstance (Ci.nsILocalFile);
-		file.initWithPath (item.getAttribute ('command'));
+		let file = new FileUtils.File(item.getAttribute ('command'));
 		text = OpenWithCore.strings.formatStringFromName ('paramsPromptText', [file.leafName], 1);
 		break;
 	}
@@ -181,7 +188,7 @@ function changeAttribute (item, attrName) {
 	}
 }
 
-function saveItemToPrefs (item) {
+function saveItemToPrefs (item, saveIcon) {
 	let name = item.getAttribute ('name');
 	let keyName = item.getAttribute ('keyName');
 	let command = item.getAttribute ('command');
@@ -191,24 +198,83 @@ function saveItemToPrefs (item) {
 	if (name != keyName) {
 		OpenWithCore.prefs.setCharPref ('manual.' + keyName + '.name', name);
 	}
+	if (saveIcon) {
+		let icon = item.getAttribute('icon');
+		icon = icon.replace(/32/g, '16');
+		icon = icon.replace('?size=dnd', '?size=menu');
+		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.icon', icon);
+	}
 }
 
 function addNewItem () {
 	if (fp.show () == Ci.nsIFilePicker.returnOK) {
-		let name = fp.file.leafName.replace (/\.(app|exe)$/i, '');
+		let name, command, icon;
+		let params = [];
+		let saveIcon = false;
+
+		if (/\.desktop$/.test(fp.file.leafName)) {
+			var istream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+			istream.init(fp.file, 0x01, 0444, 0);
+			istream.QueryInterface(Components.interfaces.nsILineInputStream);
+
+			var line = {};
+			while (istream.readLine(line)) {
+				if (!command && /^Exec=/.test(line.value)) {
+					let commandParts = line.value.substring(5).replace(/\s+%U/i, "").split(/\s+/);
+					command = commandParts[0];
+					let file;
+					if (command[0] == '/') {
+						file = new FileUtils.File(command);
+					} else {
+						let env = Cc ["@mozilla.org/process/environment;1"].getService (Ci.nsIEnvironment);
+						let paths = env.get('PATH').split(':');
+						for (let i = 0; i < paths.length; i++) {
+							file = new FileUtils.File(paths[i] + '/' + command);
+							if (file.exists()) {
+								command = file.path;
+								break;
+							}
+						}
+					}
+					for (let i = 1; i < commandParts.length; i++) {
+						params.push(commandParts[i]);
+					}
+
+					if (!icon) {
+						icon = OpenWithCore.findIconURL(file, 32);
+					}
+				}
+				if (!name && /^Name=/.test(line.value)) {
+					name = line.value.substring(5);
+				}
+				if (/^Icon=/.test(line.value)) {
+					if (line.value[5] == '/') {
+						icon = 'file://' + line.value.substring(5);
+					} else {
+						icon = 'moz-icon://stock/' + line.value.substring(5) + '?size=dnd';
+					}
+				}
+			}
+			istream.close();
+			saveIcon = true;
+		} else {
+			name = fp.file.leafName.replace (/\.(app|exe)$/i, '');
+			command = fp.file.path;
+			icon = OpenWithCore.findIconURL (fp.file, 32);
+		}
 
 		let item = document.createElement ('richlistitem');
 		item.setAttribute ('auto', false);
 		item.setAttribute ('manual', true);
 		item.setAttribute ('keyName', name.replace (/\W+/g, '_'));
 		item.setAttribute ('name', name);
-		item.setAttribute ('command', fp.file.path);
-		item.setAttribute ('params', '');
-		item.setAttribute ('icon', OpenWithCore.findIconURL (fp.file, 32));
+		item.setAttribute ('command', command);
+		item.setAttribute ('params', params.join(' '));
+		item.setAttribute ('icon', icon);
 		list.appendChild (item);
 		list.selectItem (item);
 
-		saveItemToPrefs (item);
+		saveItemToPrefs (item, saveIcon);
 	}
 }
 
