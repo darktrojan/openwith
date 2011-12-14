@@ -11,6 +11,7 @@ const BROWSER_TYPE = 'navigator:browser';
 
 Cu.import ('resource://gre/modules/Services.jsm');
 Cu.import ('resource://gre/modules/XPCOMUtils.jsm');
+Cu.import ("resource://gre/modules/FileUtils.jsm");
 
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
@@ -67,8 +68,7 @@ var OpenWithCore = {
 						return env.get (m.substring (1, m.length - 1));
 					});
 
-					let file = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
-					file.initWithPath (command);
+					let file = new FileUtils.File(command);
 
 					this.list.push ({
 						auto: true,
@@ -131,8 +131,7 @@ var OpenWithCore = {
 			if (this.prefs.getPrefType (name + ".icon") == Ci.nsIPrefBranch.PREF_STRING) {
 				 icon = this.prefs.getCharPref (name + ".icon");
 			} else {
-				let file = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
-				file.initWithPath (command);
+				let file = new FileUtils.File(command);
 				icon = this.findIconURL (file, 16);
 			}
 
@@ -187,8 +186,7 @@ var OpenWithCore = {
 		try {
 			if (file.isSymlink ()) {
 				let target = file.target;
-				file = Cc ['@mozilla.org/file/local;1'].createInstance (Ci.nsILocalFile);
-				file.initWithPath (target);
+				file = new FileUtils.File(target);
 			}
 			let relPaths = ['chrome/icons/default/default' + size + '.png', 'product_logo_' + size + '.png'];
 			for (let i = 0, iCount = relPaths.length; i < iCount; i++) {
@@ -200,8 +198,7 @@ var OpenWithCore = {
 			}
 			let absPaths = ['/usr/share/icons/default.kde4/' + size + 'x' + size + '/apps/' + file.leafName + '.png'];
 			for (let i = 0, iCount = absPaths.length; i < iCount; i++) {
-				let absTest = Cc ['@mozilla.org/file/local;1'].createInstance (Ci.nsILocalFile);
-				absTest.initWithPath (absPaths [i]);
+				let absTest = new FileUtils.File(absPaths [i]);
 				if (absTest.exists ()) {
 					return Services.io.newFileURI (absTest).spec;
 				}
@@ -328,15 +325,13 @@ var OpenWithCore = {
 		}
 
 		try {
-			var file = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
-			file.initWithPath (command);
+			var file = new FileUtils.File(command);
 			if (!file.exists ()) {
 				throw "File not found";
 			}
 			var fileToRun;
 			if (/\.app$/.test (file.path)) {
-				fileToRun = Cc ["@mozilla.org/file/local;1"].createInstance (Ci.nsILocalFile);
-				fileToRun.initWithPath ("/usr/bin/open");
+				fileToRun = new FileUtils.File("/usr/bin/open");
 				var oldParams = params;
 				params = ["-a", file.path];
 				for (var i = 0, iCount = oldParams.length; i < iCount; i++) {
