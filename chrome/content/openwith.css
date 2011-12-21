@@ -13,6 +13,10 @@
 	box-shadow: none;
 }
 
+toolbarbutton#openwith-toolbar[type="menu"] {
+	-moz-box-orient: horizontal;
+}
+
 #TabsToolbar #openwith-toolbarbox > toolbarbutton:not([type="menu"]) {
 	margin-left: 0;
 	margin-right: 0;
