@@ -28,7 +28,8 @@
 		<toolbaritem id="openwith-toolbarbox" class="chromeclass-toolbar-additional" label="&openwith-name;">
 			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;"
 				image="chrome://openwith/content/openwith16.png" type="menu"
-				tooltiptext="&openwith-dropdown.tooltip;">
+				tooltiptext="&openwith-dropdown.tooltip;"
+				style="-moz-box-orient: horizontal">
 				<menupopup id="openwith-toolbar-menu" />
 			</toolbarbutton>
 		</toolbaritem>
