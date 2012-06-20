@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://openwith/content/openwith.css" type="text/css" ?>
+<?xml-stylesheet href="data:text/css,%23openwith-tabbarbox>toolbarbutton{min-width:20px;padding-left:3px;padding-right:3px;}" type="text/css" ?>
 
 <!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
 
