@@ -227,7 +227,9 @@ function addNewItem () {
 			istream.QueryInterface(Components.interfaces.nsILineInputStream);
 
 			var line = {};
-			while (istream.readLine(line)) {
+			var notEOF;
+			do {
+				notEOF = istream.readLine(line);
 				if (!command && /^Exec=/.test(line.value)) {
 					let commandParts = line.value.substring(5).replace(/\s+%U/i, "").split(/\s+/);
 					command = commandParts[0];
@@ -263,7 +265,8 @@ function addNewItem () {
 						icon = 'moz-icon://stock/' + line.value.substring(5) + '?size=dnd';
 					}
 				}
-			}
+			} while (notEOF);
+			name = name || fp.file.leafName.replace (/\.desktop$/i, '');
 			istream.close();
 			saveIcon = true;
 		} else {
