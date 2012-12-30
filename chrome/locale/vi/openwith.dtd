@@ -13,6 +13,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Trình đơn ngữ cảnh của thẻ">
 <!ENTITY openwith-display-pane.tabbar.label "Thanh chứa thẻ">
 <!ENTITY openwith-display-pane.toolbar.label "Thanh công cụ">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

@@ -12,6 +12,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Tab-Kontextmenü">
 <!ENTITY openwith-display-pane.tabbar.label "Tab-Leiste">
 <!ENTITY openwith-display-pane.toolbar.label "Symbolleiste">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

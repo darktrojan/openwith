@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "分頁的右鍵選單">
 <!ENTITY openwith-display-pane.tabbar.label "分頁列">
 <!ENTITY openwith-display-pane.toolbar.label "工具列">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

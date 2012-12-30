@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Sekme ek menüsü">
 <!ENTITY openwith-display-pane.tabbar.label "Sekme çubuğu">
 <!ENTITY openwith-display-pane.toolbar.label "Araç çubuğu">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

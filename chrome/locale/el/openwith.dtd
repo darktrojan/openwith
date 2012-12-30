@@ -11,6 +11,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Μενού περιεχομένου καρτελών">
 <!ENTITY openwith-display-pane.tabbar.label "Εργαλειοθήκη καρτελών">
 <!ENTITY openwith-display-pane.toolbar.label "Εργαλειοθήκη">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

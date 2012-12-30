@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Tabbladcontextmenu">
 <!ENTITY openwith-display-pane.tabbar.label "Tabbalk">
 <!ENTITY openwith-display-pane.toolbar.label "Werkbalk">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

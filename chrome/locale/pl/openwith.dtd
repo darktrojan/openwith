@@ -11,6 +11,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Menu kontekstowe karty">
 <!ENTITY openwith-display-pane.tabbar.label "Pasek karty">
 <!ENTITY openwith-display-pane.toolbar.label "Pasek narzędzi">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

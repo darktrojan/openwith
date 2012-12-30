@@ -12,6 +12,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Pestanya del menú contextual">
 <!ENTITY openwith-display-pane.tabbar.label "Barra de pestanyes">
 <!ENTITY openwith-display-pane.toolbar.label "Barra d'eines">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

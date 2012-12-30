@@ -12,6 +12,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Panel kontextového menu">
 <!ENTITY openwith-display-pane.tabbar.label "Panel nástrojů">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

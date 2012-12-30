@@ -11,6 +11,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Menu contestuale delle schede">
 <!ENTITY openwith-display-pane.tabbar.label "Barra delle schede">
 <!ENTITY openwith-display-pane.toolbar.label "Barra degli strumenti">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

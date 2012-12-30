@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "в контекстном меню вкладок">
 <!ENTITY openwith-display-pane.tabbar.label "на панеле вкладок">
 <!ENTITY openwith-display-pane.toolbar.label "на панели инструментов">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

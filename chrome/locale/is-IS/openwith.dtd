@@ -15,6 +15,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Samhengisvalmynd flipa">
 <!ENTITY openwith-display-pane.tabbar.label "Flipaslá">
 <!ENTITY openwith-display-pane.toolbar.label "Verkfæraslá">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

@@ -12,6 +12,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Menu separadores">
 <!ENTITY openwith-display-pane.tabbar.label "Barra de separadores">
 <!ENTITY openwith-display-pane.toolbar.label "Barra de ferramentas">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 

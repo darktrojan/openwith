@@ -12,6 +12,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "Приручни мени језичака">
 <!ENTITY openwith-display-pane.tabbar.label "Трака са језичцима">
 <!ENTITY openwith-display-pane.toolbar.label "Трака са алаткама">
+<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
 
