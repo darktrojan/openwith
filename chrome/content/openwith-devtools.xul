@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<hbox id="toolbox-buttons">
+		<hbox id="openwith-toolboxbox">
+			<toolbarbutton id="openwith-toolbox" class="command-button" label="&openwith-name;"
+				image="chrome://openwith/content/openwith16.png" type="menu"
+				tooltiptext="&openwith-dropdown.tooltip;"
+				style="-moz-box-orient: horizontal">
+				<menupopup id="openwith-toolbox-menu" />
+			</toolbarbutton>
+		</hbox>
+	</hbox>
+
+	<script src="chrome://openwith/content/openwith-devtools.js"
+		type="application/javascript;version=1.7"></script>
+
+</overlay>

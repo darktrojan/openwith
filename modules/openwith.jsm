@@ -31,6 +31,7 @@ var OpenWithCore = {
 	TARGET_STANDARD: 1,
 	TARGET_LINK: 2,
 	TARGET_TAB: 3,
+	TARGET_DEVTOOLS: 4,
 
 	list: [],
 	suppressLoadList: false,
@@ -287,6 +288,10 @@ var OpenWithCore = {
 			menuItem.setAttribute ('oncommand',
 				'OpenWithCore.doCommand (event, gBrowser.mContextTab.linkedBrowser.currentURI);');
 			break;
+		case OpenWithCore.TARGET_DEVTOOLS:
+			menuItem.setAttribute ('oncommand',
+				'OpenWithCore.doCommand (event, window.top.gBrowser.selectedBrowser.currentURI);');
+			break;
 		}
 		menuItem.setAttribute ('openwith-command', command);
 		menuItem.setAttribute ('openwith-params', params.join (' '));
@@ -300,7 +305,6 @@ var OpenWithCore = {
 		let params = item.params;
 		let icon = item.icon;
 		var toolbarButton = document.createElementNS (XULNS, 'toolbarbutton');
-		toolbarButton.className = 'toolbarbutton-1';
 		toolbarButton.setAttribute ('tooltiptext', tooltip);
 		toolbarButton.setAttribute ('image', icon);
 		toolbarButton.setAttribute ('openwith-command', command);
@@ -308,8 +312,15 @@ var OpenWithCore = {
 		if ('useFilePath' in item && item.useFilePath) {
 			toolbarButton.setAttribute ('openwith-usefilepath', 'true');
 		}
-		toolbarButton.setAttribute ('oncommand',
-				'OpenWithCore.doCommand (event, gBrowser.selectedBrowser.currentURI);');
+		if (targetType == OpenWithCore.TARGET_DEVTOOLS) {
+			toolbarButton.className = 'command-button';
+			toolbarButton.setAttribute ('oncommand',
+					'OpenWithCore.doCommand (event, window.top.gBrowser.selectedBrowser.currentURI);');
+		} else {
+			toolbarButton.className = 'toolbarbutton-1';
+			toolbarButton.setAttribute ('oncommand',
+					'OpenWithCore.doCommand (event, gBrowser.selectedBrowser.currentURI);');
+		}
 		return toolbarButton;
 	},
 	doCommand: function (event, uri) {

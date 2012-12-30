@@ -79,6 +79,16 @@
 						</menupopup>
 					</menulist>
 				</row>
+				<row align="center" id="openwith-toolbox-row">
+					<label value="&openwith-display-pane.toolbox.label;:" />
+					<menulist id="openwith-toolbox-group" oncommand="updatePrefs ('toolbox', 'toolbox.menu', this.selectedIndex);">
+						<menupopup>
+							<menuitem label="&openwith-display-none.label;" />
+							<menuitem label="&openwith-display-buttons.label;" />
+							<menuitem label="&openwith-display-dropdown.label;" />
+						</menupopup>
+					</menulist>
+				</row>
 			</rows>
 		</grid>
 	</vbox>

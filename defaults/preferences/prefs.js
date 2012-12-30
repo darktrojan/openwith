@@ -6,6 +6,8 @@ pref("extensions.openwith.tabbar", false);
 pref("extensions.openwith.tabbar.menu", false);
 pref("extensions.openwith.toolbar", false);
 pref("extensions.openwith.toolbar.menu", true);
+pref("extensions.openwith.toolbox", true);
+pref("extensions.openwith.toolbox.menu", false);
 pref("extensions.openwith.contextmenu", false);
 pref("extensions.openwith.contextmenu.submenu", false);
 pref("extensions.openwith.contextmenulink", false);

@@ -60,6 +60,15 @@ function loadDropDowns () {
 	$('openwith-toolbar-group').disabled = browserWindow.OpenWith.toolbarButtonContainer == null;
 	$('openwith-toolbar-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref ('toolbar') ? 0 : 1;
+
+	if (Services.appinfo.name == 'Firefox' && parseFloat(Services.appinfo.version) >= 20) {
+		$('openwith-toolbox-group').selectedIndex =
+			OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
+	} else {
+		$('openwith-toolbox-row').collapsed = true;
+	}
+
 	loadingDropDowns = false;
 }
 
