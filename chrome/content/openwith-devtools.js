@@ -38,8 +38,16 @@ let OpenWith = {
 
 		this.loadLists();
 
-		Services.obs.addObserver(this, 'openWithListChanged', false);
-		Services.obs.addObserver(this, 'openWithLocationsChanged', false);
+		Services.obs.addObserver(this, 'openWithListChanged', true);
+		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
+	},
+
+	QueryInterface: function QueryInterface(aIID) {
+		if (aIID.equals(Components.interfaces.nsIObserver) ||
+			aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
+			aIID.equals(Components.interfaces.nsISupports))
+			return this;
+		throw Components.results.NS_NOINTERFACE;
 	},
 
 	observe: function(subject, topic, data) {
