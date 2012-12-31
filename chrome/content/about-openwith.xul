@@ -22,7 +22,7 @@
 			<rows>
 				<row align="center">
 					<label value="&openwith-display-pane.viewmenu.label;:" />
-					<menulist id="openwith-viewmenu-group" oncommand="updatePrefs ('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
+					<menulist id="openwith-viewmenu-group" oncommand="updatePrefs('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-menuitems.label;" />
@@ -32,7 +32,7 @@
 				</row>
 				<row align="center">
 					<label value="&openwith-display-pane.contextmenu.label;:" />
-					<menulist id="openwith-contextmenu-group" oncommand="updatePrefs ('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
+					<menulist id="openwith-contextmenu-group" oncommand="updatePrefs('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-menuitems.label;" />
@@ -42,7 +42,7 @@
 				</row>
 				<row align="center">
 					<label value="&openwith-display-pane.contextmenulink.label;:" />
-					<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs ('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
+					<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-menuitems.label;" />
@@ -52,7 +52,7 @@
 				</row>
 				<row align="center">
 					<label value="&openwith-display-pane.tabmenu.label;:" />
-					<menulist id="openwith-tabmenu-group" oncommand="updatePrefs ('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
+					<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-menuitems.label;" />
@@ -62,7 +62,7 @@
 				</row>
 				<row align="center" id="openwith-tabbar-row">
 					<label value="&openwith-display-pane.tabbar.label;:" />
-					<menulist id="openwith-tabbar-group" oncommand="updatePrefs ('tabbar', 'tabbar.menu', this.selectedIndex);">
+					<menulist id="openwith-tabbar-group" oncommand="updatePrefs('tabbar', 'tabbar.menu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-buttons.label;" />
@@ -72,7 +72,7 @@
 				</row>
 				<row align="center">
 					<label value="&openwith-display-pane.toolbar.label;:" />
-					<menulist id="openwith-toolbar-group" oncommand="updatePrefs ('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
+					<menulist id="openwith-toolbar-group" oncommand="updatePrefs('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
 						<menupopup>
 							<menuitem label="&openwith-display-buttons.label;" />
 							<menuitem label="&openwith-display-dropdown.label;" />
@@ -81,7 +81,7 @@
 				</row>
 				<row align="center" id="openwith-toolbox-row">
 					<label value="&openwith-display-pane.toolbox.label;:" />
-					<menulist id="openwith-toolbox-group" oncommand="updatePrefs ('toolbox', 'toolbox.menu', this.selectedIndex);">
+					<menulist id="openwith-toolbox-group" oncommand="updatePrefs('toolbox', 'toolbox.menu', this.selectedIndex);">
 						<menupopup>
 							<menuitem label="&openwith-display-none.label;" />
 							<menuitem label="&openwith-display-buttons.label;" />
@@ -97,10 +97,10 @@
 		<richlistbox id="list" flex="1" style="width: 40em; margin: 0.5em 0;"></richlistbox>
 		<hbox pack="end">
 			<button id="openwith-manualentry-pane.add-button"
-					oncommand="addNewItem ();"
+					oncommand="addNewItem();"
 					label="&openwith-browserlist-add.label;" />
 			<button id="openwith-browserlist-restoreorder-button"
-					oncommand="restoreOrder ();"
+					oncommand="restoreOrder();"
 					label="&openwith-browserlist-restoreorder.label;" />
 		</hbox>
 	</vbox>

@@ -1,45 +1,45 @@
 var OpenWith = {
-	
+
 	locations: [],
-	
-	onLoad: function () {
-		window.removeEventListener ("load", OpenWith.onLoad, false);
-		OpenWith.init ();
+
+	onLoad: function() {
+		window.removeEventListener('load', OpenWith.onLoad, false);
+		OpenWith.init();
 	},
-	
-	init: function () {
+
+	init: function() {
 		const Cc = Components.classes;
 		const Ci = Components.interfaces;
 		const Cu = Components.utils;
 
-		Cu.import ('resource://openwith/openwith.jsm');
-		Cu.import ('resource://gre/modules/Services.jsm');
+		Cu.import('resource://openwith/openwith.jsm');
+		Cu.import('resource://gre/modules/Services.jsm');
 
-		var contextMenu = document.getElementById ('mailContext');
-		contextMenu.addEventListener ('popupshowing', this.popupShowing, false);
-		contextMenu.addEventListener ('popuphidden', this.popupHidden, false);
+		var contextMenu = document.getElementById('mailContext');
+		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
+		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
 
 		/** context menu (links) **/
-		this.contextMenuLinkPlaceholder = document.getElementById ('openwith-contextmenulinkplaceholder');
+		this.contextMenuLinkPlaceholder = document.getElementById('openwith-contextmenulinkplaceholder');
 		this.contextMenuLinkItems = [];
-		this.locations.push ({
+		this.locations.push({
 			prefName: 'contextmenulink',
-			empty: function () { this.container.splice (0, this.container.length); },
+			empty: function() { this.container.splice(0, this.container.length); },
 			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
 			suffix: '_contextmenulink',
 			container: this.contextMenuLinkItems,
 			submenu: false
 		});
-		
+
 		/** context menu (links) submenu **/
-		this.contextLinkSubmenu = document.getElementById ('openwith-contextlinksubmenu');
-		this.contextLinkSubmenuPopup = document.getElementById ('openwith-contextlinksubmenupopup');
-		this.locations.push ({
+		this.contextLinkSubmenu = document.getElementById('openwith-contextlinksubmenu');
+		this.contextLinkSubmenuPopup = document.getElementById('openwith-contextlinksubmenupopup');
+		this.locations.push({
 			prefName: 'contextmenulink.submenu',
-			empty: function () {
+			empty: function() {
 				while (this.container.lastChild)
-					this.container.removeChild (this.container.lastChild);
+					this.container.removeChild(this.container.lastChild);
 			},
 			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
@@ -48,13 +48,13 @@ var OpenWith = {
 			submenu: true
 		});
 
-		OpenWithCore.loadList (false);
-		OpenWith.loadLists ();
-		
-		Services.obs.addObserver (this, "openWithListChanged", true);
-		Services.obs.addObserver (this, "openWithLocationsChanged", true);
+		OpenWithCore.loadList(false);
+		OpenWith.loadLists();
+
+		Services.obs.addObserver(this, 'openWithListChanged', true);
+		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
 	},
-	
+
 	QueryInterface: function QueryInterface(aIID) {
 		if (aIID.equals(Components.interfaces.nsIObserver) ||
 			aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
@@ -63,21 +63,21 @@ var OpenWith = {
 		throw Components.results.NS_NOINTERFACE;
 	},
 
-	observe: function (subject, topic, data) {
-		OpenWith.loadLists ();
+	observe: function(subject, topic, data) {
+		OpenWith.loadLists();
 	},
-	
-	loadLists: function () {
+
+	loadLists: function() {
 		this.emptyList = OpenWithCore.list.length == 0;
-		OpenWithCore.refreshUI (document, this.locations);
+		OpenWithCore.refreshUI(document, this.locations);
 	},
-	
-	popupShowing: function (event) {
+
+	popupShowing: function(event) {
 		if (event.target != this) {
 			return;
 		}
-		var contextMenuLinkPref = OpenWithCore.prefs.getBoolPref ("contextmenulink");
-		var contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref ("contextmenulink.submenu");
+		var contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
+		var contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
 
 		// from http://mxr.mozilla.org/mozilla-central/source/browser/base/content/nsContextMenu.js
 		var shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
@@ -85,22 +85,22 @@ var OpenWith = {
 			gContextMenu.onAudio || gContextMenu.onTextInput);
 
 		OpenWith.contextMenuLinkPlaceholder.hidden = true;
-		OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref || 
+		OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref ||
 					OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
-		
+
 		if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
 			var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
 			for (var i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
-				if ("__MenuEdit_insertBefore_orig" in this) {
-					this.__MenuEdit_insertBefore_orig (OpenWith.contextMenuLinkItems [i], next);
+				if ('__MenuEdit_insertBefore_orig' in this) {
+					this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
 				} else {
-					this.insertBefore (OpenWith.contextMenuLinkItems [i], next);
+					this.insertBefore(OpenWith.contextMenuLinkItems[i], next);
 				}
 			}
 		}
 	},
 
-	popupHidden: function (event) {
+	popupHidden: function(event) {
 		if (event.target != this) {
 			return;
 		}
@@ -108,15 +108,15 @@ var OpenWith = {
 		OpenWith.contextMenuLinkPlaceholder.hidden = false;
 
 		var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-		while (next && next.className.indexOf ('openwith') == 0) {
-			if ("__MenuEdit_removeChild_orig" in this) {
-				this.__MenuEdit_removeChild_orig (next);
+		while (next && next.className.indexOf('openwith') == 0) {
+			if ('__MenuEdit_removeChild_orig' in this) {
+				this.__MenuEdit_removeChild_orig(next);
 			} else {
-				this.removeChild (next);
+				this.removeChild(next);
 			}
 			next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
 		}
 	}
-}
+};
 
-window.addEventListener ("load", OpenWith.onLoad, false);
+window.addEventListener('load', OpenWith.onLoad, false);
