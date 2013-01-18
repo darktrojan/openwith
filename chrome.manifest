@@ -4,6 +4,7 @@ overlay chrome://navigator/content/navigator.xul chrome://openwith/content/openw
 overlay chrome://messenger/content/messenger.xul chrome://openwith/content/openwith-mail.xul
 overlay chrome://messenger/content/messageWindow.xul chrome://openwith/content/openwith-mail.xul
 overlay chrome://browser/content/devtools/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
+overlay chrome://global/content/customizeToolbar.xul chrome://openwith/content/customize-toolbar.xul
 resource openwith modules/
 
 component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
