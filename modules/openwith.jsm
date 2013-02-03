@@ -490,7 +490,8 @@ var OpenWithCore = {
 		}).bind(this), 1000);
 	},
 	showDonateReminder: function(notifyBox, callback) {
-		if (oldVersion == 0 || parseFloat(oldVersion) >= parseFloat(currentVersion)) {
+		var comparator = Cc['@mozilla.org/xpcom/version-comparator;1'].createInstance(Ci.nsIVersionComparator);
+		if (oldVersion == 0 || comparator.compare(oldVersion, currentVersion) >= 0) {
 			return;
 		}
 
