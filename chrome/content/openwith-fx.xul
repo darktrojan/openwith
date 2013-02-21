@@ -15,7 +15,7 @@
 
 	<menupopup id="contentAreaContextMenu">
 		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertbefore="context-sep-open" />
-		<menu id="openwith-contextmenulinksubmenu" label="&openwith-linksubmenu.label;" insertbefore="context-sep-open">
+		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertbefore="context-sep-open">
 			<menupopup id="openwith-contextlinksubmenupopup" />
 		</menu>
 		<menuseparator id="openwith-contextmenuseparator" />
