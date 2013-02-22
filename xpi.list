@@ -1,19 +1,5 @@
 chrome
-chrome/content
-chrome/content/about-openwith.css
-chrome/content/about-openwith.js
-chrome/content/about-openwith.xml
-chrome/content/about-openwith.xul
-chrome/content/movedown.png
-chrome/content/moveup.png
-chrome/content/openwith.js
-chrome/content/openwith-fx.xul
-chrome/content/openwith-sm.xul
-chrome/content/openwith-mail.js
-chrome/content/openwith-mail.xul
-chrome/content/openwith16.png
-chrome/content/openwith32.png
-chrome/content/openwith64.png
+chrome/content/*
 chrome/locale/*
 chrome.manifest
 components/*
@@ -25,4 +11,3 @@ icon64.png
 install.rdf
 modules
 modules/openwith.jsm
-obviously/not/here
