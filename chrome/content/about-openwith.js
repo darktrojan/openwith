@@ -32,6 +32,15 @@ function loadDropDowns() {
 		return;
 	}
 	loadingDropDowns = true;
+
+	if (Services.appinfo.name == 'Thunderbird') {
+		$('openwith-viewmenu-row').collapsed = true;
+		$('openwith-contextmenu-row').collapsed = true;
+		$('openwith-tabmenu-row').collapsed = true;
+		$('openwith-tabbar-row').collapsed = true;
+		$('openwith-toolbar-row').collapsed = true;
+	}
+
 	$('openwith-viewmenu-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref('viewmenu') ? 1 :
 			(OpenWithCore.prefs.getBoolPref('viewmenu.submenu') ? 2 : 0);
@@ -51,13 +60,13 @@ function loadDropDowns() {
 	if (Services.appinfo.name == 'Firefox' && parseFloat(Services.appinfo.version) >= 4) {
 		$('openwith-tabbar-row').collapsed = true;
 	} else {
-		$('openwith-tabbar-group').disabled = browserWindow.OpenWith.tabButtonContainer == null;
+		$('openwith-tabbar-group').disabled = !browserWindow || browserWindow.OpenWith.tabButtonContainer == null;
 		$('openwith-tabbar-group').selectedIndex =
 				OpenWithCore.prefs.getBoolPref('tabbar') ? 1 :
 				(OpenWithCore.prefs.getBoolPref('tabbar.menu') ? 2 : 0);
 	}
 
-	$('openwith-toolbar-group').disabled = browserWindow.OpenWith.toolbarButtonContainer == null;
+	$('openwith-toolbar-group').disabled = !browserWindow || browserWindow.OpenWith.toolbarButtonContainer == null;
 	$('openwith-toolbar-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref('toolbar') ? 0 : 1;
 

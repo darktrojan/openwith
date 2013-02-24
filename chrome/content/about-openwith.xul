@@ -4,7 +4,7 @@
 
 <!DOCTYPE page SYSTEM "chrome://openwith/locale/openwith.dtd">
 
-<page title="&openwith-options.title;" orient="horizontal" style="padding: 8px"
+<page title="&openwith-options.title;" orient="horizontal" style="padding: 8px; min-height: 30em"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
@@ -20,7 +20,7 @@
 		<label value="&openwith-display-choose.label;" style="margin-bottom: 1em" />
 		<grid class="indent">
 			<rows>
-				<row align="center">
+				<row align="center" id="openwith-viewmenu-row">
 					<label value="&openwith-display-pane.viewmenu.label;:" />
 					<menulist id="openwith-viewmenu-group" oncommand="updatePrefs('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
 						<menupopup>
@@ -30,7 +30,7 @@
 						</menupopup>
 					</menulist>
 				</row>
-				<row align="center">
+				<row align="center" id="openwith-contextmenu-row">
 					<label value="&openwith-display-pane.contextmenu.label;:" />
 					<menulist id="openwith-contextmenu-group" oncommand="updatePrefs('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
 						<menupopup>
@@ -40,7 +40,7 @@
 						</menupopup>
 					</menulist>
 				</row>
-				<row align="center">
+				<row align="center" id="openwith-contextmenulink-row">
 					<label value="&openwith-display-pane.contextmenulink.label;:" />
 					<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
 						<menupopup>
@@ -50,7 +50,7 @@
 						</menupopup>
 					</menulist>
 				</row>
-				<row align="center">
+				<row align="center" id="openwith-tabmenu-row">
 					<label value="&openwith-display-pane.tabmenu.label;:" />
 					<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
 						<menupopup>
@@ -70,7 +70,7 @@
 						</menupopup>
 					</menulist>
 				</row>
-				<row align="center">
+				<row align="center" id="openwith-toolbar-row">
 					<label value="&openwith-display-pane.toolbar.label;:" />
 					<menulist id="openwith-toolbar-group" oncommand="updatePrefs('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
 						<menupopup>

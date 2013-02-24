@@ -5,10 +5,10 @@
 <overlay id="openwith-mailoverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<menupopup id="mailContext">
-		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertafter="context-openlinkintab">
+		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" />
+		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;">
 			<menupopup id="openwith-contextlinksubmenupopup" />
 		</menu>
-		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertafter="context-openlinkintab" />
 	</menupopup>
 
 	<script src="chrome://openwith/content/openwith-mail.js" type="application/javascript;version=1.7" />

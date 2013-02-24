@@ -421,6 +421,10 @@ var OpenWithCore = {
 					}
 				}
 			}
+			if (appname == 'Thunderbird' && parseFloat(oldVersion) < 5.3) {
+				this.prefs.setBoolPref('contextmenulink.submenu', true);
+				this.prefs.setCharPref('hide', '');
+			}
 			if (parseFloat(oldVersion) < 4.2) {
 				if (WINDOWS && appname == 'SeaMonkey') {
 					this.prefs.setCharPref('hide', 'seamonkey.exe');

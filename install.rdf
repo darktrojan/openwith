@@ -3,7 +3,7 @@
 
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>openwith@darktrojan.net</em:id>
-		<em:version>5.3b5</em:version>
+		<em:version>5.3b7</em:version>
 		<em:type>2</em:type>
 		<em:name>Open With</em:name>
 		<em:description>Open With adds options to your menus and tab bar for opening the current page in another browser.</em:description>
@@ -26,6 +26,13 @@
 				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id><!-- seamonkey -->
 				<em:minVersion>2.16</em:minVersion>
 				<em:maxVersion>2.16.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id><!-- thunderbird -->
+				<em:minVersion>17.0</em:minVersion>
+				<em:maxVersion>22.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
