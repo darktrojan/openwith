@@ -19,7 +19,7 @@ var OpenWith = {
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
 
-		var separator = document.getElementById('mailContext-sep-open-browser') || document.getElementById('mailContext-sep-open');
+		var separator = document.getElementById('mailContext-sep-open-browser') || document.getElementById('mailContext-sep-link');
 
 		/** context menu (links) **/
 		this.contextMenuLinkPlaceholder = document.getElementById('openwith-contextmenulinkplaceholder');
