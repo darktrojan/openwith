@@ -466,12 +466,27 @@ var OpenWithCore = {
 				}
 			}
 		} else {
-			window.openDialog(REAL_OPTIONS_URL, null, 'width=1000,height=600,centerscreen,chrome');
+			recentWindow = Services.wm.getMostRecentWindow('mail:3pane');
+			// from extensions.js
+			let features = 'chrome,titlebar,toolbar,centerscreen';
+			try {
+				let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+				features += instantApply ? ',dialog=no' : ',modal';
+			} catch (e) {
+				features += ',modal';
+			}
+			recentWindow.openDialog(REAL_OPTIONS_URL, null, features);
 		}
 	},
 	showNotifications: function() {
 		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-		let notifyBox = recentWindow.gBrowser.getNotificationBox();
+		let notifyBox;
+		if (recentWindow) {
+			notifyBox = recentWindow.gBrowser.getNotificationBox();
+		} else {
+			recentWindow = Services.wm.getMostRecentWindow('mail:3pane');
+			notifyBox = recentWindow.document.getElementById('mail-notification-box');
+		}
 
 		recentWindow.setTimeout((function() {
 			if (this.list.length == 0) {
