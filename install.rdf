@@ -3,7 +3,7 @@
 
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>openwith@darktrojan.net</em:id>
-		<em:version>5.3</em:version>
+		<em:version>5.3.1</em:version>
 		<em:type>2</em:type>
 		<em:name>Open With</em:name>
 		<em:description>Open With adds options to your menus and tab bar for opening the current page in another browser.</em:description>
