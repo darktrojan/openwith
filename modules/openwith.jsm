@@ -495,8 +495,7 @@ var OpenWithCore = {
 			return match ? match[0] : aVersion;
 		}
 
-		var comparator = Cc['@mozilla.org/xpcom/version-comparator;1'].createInstance(Ci.nsIVersionComparator);
-		if (oldVersion == 0 || comparator.compare(parseVersion(oldVersion), parseVersion(currentVersion)) >= 0) {
+		if (oldVersion == 0 || Services.vc.compare(parseVersion(oldVersion), parseVersion(currentVersion)) >= 0) {
 			return;
 		}
 
