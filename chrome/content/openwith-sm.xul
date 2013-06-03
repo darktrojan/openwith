@@ -14,10 +14,10 @@
 	</menupopup>
 
 	<menupopup id="contentAreaContextMenu">
-		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertafter="context-openlinkintab">
+		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertbefore="context-sep-open" />
+		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertbefore="context-sep-open">
 			<menupopup id="openwith-contextlinksubmenupopup" />
 		</menu>
-		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertafter="context-openlinkintab" />
 		<menuseparator id="openwith-contextmenuseparator" />
 		<menuitem id="openwith-contextmenuplaceholder" label="&openwith-placeholder.label;" />
 		<menu id="openwith-contextsubmenu" label="&openwith-submenu.label;">

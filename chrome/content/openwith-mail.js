@@ -19,6 +19,8 @@ var OpenWith = {
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
 
+		var separator = document.getElementById('mailContext-sep-open-browser') || document.getElementById('mailContext-sep-link');
+
 		/** context menu (links) **/
 		this.contextMenuLinkPlaceholder = document.getElementById('openwith-contextmenulinkplaceholder');
 		this.contextMenuLinkItems = [];
@@ -31,6 +33,7 @@ var OpenWith = {
 			container: this.contextMenuLinkItems,
 			submenu: false
 		});
+		contextMenu.insertBefore(this.contextMenuLinkPlaceholder, separator);
 
 		/** context menu (links) submenu **/
 		this.contextLinkSubmenu = document.getElementById('openwith-contextlinksubmenu');
@@ -47,6 +50,7 @@ var OpenWith = {
 			container: this.contextLinkSubmenuPopup,
 			submenu: true
 		});
+		contextMenu.insertBefore(this.contextLinkSubmenu, separator);
 
 		OpenWithCore.loadList(false);
 		OpenWith.loadLists();

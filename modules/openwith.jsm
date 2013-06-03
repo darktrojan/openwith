@@ -8,6 +8,7 @@ const XULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
 
 const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
+const MAIL_TYPE = 'mail:3pane';
 
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
@@ -421,6 +422,10 @@ var OpenWithCore = {
 					}
 				}
 			}
+			if (appname == 'Thunderbird' && parseFloat(oldVersion) < 5.3) {
+				this.prefs.setBoolPref('contextmenulink.submenu', true);
+				this.prefs.setCharPref('hide', '');
+			}
 			if (parseFloat(oldVersion) < 4.2) {
 				if (WINDOWS && appname == 'SeaMonkey') {
 					this.prefs.setCharPref('hide', 'seamonkey.exe');
@@ -462,12 +467,27 @@ var OpenWithCore = {
 				}
 			}
 		} else {
-			window.openDialog(REAL_OPTIONS_URL, null, 'width=1000,height=600,centerscreen,chrome');
+			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+			// from extensions.js
+			let features = 'chrome,titlebar,toolbar,centerscreen';
+			try {
+				let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+				features += instantApply ? ',dialog=no' : ',modal';
+			} catch (e) {
+				features += ',modal';
+			}
+			recentWindow.openDialog(REAL_OPTIONS_URL, null, features);
 		}
 	},
 	showNotifications: function() {
 		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-		let notifyBox = recentWindow.gBrowser.getNotificationBox();
+		let notifyBox;
+		if (recentWindow) {
+			notifyBox = recentWindow.gBrowser.getNotificationBox();
+		} else {
+			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+			notifyBox = recentWindow.document.getElementById('mail-notification-box');
+		}
 
 		recentWindow.setTimeout((function() {
 			if (this.list.length == 0) {
