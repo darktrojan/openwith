@@ -8,6 +8,7 @@ const XULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
 
 const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
+const MAIL_TYPE = 'mail:3pane';
 
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
@@ -466,7 +467,7 @@ var OpenWithCore = {
 				}
 			}
 		} else {
-			recentWindow = Services.wm.getMostRecentWindow('mail:3pane');
+			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
 			// from extensions.js
 			let features = 'chrome,titlebar,toolbar,centerscreen';
 			try {
@@ -484,7 +485,7 @@ var OpenWithCore = {
 		if (recentWindow) {
 			notifyBox = recentWindow.gBrowser.getNotificationBox();
 		} else {
-			recentWindow = Services.wm.getMostRecentWindow('mail:3pane');
+			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
 			notifyBox = recentWindow.document.getElementById('mail-notification-box');
 		}
 
