@@ -1,5 +1,8 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
+
+-->
 <!ENTITY openwith-dropdown.tooltip "Openen met…">
 <!ENTITY openwith-options.title "Open With-opties">
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Beeld">
