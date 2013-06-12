@@ -1,5 +1,8 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
+
+-->
 <!ENTITY openwith-dropdown.tooltip "Open with…">
 <!ENTITY openwith-options.title "Options Open With">
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Affichage">
@@ -26,11 +29,11 @@
 <!ENTITY openwith-browserlist.label "Choisissez les éléments à afficher:">
 <!ENTITY openwith-browserlist-show.label "Voir">
 <!ENTITY openwith-browserlist-hide.label "Cacher">
-<!ENTITY openwith-browserlist-rename.label "Renommer...">
-<!ENTITY openwith-browserlist-editcommand.label "Commande...">
+<!ENTITY openwith-browserlist-rename.label "Renommer…">
+<!ENTITY openwith-browserlist-editcommand.label "Commande…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
 <!ENTITY openwith-browserlist-remove.label "Supprimer">
-<!ENTITY openwith-browserlist-add.label "Ajouter...">
+<!ENTITY openwith-browserlist-add.label "Ajouter…">
 <!ENTITY openwith-browserlist-moveup.tooltip "Déplacer vers le haut">
 <!ENTITY openwith-browserlist-movedown.tooltip "Move Down">
 <!ENTITY openwith-browserlist-restoreorder.label "Réglage par défaut">
