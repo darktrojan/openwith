@@ -11,8 +11,7 @@
 <xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png" style="display: none"/> 
 
 <hbox flex="1">
-	<spacer flex="1" />
-	<vbox style="-moz-margin-end: 2em;">
+	<vbox>
 		<hbox align="center" style="margin-bottom: 1em;">
 			<image src="chrome://openwith/content/openwith64.png" />
 			<label value="&openwith-options.title;" style="font-size: 2.5em;" />
@@ -94,7 +93,7 @@
 			</grid>
 		</groupbox>
 	</vbox>
-	<vbox>
+	<vbox flex="1">
 		<label value="&openwith-browserlist.label;" />
 		<richlistbox id="list" flex="1" style="width: 40em; margin: 0.5em 0;"></richlistbox>
 		<hbox pack="end">
@@ -106,7 +105,6 @@
 					label="&openwith-browserlist-restoreorder.label;" />
 		</hbox>
 	</vbox>
-	<spacer flex="1" />
 </hbox>
 <script src="chrome://openwith/content/about-openwith.js" type="application/javascript;version=1.7"></script>
 
