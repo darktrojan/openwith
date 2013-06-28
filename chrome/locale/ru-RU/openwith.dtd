@@ -26,11 +26,14 @@
 <!ENTITY openwith-browserlist.label "Выберите какие элементы отображать:">
 <!ENTITY openwith-browserlist-show.label "Показать">
 <!ENTITY openwith-browserlist-hide.label "Спрятать">
-<!ENTITY openwith-browserlist-rename.label "Переименовать…">
-<!ENTITY openwith-browserlist-editcommand.label "Команда">
-<!ENTITY openwith-browserlist-editparams.label "Аргументы…">
+<!ENTITY openwith-browserlist-edititem.label "Изменить…">
 <!ENTITY openwith-browserlist-remove.label "Удалить">
 <!ENTITY openwith-browserlist-add.label "Добавить…">
 <!ENTITY openwith-browserlist-moveup.tooltip "Переместить вверх">
 <!ENTITY openwith-browserlist-movedown.tooltip "Переместить вниз">
 <!ENTITY openwith-browserlist-restoreorder.label "Порядок по умолчанию">
+<!ENTITY openwith-edititem-window.title "Редактирование приложения Open With">
+<!ENTITY openwith-edititem.label "Приложение">
+<!ENTITY openwith-edititem-name.label "Имя">
+<!ENTITY openwith-edititem-command.label "Исполняемый файл">
+<!ENTITY openwith-edititem-params.label "Аргументы">

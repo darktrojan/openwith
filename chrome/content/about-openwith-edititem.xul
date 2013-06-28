@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://openwith/content/about-openwith-edititem.css" type="text/css"?>
+
+<!DOCTYPE page SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<dialog id="edititem"
+	title="&openwith-edititem-window.title;"
+	buttons="accept,cancel"
+	ondialogaccept="return onDialogAccept();"
+	ondialogcancel="return onDialogCancel();"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png" style="display: none"/> 
+
+<vbox>
+	<groupbox>
+		<caption label="&openwith-edititem.label;" />
+		<grid>
+			<columns>
+				<column />
+				<column flex="1" />
+			</columns>
+			<rows>
+				<row align="center">
+					<label value="&openwith-edititem-name.label;:" />
+					<textbox id="name-textbox" />
+				</row>
+				<row align="center">
+					<label value="&openwith-edititem-command.label;:" />
+					<textbox id="command-textbox" />
+				</row>
+				<row align="center">
+					<label value="&openwith-edititem-params.label;:" />
+					<textbox id="params-textbox" />
+				</row>
+			</rows>
+		</grid>
+	</groupbox>
+</vbox>
+
+<script src="chrome://openwith/content/about-openwith-edititem.js" type="application/javascript;version=1.7"></script>
+
+</dialog>

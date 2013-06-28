@@ -162,48 +162,15 @@ function setHidden(item, hidden) {
 	item.parentNode.focus();
 }
 
-function editCommand(item) {
-	let command = item.getAttribute('command');
-	let file = new FileUtils.File(command);
-	fp.defaultString = file.leafName;
-	fp.displayDirectory = file.parent;
-	if (fp.show() == Ci.nsIFilePicker.returnOK) {
-		item.setAttribute('command', fp.file.path);
-		item.setAttribute('icon', OpenWithCore.findIconURL(fp.file, 32));
+function editItem(item) {
+	function onAcceptedCallback() {
 		saveItemToPrefs(item);
-	}
-}
-
-function changeAttribute(item, attrName) {
-	let original = item.getAttribute(attrName);
-	let attr = { value: original };
-	let text;
-	switch (attrName) {
-	case 'name':
-		text = OpenWithCore.strings.GetStringFromName('namePromptText');
-		break;
-	case 'params':
-		let file = new FileUtils.File(item.getAttribute('command'));
-		text = OpenWithCore.strings.formatStringFromName('paramsPromptText', [file.leafName], 1);
-		break;
-	}
-	if (Services.prompt.prompt(this, document.title, text, attr, null, {}) && attr.value != original) {
-		item.setAttribute(attrName, attr.value);
-
-		OpenWithCore.suppressLoadList = true;
-		if (attrName == 'name') {
-			let oldKeyName = item.getAttribute('keyName');
-			let newKeyName = attr.value.replace(/\W+/g, '_');
-			if (oldKeyName != newKeyName) {
-				OpenWithCore.prefs.deleteBranch('manual.' + oldKeyName);
-				item.setAttribute('keyName', newKeyName);
-			}
-			saveOrder();
-		}
-		saveItemToPrefs(item);
-		OpenWithCore.suppressLoadList = false;
-		OpenWithCore.loadList(true);
-	}
+	};
+	window.openDialog("chrome://openwith/content/about-openwith-edititem.xul",
+										"edititem",
+										"centerscreen,width=600,height=300",
+										item,
+										onAcceptedCallback);
 }
 
 function saveItemToPrefs(item, saveIcon) {
@@ -213,9 +180,8 @@ function saveItemToPrefs(item, saveIcon) {
 	let params = item.getAttribute('params');
 
 	OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
-	if (name != keyName) {
-		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
-	}
+	OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
+	
 	if (saveIcon) {
 		let icon = item.getAttribute('icon');
 		icon = icon.replace(/32/g, '16');
