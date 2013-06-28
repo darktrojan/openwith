@@ -37,3 +37,7 @@
 <!ENTITY openwith-edititem-name.label "Имя">
 <!ENTITY openwith-edititem-command.label "Исполняемый файл">
 <!ENTITY openwith-edititem-params.label "Аргументы">
+<!ENTITY openwith-edititem-matchlink.label "Работает с">
+<!ENTITY openwith-edititem-matchlink-any.label "любыми ссылками">
+<!ENTITY openwith-edititem-matchlink-contains.label "ссылками, содержащими">
+<!ENTITY openwith-edititem-matchlink-regexp.label "ссылками, совпадающими с регулярным выражением">

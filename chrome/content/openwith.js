@@ -353,6 +353,50 @@ var OpenWith = {
 		OpenWithCore.refreshUI(document, this.locations);
 	},
 
+	popupUtils : {
+		matchesLink : function(menuItem, link) {
+			if (menuItem.hasAttribute('openwith-match-substring')) {
+				let substring = menuItem.getAttribute('openwith-match-substring');
+				return (link.indexOf(substring) != -1);
+			} else if (menuItem.hasAttribute('openwith-match-regexp')) {
+				let re = new RegExp(menuItem.getAttribute('openwith-match-regexp'));
+				return re.test(link);
+			}
+			return true;
+		},
+
+		insertMatched : function(menu, menuItems, placeholder, linkForMatching) {
+			var somethingWasInserted = false;
+			var next = placeholder.nextSibling;
+			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
+				let menuItem = menuItems[i];
+				if (OpenWith.popupUtils.matchesLink(menuItem, linkForMatching)) {
+					if ('__MenuEdit_insertBefore_orig' in menu) {
+						menu.__MenuEdit_insertBefore_orig(menuItem, next);
+					} else {
+						menu.insertBefore(menuItem, next);
+					}
+					somethingWasInserted = true;
+				}
+			}
+			return somethingWasInserted;
+		},
+
+		hideMismatched : function(menuItems, linkForMatching) {
+			var somethingLeftVisible = false;
+			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
+				let menuItem = menuItems[i];
+				if (OpenWith.popupUtils.matchesLink(menuItem, linkForMatching)) {
+					menuItem.hidden = false;
+					somethingLeftVisible = true;
+				} else {
+					menuItem.hidden = true;
+				}
+			}
+			return somethingLeftVisible;
+		},
+	},
+
 	popupShowing: function(event) {
 		if (event.target != this) {
 			return;
@@ -361,6 +405,7 @@ var OpenWith = {
 		switch (this.id) {
 			case 'menu_viewPopup':
 			case 'menu_View_Popup':
+
 				var viewMenuPref = OpenWithCore.prefs.getBoolPref('viewmenu');
 				var viewMenuSubmenuPref = OpenWithCore.prefs.getBoolPref('viewmenu.submenu');
 
@@ -400,25 +445,45 @@ var OpenWith = {
 				OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref ||
 							OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
 
-				if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
-					var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
-						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
-						} else {
-							this.insertBefore(OpenWith.contextMenuLinkItems[i], next);
-						}
+				if (gContextMenu.onLink && !gContextMenu.onMailtoLink) {
+					if (contextMenuLinkPref) {
+						OpenWith.popupUtils.insertMatched(
+								this,
+								OpenWith.contextMenuLinkItems,
+								OpenWith.contextMenuLinkPlaceholder,
+								new String(gContextMenu.linkURI.spec)
+						);
+					}
+					if (contextSubmenuLinkPref) {
+						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+								OpenWith.contextLinkSubmenu.menupopup.childNodes,
+								new String(gContextMenu.linkURI.spec)
+						);
+						OpenWith.contextLinkSubmenu.hidden =
+								OpenWith.contextLinkSubmenu.hidden || !somethingLeftVisible;
 					}
 				}
 
-				if (contextMenuPref && shouldShow) {
-					var next = OpenWith.contextMenuPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.contextMenuItems.length; i < iCount; i++) {
-						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuItems[i], next);
-						} else {
-							this.insertBefore(OpenWith.contextMenuItems[i], next);
-						}
+				if (shouldShow) {
+					if (contextMenuPref) {
+						let somethingWasInserted = OpenWith.popupUtils.insertMatched(
+								this,
+								OpenWith.contextMenuItems,
+								OpenWith.contextMenuPlaceholder,
+								new String(gBrowser.selectedBrowser.currentURI.spec)
+						);
+						OpenWith.contextMenuSeparator.hidden =
+								OpenWith.contextMenuSeparator.hidden || !somethingWasInserted;
+					}
+					if (contextSubmenuPref) {
+						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+								OpenWith.contextSubmenu.menupopup.childNodes,
+								new String(gBrowser.selectedBrowser.currentURI.spec)
+						);
+						OpenWith.contextMenuSeparator.hidden =
+								OpenWith.contextMenuSeparator.hidden || !somethingLeftVisible;
+						OpenWith.contextSubmenu.hidden =
+								OpenWith.contextSubmenu.hidden || !somethingLeftVisible;
 					}
 				}
 				return;
@@ -439,14 +504,24 @@ var OpenWith = {
 					OpenWith.tabSubmenu.hidden = !tabSubmenuPref || OpenWith.emptyList;
 
 					if (tabMenuPref) {
-						var next = OpenWith.tabMenuPlaceholder.nextSibling;
-						for (var i = 0, iCount = OpenWith.tabMenuItems.length; i < iCount; i++) {
-							if ('__MenuEdit_insertBefore_orig' in this) {
-								this.__MenuEdit_insertBefore_orig(OpenWith.tabMenuItems[i], next);
-							} else {
-								this.insertBefore(OpenWith.tabMenuItems[i], next);
-							}
-						}
+						let somethingWasInserted = OpenWith.popupUtils.insertMatched(
+								this,
+								OpenWith.tabMenuItems,
+								OpenWith.tabMenuPlaceholder,
+								new String(gBrowser.mContextTab.linkedBrowser.currentURI.spec)
+						);
+						OpenWith.tabMenuSeparator.hidden =
+								OpenWith.tabMenuSeparator.hidden || !somethingWasInserted;
+					}
+					if (tabSubmenuPref) {
+						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+								OpenWith.tabSubmenu.menupopup.childNodes,
+								new String(gBrowser.mContextTab.linkedBrowser.currentURI.spec)
+						);
+						OpenWith.tabMenuSeparator.hidden =
+								OpenWith.tabMenuSeparator.hidden || !somethingLeftVisible;
+						OpenWith.tabSubmenu.hidden =
+								OpenWith.tabSubmenu.hidden || !somethingLeftVisible;
 					}
 				}
 				return;

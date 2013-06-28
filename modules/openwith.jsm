@@ -114,7 +114,7 @@ var OpenWithCore = {
 		manual.sort();
 		for (let i = 0, iCount = manual.length; i < iCount; i++) {
 			let name = manual[i];
-			if (/\.(icon|name|usefilepath)$/.test(name)) {
+			if (/\.(icon|name|usefilepath|matchLinks\..*)$/.test(name)) {
 				continue;
 			}
 			let value;
@@ -136,8 +136,13 @@ var OpenWithCore = {
 				let file = new FileUtils.File(command);
 				icon = this.findIconURL(file, 16);
 			}
+			
+			let matchMetod = let (methodPref = name +  '.matchLinks.method')
+				this.prefs.prefHasUserValue(methodPref)
+				&& this.prefs.getCharPref(methodPref)
+				|| 'any';
 
-			this.list.push({
+			let item = {
 				auto: false,
 				keyName: name.substring(7),
 				name: value,
@@ -146,8 +151,17 @@ var OpenWithCore = {
 				icon: icon,
 				hidden: false,
 				useFilePath: this.prefs.getPrefType(name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL
-								&& this.prefs.getBoolPref(name + '.usefilepath')
-			});
+								&& this.prefs.getBoolPref(name + '.usefilepath'),
+				matchMetod : matchMetod,
+			};
+			
+			if (item.matchMetod == 'substring') {
+				item.matchSubstring = this.prefs.getCharPref(name + '.matchLinks.substring');
+			} else if (item.matchMetod == 'regexp') {
+				item.matchRegexp = this.prefs.getCharPref(name + '.matchLinks.regexp');
+			}
+			
+			this.list.push(item);
 		}
 
 		if (this.prefs.prefHasUserValue('order')) {
@@ -175,8 +189,12 @@ var OpenWithCore = {
 		Services.console.logStringMessage('OpenWith: reloading lists');
 		for (let i = 0, iCount = this.list.length; i < iCount; i++) {
 			let item = this.list[i];
-			Services.console.logStringMessage(item.name + ':\n\tCommand: ' +
-					item.command + '\n\tParams: ' + item.params.join(' ') + '\n\tIcon URL: ' + item.icon);
+			Services.console.logStringMessage(
+				item.name + ':\n'
+				+ '\tCommand: ' + item.command + '\n'
+				+ '\tParams: ' + item.params.join(' ') + '\n'
+				+ '\tIcon URL: ' + item.icon +'\n'
+				+ '\tMatch links method: ' + item.matchMetod + '\n');
 		}
 
 		Services.obs.notifyObservers(null, 'openWithListChanged', 'data');
@@ -258,6 +276,8 @@ var OpenWithCore = {
 
 				if (this.prefs.getBoolPref(location.prefName)) {
 					let menuItem = location.factory(document, item, labelToUse, location.targetType);
+					if (!menuItem)
+						continue;
 					menuItem.id = 'openwith_' + keyName + location.suffix;
 					if (location.container.push) { //array
 						location.container.push(menuItem);
@@ -298,6 +318,11 @@ var OpenWithCore = {
 		menuItem.setAttribute('openwith-params', params.join(' '));
 		if ('useFilePath' in item && item.useFilePath) {
 			menuItem.setAttribute('openwith-usefilepath', 'true');
+		}
+		if (item.matchMetod == 'substring') {
+			menuItem.setAttribute('openwith-match-substring', item.matchSubstring);
+		} else if (item.matchMetod == 'regexp') {
+			menuItem.setAttribute('openwith-match-regexp', item.matchRegexp);
 		}
 		return menuItem;
 	},

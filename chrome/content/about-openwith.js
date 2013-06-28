@@ -88,6 +88,8 @@ Services.obs.addObserver({
 	}
 }, 'openWithLocationsChanged', false);
 
+OpenWithCore.loadList(true);
+
 let list = $('list');
 loadBrowserList();
 
@@ -116,6 +118,12 @@ function loadBrowserList() {
 				break;
 			case 'params':
 				item.setAttribute(a, entry[a].join(' '));
+				break;
+			case 'matchMetod':
+				if (entry[a] == 'substring')
+					item.setAttribute('matchLinkSubstring', entry['matchSubstring']);
+				else if (entry[a] == 'regexp')
+					item.setAttribute('matchLinkRegexp', entry['matchRegexp']);
 				break;
 			default:
 				item.setAttribute(a, entry[a]);
@@ -187,6 +195,22 @@ function saveItemToPrefs(item, saveIcon) {
 		icon = icon.replace(/32/g, '16');
 		icon = icon.replace('?size=dnd', '?size=menu');
 		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.icon', icon);
+	}
+	
+	let matchLinks = 'manual.' + keyName + '.matchLinks'
+	let matchMethod = matchLinks + '.method';
+	let matchSubstring = matchLinks + '.substring';
+	let matchRegexp = matchLinks + '.regexp';
+	OpenWithCore.prefs.deleteBranch(matchLinks);
+	
+	if (item.hasAttribute('matchLinkSubstring')) {
+		OpenWithCore.prefs.setCharPref(matchMethod, 'substring');
+		OpenWithCore.prefs.setCharPref(matchSubstring, item.getAttribute('matchLinkSubstring'));
+	} else if (item.hasAttribute('matchLinkRegexp')) {
+		OpenWithCore.prefs.setCharPref(matchMethod, 'regexp');
+		OpenWithCore.prefs.setCharPref(matchRegexp, item.getAttribute('matchLinkRegexp'));
+	} else {
+		OpenWithCore.prefs.setCharPref(matchMethod, 'any');
 	}
 }
 

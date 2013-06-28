@@ -38,6 +38,34 @@
 			</rows>
 		</grid>
 	</groupbox>
+	<groupbox>
+		<caption label="&openwith-edititem-matchlink.label;" />
+		<radiogroup id="link-match-radiogroup">
+
+			<radio
+				id="any-radio"
+				label="&openwith-edititem-matchlink-any.label;"
+				selected="true" />
+
+			<radio
+				id="contains-radio"
+				label="&openwith-edititem-matchlink-contains.label;:" />
+			<textbox id="substring-textbox" class="indent" disabled="true">
+				<observes element="contains-radio" attribute="selected"
+					onbroadcast="this.parentNode.disabled = !$('contains-radio').selected;" />
+			</textbox>
+
+			<radio
+				id="regexp-radio"
+				label="&openwith-edititem-matchlink-regexp.label;:"
+				oncommand="document.getElementById('regexp-textbox').disabled = !this.selected" />
+			<textbox id="regexp-textbox" class="indent" disabled="true">
+				<observes element="regexp-radio" attribute="selected"
+					onbroadcast="this.parentNode.disabled = !$('regexp-radio').selected;" />
+			</textbox>
+
+		</radiogroup>
+	</groupbox>
 </vbox>
 
 <script src="chrome://openwith/content/about-openwith-edititem.js" type="application/javascript;version=1.7"></script>
