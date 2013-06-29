@@ -36,6 +36,7 @@
 <!ENTITY openwith-edititem.label "Приложение">
 <!ENTITY openwith-edititem-name.label "Имя">
 <!ENTITY openwith-edititem-command.label "Исполняемый файл">
+<!ENTITY openwith-edititem-command-browse.label "Обзор…">
 <!ENTITY openwith-edititem-params.label "Аргументы">
 <!ENTITY openwith-edititem-matchlink.label "Работает с">
 <!ENTITY openwith-edititem-matchlink-any.label "любыми ссылками">

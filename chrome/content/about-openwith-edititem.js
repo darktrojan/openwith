@@ -1,3 +1,24 @@
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+
+Cu.import('resource://gre/modules/Services.jsm');
+Cu.import('resource://gre/modules/FileUtils.jsm');
+
+var filePicker = Cc['@mozilla.org/filepicker;1'].createInstance(
+		Ci.nsIFilePicker
+);
+filePicker.init(this, document.title, Ci.nsIFilePicker.modeOpen);
+filePicker.appendFilters(Ci.nsIFilePicker.filterApps);
+
+var appsDir;
+if (Services.dirsvc.has('ProgF')) {
+	appsDir = Services.dirsvc.get('ProgF', Ci.nsIFile);
+} else if (Services.dirsvc.has('LocApp')) {
+	appsDir = Services.dirsvc.get('LocApp', Ci.nsIFile);
+} else {
+	appsDir = new FileUtils.File('/usr/share/applications');
+}
 
 function $(id) {
 	return document.getElementById(id);
@@ -53,6 +74,22 @@ function writeControls(item) {
 		item.setAttribute('matchLinkSubstring', cs.substringTextbox.value);
 	} else if (cs.regexpRadio.selected) {
 		item.setAttribute('matchLinkRegexp', cs.regexpTextbox.value);
+	}
+}
+
+function pickFileIntoTextbox(textbox) {
+	let filename = textbox.value;
+	let file
+	try {
+		file = new FileUtils.File(filename);
+		filePicker.defaultString = file.leafName;
+		filePicker.displayDirectory = file.parent;
+	} catch (e) {
+		// FIXME should catch only Ci.nsILocalFile.NS_ERROR_FILE_UNRECOGNIZED_PATH
+		filePicker.displayDirectory = appsDir;
+	}
+	if (filePicker.show() == Ci.nsIFilePicker.returnOK) {
+		textbox.value = filePicker.file.path;
 	}
 }
 

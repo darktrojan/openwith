@@ -39,6 +39,7 @@
 <!ENTITY openwith-edititem.label "Application">
 <!ENTITY openwith-edititem-name.label "Name">
 <!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
 <!ENTITY openwith-edititem-params.label "Arguments">
 <!ENTITY openwith-edititem-matchlink.label "Enabled for">
 <!ENTITY openwith-edititem-matchlink-any.label "all links">

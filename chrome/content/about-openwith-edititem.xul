@@ -29,7 +29,12 @@
 				</row>
 				<row align="center">
 					<label value="&openwith-edititem-command.label;:" />
-					<textbox id="command-textbox" />
+					<hbox>
+						<textbox id="command-textbox" flex="1" />
+						<button id="command-browse-button"
+								label="&openwith-edititem-command-browse.label;"
+								oncommand="pickFileIntoTextbox($('command-textbox'));" />
+					</hbox>
 				</row>
 				<row align="center">
 					<label value="&openwith-edititem-params.label;:" />
