@@ -37,6 +37,7 @@
 <!ENTITY openwith-browserlist-restoreorder.label "Default Order">
 <!ENTITY openwith-edititem-window.title "Editing Open With item">
 <!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
 <!ENTITY openwith-edititem-name.label "Name">
 <!ENTITY openwith-edititem-command.label "Executable">
 <!ENTITY openwith-edititem-command-browse.label "Browse…">

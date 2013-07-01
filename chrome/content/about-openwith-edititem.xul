@@ -23,10 +23,27 @@
 				<column flex="1" />
 			</columns>
 			<rows>
+
+				<row align="center">
+					<label value="&openwith-edititem-icon.label;:" />
+					<hbox>
+						<image id="icon-image" src="moz-icon://stock?size=32" />
+						<vbox flex="1">
+							<spacer flex="1" />
+							<hbox>
+								<textbox id="icon-textbox" flex="1"
+										oninput="$('icon-image').src = this.value;" />
+							</hbox>
+							<spacer flex="1" />
+						</vbox>
+					</hbox>
+				</row>
+
 				<row align="center">
 					<label value="&openwith-edititem-name.label;:" />
 					<textbox id="name-textbox" />
 				</row>
+
 				<row align="center">
 					<label value="&openwith-edititem-command.label;:" />
 					<hbox>
@@ -36,10 +53,12 @@
 								oncommand="pickFileIntoTextbox($('command-textbox'));" />
 					</hbox>
 				</row>
+
 				<row align="center">
 					<label value="&openwith-edititem-params.label;:" />
 					<textbox id="params-textbox" />
 				</row>
+
 			</rows>
 		</grid>
 	</groupbox>

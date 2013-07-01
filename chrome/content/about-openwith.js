@@ -172,7 +172,7 @@ function setHidden(item, hidden) {
 
 function editItem(item) {
 	function onAcceptedCallback() {
-		saveItemToPrefs(item);
+		saveItemToPrefs(item, true);
 	};
 	window.openDialog("chrome://openwith/content/about-openwith-edititem.xul",
 										"edititem",

@@ -34,6 +34,7 @@
 <!ENTITY openwith-browserlist-restoreorder.label "Порядок по умолчанию">
 <!ENTITY openwith-edititem-window.title "Редактирование приложения Open With">
 <!ENTITY openwith-edititem.label "Приложение">
+<!ENTITY openwith-edititem-icon.label "Значок">
 <!ENTITY openwith-edititem-name.label "Имя">
 <!ENTITY openwith-edititem-command.label "Исполняемый файл">
 <!ENTITY openwith-edititem-command-browse.label "Обзор…">

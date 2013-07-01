@@ -25,6 +25,9 @@ function $(id) {
 }
 
 var cs = controls = {
+	iconImage : $('icon-image'),
+	iconTextbox : $('icon-textbox'),
+
 	nameTextbox : $('name-textbox'),
 	commandTextbox : $('command-textbox'),
 	paramsTextbox : $('params-textbox'),
@@ -41,6 +44,7 @@ var cs = controls = {
 };
 
 var attributeTexboxMap = {
+	'icon' : cs.iconTextbox,
 	'name' : cs.nameTextbox,
 	'command' : cs.commandTextbox,
 	'params' : cs.paramsTextbox,
@@ -50,6 +54,8 @@ function loadControls(item) {
 	for (let attr in attributeTexboxMap) {
 		attributeTexboxMap[attr].value = item.getAttribute(attr);
 	}
+
+	cs.iconImage.src = item.getAttribute('icon');
 
 	if (item.hasAttribute('matchLinkSubstring')) {
 		cs.linkMatchRadiogroup.selectedItem = cs.substringRadio;
