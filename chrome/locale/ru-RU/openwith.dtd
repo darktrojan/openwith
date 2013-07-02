@@ -1,5 +1,7 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
+-->
 <!ENTITY openwith-dropdown.tooltip "Открыть с помощью…">
 <!ENTITY openwith-options.title "Настройки Open With">
 <!ENTITY openwith-display-pane.viewmenu.label "в меню Вид">
@@ -11,7 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
 -->
 <!ENTITY openwith-placeholder.label "Элементы Open With">
 <!ENTITY openwith-linkplaceholder.label "Ссылки Open With">

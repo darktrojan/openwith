@@ -1,7 +1,6 @@
 <!ENTITY openwith-name "Otwórz za pomocą">
 <!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
 	should match openWithDropDownTooltip in openwith.properties 
-
 -->
 <!ENTITY openwith-dropdown.tooltip "Otwórz za pomocą ...">
 <!ENTITY openwith-options.title "Otwórz za pomocą - Opcje">
@@ -14,7 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
 -->
 <!ENTITY openwith-placeholder.label "Otwórz za pomocą - Elementy">
 <!ENTITY openwith-linkplaceholder.label "Otwórz za pomocą - Elementy linku">
@@ -29,11 +27,20 @@
 <!ENTITY openwith-browserlist.label "Wybierz elementy do wyświetlenia:">
 <!ENTITY openwith-browserlist-show.label "Pokaż">
 <!ENTITY openwith-browserlist-hide.label "Ukryj">
-<!ENTITY openwith-browserlist-rename.label "Zmień nazwę ...">
-<!ENTITY openwith-browserlist-editcommand.label "Komenda...">
-<!ENTITY openwith-browserlist-editparams.label "Argumenty...">
+<!ENTITY openwith-browserlist-edititem.label "Edit…">
 <!ENTITY openwith-browserlist-remove.label "Usuń">
 <!ENTITY openwith-browserlist-add.label "Dodaj...">
 <!ENTITY openwith-browserlist-moveup.tooltip "Przenieś w górę">
 <!ENTITY openwith-browserlist-movedown.tooltip "Przenieś w dół">
 <!ENTITY openwith-browserlist-restoreorder.label "Kolejność domyślna">
+<!ENTITY openwith-edititem-window.title "Editing Open With item">
+<!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
+<!ENTITY openwith-edititem-name.label "Name">
+<!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
+<!ENTITY openwith-edititem-params.label "Arguments">
+<!ENTITY openwith-edititem-matchlink.label "Enabled for">
+<!ENTITY openwith-edititem-matchlink-any.label "all links">
+<!ENTITY openwith-edititem-matchlink-contains.label "links containing">
+<!ENTITY openwith-edititem-matchlink-regexp.label "links matching regexp">
