@@ -353,50 +353,6 @@ var OpenWith = {
 		OpenWithCore.refreshUI(document, this.locations);
 	},
 
-	popupUtils : {
-		matchesLink : function(menuItem, link) {
-			if (menuItem.hasAttribute('openwith-match-substring')) {
-				let substring = menuItem.getAttribute('openwith-match-substring');
-				return (link.indexOf(substring) != -1);
-			} else if (menuItem.hasAttribute('openwith-match-regexp')) {
-				let re = new RegExp(menuItem.getAttribute('openwith-match-regexp'));
-				return re.test(link);
-			}
-			return true;
-		},
-
-		insertMatched : function(menu, menuItems, placeholder, linkForMatching) {
-			var somethingWasInserted = false;
-			var next = placeholder.nextSibling;
-			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
-				let menuItem = menuItems[i];
-				if (OpenWith.popupUtils.matchesLink(menuItem, linkForMatching)) {
-					if ('__MenuEdit_insertBefore_orig' in menu) {
-						menu.__MenuEdit_insertBefore_orig(menuItem, next);
-					} else {
-						menu.insertBefore(menuItem, next);
-					}
-					somethingWasInserted = true;
-				}
-			}
-			return somethingWasInserted;
-		},
-
-		hideMismatched : function(menuItems, linkForMatching) {
-			var somethingLeftVisible = false;
-			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
-				let menuItem = menuItems[i];
-				if (OpenWith.popupUtils.matchesLink(menuItem, linkForMatching)) {
-					menuItem.hidden = false;
-					somethingLeftVisible = true;
-				} else {
-					menuItem.hidden = true;
-				}
-			}
-			return somethingLeftVisible;
-		},
-	},
-
 	popupShowing: function(event) {
 		if (event.target != this) {
 			return;
@@ -447,7 +403,7 @@ var OpenWith = {
 
 				if (gContextMenu.onLink && !gContextMenu.onMailtoLink) {
 					if (contextMenuLinkPref) {
-						OpenWith.popupUtils.insertMatched(
+						OpenWithCore.matchUtils.insertMatched(
 								this,
 								OpenWith.contextMenuLinkItems,
 								OpenWith.contextMenuLinkPlaceholder,
@@ -455,7 +411,7 @@ var OpenWith = {
 						);
 					}
 					if (contextSubmenuLinkPref) {
-						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+						let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
 								OpenWith.contextLinkSubmenu.menupopup.childNodes,
 								new String(gContextMenu.linkURI.spec)
 						);
@@ -466,7 +422,7 @@ var OpenWith = {
 
 				if (shouldShow) {
 					if (contextMenuPref) {
-						let somethingWasInserted = OpenWith.popupUtils.insertMatched(
+						let somethingWasInserted = OpenWithCore.matchUtils.insertMatched(
 								this,
 								OpenWith.contextMenuItems,
 								OpenWith.contextMenuPlaceholder,
@@ -476,7 +432,7 @@ var OpenWith = {
 								OpenWith.contextMenuSeparator.hidden || !somethingWasInserted;
 					}
 					if (contextSubmenuPref) {
-						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+						let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
 								OpenWith.contextSubmenu.menupopup.childNodes,
 								new String(gBrowser.selectedBrowser.currentURI.spec)
 						);
@@ -504,7 +460,7 @@ var OpenWith = {
 					OpenWith.tabSubmenu.hidden = !tabSubmenuPref || OpenWith.emptyList;
 
 					if (tabMenuPref) {
-						let somethingWasInserted = OpenWith.popupUtils.insertMatched(
+						let somethingWasInserted = OpenWithCore.matchUtils.insertMatched(
 								this,
 								OpenWith.tabMenuItems,
 								OpenWith.tabMenuPlaceholder,
@@ -514,7 +470,7 @@ var OpenWith = {
 								OpenWith.tabMenuSeparator.hidden || !somethingWasInserted;
 					}
 					if (tabSubmenuPref) {
-						let somethingLeftVisible = OpenWith.popupUtils.hideMismatched(
+						let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
 								OpenWith.tabSubmenu.menupopup.childNodes,
 								new String(gBrowser.mContextTab.linkedBrowser.currentURI.spec)
 						);

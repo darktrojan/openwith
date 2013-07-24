@@ -349,6 +349,49 @@ var OpenWithCore = {
 		}
 		return toolbarButton;
 	},
+	matchUtils : {
+		matchesLink : function(menuItem, link) {
+			if (menuItem.hasAttribute('openwith-match-substring')) {
+				let substring = menuItem.getAttribute('openwith-match-substring');
+				return (link.indexOf(substring) != -1);
+			} else if (menuItem.hasAttribute('openwith-match-regexp')) {
+				let re = new RegExp(menuItem.getAttribute('openwith-match-regexp'));
+				return re.test(link);
+			}
+			return true;
+		},
+
+		insertMatched : function(menu, menuItems, placeholder, linkForMatching) {
+			var somethingWasInserted = false;
+			var next = placeholder.nextSibling;
+			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
+				let menuItem = menuItems[i];
+				if (OpenWithCore.matchUtils.matchesLink(menuItem, linkForMatching)) {
+					if ('__MenuEdit_insertBefore_orig' in menu) {
+						menu.__MenuEdit_insertBefore_orig(menuItem, next);
+					} else {
+						menu.insertBefore(menuItem, next);
+					}
+					somethingWasInserted = true;
+				}
+			}
+			return somethingWasInserted;
+		},
+
+		hideMismatched : function(menuItems, linkForMatching) {
+			var somethingLeftVisible = false;
+			for (var i = 0, iCount = menuItems.length; i < iCount; i++) {
+				let menuItem = menuItems[i];
+				if (OpenWithCore.matchUtils.matchesLink(menuItem, linkForMatching)) {
+					menuItem.hidden = false;
+					somethingLeftVisible = true;
+				} else {
+					menuItem.hidden = true;
+				}
+			}
+			return somethingLeftVisible;
+		},
+	},
 	doCommand: function(event, uri) {
 		if (!uri instanceof Ci.nsIURI) {
 			uri = Services.io.newURI(uri, null, null);
