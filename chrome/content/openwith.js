@@ -370,14 +370,24 @@ var OpenWith = {
 				OpenWith.viewSubmenu.hidden = !viewMenuSubmenuPref || OpenWith.emptyList;
 
 				if (viewMenuPref) {
-					var next = OpenWith.viewMenuPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.viewMenuItems.length; i < iCount; i++) {
-						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.viewMenuItems[i], next);
-						} else {
-							this.insertBefore(OpenWith.viewMenuItems[i], next);
-						}
-					}
+					let somethingWasInserted = OpenWithCore.matchUtils.insertMatched(
+							this,
+							OpenWith.viewMenuItems,
+							OpenWith.viewMenuPlaceholder,
+							new String(gBrowser.selectedBrowser.currentURI.spec)
+					);
+					OpenWith.viewMenuSeparator.hidden =
+							OpenWith.viewMenuSeparator.hidden || !somethingWasInserted;
+				}
+				if (viewMenuSubmenuPref) {
+					let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
+							OpenWith.viewSubmenu.menupopup.childNodes,
+							new String(gBrowser.selectedBrowser.currentURI.spec)
+					);
+					OpenWith.viewMenuSeparator.hidden =
+							OpenWith.viewMenuSeparator.hidden || !somethingLeftVisible;
+					OpenWith.viewSubmenu.hidden =
+							OpenWith.viewSubmenu.hidden || !somethingLeftVisible;
 				}
 				return;
 			case 'contentAreaContextMenu':
