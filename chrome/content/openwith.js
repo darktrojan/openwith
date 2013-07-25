@@ -283,6 +283,10 @@ var OpenWith = {
 
 				/** tool bar menu **/
 				this.toolbarMenu = this.toolbarButtonContainer.getElementsByTagName('menupopup').item(0);
+
+				this.toolbarMenu.addEventListener('popupshowing', this.popupShowing, false);
+				this.toolbarMenu.addEventListener('popuphidden', this.popupHidden, false);
+
 				this.locations.push({
 					prefName: 'toolbar.menu',
 					empty: function() {
@@ -451,6 +455,15 @@ var OpenWith = {
 						OpenWith.contextSubmenu.hidden =
 								OpenWith.contextSubmenu.hidden || !somethingLeftVisible;
 					}
+				}
+				return;
+			case 'openwith-toolbar-menu':
+				let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
+						OpenWith.toolbarMenu.childNodes,
+						new String(gBrowser.selectedBrowser.currentURI.spec)
+				);
+				if (!somethingLeftVisible) {
+					event.preventDefault(); // don't display popup
 				}
 				return;
 			default: // tab menu doesn't have an id

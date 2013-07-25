@@ -23,6 +23,9 @@ let OpenWith = {
 			submenu: false
 		};
 
+		this.toolboxMenu = document.getElementById('openwith-toolbox-menu');
+		this.toolboxMenu.addEventListener('popupshowing', this.popupShowing, false);
+		this.toolboxMenu.addEventListener('popuphidden', this.popupHidden, false);
 		this.menuLocation = {
 			prefName: 'toolbox.menu',
 			empty: function() {
@@ -32,7 +35,7 @@ let OpenWith = {
 			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_DEVTOOLS,
 			suffix: '_toolboxmenu',
-			container: document.getElementById('openwith-toolbox-menu'),
+			container: this.toolboxMenu,
 			submenu: false
 		};
 
@@ -70,7 +73,29 @@ let OpenWith = {
 		}
 
 		OpenWithCore.refreshUI(document, [this.location, this.menuLocation]);
-	}
+	},
+
+	popupShowing: function(event) {
+		if (event.target != this) {
+			return;
+		}
+
+		switch (this.id) {
+			case 'openwith-toolbox-menu':
+				let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
+						OpenWith.toolboxMenu.childNodes,
+						new String(window.top.gBrowser.selectedBrowser.currentURI.spec)
+				);
+				if (!somethingLeftVisible) {
+					event.preventDefault(); // don't display popup
+				}
+				return;
+			default:
+				return;
+		}
+	},
+
+	popupHidden: function(event) {},
 };
 
 window.addEventListener('load', OpenWith.onLoad, false);
