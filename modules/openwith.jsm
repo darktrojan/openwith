@@ -347,6 +347,11 @@ var OpenWithCore = {
 			toolbarButton.setAttribute('oncommand',
 					'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
 		}
+		if (item.matchMetod == 'substring') {
+			toolbarButton.setAttribute('openwith-match-substring', item.matchSubstring);
+		} else if (item.matchMetod == 'regexp') {
+			toolbarButton.setAttribute('openwith-match-regexp', item.matchRegexp);
+		}
 		return toolbarButton;
 	},
 	matchUtils : {

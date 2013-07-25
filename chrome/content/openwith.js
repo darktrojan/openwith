@@ -281,6 +281,15 @@ var OpenWith = {
 					submenu: false
 				});
 
+				let progressListener = {
+					QueryInterface: XPCOMUtils.generateQI(["nsIWebProgressListener"
+																								,"nsISupportsWeakReference"]),
+					onLocationChange: function() {
+						OpenWith.updateToolbarButtons();
+					},
+				}
+				gBrowser.addProgressListener(progressListener);
+
 				/** tool bar menu **/
 				this.toolbarMenu = this.toolbarButtonContainer.getElementsByTagName('menupopup').item(0);
 
@@ -355,6 +364,7 @@ var OpenWith = {
 
 		this.emptyList = OpenWithCore.list.length == 0;
 		OpenWithCore.refreshUI(document, this.locations);
+		OpenWith.updateToolbarButtons();
 	},
 
 	popupShowing: function(event) {
@@ -567,7 +577,20 @@ var OpenWith = {
 				}
 				return;
 		}
-	}
+	},
+
+	updateToolbarButtons: function () {
+		// filter nodes with 'openwith-command' attribute
+		var browserButtons = Array.prototype.filter.call(
+			OpenWith.toolbarButtonContainer.childNodes,
+			function(node){return node.hasAttribute('openwith-command');}
+		);
+
+		OpenWithCore.matchUtils.hideMismatched(
+				browserButtons,
+				new String(gBrowser.selectedBrowser.currentURI.spec)
+		);
+	},
 };
 
 window.addEventListener('load', OpenWith.onLoad, false);
