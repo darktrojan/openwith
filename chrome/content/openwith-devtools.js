@@ -9,6 +9,7 @@ let OpenWith = {
 
 		Cu.import('resource://openwith/openwith.jsm');
 		Cu.import('resource://gre/modules/Services.jsm');
+		Cu.import('resource:///modules/devtools/Target.jsm');
 
 		this.location = {
 			prefName: 'toolbox',
@@ -43,6 +44,12 @@ let OpenWith = {
 
 		Services.obs.addObserver(this, 'openWithListChanged', true);
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
+
+		let target = TargetFactory.forTab(window.top.gBrowser.selectedTab);
+		target.on("navigate", function(){
+			OpenWith.updateToolboxButtons(target.url);
+		})
+
 	},
 
 	QueryInterface: function QueryInterface(aIID) {
@@ -73,6 +80,7 @@ let OpenWith = {
 		}
 
 		OpenWithCore.refreshUI(document, [this.location, this.menuLocation]);
+		this.updateToolboxButtons(document.URL);
 	},
 
 	popupShowing: function(event) {
@@ -93,6 +101,19 @@ let OpenWith = {
 			default:
 				return;
 		}
+	},
+
+	updateToolboxButtons: function (newUrl) {
+		// filter nodes with 'openwith-command' attribute
+		var browserButtons = Array.prototype.filter.call(
+			this.location.container.childNodes,
+			function(node){return node.hasAttribute('openwith-command');}
+		);
+
+		OpenWithCore.matchUtils.hideMismatched(
+				browserButtons,
+				newUrl
+		);
 	},
 
 	popupHidden: function(event) {},
