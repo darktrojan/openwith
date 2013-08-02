@@ -83,24 +83,37 @@ var OpenWith = {
 		var contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
 		var contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
 
-		// from http://mxr.mozilla.org/mozilla-central/source/browser/base/content/nsContextMenu.js
-		var shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
-			gContextMenu.onImage || gContextMenu.onCanvas || gContextMenu.onVideo ||
-			gContextMenu.onAudio || gContextMenu.onTextInput);
-
 		OpenWith.contextMenuLinkPlaceholder.hidden = true;
 		OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref ||
 					OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
 
-		if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
-			var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-			for (var i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
-				if ('__MenuEdit_insertBefore_orig' in this) {
-					this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
-				} else {
-					this.insertBefore(OpenWith.contextMenuLinkItems[i], next);
-				}
+		var somethingWasInserted;
+		if (gContextMenu.onLink && !gContextMenu.onMailtoLink) {
+			if (contextMenuLinkPref) {
+				somethingWasInserted = OpenWithCore.matchUtils.insertMatched(
+						this,
+						OpenWith.contextMenuLinkItems,
+						OpenWith.contextMenuLinkPlaceholder,
+						new String(gContextMenu.linkURI.spec)
+				);
 			}
+			if (contextSubmenuLinkPref) {
+				let somethingLeftVisible = OpenWithCore.matchUtils.hideMismatched(
+						OpenWith.contextLinkSubmenu.menupopup.childNodes,
+						new String(gContextMenu.linkURI.spec)
+				);
+				OpenWith.contextLinkSubmenu.hidden =
+						OpenWith.contextLinkSubmenu.hidden || !somethingLeftVisible;
+			}
+		}
+		// Hide separator if necessary
+		let (
+			inTabHidden = document.getElementById('context-openlinkintab').hidden,
+			inWindowHidden = document.getElementById('context-openlink').hidden,
+			submenuHidden = OpenWith.contextLinkSubmenu.hidden
+		) {
+			document.getElementById('mailContext-sep-link').hidden =
+					inTabHidden && inWindowHidden && submenuHidden && !somethingWasInserted;
 		}
 	},
 

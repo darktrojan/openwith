@@ -41,15 +41,9 @@
 					<button class="hide" label="&openwith-browserlist-hide.label;"
 						xbl:inherits="collapsed=manual"
 						oncommand="setHidden(document.getBindingParent(this), true);" />
-					<button label="&openwith-browserlist-rename.label;"
+					<button label="&openwith-browserlist-edititem.label;"
 						xbl:inherits="collapsed=auto"
-						oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
-					<button label="&openwith-browserlist-editcommand.label;"
-						xbl:inherits="collapsed=auto"
-						oncommand="editCommand(document.getBindingParent(this));" />
-					<button label="&openwith-browserlist-editparams.label;"
-						xbl:inherits="collapsed=auto"
-						oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
+						oncommand="editItem(document.getBindingParent(this));" />
 					<button label="&openwith-browserlist-remove.label;"
 						xbl:inherits="collapsed=auto"
 						oncommand="removeItem(document.getBindingParent(this));" />

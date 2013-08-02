@@ -1,10 +1,6 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
-		these are placeholders for where the menu items will appear 
-
-
-
-
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
 -->
 <!ENTITY openwith-dropdown.tooltip "Open with…">
 <!ENTITY openwith-options.title "Open With オプション">
@@ -17,8 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
-
 -->
 <!ENTITY openwith-placeholder.label "Open With 項目">
 <!ENTITY openwith-linkplaceholder.label "Open With リンク項目">
@@ -33,11 +27,20 @@
 <!ENTITY openwith-browserlist.label "表示する項目を選択">
 <!ENTITY openwith-browserlist-show.label "表示">
 <!ENTITY openwith-browserlist-hide.label "非表示">
-<!ENTITY openwith-browserlist-rename.label "表示名の変更">
-<!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
-<!ENTITY openwith-browserlist-editparams.label "引数">
+<!ENTITY openwith-browserlist-edititem.label "Edit…">
 <!ENTITY openwith-browserlist-remove.label "削除">
 <!ENTITY openwith-browserlist-add.label "追加">
 <!ENTITY openwith-browserlist-moveup.tooltip "ひとつ上へ">
 <!ENTITY openwith-browserlist-movedown.tooltip "ひとつ下へ">
 <!ENTITY openwith-browserlist-restoreorder.label "元の順に戻す">
+<!ENTITY openwith-edititem-window.title "Editing Open With item">
+<!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
+<!ENTITY openwith-edititem-name.label "Name">
+<!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
+<!ENTITY openwith-edititem-params.label "Arguments">
+<!ENTITY openwith-edititem-matchlink.label "Enabled for">
+<!ENTITY openwith-edititem-matchlink-any.label "all links">
+<!ENTITY openwith-edititem-matchlink-contains.label "links containing">
+<!ENTITY openwith-edititem-matchlink-regexp.label "links matching regexp">

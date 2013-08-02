@@ -1,8 +1,6 @@
 <!ENTITY openwith-name "Отвори помоћу">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
-		these are placeholders for where the menu items will appear 
-
-
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
 -->
 <!ENTITY openwith-dropdown.tooltip "Отвори помоћу…">
 <!ENTITY openwith-options.title "Open With - опције">
@@ -15,7 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
 -->
 <!ENTITY openwith-placeholder.label "Open With ставке">
 <!ENTITY openwith-linkplaceholder.label "Open With ставке везе">
@@ -30,11 +27,20 @@
 <!ENTITY openwith-browserlist.label "Изаберите ставке које желите да прикажете:">
 <!ENTITY openwith-browserlist-show.label "Прикажи">
 <!ENTITY openwith-browserlist-hide.label "Сакриј">
-<!ENTITY openwith-browserlist-rename.label "Преименуј…">
-<!ENTITY openwith-browserlist-editcommand.label "Команда…">
-<!ENTITY openwith-browserlist-editparams.label "Аргументи…">
+<!ENTITY openwith-browserlist-edititem.label "Edit…">
 <!ENTITY openwith-browserlist-remove.label "Уклони">
 <!ENTITY openwith-browserlist-add.label "Додај…">
 <!ENTITY openwith-browserlist-moveup.tooltip "Помери нагоре">
 <!ENTITY openwith-browserlist-movedown.tooltip "Помери надоле">
 <!ENTITY openwith-browserlist-restoreorder.label "Подразумевани редослед">
+<!ENTITY openwith-edititem-window.title "Editing Open With item">
+<!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
+<!ENTITY openwith-edititem-name.label "Name">
+<!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
+<!ENTITY openwith-edititem-params.label "Arguments">
+<!ENTITY openwith-edititem-matchlink.label "Enabled for">
+<!ENTITY openwith-edititem-matchlink-any.label "all links">
+<!ENTITY openwith-edititem-matchlink-contains.label "links containing">
+<!ENTITY openwith-edititem-matchlink-regexp.label "links matching regexp">

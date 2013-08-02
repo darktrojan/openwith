@@ -1,8 +1,6 @@
 <!ENTITY openwith-name "Abrir com">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
-		these are placeholders for where the menu items will appear 
-
-
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
 -->
 <!ENTITY openwith-dropdown.tooltip "Abrir com ...">
 <!ENTITY openwith-options.title "Opções do Open With">
@@ -15,7 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
 -->
 <!ENTITY openwith-placeholder.label "Itens do Open With">
 <!ENTITY openwith-linkplaceholder.label "Itens de ligação do Open With">
@@ -30,11 +27,20 @@
 <!ENTITY openwith-browserlist.label "Escolha os itens a mostrar:">
 <!ENTITY openwith-browserlist-show.label "Mostrar">
 <!ENTITY openwith-browserlist-hide.label "Ocultar">
-<!ENTITY openwith-browserlist-rename.label "Mudar o nome ...">
-<!ENTITY openwith-browserlist-editcommand.label "Comando ...">
-<!ENTITY openwith-browserlist-editparams.label "Argumentos ...">
+<!ENTITY openwith-browserlist-edititem.label "Edit…">
 <!ENTITY openwith-browserlist-remove.label "Remover">
 <!ENTITY openwith-browserlist-add.label "Adicionar ...">
 <!ENTITY openwith-browserlist-moveup.tooltip "Mover para cima">
 <!ENTITY openwith-browserlist-movedown.tooltip "Mover para cima">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordem pré-definida">
+<!ENTITY openwith-edititem-window.title "Editing Open With item">
+<!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
+<!ENTITY openwith-edititem-name.label "Name">
+<!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
+<!ENTITY openwith-edititem-params.label "Arguments">
+<!ENTITY openwith-edititem-matchlink.label "Enabled for">
+<!ENTITY openwith-edititem-matchlink-any.label "all links">
+<!ENTITY openwith-edititem-matchlink-contains.label "links containing">
+<!ENTITY openwith-edititem-matchlink-regexp.label "links matching regexp">

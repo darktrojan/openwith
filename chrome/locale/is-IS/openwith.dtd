@@ -1,11 +1,6 @@
 <!ENTITY openwith-name "Opna með">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
-		these are placeholders for where the menu items will appear 
-
-
-
-
-
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip):
+	should match openWithDropDownTooltip in openwith.properties 
 -->
 <!ENTITY openwith-dropdown.tooltip "Opna með…">
 <!ENTITY openwith-options.title "Stillingar 'Opna með'">
@@ -18,8 +13,6 @@
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
 		these are placeholders for where the menu items will appear 
-
-
 -->
 <!ENTITY openwith-placeholder.label "Færslur í 'Opna_með'">
 <!ENTITY openwith-linkplaceholder.label "Tenglafærslur í 'Opna_með'">
@@ -34,11 +27,20 @@
 <!ENTITY openwith-browserlist.label "Veldu hvaða atriði eigi að sýna:">
 <!ENTITY openwith-browserlist-show.label "Birta">
 <!ENTITY openwith-browserlist-hide.label "Fela">
-<!ENTITY openwith-browserlist-rename.label "Endurnefna…">
-<!ENTITY openwith-browserlist-editcommand.label "Skipun…">
-<!ENTITY openwith-browserlist-editparams.label "Viðföng…">
+<!ENTITY openwith-browserlist-edititem.label "Edit…">
 <!ENTITY openwith-browserlist-remove.label "Fjarlægja">
 <!ENTITY openwith-browserlist-add.label "Bæta við…">
 <!ENTITY openwith-browserlist-moveup.tooltip "Færa upp">
 <!ENTITY openwith-browserlist-movedown.tooltip "Færa niður">
 <!ENTITY openwith-browserlist-restoreorder.label "Sjálfgefin röð">
+<!ENTITY openwith-edititem-window.title "Editing Open With item">
+<!ENTITY openwith-edititem.label "Application">
+<!ENTITY openwith-edititem-icon.label "Icon">
+<!ENTITY openwith-edititem-name.label "Name">
+<!ENTITY openwith-edititem-command.label "Executable">
+<!ENTITY openwith-edititem-command-browse.label "Browse…">
+<!ENTITY openwith-edititem-params.label "Arguments">
+<!ENTITY openwith-edititem-matchlink.label "Enabled for">
+<!ENTITY openwith-edititem-matchlink-any.label "all links">
+<!ENTITY openwith-edititem-matchlink-contains.label "links containing">
+<!ENTITY openwith-edititem-matchlink-regexp.label "links matching regexp">
