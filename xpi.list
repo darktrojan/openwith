@@ -10,4 +10,5 @@ icon.png
 icon64.png
 install.rdf
 modules
+modules/gcli.js
 modules/openwith.jsm
