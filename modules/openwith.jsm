@@ -338,7 +338,9 @@ var OpenWithCore = {
 				params.push(uri.spec);
 			}
 		}
-
+		this.doCommandInternal(command, params);
+	},
+	doCommandInternal: function(command, params) {
 		try {
 			var file = new FileUtils.File(command);
 			if (!file.exists()) {
@@ -347,11 +349,7 @@ var OpenWithCore = {
 			var fileToRun;
 			if (/\.app$/.test(file.path)) {
 				fileToRun = new FileUtils.File('/usr/bin/open');
-				var oldParams = params;
-				params = ['-a', file.path];
-				for (var i = 0, iCount = oldParams.length; i < iCount; i++) {
-					params.push(oldParams[i]);
-				}
+				params.splice(0, 0, '-a', file.path);
 			} else {
 				fileToRun = file;
 			}
@@ -546,5 +544,9 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
+
+if (Services.appinfo.name == 'Firefox') {
+	Services.scriptloader.loadSubScript('resource://openwith/gcli.js');
+}
 
 OpenWithCore.versionUpdate();
