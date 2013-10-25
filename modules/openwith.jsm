@@ -291,7 +291,7 @@ var OpenWithCore = {
 			break;
 		case OpenWithCore.TARGET_DEVTOOLS:
 			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, window.top.gBrowser.selectedBrowser.currentURI);');
+				'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
 			break;
 		}
 		menuItem.setAttribute('openwith-command', command);
@@ -316,7 +316,7 @@ var OpenWithCore = {
 		if (targetType == OpenWithCore.TARGET_DEVTOOLS) {
 			toolbarButton.className = 'command-button';
 			toolbarButton.setAttribute('oncommand',
-					'OpenWithCore.doCommand(event, window.top.gBrowser.selectedBrowser.currentURI);');
+					'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
 		} else {
 			toolbarButton.className = 'toolbarbutton-1';
 			toolbarButton.setAttribute('oncommand',
@@ -325,7 +325,7 @@ var OpenWithCore = {
 		return toolbarButton;
 	},
 	doCommand: function(event, uri) {
-		if (!uri instanceof Ci.nsIURI) {
+		if (!(uri instanceof Ci.nsIURI)) {
 			uri = Services.io.newURI(uri, null, null);
 		}
 		var command = event.target.getAttribute('openwith-command');

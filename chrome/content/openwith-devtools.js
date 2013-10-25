@@ -5,10 +5,9 @@ let OpenWith = {
 	},
 
 	init: function() {
-		const Cu = Components.utils;
-
-		Cu.import('resource://openwith/openwith.jsm');
-		Cu.import('resource://gre/modules/Services.jsm');
+		Components.utils.import('resource://openwith/openwith.jsm');
+		Components.utils.import('resource://gre/modules/Services.jsm');
+		Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
 		this.location = {
 			prefName: 'toolbox',
@@ -40,6 +39,17 @@ let OpenWith = {
 
 		Services.obs.addObserver(this, 'openWithListChanged', true);
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
+
+		XPCOMUtils.defineLazyGetter(OpenWith, 'toolbox', function() {
+			let scope = {};
+			Components.utils.import('resource:///modules/devtools/gDevTools.jsm', scope);
+			for (let [, toolbox] of scope.gDevTools._toolboxes) {
+				if (toolbox.doc == document) {
+					return toolbox;
+				}
+			};
+			return null; // this should never happen
+		});
 	},
 
 	QueryInterface: function QueryInterface(aIID) {
