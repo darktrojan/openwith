@@ -20,14 +20,21 @@ gcli.addType({
 });
 gcli.addCommand({
 	name: 'openwith',
+	description: OpenWithCore.strings.GetStringFromName('gcli.command.description'),
 	params: [{
 		name: 'browser',
-        description: 'Select a browser to open',
+        description: OpenWithCore.strings.GetStringFromName('gcli.params.browser.description'),
 		type: 'openwith-browsers'
+	}, {
+		name: 'nourl',
+		description: OpenWithCore.strings.GetStringFromName('gcli.params.nourl.description'),
+		type: 'boolean'
 	}],
 	exec: function(args, context) {
 		let params = args.browser.params.slice();
-		params.push(context.environment.window.location.href);
+		if (!args.nourl) {
+			params.push(context.environment.window.location.href);
+		}
         OpenWithCore.doCommandInternal(args.browser.command, params);
 	}
 });
