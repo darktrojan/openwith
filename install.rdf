@@ -45,6 +45,15 @@
 				<em:translator>Natty Dreed</em:translator>
 			</Description>
 		</em:localized>
+		<em:localized locale="el">
+			<Description>
+				<em:locale>el</em:locale>
+				<em:name>Άνοιγμα με</em:name>
+				<em:description>Το «Άνοιγμα με» προσθέτει επιλογές στα μενού σας και στην εργαλειοθήκη καρτελών για το άνοιγμα της τρέχουσας σελίδας με κάποιον άλλο περιηγητή.</em:description>
+				<em:creator>Geoff Lankow</em:creator>
+				<em:translator>Γιώργος Μαλαμάς</em:translator>
+			</Description>
+		</em:localized>
 		<em:localized locale="es-ES">
 			<Description>
 				<em:locale>es-ES</em:locale>
