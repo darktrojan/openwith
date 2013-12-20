@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://openwith/content/openwith.css" ?>
 <!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
 
 <overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -26,14 +27,16 @@
 	<toolbarpalette id="BrowserToolbarPalette">
 		<toolbaritem id="openwith-toolbarbox" class="chromeclass-toolbar-additional" label="&openwith-name;">
 			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;"
-				image="chrome://openwith/content/openwith16.png" type="menu"
-				tooltiptext="&openwith-dropdown.tooltip;"
-				style="-moz-box-orient: horizontal">
+				type="menu"
+				tooltiptext="&openwith-dropdown.tooltip;">
 				<menupopup id="openwith-toolbar-menu" />
 			</toolbarbutton>
 		</toolbaritem>
 	</toolbarpalette>
 
-	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />
+	<panelmultiview id="PanelUI-multiView">
+		<panelview id="PanelUI-openwith" flex="1" class="PanelUI-subView" />
+	</panelmultiview>
 
+	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />
 </overlay>

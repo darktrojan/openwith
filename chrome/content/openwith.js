@@ -304,6 +304,32 @@ var OpenWith = {
 			Services.console.logStringMessage('OpenWith: toolbar buttons will be unavailable');
 		}
 
+		if ('CustomizableUI' in window) {
+			CustomizableUI.createWidget({
+				id: 'openwith-widget',
+				label: 'Open With',
+				type: 'view',
+				viewId: 'PanelUI-openwith',
+				removable: true,
+				defaultArea: CustomizableUI.AREA_PANEL,
+				onCreated: function() {},
+				onViewShowing: function() {},
+				onViewHiding: function() {}
+			});
+
+			this.locations.push({
+				empty: function() {
+					while (this.container.lastChild)
+						this.container.removeChild(this.container.lastChild);
+				},
+				factory: OpenWithCore.createToolbarButton,
+				targetType: OpenWithCore.TARGET_PANEL_UI,
+				suffix: '_widget',
+				container: document.getElementById('PanelUI-openwith'),
+				submenu: false
+			});
+		}
+
 		OpenWithCore.loadList(false);
 		OpenWith.loadLists();
 

@@ -33,6 +33,7 @@ var OpenWithCore = {
 	TARGET_LINK: 2,
 	TARGET_TAB: 3,
 	TARGET_DEVTOOLS: 4,
+	TARGET_PANEL_UI: 5,
 
 	list: [],
 	suppressLoadList: false,
@@ -256,7 +257,7 @@ var OpenWithCore = {
 					labelToUse = label;
 				}
 
-				if (this.prefs.getBoolPref(location.prefName)) {
+				if (!location.prefName || this.prefs.getBoolPref(location.prefName)) {
 					let menuItem = location.factory(document, item, labelToUse, location.targetType);
 					menuItem.id = 'openwith_' + keyName + location.suffix;
 					if (location.container.push) { //array
@@ -306,7 +307,11 @@ var OpenWithCore = {
 		let params = item.params;
 		let icon = item.icon;
 		var toolbarButton = document.createElementNS(XULNS, 'toolbarbutton');
-		toolbarButton.setAttribute('tooltiptext', tooltip);
+		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
+			toolbarButton.setAttribute('label', tooltip);
+		} else {
+			toolbarButton.setAttribute('tooltiptext', tooltip);
+		}
 		toolbarButton.setAttribute('image', icon);
 		toolbarButton.setAttribute('openwith-command', command);
 		toolbarButton.setAttribute('openwith-params', params.join(' '));

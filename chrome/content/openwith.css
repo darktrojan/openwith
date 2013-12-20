@@ -1,0 +1,9 @@
+#openwith-toolbar,
+#openwith-widget {
+	list-style-image: url("chrome://openwith/content/openwith16.png");
+}
+
+#openwith-widget[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #openwith-widget {
+	list-style-image: url("chrome://openwith/content/openwith32.png");
+}

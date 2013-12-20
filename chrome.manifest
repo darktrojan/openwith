@@ -6,7 +6,6 @@ overlay chrome://messenger/content/messageWindow.xul chrome://openwith/content/o
 overlay chrome://browser/content/devtools/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
 overlay chrome://global/content/customizeToolbar.xul chrome://openwith/content/customize-toolbar.xul
 resource openwith modules/
-style chrome://browser/content/browser.xul chrome://openwith/content/iconsize.css os=Linux
 
 component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
 contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e-ad11-55a7bd190185}
