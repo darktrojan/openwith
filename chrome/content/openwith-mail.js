@@ -2,7 +2,7 @@ Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 Components.utils.import('resource://openwith/openwith.jsm');
 
-var OpenWith = {
+let OpenWith = {
 
 	locations: [],
 
@@ -12,11 +12,11 @@ var OpenWith = {
 	},
 
 	init: function() {
-		var contextMenu = document.getElementById('mailContext');
+		let contextMenu = document.getElementById('mailContext');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
 
-		var separator = document.getElementById('mailContext-sep-open-browser') || document.getElementById('mailContext-sep-link');
+		let separator = document.getElementById('mailContext-sep-open-browser') || document.getElementById('mailContext-sep-link');
 
 		/** context menu (links) **/
 		this.contextMenuLinkPlaceholder = document.getElementById('openwith-contextmenulinkplaceholder');
@@ -75,11 +75,11 @@ var OpenWith = {
 		if (event.target != this) {
 			return;
 		}
-		var contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
-		var contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
+		let contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
+		let contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
 
 		// from http://mxr.mozilla.org/mozilla-central/source/browser/base/content/nsContextMenu.js
-		var shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
+		let shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
 			gContextMenu.onImage || gContextMenu.onCanvas || gContextMenu.onVideo ||
 			gContextMenu.onAudio || gContextMenu.onTextInput);
 
@@ -88,8 +88,8 @@ var OpenWith = {
 					OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
 
 		if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
-			var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-			for (var i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
+			let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+			for (let i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
 				if ('__MenuEdit_insertBefore_orig' in this) {
 					this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
 				} else {
@@ -106,7 +106,7 @@ var OpenWith = {
 
 		OpenWith.contextMenuLinkPlaceholder.hidden = false;
 
-		var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+		let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
 		while (next && next.className.indexOf('openwith') == 0) {
 			if ('__MenuEdit_removeChild_orig' in this) {
 				this.__MenuEdit_removeChild_orig(next);

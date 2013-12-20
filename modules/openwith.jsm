@@ -1,4 +1,4 @@
-var EXPORTED_SYMBOLS = ['OpenWithCore'];
+let EXPORTED_SYMBOLS = ['OpenWithCore'];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -17,16 +17,16 @@ const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
 
 if (WINDOWS) {
-	var registryKey = null;
-	var env = null;
+	let registryKey = null;
+	let env = null;
 } else if (OS_X) {
-	var locAppDir = null;
+	let locAppDir = null;
 }
 
 let currentVersion = 0;
 let oldVersion = 0;
 
-var OpenWithCore = {
+let OpenWithCore = {
 
 	TARGET_STANDARD: 1,
 	TARGET_LINK: 2,
@@ -51,7 +51,7 @@ var OpenWithCore = {
 			}
 
 			let hidePref = this.prefs.getCharPref('hide').toLowerCase();
-			for (var i = 0, iCount = registryKey.childCount; i < iCount; i++) {
+			for (let i = 0, iCount = registryKey.childCount; i < iCount; i++) {
 				try {
 					let name = registryKey.getChildName(i);
 					let subkey1 = registryKey.openChild(name, Ci.nsIWindowsRegKey.ACCESS_READ);
@@ -110,7 +110,7 @@ var OpenWithCore = {
 			}
 		}
 
-		var manual = this.prefs.getChildList('manual.', {});
+		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
 		for (let i = 0, iCount = manual.length; i < iCount; i++) {
 			let name = manual[i];
@@ -152,7 +152,7 @@ var OpenWithCore = {
 
 		if (this.prefs.prefHasUserValue('order')) {
 			let order = JSON.parse(this.prefs.getCharPref('order'));
-			var newList = [];
+			let newList = [];
 			for (let i = 0; i < order.length; i++) {
 				let auto = order[i][0] == 'a';
 				let keyName = order[i].substring(2);
@@ -276,7 +276,7 @@ var OpenWithCore = {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;
-		var menuItem = document.createElement('menuitem');
+		let menuItem = document.createElement('menuitem');
 		menuItem.setAttribute('class', 'openwith menuitem-iconic menuitem-with-favicon');
 		menuItem.setAttribute('image', icon);
 		menuItem.setAttribute('label', label);
@@ -309,7 +309,7 @@ var OpenWithCore = {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;
-		var toolbarButton = document.createElement('toolbarbutton');
+		let toolbarButton = document.createElement('toolbarbutton');
 		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
 			toolbarButton.setAttribute('label', tooltip);
 		} else {
@@ -336,9 +336,9 @@ var OpenWithCore = {
 		if (!(uri instanceof Ci.nsIURI)) {
 			uri = Services.io.newURI(uri, null, null);
 		}
-		var command = event.target.getAttribute('openwith-command');
-		var paramsAttr = event.target.getAttribute('openwith-params');
-		var params = paramsAttr == '' ? [] : paramsAttr.split(' ');
+		let command = event.target.getAttribute('openwith-command');
+		let paramsAttr = event.target.getAttribute('openwith-params');
+		let params = paramsAttr == '' ? [] : paramsAttr.split(' ');
 		if (!event.ctrlKey) {
 			if (uri.schemeIs('file') && event.target.hasAttribute('openwith-usefilepath')) {
 				params.push(uri.QueryInterface(Ci.nsIFileURL).file.path);
@@ -350,11 +350,11 @@ var OpenWithCore = {
 	},
 	doCommandInternal: function(command, params) {
 		try {
-			var file = new FileUtils.File(command);
+			let file = new FileUtils.File(command);
 			if (!file.exists()) {
 				throw 'File not found';
 			}
-			var fileToRun;
+			let fileToRun;
 			if (/\.app$/.test(file.path)) {
 				fileToRun = new FileUtils.File('/usr/bin/open');
 				params.splice(0, 0, '-a', file.path);
@@ -363,7 +363,7 @@ var OpenWithCore = {
 			}
 
 			Services.console.logStringMessage('OpenWith: opening\n\tCommand: ' + fileToRun.path + '\n\tParams: ' + params.join(' '));
-			var process = Cc['@mozilla.org/process/util;1'].createInstance(Ci.nsIProcess);
+			let process = Cc['@mozilla.org/process/util;1'].createInstance(Ci.nsIProcess);
 			process.init(fileToRun);
 			if ('runw' in process) {
 				process.runw(false, params, params.length);

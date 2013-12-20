@@ -12,7 +12,7 @@ OpenWithAboutHandler.prototype = {
 		if (!aURI.spec == 'about:openwith')
 			return;
 
-		var channel = Services.io.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
+		let channel = Services.io.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
 		channel.originalURI = aURI;
 		return channel;
 	},
@@ -25,4 +25,4 @@ OpenWithAboutHandler.prototype = {
 	QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule])
 };
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);
+let NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);

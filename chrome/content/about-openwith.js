@@ -236,12 +236,12 @@ function addNewItem() {
 		let saveIcon = false;
 
 		if (/\.desktop$/.test(fp.file.leafName)) {
-			var istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
+			let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
 			istream.init(fp.file, 0x01, 0444, 0);
 			istream.QueryInterface(Components.interfaces.nsILineInputStream);
 
-			var line = {};
-			var notEOF;
+			let line = {};
+			let notEOF;
 			do {
 				notEOF = istream.readLine(line);
 				if (!command && /^Exec=/.test(line.value)) {
@@ -341,7 +341,7 @@ function moveDown(button) {
 
 function saveOrder() {
 	let order = [];
-	for (var i = 0; i < list.itemCount; i++) {
+	for (let i = 0; i < list.itemCount; i++) {
 		let item = list.getItemAtIndex(i);
 		let auto = item.getAttribute('auto') == 'true';
 		order.push((auto ? 'a/' : 'm/') + item.getAttribute('keyName'));

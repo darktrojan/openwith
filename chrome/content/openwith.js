@@ -2,7 +2,7 @@ Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 Components.utils.import('resource://openwith/openwith.jsm');
 
-var OpenWith = {
+let OpenWith = {
 
 	locations: [],
 
@@ -20,7 +20,7 @@ var OpenWith = {
 		/** view menu **/
 		this.viewMenuPlaceholder = document.getElementById('openwith-viewmenuplaceholder');
 		this.viewMenuSeparator = document.getElementById('openwith-viewmenuseparator');
-		var viewMenu = document.getElementById('menu_viewPopup') ||
+		let viewMenu = document.getElementById('menu_viewPopup') ||
 				document.getElementById('menu_View_Popup'); // seamonkey
 		viewMenu.addEventListener('popupshowing', this.popupShowing, false);
 		viewMenu.addEventListener('popuphidden', this.popupHidden, false);
@@ -55,7 +55,7 @@ var OpenWith = {
 		this.contextMenuSeparator = document.getElementById('openwith-contextmenuseparator');
 		this.contextMenuPlaceholder = document.getElementById('openwith-contextmenuplaceholder');
 
-		var contextMenu = document.getElementById('contentAreaContextMenu');
+		let contextMenu = document.getElementById('contentAreaContextMenu');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
 
@@ -117,7 +117,7 @@ var OpenWith = {
 
 		/** tab menu **/
 		try {
-			var tabMenuItem, tabMenu;
+			let tabMenuItem, tabMenu;
 			if (appname == 'SeaMonkey') {
 				tabMenu = document.getAnonymousElementByAttribute(content, 'anonid', 'tabContextMenu');
 				tabMenuItem = tabMenu.lastChild;
@@ -190,7 +190,7 @@ var OpenWith = {
 				this.tabButtonContainer.setAttribute('align', 'center');
 				this.tabButtonContainer.setAttribute('context', '');
 
-				var parent, before;
+				let parent, before;
 				parent = document.getAnonymousElementByAttribute(content, 'anonid', 'tabcontainer');
 				parent = document.getAnonymousNodes(parent).item(0).childNodes[1];
 				if (appname == 'SeaMonkey') {
@@ -207,7 +207,7 @@ var OpenWith = {
 				}
 				parent.insertBefore(this.tabButtonContainer, before);
 
-				var toolbarButton = document.createElement('toolbarbutton');
+				let toolbarButton = document.createElement('toolbarbutton');
 				toolbarButton.setAttribute('type', 'menu');
 				toolbarButton.setAttribute('image', 'chrome://openwith/content/openwith16.png');
 				toolbarButton.setAttribute('tooltiptext',
@@ -379,16 +379,16 @@ var OpenWith = {
 		switch (this.id) {
 			case 'menu_viewPopup':
 			case 'menu_View_Popup':
-				var viewMenuPref = OpenWithCore.prefs.getBoolPref('viewmenu');
-				var viewMenuSubmenuPref = OpenWithCore.prefs.getBoolPref('viewmenu.submenu');
+				let viewMenuPref = OpenWithCore.prefs.getBoolPref('viewmenu');
+				let viewMenuSubmenuPref = OpenWithCore.prefs.getBoolPref('viewmenu.submenu');
 
 				OpenWith.viewMenuPlaceholder.hidden = true;
 				OpenWith.viewMenuSeparator.hidden = (!viewMenuPref && !viewMenuSubmenuPref) || OpenWith.emptyList;
 				OpenWith.viewSubmenu.hidden = !viewMenuSubmenuPref || OpenWith.emptyList;
 
 				if (viewMenuPref) {
-					var next = OpenWith.viewMenuPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.viewMenuItems.length; i < iCount; i++) {
+					let next = OpenWith.viewMenuPlaceholder.nextSibling;
+					for (let i = 0, iCount = OpenWith.viewMenuItems.length; i < iCount; i++) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
 							this.__MenuEdit_insertBefore_orig(OpenWith.viewMenuItems[i], next);
 						} else {
@@ -398,13 +398,13 @@ var OpenWith = {
 				}
 				return;
 			case 'contentAreaContextMenu':
-				var contextMenuPref = OpenWithCore.prefs.getBoolPref('contextmenu');
-				var contextSubmenuPref = OpenWithCore.prefs.getBoolPref('contextmenu.submenu');
-				var contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
-				var contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
+				let contextMenuPref = OpenWithCore.prefs.getBoolPref('contextmenu');
+				let contextSubmenuPref = OpenWithCore.prefs.getBoolPref('contextmenu.submenu');
+				let contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
+				let contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
 
 				// from http://mxr.mozilla.org/mozilla-central/source/browser/base/content/nsContextMenu.js
-				var shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
+				let shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
 					gContextMenu.onImage || gContextMenu.onCanvas || gContextMenu.onVideo ||
 					gContextMenu.onAudio || gContextMenu.onTextInput);
 
@@ -419,8 +419,8 @@ var OpenWith = {
 							OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
 
 				if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
-					var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
+					let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+					for (let i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
 							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
 						} else {
@@ -430,8 +430,8 @@ var OpenWith = {
 				}
 
 				if (contextMenuPref && shouldShow) {
-					var next = OpenWith.contextMenuPlaceholder.nextSibling;
-					for (var i = 0, iCount = OpenWith.contextMenuItems.length; i < iCount; i++) {
+					let next = OpenWith.contextMenuPlaceholder.nextSibling;
+					for (let i = 0, iCount = OpenWith.contextMenuItems.length; i < iCount; i++) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
 							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuItems[i], next);
 						} else {
@@ -442,8 +442,8 @@ var OpenWith = {
 				return;
 			default: // tab menu doesn't have an id
 				if (OpenWith.tabMenuPlaceholder) {
-					var tabMenuPref = OpenWithCore.prefs.getBoolPref('tabmenu');
-					var tabSubmenuPref = OpenWithCore.prefs.getBoolPref('tabmenu.submenu');
+					let tabMenuPref = OpenWithCore.prefs.getBoolPref('tabmenu');
+					let tabSubmenuPref = OpenWithCore.prefs.getBoolPref('tabmenu.submenu');
 
 					OpenWith.tabMenuPlaceholder.hidden = true;
 					OpenWith.tabMenuSeparator.hidden = true;
@@ -457,8 +457,8 @@ var OpenWith = {
 					OpenWith.tabSubmenu.hidden = !tabSubmenuPref || OpenWith.emptyList;
 
 					if (tabMenuPref) {
-						var next = OpenWith.tabMenuPlaceholder.nextSibling;
-						for (var i = 0, iCount = OpenWith.tabMenuItems.length; i < iCount; i++) {
+						let next = OpenWith.tabMenuPlaceholder.nextSibling;
+						for (let i = 0, iCount = OpenWith.tabMenuItems.length; i < iCount; i++) {
 							if ('__MenuEdit_insertBefore_orig' in this) {
 								this.__MenuEdit_insertBefore_orig(OpenWith.tabMenuItems[i], next);
 							} else {
@@ -477,11 +477,11 @@ var OpenWith = {
 		}
 
 		switch (this.id) {
-			case 'menu_viewPopup':
-			case 'menu_View_Popup':
+		case 'menu_viewPopup':
+		case 'menu_View_Popup': {
 				OpenWith.viewMenuPlaceholder.hidden = false;
 
-				var next = OpenWith.viewMenuPlaceholder.nextSibling;
+				let next = OpenWith.viewMenuPlaceholder.nextSibling;
 				while (next && next.className.indexOf('openwith') == 0) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
@@ -491,11 +491,12 @@ var OpenWith = {
 					next = OpenWith.viewMenuPlaceholder.nextSibling;
 				}
 				return;
-			case 'contentAreaContextMenu':
+			}
+		case 'contentAreaContextMenu': {
 				OpenWith.contextMenuLinkPlaceholder.hidden = false;
 				OpenWith.contextMenuPlaceholder.hidden = false;
 
-				var next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+				let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
 				while (next && next.className.indexOf('openwith') == 0) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
@@ -515,11 +516,12 @@ var OpenWith = {
 					next = OpenWith.contextMenuPlaceholder.nextSibling;
 				}
 				return;
-			default: // tab menu doesn't have an id
+			}
+		default: { // tab menu doesn't have an id
 				if (OpenWith.tabMenuPlaceholder) {
 					OpenWith.tabMenuPlaceholder.hidden = false;
 
-					var next = OpenWith.tabMenuPlaceholder.nextSibling;
+					let next = OpenWith.tabMenuPlaceholder.nextSibling;
 					while (next && next.className.indexOf('openwith') == 0) {
 						if ('__MenuEdit_removeChild_orig' in this) {
 							this.__MenuEdit_removeChild_orig(next);
@@ -530,6 +532,7 @@ var OpenWith = {
 					}
 				}
 				return;
+			}
 		}
 	}
 };
