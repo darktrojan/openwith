@@ -2,9 +2,9 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-Cu.import('resource://openwith/openwith.jsm');
-Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/FileUtils.jsm');
+Cu.import('resource://gre/modules/Services.jsm');
+Cu.import('resource://openwith/openwith.jsm');
 
 let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 

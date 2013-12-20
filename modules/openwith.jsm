@@ -4,7 +4,6 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 const ID = 'openwith@darktrojan.net';
-const XULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
 
 const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
@@ -191,9 +190,13 @@ var OpenWithCore = {
 				let target = file.target;
 				file = new FileUtils.File(target);
 			}
-			let relPaths = ['chrome/icons/default/default' + size + '.png', 'product_logo_' + size + '.png'];
+			let relPaths = [
+				'browser/chrome/icons/default/default' + size + '.png',
+				'chrome/icons/default/default' + size + '.png',
+				'product_logo_' + size + '.png'
+			];
 			for (let i = 0, iCount = relPaths.length; i < iCount; i++) {
-				let relTest = file.parent.QueryInterface(Ci.nsILocalFile);
+				let relTest = file.parent;
 				relTest.appendRelativePath(relPaths[i]);
 				if (relTest.exists()) {
 					return Services.io.newFileURI(relTest).spec;
@@ -273,7 +276,7 @@ var OpenWithCore = {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;
-		var menuItem = document.createElementNS(XULNS, 'menuitem');
+		var menuItem = document.createElement('menuitem');
 		menuItem.setAttribute('class', 'openwith menuitem-iconic menuitem-with-favicon');
 		menuItem.setAttribute('image', icon);
 		menuItem.setAttribute('label', label);
@@ -306,7 +309,7 @@ var OpenWithCore = {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;
-		var toolbarButton = document.createElementNS(XULNS, 'toolbarbutton');
+		var toolbarButton = document.createElement('toolbarbutton');
 		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
 			toolbarButton.setAttribute('label', tooltip);
 		} else {
@@ -542,7 +545,7 @@ var OpenWithCore = {
 	}
 };
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
-	let prefs = Services.prefs.getBranch('extensions.openwith.').QueryInterface(Ci.nsIPrefBranch2);
+	let prefs = Services.prefs.getBranch('extensions.openwith.');
 	prefs.addObserver('', OpenWithCore, false);
 	return prefs;
 });

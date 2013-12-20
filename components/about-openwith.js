@@ -1,16 +1,18 @@
-Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
-
-const Cc = Components.classes;
 const Ci = Components.interfaces;
+const Cu = Components.utils;
+
+Cu.import('resource://gre/modules/Services.jsm');
+Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 
 function OpenWithAboutHandler() {
 }
 
 OpenWithAboutHandler.prototype = {
 	newChannel: function(aURI) {
-		if (!aURI.spec == 'about:openwith') return;
-		var ios = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
-		var channel = ios.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
+		if (!aURI.spec == 'about:openwith')
+			return;
+
+		var channel = Services.io.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
 		channel.originalURI = aURI;
 		return channel;
 	},
@@ -23,8 +25,4 @@ OpenWithAboutHandler.prototype = {
 	QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule])
 };
 
-if (XPCOMUtils.generateNSGetFactory) {
-	var NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);
-} else {
-	var NSGetModule = XPCOMUtils.generateNSGetModule([OpenWithAboutHandler]);
-}
+var NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);

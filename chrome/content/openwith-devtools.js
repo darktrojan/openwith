@@ -1,3 +1,7 @@
+Components.utils.import('resource://gre/modules/Services.jsm');
+Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://openwith/openwith.jsm');
+
 let OpenWith = {
 	onLoad: function() {
 		window.removeEventListener('load', OpenWith.onLoad, false);
@@ -5,10 +9,6 @@ let OpenWith = {
 	},
 
 	init: function() {
-		Components.utils.import('resource://openwith/openwith.jsm');
-		Components.utils.import('resource://gre/modules/Services.jsm');
-		Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
-
 		this.location = {
 			prefName: 'toolbox',
 			empty: function() {
@@ -52,13 +52,11 @@ let OpenWith = {
 		});
 	},
 
-	QueryInterface: function QueryInterface(aIID) {
-		if (aIID.equals(Components.interfaces.nsIObserver) ||
-			aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
-			aIID.equals(Components.interfaces.nsISupports))
-			return this;
-		throw Components.results.NS_NOINTERFACE;
-	},
+	QueryInterface: XPCOMUtils.generateQI([
+		Components.interfaces.nsIObserver,
+		Components.interfaces.nsISupportsWeakReference,
+		Components.interfaces.nsISupports
+	]),
 
 	observe: function(subject, topic, data) {
 		switch (topic) {

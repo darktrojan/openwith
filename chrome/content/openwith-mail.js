@@ -1,3 +1,7 @@
+Components.utils.import('resource://gre/modules/Services.jsm');
+Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://openwith/openwith.jsm');
+
 var OpenWith = {
 
 	locations: [],
@@ -8,13 +12,6 @@ var OpenWith = {
 	},
 
 	init: function() {
-		const Cc = Components.classes;
-		const Ci = Components.interfaces;
-		const Cu = Components.utils;
-
-		Cu.import('resource://openwith/openwith.jsm');
-		Cu.import('resource://gre/modules/Services.jsm');
-
 		var contextMenu = document.getElementById('mailContext');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
@@ -59,13 +56,11 @@ var OpenWith = {
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
 	},
 
-	QueryInterface: function QueryInterface(aIID) {
-		if (aIID.equals(Components.interfaces.nsIObserver) ||
-			aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
-			aIID.equals(Components.interfaces.nsISupports))
-			return this;
-		throw Components.results.NS_NOINTERFACE;
-	},
+	QueryInterface: XPCOMUtils.generateQI([
+		Components.interfaces.nsIObserver,
+		Components.interfaces.nsISupportsWeakReference,
+		Components.interfaces.nsISupports
+	]),
 
 	observe: function(subject, topic, data) {
 		OpenWith.loadLists();

@@ -1,3 +1,7 @@
+Components.utils.import('resource://gre/modules/Services.jsm');
+Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('resource://openwith/openwith.jsm');
+
 var OpenWith = {
 
 	locations: [],
@@ -8,14 +12,6 @@ var OpenWith = {
 	},
 
 	init: function() {
-		const Cc = Components.classes;
-		const Ci = Components.interfaces;
-		const Cu = Components.utils;
-		const XULNS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
-
-		Cu.import('resource://openwith/openwith.jsm');
-		Cu.import('resource://gre/modules/Services.jsm');
-
 		let appname = Services.appinfo.name;
 		let appversion = parseFloat(Services.appinfo.version);
 
@@ -131,20 +127,20 @@ var OpenWith = {
 				tabMenu = tabMenuItem.parentNode;
 			}
 
-			this.tabMenuSeparator = document.createElementNS(XULNS, 'menuseparator');
+			this.tabMenuSeparator = document.createElement('menuseparator');
 			this.tabMenuSeparator.id = 'openwith-tabmenuseparator';
 			tabMenu.insertBefore(this.tabMenuSeparator, tabMenuItem.nextSibling);
 
-			this.tabMenuPlaceholder = document.createElementNS(XULNS, 'menuitem');
+			this.tabMenuPlaceholder = document.createElement('menuitem');
 			this.tabMenuPlaceholder.id = 'openwith-tabmenuplaceholder';
 			this.tabMenuPlaceholder.setAttribute('label',
 				OpenWithCore.strings.GetStringFromName('openWithPlaceholderLabel'));
 			tabMenu.insertBefore(this.tabMenuPlaceholder, this.tabMenuSeparator.nextSibling);
 
-			this.tabSubmenu = document.createElementNS(XULNS, 'menu');
+			this.tabSubmenu = document.createElement('menu');
 			this.tabSubmenu.setAttribute('label',
 				document.getElementById('openwith-viewsubmenu').getAttribute('label'));
-			this.tabSubmenuPopup = document.createElementNS(XULNS, 'menupopup');
+			this.tabSubmenuPopup = document.createElement('menupopup');
 			this.tabSubmenu.appendChild(this.tabSubmenuPopup);
 			tabMenu.insertBefore(this.tabSubmenu, this.tabMenuPlaceholder.nextSibling);
 
@@ -177,14 +173,14 @@ var OpenWith = {
 			});
 		} catch (e) {
 			this.tabMenuPlaceholder = null;
-			Cu.reportError(e);
+			Components.utils.reportError(e);
 			Services.console.logStringMessage('OpenWith: tab menu items will be unavailable');
 		}
 
 		/** tab bar **/
 		if (appname != 'Firefox' || appversion < 4) {
 			try {
-				this.tabButtonContainer = document.createElementNS(XULNS, 'toolbaritem');
+				this.tabButtonContainer = document.createElement('toolbaritem');
 				this.tabButtonContainer.id = 'openwith-tabbarbox';
 				if (appname == 'SeaMonkey') {
 					this.tabButtonContainer.className = 'openwith-tabbarbox-seamonkey tabs-right';
@@ -211,14 +207,14 @@ var OpenWith = {
 				}
 				parent.insertBefore(this.tabButtonContainer, before);
 
-				var toolbarButton = document.createElementNS(XULNS, 'toolbarbutton');
+				var toolbarButton = document.createElement('toolbarbutton');
 				toolbarButton.setAttribute('type', 'menu');
 				toolbarButton.setAttribute('image', 'chrome://openwith/content/openwith16.png');
 				toolbarButton.setAttribute('tooltiptext',
 					OpenWithCore.strings.GetStringFromName('openWithDropDownTooltip'));
 				this.tabButtonContainer.appendChild(toolbarButton);
 
-				this.tabBarMenu = document.createElementNS(XULNS, 'menupopup');
+				this.tabBarMenu = document.createElement('menupopup');
 				toolbarButton.appendChild(this.tabBarMenu);
 
 				this.locations.push({
@@ -249,7 +245,7 @@ var OpenWith = {
 				});
 			} catch (e) {
 				this.tabButtonContainer = null;
-				Cu.reportError(e);
+				Components.utils.reportError(e);
 				Services.console.logStringMessage('OpenWith: tab bar buttons will be unavailable');
 			}
 		}
@@ -298,7 +294,7 @@ var OpenWith = {
 			}
 		} catch (e) {
 			this.tabButtonContainer = null;
-			Cu.reportError(e);
+			Components.utils.reportError(e);
 			Services.console.logStringMessage('OpenWith: toolbar buttons will be unavailable');
 		}
 
@@ -335,13 +331,11 @@ var OpenWith = {
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
 	},
 
-	QueryInterface: function QueryInterface(aIID) {
-		if (aIID.equals(Components.interfaces.nsIObserver) ||
-			aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
-			aIID.equals(Components.interfaces.nsISupports))
-			return this;
-		throw Components.results.NS_NOINTERFACE;
-	},
+	QueryInterface: XPCOMUtils.generateQI([
+		Components.interfaces.nsIObserver,
+		Components.interfaces.nsISupportsWeakReference,
+		Components.interfaces.nsISupports
+	]),
 
 	observe: function(subject, topic, data) {
 		switch (topic) {
