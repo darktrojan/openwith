@@ -24,16 +24,6 @@
 		</menu>
 	</menupopup>
 
-	<toolbarpalette id="BrowserToolbarPalette">
-		<toolbaritem id="openwith-toolbarbox" class="chromeclass-toolbar-additional" label="&openwith-name;">
-			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;"
-				type="menu"
-				tooltiptext="&openwith-dropdown.tooltip;">
-				<menupopup id="openwith-toolbar-menu" />
-			</toolbarbutton>
-		</toolbaritem>
-	</toolbarpalette>
-
 	<panelmultiview id="PanelUI-multiView">
 		<panelview id="PanelUI-openwith" flex="1" class="PanelUI-subView" />
 	</panelmultiview>

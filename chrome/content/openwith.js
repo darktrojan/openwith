@@ -295,8 +295,6 @@ var OpenWith = {
 					container: this.toolbarMenu,
 					submenu: false
 				});
-			} else {
-				Services.console.logStringMessage('OpenWith: toolbar buttons will be unavailable');
 			}
 		} catch (e) {
 			this.tabButtonContainer = null;
