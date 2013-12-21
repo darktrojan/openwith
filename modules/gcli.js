@@ -1,6 +1,4 @@
-Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/devtools/gcli.jsm');
-Components.utils.import('resource://openwith/openwith.jsm');
 
 gcli.addType({
 	name: 'openwith-browsers',

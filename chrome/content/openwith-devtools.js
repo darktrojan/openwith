@@ -1,6 +1,5 @@
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
-Components.utils.import('resource://openwith/openwith.jsm');
 
 let OpenWith = {
 	onLoad: function() {
@@ -9,6 +8,8 @@ let OpenWith = {
 	},
 
 	init: function() {
+		Components.utils.import('resource://openwith/openwith.jsm');
+
 		this.location = {
 			prefName: 'toolbox',
 			empty: function() {

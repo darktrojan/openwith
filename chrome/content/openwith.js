@@ -1,6 +1,5 @@
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
-Components.utils.import('resource://openwith/openwith.jsm');
 
 let OpenWith = {
 
@@ -12,6 +11,8 @@ let OpenWith = {
 	},
 
 	init: function() {
+		Components.utils.import('resource://openwith/openwith.jsm');
+
 		let appname = Services.appinfo.name;
 		let appversion = parseFloat(Services.appinfo.version);
 
