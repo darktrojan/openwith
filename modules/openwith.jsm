@@ -16,13 +16,7 @@ Cu.import('resource://gre/modules/FileUtils.jsm');
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
 
-if (WINDOWS) {
-	let registryKey = null;
-	let env = null;
-} else if (OS_X) {
-	let locAppDir = null;
-}
-
+let registryKey, env, locAppDir;
 let currentVersion = 0;
 let oldVersion = 0;
 
