@@ -303,6 +303,7 @@ let OpenWith = {
 			CustomizableUI.createWidget({
 				id: 'openwith-widget',
 				label: 'Open With',
+				tooltiptext: 'Open With',
 				type: 'view',
 				viewId: 'PanelUI-openwith',
 				removable: true,
