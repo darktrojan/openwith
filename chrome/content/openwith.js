@@ -300,10 +300,11 @@ let OpenWith = {
 		}
 
 		if ('CustomizableUI' in window) {
+			let label = OpenWithCore.strings.GetStringFromName('openWithDropDownTooltip');
 			CustomizableUI.createWidget({
 				id: 'openwith-widget',
-				label: 'Open With',
-				tooltiptext: 'Open With',
+				label: label,
+				tooltiptext: label,
 				type: 'view',
 				viewId: 'PanelUI-openwith',
 				removable: true,
