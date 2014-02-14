@@ -419,7 +419,9 @@ let OpenWith = {
 			case 'placesContext':
 				let pref, submenuPref, placeholder, submenu, items;
 				if (this.id == 'placesContext') {
-					if (document.popupNode.localName == 'menuitem' && document.popupNode.classList.contains('bookmark-item')) {
+					if ((document.popupNode.localName == 'menuitem' ||
+							(document.popupNode.localName == 'toolbarbutton' && document.popupNode.getAttribute('type') != 'menu'))
+							&& document.popupNode.classList.contains('bookmark-item')) {
 						pref = OpenWithCore.prefs.getBoolPref('placescontext');
 						submenuPref = OpenWithCore.prefs.getBoolPref('placescontext.submenu');
 					}
