@@ -24,6 +24,13 @@
 		</menu>
 	</menupopup>
 
+	<menupopup id="placesContext">
+		<menuitem id="openwith-placescontextlinkplaceholder" label="&openwith-placeholder.label;" insertbefore="placesContext_openSeparator" selectiontype="single" />
+		<menu id="openwith-placescontextsubmenu" label="&openwith-submenu.label;" insertbefore="placesContext_openSeparator" selectiontype="single">
+			<menupopup id="openwith-placescontextsubmenupopup" />
+		</menu>
+	</menupopup>
+
 	<toolbarpalette id="BrowserToolbarPalette">
 		<toolbaritem id="openwith-toolbarbox" class="chromeclass-toolbar-additional" label="&openwith-name;">
 			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;" type="menu" tooltiptext="&openwith-dropdown.tooltip;">
