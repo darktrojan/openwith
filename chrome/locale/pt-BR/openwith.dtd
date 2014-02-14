@@ -6,6 +6,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Exibir">
 <!ENTITY openwith-display-pane.contextmenu.label "Menu de contexto principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu de contexto de links">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu de contexto de abas">
 <!ENTITY openwith-display-pane.tabbar.label "Barra das abas">
 <!ENTITY openwith-display-pane.toolbar.label "Barra de ferramentas">

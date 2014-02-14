@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Меню Изглед">
 <!ENTITY openwith-display-pane.contextmenu.label "Главно Контекстно меню">
 <!ENTITY openwith-display-pane.contextmenulink.label "Главно Контекстно меню (линкове)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Контекстно меню за Етикети(табове)">
 <!ENTITY openwith-display-pane.tabbar.label "Лента с етикети(табове)">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

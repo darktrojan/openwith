@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "View menu">
 <!ENTITY openwith-display-pane.contextmenu.label "Main context menu">
 <!ENTITY openwith-display-pane.contextmenulink.label "Main context menu (links)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Tab context menu">
 <!ENTITY openwith-display-pane.tabbar.label "Tab bar">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

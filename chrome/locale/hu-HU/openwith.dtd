@@ -10,6 +10,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Nézet menü">
 <!ENTITY openwith-display-pane.contextmenu.label "Fő háttérmenü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Fő háttérmenü (linkek)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Fül-háttér menü">
 <!ENTITY openwith-display-pane.tabbar.label "Lapozósáv">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

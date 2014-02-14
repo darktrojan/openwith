@@ -11,6 +11,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Visa-menyn">
 <!ENTITY openwith-display-pane.contextmenu.label "Snabbmeny">
 <!ENTITY openwith-display-pane.contextmenulink.label "Snabbmeny (länkar)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Flikmeny">
 <!ENTITY openwith-display-pane.tabbar.label "Flikfält">
 <!ENTITY openwith-display-pane.toolbar.label "Verktygsfält">

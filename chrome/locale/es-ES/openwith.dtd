@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Ver menú">
 <!ENTITY openwith-display-pane.contextmenu.label "Menú contextual principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menú principal contextual (enlaces)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menú contextual de pestañas">
 <!ENTITY openwith-display-pane.tabbar.label "Barra de pestañas">
 <!ENTITY openwith-display-pane.toolbar.label "Barra de herramientas">

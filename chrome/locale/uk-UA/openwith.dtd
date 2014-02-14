@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Переглянути меню">
 <!ENTITY openwith-display-pane.contextmenu.label "Головне контекстне меню">
 <!ENTITY openwith-display-pane.contextmenulink.label "Контекстне меню вкладок (посилання)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Контекстне меню вкладок">
 <!ENTITY openwith-display-pane.tabbar.label "Панель вкладок">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

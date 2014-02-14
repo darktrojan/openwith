@@ -39,6 +39,7 @@ function loadDropDowns() {
 	if (appname == 'Thunderbird') {
 		$('openwith-viewmenu-row').collapsed = true;
 		$('openwith-contextmenu-row').collapsed = true;
+		$('openwith-placescontext-row').collapsed = true;
 		$('openwith-tabmenu-row').collapsed = true;
 		$('openwith-tabbar-row').collapsed = true;
 		$('openwith-toolbar-row').collapsed = true;
@@ -55,6 +56,10 @@ function loadDropDowns() {
 	$('openwith-contextmenulink-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
 			(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
+
+	$('openwith-placescontext-group').selectedIndex =
+			OpenWithCore.prefs.getBoolPref('placescontext') ? 1 :
+			(OpenWithCore.prefs.getBoolPref('placescontext.submenu') ? 2 : 0);
 
 	$('openwith-tabmenu-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref('tabmenu') ? 1 :

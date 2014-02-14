@@ -9,6 +9,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Ver">
 <!ENTITY openwith-display-pane.contextmenu.label "Menu principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu principal (ligações)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu separadores">
 <!ENTITY openwith-display-pane.tabbar.label "Barra de separadores">
 <!ENTITY openwith-display-pane.toolbar.label "Barra de ferramentas">

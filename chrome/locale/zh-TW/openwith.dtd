@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "檢視功能表">
 <!ENTITY openwith-display-pane.contextmenu.label "瀏覽區右鍵選單">
 <!ENTITY openwith-display-pane.contextmenulink.label "瀏覽區右鍵選單 (連結)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "分頁的右鍵選單">
 <!ENTITY openwith-display-pane.tabbar.label "分頁列">
 <!ENTITY openwith-display-pane.toolbar.label "工具列">

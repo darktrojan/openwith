@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menüyü göster">
 <!ENTITY openwith-display-pane.contextmenu.label "Ana Ek menü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Ana Ek menü(linkler)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Sekme ek menüsü">
 <!ENTITY openwith-display-pane.tabbar.label "Sekme çubuğu">
 <!ENTITY openwith-display-pane.toolbar.label "Araç çubuğu">

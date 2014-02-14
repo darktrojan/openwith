@@ -9,6 +9,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Приказ менија">
 <!ENTITY openwith-display-pane.contextmenu.label "Главни приручни мени">
 <!ENTITY openwith-display-pane.contextmenulink.label "Главни приручни мени (везе)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Приручни мени језичака">
 <!ENTITY openwith-display-pane.tabbar.label "Трака са језичцима">
 <!ENTITY openwith-display-pane.toolbar.label "Трака са алаткама">

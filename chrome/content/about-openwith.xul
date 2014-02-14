@@ -50,6 +50,16 @@
 						</menupopup>
 					</menulist>
 				</row>
+				<row align="center" id="openwith-placescontext-row">
+					<label value="&openwith-display-pane.placescontext.label;:" />
+					<menulist id="openwith-placescontext-group" oncommand="updatePrefs('placescontext', 'placescontext.submenu', this.selectedIndex);">
+						<menupopup>
+							<menuitem label="&openwith-display-none.label;" />
+							<menuitem label="&openwith-display-menuitems.label;" />
+							<menuitem label="&openwith-display-submenu.label;" />
+						</menupopup>
+					</menulist>
+				</row>
 				<row align="center" id="openwith-tabmenu-row">
 					<label value="&openwith-display-pane.tabmenu.label;:" />
 					<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">

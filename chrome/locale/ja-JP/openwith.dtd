@@ -11,6 +11,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "メニュー">
 <!ENTITY openwith-display-pane.contextmenu.label "コンテクストメニュー">
 <!ENTITY openwith-display-pane.contextmenulink.label "コンテクストメニュー (リンク)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "タブメニュー">
 <!ENTITY openwith-display-pane.tabbar.label "タブバー">
 <!ENTITY openwith-display-pane.toolbar.label "ツールバー">

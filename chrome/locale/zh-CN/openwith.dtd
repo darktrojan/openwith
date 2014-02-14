@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "查看菜单">
 <!ENTITY openwith-display-pane.contextmenu.label "页面右键菜单">
 <!ENTITY openwith-display-pane.contextmenulink.label "页面右键菜单(链接)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "标签页右键菜单">
 <!ENTITY openwith-display-pane.tabbar.label "标签栏">
 <!ENTITY openwith-display-pane.toolbar.label "工具栏">

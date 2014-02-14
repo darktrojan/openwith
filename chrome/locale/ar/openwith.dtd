@@ -10,6 +10,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "قائمة العرض">
 <!ENTITY openwith-display-pane.contextmenu.label "القائمة المنسدلة الرئيسية">
 <!ENTITY openwith-display-pane.contextmenulink.label "القائمة المنسدلة الرئيسية (الروابط)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "قائمة التبويب المنسدلة">
 <!ENTITY openwith-display-pane.tabbar.label "شريط التبويب">
 <!ENTITY openwith-display-pane.toolbar.label "شريط الأدوات">

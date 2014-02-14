@@ -1,5 +1,7 @@
 pref('extensions.openwith.viewmenu', true);
 pref('extensions.openwith.viewmenu.submenu', false);
+pref('extensions.openwith.placescontext', true);
+pref('extensions.openwith.placescontext.submenu', false);
 pref('extensions.openwith.tabmenu', false);
 pref('extensions.openwith.tabmenu.submenu', false);
 pref('extensions.openwith.tabbar', false);

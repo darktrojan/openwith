@@ -9,6 +9,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menü &quot;Ansicht&quot;">
 <!ENTITY openwith-display-pane.contextmenu.label "Seiten-Kontextmenü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Link-Kontextmenü">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Tab-Kontextmenü">
 <!ENTITY openwith-display-pane.tabbar.label "Tab-Leiste">
 <!ENTITY openwith-display-pane.toolbar.label "Symbolleiste">

@@ -24,6 +24,13 @@
 		</menu>
 	</menupopup>
 
+	<menupopup id="placesContext">
+		<menuitem id="openwith-placescontextlinkplaceholder" label="&openwith-placeholder.label;" insertbefore="placesContext_openSeparator" selectiontype="single" />
+		<menu id="openwith-placescontextsubmenu" label="&openwith-submenu.label;" insertbefore="placesContext_openSeparator" selectiontype="single">
+			<menupopup id="openwith-placescontextsubmenupopup" />
+		</menu>
+	</menupopup>
+
 	<panelmultiview id="PanelUI-multiView">
 		<panelview id="PanelUI-openwith" flex="1" class="PanelUI-subView" />
 	</panelmultiview>

@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Affichage">
 <!ENTITY openwith-display-pane.contextmenu.label "Menu contextuel (clic droit)">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu contextuel sur les liens">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu contextuel de l'onglet">
 <!ENTITY openwith-display-pane.tabbar.label "Barre des onglets">
 <!ENTITY openwith-display-pane.toolbar.label "Barre d'outils">

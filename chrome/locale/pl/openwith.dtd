@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Widok">
 <!ENTITY openwith-display-pane.contextmenu.label "Główne menu kontekstowe">
 <!ENTITY openwith-display-pane.contextmenulink.label "Główne menu kontekstowe (linki)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu kontekstowe karty">
 <!ENTITY openwith-display-pane.tabbar.label "Pasek karty">
 <!ENTITY openwith-display-pane.toolbar.label "Pasek narzędzi">

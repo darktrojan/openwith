@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Näytä valikko">
 <!ENTITY openwith-display-pane.contextmenu.label "Päävalikko">
 <!ENTITY openwith-display-pane.contextmenulink.label "Main context menu (links)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Välilehtivalikko">
 <!ENTITY openwith-display-pane.tabbar.label "Välilehtipalkki">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

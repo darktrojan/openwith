@@ -9,6 +9,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Mostra el menú">
 <!ENTITY openwith-display-pane.contextmenu.label "Menú contextual principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menú contextual principal (amb links)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Pestanya del menú contextual">
 <!ENTITY openwith-display-pane.tabbar.label "Barra de pestanyes">
 <!ENTITY openwith-display-pane.toolbar.label "Barra d'eines">

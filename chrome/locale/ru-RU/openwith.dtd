@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "в меню Вид">
 <!ENTITY openwith-display-pane.contextmenu.label "в главном контекстном меню">
 <!ENTITY openwith-display-pane.contextmenulink.label "в главном контекстном меню (ссылки)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "в контекстном меню вкладок">
 <!ENTITY openwith-display-pane.tabbar.label "на панеле вкладок">
 <!ENTITY openwith-display-pane.toolbar.label "на панели инструментов">

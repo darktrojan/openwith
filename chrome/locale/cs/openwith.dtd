@@ -9,6 +9,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Zobrazit menu">
 <!ENTITY openwith-display-pane.contextmenu.label "Hlavní kontextové menu">
 <!ENTITY openwith-display-pane.contextmenulink.label "Hlavní kontextové menu (odkazy)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Panel kontextového menu">
 <!ENTITY openwith-display-pane.tabbar.label "Panel nástrojů">
 <!ENTITY openwith-display-pane.toolbar.label "Tool bar">

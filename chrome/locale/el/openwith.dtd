@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Μενού «Προβολή»">
 <!ENTITY openwith-display-pane.contextmenu.label "Κύριο μενού περιεχομένου">
 <!ENTITY openwith-display-pane.contextmenulink.label "Κύριο μενού περιεχομένου (δεσμοί)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Μενού περιεχομένου καρτελών">
 <!ENTITY openwith-display-pane.tabbar.label "Εργαλειοθήκη καρτελών">
 <!ENTITY openwith-display-pane.toolbar.label "Εργαλειοθήκη">

@@ -5,6 +5,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu Beeld">
 <!ENTITY openwith-display-pane.contextmenu.label "Hoofdcontextmenu">
 <!ENTITY openwith-display-pane.contextmenulink.label "Hoofdcontextmenu (koppelingen)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Tabbladcontextmenu">
 <!ENTITY openwith-display-pane.tabbar.label "Tabbalk">
 <!ENTITY openwith-display-pane.toolbar.label "Werkbalk">

@@ -27,6 +27,7 @@ let OpenWithCore = {
 	TARGET_TAB: 3,
 	TARGET_DEVTOOLS: 4,
 	TARGET_PANEL_UI: 5,
+	TARGET_PLACES: 6,
 
 	list: [],
 	suppressLoadList: false,
@@ -290,6 +291,10 @@ let OpenWithCore = {
 		case OpenWithCore.TARGET_DEVTOOLS:
 			menuItem.setAttribute('oncommand',
 				'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
+			break;
+		case OpenWithCore.TARGET_PLACES:
+			menuItem.setAttribute('oncommand',
+				'OpenWithCore.doCommand(event, PlacesUIUtils.getViewForNode(document.popupNode).selectedNode.uri);');
 			break;
 		}
 		menuItem.setAttribute('openwith-command', command);

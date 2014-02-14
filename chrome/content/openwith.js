@@ -116,6 +116,40 @@ let OpenWith = {
 			submenu: true
 		});
 
+		/** places context menu **/
+		this.placesContextPlaceholder = document.getElementById('openwith-placescontextlinkplaceholder');
+
+		let placesContext = document.getElementById('placesContext');
+		placesContext.addEventListener('popupshowing', this.popupShowing, false);
+		placesContext.addEventListener('popuphidden', this.popupHidden, false);
+
+		this.placesContextItems = [];
+		this.locations.push({
+			prefName: 'placescontext',
+			empty: function() { this.container.splice(0, this.container.length); },
+			factory: OpenWithCore.createMenuItem,
+			targetType: OpenWithCore.TARGET_PLACES,
+			suffix: '_placescontext',
+			container: this.placesContextItems,
+			submenu: false
+		});
+
+		/** places context menu submenu **/
+		this.placesContextSubmenu = document.getElementById('openwith-placescontextsubmenu');
+		this.placesContextSubmenuPopup = document.getElementById('openwith-placescontextsubmenupopup');
+		this.locations.push({
+			prefName: 'placescontext.submenu',
+			empty: function() {
+				while (this.container.lastChild)
+					this.container.removeChild(this.container.lastChild);
+			},
+			factory: OpenWithCore.createMenuItem,
+			targetType: OpenWithCore.TARGET_PLACES,
+			suffix: '_placescontextsubmenu',
+			container: this.placesContextSubmenuPopup,
+			submenu: true
+		});
+
 		/** tab menu **/
 		try {
 			let tabMenuItem, tabMenu;
@@ -382,20 +416,35 @@ let OpenWith = {
 		switch (this.id) {
 			case 'menu_viewPopup':
 			case 'menu_View_Popup':
-				let viewMenuPref = OpenWithCore.prefs.getBoolPref('viewmenu');
-				let viewMenuSubmenuPref = OpenWithCore.prefs.getBoolPref('viewmenu.submenu');
+			case 'placesContext':
+				let pref, submenuPref, placeholder, submenu, items;
+				if (this.id == 'placesContext') {
+					if (document.popupNode.localName == 'menuitem' && document.popupNode.classList.contains('bookmark-item')) {
+						pref = OpenWithCore.prefs.getBoolPref('placescontext');
+						submenuPref = OpenWithCore.prefs.getBoolPref('placescontext.submenu');
+					}
+					placeholder = OpenWith.placesContextPlaceholder;
+					submenu = OpenWith.placesContextSubmenu;
+					items = OpenWith.placesContextItems;
+				} else {
+					pref = OpenWithCore.prefs.getBoolPref('viewmenu');
+					submenuPref = OpenWithCore.prefs.getBoolPref('viewmenu.submenu');
+					OpenWith.viewMenuSeparator.hidden = (!pref && !submenuPref) || OpenWith.emptyList;
+					placeholder = OpenWith.viewMenuPlaceholder;
+					submenu = OpenWith.viewSubmenu;
+					items = OpenWith.viewMenuItems;
+				}
 
-				OpenWith.viewMenuPlaceholder.hidden = true;
-				OpenWith.viewMenuSeparator.hidden = (!viewMenuPref && !viewMenuSubmenuPref) || OpenWith.emptyList;
-				OpenWith.viewSubmenu.hidden = !viewMenuSubmenuPref || OpenWith.emptyList;
+				placeholder.hidden = true;
+				submenu.hidden = !submenuPref || OpenWith.emptyList;
 
-				if (viewMenuPref) {
-					let next = OpenWith.viewMenuPlaceholder.nextSibling;
-					for (let i = 0, iCount = OpenWith.viewMenuItems.length; i < iCount; i++) {
+				if (pref) {
+					let next = placeholder.nextSibling;
+					for (let i = 0, iCount = items.length; i < iCount; i++) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.viewMenuItems[i], next);
+							this.__MenuEdit_insertBefore_orig(items[i], next);
 						} else {
-							this.insertBefore(OpenWith.viewMenuItems[i], next);
+							this.insertBefore(items[i], next);
 						}
 					}
 				}
@@ -481,17 +530,25 @@ let OpenWith = {
 
 		switch (this.id) {
 		case 'menu_viewPopup':
-		case 'menu_View_Popup': {
-				OpenWith.viewMenuPlaceholder.hidden = false;
+		case 'menu_View_Popup':
+		case 'placesContext': {
+				let placeholder;
+				if (this.id == 'placesContext') {
+					placeholder = OpenWith.placesContextPlaceholder;
+				} else {
+					placeholder = OpenWith.viewMenuPlaceholder;
+				}
 
-				let next = OpenWith.viewMenuPlaceholder.nextSibling;
+				placeholder.hidden = false;
+
+				let next = placeholder.nextSibling;
 				while (next && next.className.indexOf('openwith') == 0) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
 					} else {
 						this.removeChild(next);
 					}
-					next = OpenWith.viewMenuPlaceholder.nextSibling;
+					next = placeholder.nextSibling;
 				}
 				return;
 			}

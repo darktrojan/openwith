@@ -8,6 +8,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menu principale 'Visualizza'">
 <!ENTITY openwith-display-pane.contextmenu.label "Menu contestuale delle pagine web">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu contestuale dei link">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu contestuale delle schede">
 <!ENTITY openwith-display-pane.tabbar.label "Barra delle schede">
 <!ENTITY openwith-display-pane.toolbar.label "Barra degli strumenti">

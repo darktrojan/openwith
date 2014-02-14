@@ -10,6 +10,7 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Trình đơn View">
 <!ENTITY openwith-display-pane.contextmenu.label "Trình đơn ngữ cảnh chính">
 <!ENTITY openwith-display-pane.contextmenulink.label "Trình đơn ngữ cảnh chính (các liên kết)">
+<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
 <!ENTITY openwith-display-pane.tabmenu.label "Trình đơn ngữ cảnh của thẻ">
 <!ENTITY openwith-display-pane.tabbar.label "Thanh chứa thẻ">
 <!ENTITY openwith-display-pane.toolbar.label "Thanh công cụ">
