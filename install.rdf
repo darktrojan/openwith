@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 	<Description about="urn:mozilla:install-manifest">
@@ -124,6 +124,14 @@
 				<em:description>Open With 會在功能表和分頁列上加入以其他瀏覽器開啟目前網頁的選項</em:description>
 				<em:creator>Geoff Lankow</em:creator>
 				<em:translator>velociraptor</em:translator>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>ab-CD</em:locale>
+				<em:name>Opěŉ Wïth</em:name>
+				<em:description>Opĕŉ Wîth âdds õptĩöñs tò yóùr mëņũs ãŋd tàb bār főr öpĕņįņg thè čūrrĕňt pągĕ īŉ åŋōthėr brőwsěr. Yup.</em:description>
 			</Description>
 		</em:localized>
 	</Description>
