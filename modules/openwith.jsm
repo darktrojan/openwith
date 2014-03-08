@@ -609,8 +609,6 @@ let OpenWithCore = {
 		name = name || aFile.leafName.replace(/\.desktop$/i, '');
 		istream.close();
 
-		Services.console.logStringMessage(icon);
-
 		return {
 			auto: true,
 			keyName: aFile.leafName,
