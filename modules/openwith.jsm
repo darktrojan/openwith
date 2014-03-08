@@ -36,6 +36,7 @@ let OpenWithCore = {
 			return;
 		}
 
+		let hidePref = this.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
 		this.list = [];
 		if (WINDOWS) {
 			if (!registryKey) {
@@ -45,7 +46,6 @@ let OpenWithCore = {
 				env = Cc['@mozilla.org/process/environment;1'].getService(Ci.nsIEnvironment);
 			}
 
-			let hidePref = this.prefs.getCharPref('hide').toLowerCase();
 			for (let i = 0, iCount = registryKey.childCount; i < iCount; i++) {
 				try {
 					let name = registryKey.getChildName(i);
@@ -74,7 +74,7 @@ let OpenWithCore = {
 						command: command,
 						params: params,
 						icon: this.findIconURL(file, 16),
-						hidden: new RegExp('\\b' + name + '\\b', 'i').test(hidePref)
+						hidden: hidePref.indexOf(name) >= 0
 					});
 				} catch (e) {
 					Cu.reportError(e);
@@ -85,8 +85,7 @@ let OpenWithCore = {
 				locAppDir = Services.dirsvc.get('LocApp', Ci.nsIFile);
 			}
 
-			let hidePref = this.prefs.getCharPref('hide').toLowerCase();
-			let apps = ['Camino', 'Google Chrome', 'Firefox', 'Flock', 'Opera', 'Safari', 'SeaMonkey'];
+			let apps = ['Camino', 'Google Chrome', 'Chromium', 'Firefox', 'Flock', 'Opera', 'Safari', 'SeaMonkey'];
 			for (let i = 0, iCount = apps.length; i < iCount; i++) {
 				let name = apps[i];
 				let appFile = locAppDir.clone();
@@ -99,8 +98,26 @@ let OpenWithCore = {
 						command: appFile.path,
 						params: [],
 						icon: this.findIconURL(appFile, 16),
-						hidden: new RegExp('\\b' + name + '\\b', 'i').test(hidePref)
+						hidden: hidePref.indexOf(name) >= 0
 					});
+				}
+			}
+		} else {
+			for (let app of ['google-chrome', 'chromium-browser', 'firefox', 'opera', 'seamonkey']) {
+				let desktopFile = FileUtils.getFile('ProfD', ['.local', 'share', 'applications'], true);
+				if (desktopFile.exists()) {
+					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					continue;
+				}
+				desktopFile = new FileUtils.File('/usr/local/share/applications/' + app + '.desktop');
+				if (desktopFile.exists()) {
+					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					continue;
+				}
+				desktopFile = new FileUtils.File('/usr/share/applications/' + app + '.desktop');
+				if (desktopFile.exists()) {
+					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					continue;
 				}
 			}
 		}
@@ -140,8 +157,8 @@ let OpenWithCore = {
 				params: params,
 				icon: icon,
 				hidden: false,
-				useFilePath: this.prefs.getPrefType(name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL
-								&& this.prefs.getBoolPref(name + '.usefilepath')
+				useFilePath: this.prefs.getPrefType(name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL &&
+						this.prefs.getBoolPref(name + '.usefilepath')
 			});
 		}
 
@@ -541,6 +558,68 @@ let OpenWithCore = {
 		this.prefs.setIntPref('donationreminder', Date.now() / 1000);
 		notifyBox.appendNotification(label, value,
 				'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
+	},
+	readDesktopFile: function(aFile, aHidePref) {
+		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
+		istream.init(aFile, 0x01, 0444, 0);
+		istream.QueryInterface(Components.interfaces.nsILineInputStream);
+
+		let line = {};
+		let notEOF;
+		let name, command, icon;
+		let params = [];
+		do {
+			notEOF = istream.readLine(line);
+			if (!command && /^Exec=/.test(line.value)) {
+				let commandParts = line.value.substring(5).replace(/\s+%U/i, '').split(/\s+/);
+				command = commandParts[0];
+				let file;
+				if (command[0] == '/') {
+					file = new FileUtils.File(command);
+				} else {
+					let env = Cc['@mozilla.org/process/environment;1'].getService(Ci.nsIEnvironment);
+					let paths = env.get('PATH').split(':');
+					for (let i = 0; i < paths.length; i++) {
+						file = new FileUtils.File(paths[i] + '/' + command);
+						if (file.exists()) {
+							command = file.path;
+							break;
+						}
+					}
+				}
+				for (let i = 1; i < commandParts.length; i++) {
+					params.push(commandParts[i]);
+				}
+
+				if (!icon) {
+					icon = this.findIconURL(file, 16);
+				}
+			}
+			if (!name && /^Name=/.test(line.value)) {
+				name = line.value.substring(5);
+			}
+			if (/^Icon=/.test(line.value)) {
+				if (line.value[5] == '/') {
+					icon = 'file://' + line.value.substring(5);
+				} else {
+					icon = 'moz-icon://stock/' + line.value.substring(5) + '?size=menu';
+				}
+			}
+		} while (notEOF);
+		name = name || aFile.leafName.replace(/\.desktop$/i, '');
+		istream.close();
+
+		Services.console.logStringMessage(icon);
+
+		return {
+			auto: true,
+			keyName: aFile.leafName,
+			name: name,
+			command: command,
+			params: params,
+			icon: icon,
+			hidden: aHidePref.indexOf(aFile.leafName) >= 0
+		};
 	}
 };
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {

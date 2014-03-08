@@ -236,76 +236,39 @@ function saveItemToPrefs(item, saveIcon) {
 
 function addNewItem() {
 	if (fp.show() == Ci.nsIFilePicker.returnOK) {
-		let name, command, icon;
-		let params = [];
-		let saveIcon = false;
+		let item = document.createElement('richlistitem');
 
 		if (/\.desktop$/.test(fp.file.leafName)) {
-			let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
-			istream.init(fp.file, 0x01, 0444, 0);
-			istream.QueryInterface(Components.interfaces.nsILineInputStream);
-
-			let line = {};
-			let notEOF;
-			do {
-				notEOF = istream.readLine(line);
-				if (!command && /^Exec=/.test(line.value)) {
-					let commandParts = line.value.substring(5).replace(/\s+%U/i, '').split(/\s+/);
-					command = commandParts[0];
-					let file;
-					if (command[0] == '/') {
-						file = new FileUtils.File(command);
-					} else {
-						let env = Cc['@mozilla.org/process/environment;1'].getService(Ci.nsIEnvironment);
-						let paths = env.get('PATH').split(':');
-						for (let i = 0; i < paths.length; i++) {
-							file = new FileUtils.File(paths[i] + '/' + command);
-							if (file.exists()) {
-								command = file.path;
-								break;
-							}
-						}
-					}
-					for (let i = 1; i < commandParts.length; i++) {
-						params.push(commandParts[i]);
-					}
-
-					if (!icon) {
-						icon = OpenWithCore.findIconURL(file, 32);
-					}
-				}
-				if (!name && /^Name=/.test(line.value)) {
-					name = line.value.substring(5);
-				}
-				if (/^Icon=/.test(line.value)) {
-					if (line.value[5] == '/') {
-						icon = 'file://' + line.value.substring(5);
-					} else {
-						icon = 'moz-icon://stock/' + line.value.substring(5) + '?size=dnd';
-					}
-				}
-			} while (notEOF);
-			name = name || fp.file.leafName.replace(/\.desktop$/i, '');
-			istream.close();
-			saveIcon = true;
+			let program = OpenWithCore.readDesktopFile(fp.file, []);
+			delete program.hidden;
+			program.auto = false;
+			program.icon = program.icon.replace('?size=menu', '?size=dnd');
+			program.icon = program.icon.replace(/16/g, '32');
+			program.keyName = program.keyName.replace(/\.desktop$/, '');
+			program.manual = true;
+			program.params = program.params.join(' ');
+			for (let [name, value] of Iterator(program)) {
+				item.setAttribute(name, value);
+			}
+			saveItemToPrefs(item, true);
 		} else {
-			name = fp.file.leafName.replace(/\.(app|exe)$/i, '');
-			command = fp.file.path;
-			icon = OpenWithCore.findIconURL(fp.file, 32);
+			let name = fp.file.leafName.replace(/\.(app|exe)$/i, '');
+			let command = fp.file.path;
+			let icon = OpenWithCore.findIconURL(fp.file, 32);
+
+			item.setAttribute('auto', false);
+			item.setAttribute('manual', true);
+			item.setAttribute('keyName', name.replace(/\W+/g, '_'));
+			item.setAttribute('name', name);
+			item.setAttribute('command', command);
+			item.setAttribute('params', '');
+			item.setAttribute('icon', icon);
+
+			saveItemToPrefs(item, false);
 		}
 
-		let item = document.createElement('richlistitem');
-		item.setAttribute('auto', false);
-		item.setAttribute('manual', true);
-		item.setAttribute('keyName', name.replace(/\W+/g, '_'));
-		item.setAttribute('name', name);
-		item.setAttribute('command', command);
-		item.setAttribute('params', params.join(' '));
-		item.setAttribute('icon', icon);
 		list.appendChild(item);
 		list.selectItem(item);
-
-		saveItemToPrefs(item, saveIcon);
 	}
 }
 
