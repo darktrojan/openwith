@@ -18,22 +18,13 @@ let OpenWith = {
 			},
 			factory: OpenWithCore.createToolbarButton,
 			targetType: OpenWithCore.TARGET_DEVTOOLS,
-			suffix: '_toolbox',
-			container: document.getElementById('openwith-toolboxbox'),
-			submenu: false
+			container: document.getElementById('openwith-toolboxbox')
 		};
 
 		this.menuLocation = {
 			prefName: 'toolbox.menu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_DEVTOOLS,
-			suffix: '_toolboxmenu',
-			container: document.getElementById('openwith-toolbox-menu'),
-			submenu: false
+			container: document.getElementById('openwith-toolbox-menu')
 		};
 
 		this.loadLists();
@@ -69,9 +60,6 @@ let OpenWith = {
 	},
 
 	loadLists: function() {
-		this.location.empty();
-		this.menuLocation.empty();
-
 		if (!OpenWithCore.prefs.getBoolPref('toolbox.menu')) {
 			this.menuLocation.container.parentNode.setAttribute('hidden', 'true');
 		} else {

@@ -246,12 +246,32 @@ let OpenWithCore = {
 		}
 	},
 	refreshUI: function(document, locations) {
-		for (let j = 0, jCount = locations.length; j < jCount; j++) {
-			locations[j].empty();
+		for (let location of locations) {
+		try {
+			if (typeof location.empty == 'function') {
+				location.empty.apply(location);
+			} else if (Array.isArray(location.container)) {
+				location.container.length = 0;
+			} else { // DOM element
+				while (location.container.lastChild) {
+					location.container.lastChild.remove();
+				}
+			}
+		} catch (e) {
+			Services.console.logStringMessage(JSON.stringify(location));
+		}
+			if (typeof location.suffix != 'string') {
+				location.suffix = '_' + location.prefName.replace(/\W/, '');
+			}
+			if (typeof location.factory != 'function') {
+				location.factory = OpenWithCore.createMenuItem;
+			}
+			if (typeof location.submenu != 'boolean') {
+				location.submenu = /\.submenu$/.test(location.prefName);
+			}
 		}
 
-		for (let i = 0, iCount = this.list.length; i < iCount; i++) {
-			let item = this.list[i];
+		for (let item of this.list) {
 			if (item.hidden) {
 				continue;
 			}
@@ -260,8 +280,7 @@ let OpenWithCore = {
 			let label = this.strings.formatStringFromName('openWithLabel', [item.name], 1);
 			let linkLabel = this.strings.formatStringFromName('openLinkWithLabel', [item.name], 1);
 
-			for (let j = 0, jCount = locations.length; j < jCount; j++) {
-				let location = locations[j];
+			for (let location of locations) {
 				let labelToUse;
 
 				if (location.submenu) {
@@ -284,7 +303,7 @@ let OpenWithCore = {
 			}
 		}
 	},
-	createMenuItem: function(document, item, label, targetType) {
+	createMenuItem: function(document, item, label, targetType = OpenWithCore.TARGET_STANDARD) {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;
@@ -321,7 +340,7 @@ let OpenWithCore = {
 		}
 		return menuItem;
 	},
-	createToolbarButton: function(document, item, tooltip, targetType) {
+	createToolbarButton: function(document, item, tooltip, targetType = OpenWithCore.TARGET_STANDARD) {
 		let command = item.command;
 		let params = item.params;
 		let icon = item.icon;

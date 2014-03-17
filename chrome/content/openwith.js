@@ -28,12 +28,7 @@ let OpenWith = {
 		this.viewMenuItems = [];
 		this.locations.push({
 			prefName: 'viewmenu',
-			empty: function() { this.container.splice(0, this.container.length); },
-			factory: OpenWithCore.createMenuItem,
-			targetType: OpenWithCore.TARGET_STANDARD,
-			suffix: '_viewmenu',
-			container: this.viewMenuItems,
-			submenu: false
+			container: this.viewMenuItems
 		});
 
 		/** view menu submenu **/
@@ -41,15 +36,7 @@ let OpenWith = {
 		this.viewSubmenuPopup = document.getElementById('openwith-viewsubmenupopup');
 		this.locations.push({
 			prefName: 'viewmenu.submenu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
-			targetType: OpenWithCore.TARGET_STANDARD,
-			suffix: '_viewsubmenu',
-			container: this.viewSubmenuPopup,
-			submenu: true
+			container: this.viewSubmenuPopup
 		});
 
 		/** context menu **/
@@ -63,12 +50,7 @@ let OpenWith = {
 		this.contextMenuItems = [];
 		this.locations.push({
 			prefName: 'contextmenu',
-			empty: function() { this.container.splice(0, this.container.length); },
-			factory: OpenWithCore.createMenuItem,
-			targetType: OpenWithCore.TARGET_STANDARD,
-			suffix: '_contextmenu',
-			container: this.contextMenuItems,
-			submenu: false
+			container: this.contextMenuItems
 		});
 
 		/** context menu submenu **/
@@ -76,15 +58,7 @@ let OpenWith = {
 		this.contextSubmenuPopup = document.getElementById('openwith-contextsubmenupopup');
 		this.locations.push({
 			prefName: 'contextmenu.submenu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
-			targetType: OpenWithCore.TARGET_STANDARD,
-			suffix: '_contextmenusubmenu',
-			container: this.contextSubmenuPopup,
-			submenu: true
+			container: this.contextSubmenuPopup
 		});
 
 		/** context menu (links) **/
@@ -92,12 +66,8 @@ let OpenWith = {
 		this.contextMenuLinkItems = [];
 		this.locations.push({
 			prefName: 'contextmenulink',
-			empty: function() { this.container.splice(0, this.container.length); },
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
-			suffix: '_contextmenulink',
-			container: this.contextMenuLinkItems,
-			submenu: false
+			container: this.contextMenuLinkItems
 		});
 
 		/** context menu (links) submenu **/
@@ -105,15 +75,8 @@ let OpenWith = {
 		this.contextLinkSubmenuPopup = document.getElementById('openwith-contextlinksubmenupopup');
 		this.locations.push({
 			prefName: 'contextmenulink.submenu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
-			suffix: '_contextmenulinksubmenu',
-			container: this.contextLinkSubmenuPopup,
-			submenu: true
+			container: this.contextLinkSubmenuPopup
 		});
 
 		/** places context menu **/
@@ -126,12 +89,8 @@ let OpenWith = {
 		this.placesContextItems = [];
 		this.locations.push({
 			prefName: 'placescontext',
-			empty: function() { this.container.splice(0, this.container.length); },
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_PLACES,
-			suffix: '_placescontext',
-			container: this.placesContextItems,
-			submenu: false
+			container: this.placesContextItems
 		});
 
 		/** places context menu submenu **/
@@ -139,15 +98,8 @@ let OpenWith = {
 		this.placesContextSubmenuPopup = document.getElementById('openwith-placescontextsubmenupopup');
 		this.locations.push({
 			prefName: 'placescontext.submenu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_PLACES,
-			suffix: '_placescontextsubmenu',
-			container: this.placesContextSubmenuPopup,
-			submenu: true
+			container: this.placesContextSubmenuPopup
 		});
 
 		/** tab menu **/
@@ -185,26 +137,15 @@ let OpenWith = {
 			this.tabMenuItems = [];
 			this.locations.push({
 				prefName: 'tabmenu',
-				empty: function() { this.container.splice(0, this.container.length); },
-				factory: OpenWithCore.createMenuItem,
 				targetType: OpenWithCore.TARGET_TAB,
-				suffix: '_tabmenu',
-				container: this.tabMenuItems,
-				submenu: false
+				container: this.tabMenuItems
 			});
 
 			/** tab menu submenu **/
 			this.locations.push({
 				prefName: 'tabmenu.submenu',
-				empty: function() {
-					while (this.container.lastChild)
-						this.container.removeChild(this.container.lastChild);
-				},
-				factory: OpenWithCore.createMenuItem,
 				targetType: OpenWithCore.TARGET_TAB,
-				suffix: '_tabsubmenu',
-				container: this.tabSubmenuPopup,
-				submenu: true
+				container: this.tabSubmenuPopup
 			});
 		} catch (e) {
 			this.tabMenuPlaceholder = null;
@@ -259,24 +200,13 @@ let OpenWith = {
 							this.container.removeChild(this.container.lastChild);
 					},
 					factory: OpenWithCore.createToolbarButton,
-					targetType: OpenWithCore.TARGET_STANDARD,
-					suffix: '_tabbar',
-					container: this.tabButtonContainer,
-					submenu: false
+					container: this.tabButtonContainer
 				});
 
 				/** tab bar menu **/
 				this.locations.push({
 					prefName: 'tabbar.menu',
-					empty: function() {
-						while (this.container.lastChild)
-							this.container.removeChild(this.container.lastChild);
-					},
-					factory: OpenWithCore.createMenuItem,
-					targetType: OpenWithCore.TARGET_STANDARD,
-					suffix: '_tabbarmenu',
-					container: this.tabBarMenu,
-					submenu: false
+					container: this.tabBarMenu
 				});
 			} catch (e) {
 				this.tabButtonContainer = null;
@@ -301,30 +231,15 @@ let OpenWith = {
 			if (this.toolbarButtonContainer) {
 				this.locations.push({
 					prefName: 'toolbar',
-					empty: function() {
-						while (this.container.childNodes.length > 1)
-							this.container.removeChild(this.container.lastChild);
-					},
 					factory: OpenWithCore.createToolbarButton,
-					targetType: OpenWithCore.TARGET_STANDARD,
-					suffix: '_toolbar',
-					container: this.toolbarButtonContainer,
-					submenu: false
+					container: this.toolbarButtonContainer
 				});
 
 				/** tool bar menu **/
 				this.toolbarMenu = this.toolbarButtonContainer.getElementsByTagName('menupopup').item(0);
 				this.locations.push({
 					prefName: 'toolbar.menu',
-					empty: function() {
-						while (this.container.lastChild)
-							this.container.removeChild(this.container.lastChild);
-					},
-					factory: OpenWithCore.createMenuItem,
-					targetType: OpenWithCore.TARGET_STANDARD,
-					suffix: '_toolbarmenu',
-					container: this.toolbarMenu,
-					submenu: false
+					container: this.toolbarMenu
 				});
 			}
 		} catch (e) {
@@ -349,15 +264,10 @@ let OpenWith = {
 			});
 
 			this.locations.push({
-				empty: function() {
-					while (this.container.lastChild)
-						this.container.removeChild(this.container.lastChild);
-				},
 				factory: OpenWithCore.createToolbarButton,
 				targetType: OpenWithCore.TARGET_PANEL_UI,
 				suffix: '_widget',
-				container: document.getElementById('PanelUI-openwith'),
-				submenu: false
+				container: document.getElementById('PanelUI-openwith')
 			});
 
 			CustomizableUI.createWidget({
@@ -383,15 +293,9 @@ let OpenWith = {
 					}
 
 					OpenWith.locations.push({
-						empty: function() {
-							while (this.container.lastChild)
-								this.container.removeChild(this.container.lastChild);
-						},
 						factory: OpenWithCore.createToolbarButton,
-						targetType: OpenWithCore.TARGET_STANDARD,
 						suffix: '_widewidget',
-						container: toolbaritem,
-						submenu: false
+						container: toolbaritem
 					});
 
 					function updateCombinedWidgetStyle(aArea) {
@@ -463,10 +367,6 @@ let OpenWith = {
 	},
 
 	loadLists: function() {
-		for (let j = 0, jCount = this.locations.length; j < jCount; j++) {
-			this.locations[j].empty();
-		}
-
 		if (this.tabBarMenu) {
 			if (!OpenWithCore.prefs.getBoolPref('tabbar.menu')) {
 				this.tabBarMenu.parentNode.setAttribute('hidden', 'true');

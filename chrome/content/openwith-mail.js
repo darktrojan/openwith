@@ -24,12 +24,8 @@ let OpenWith = {
 		this.contextMenuLinkItems = [];
 		this.locations.push({
 			prefName: 'contextmenulink',
-			empty: function() { this.container.splice(0, this.container.length); },
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
-			suffix: '_contextmenulink',
-			container: this.contextMenuLinkItems,
-			submenu: false
+			container: this.contextMenuLinkItems
 		});
 		contextMenu.insertBefore(this.contextMenuLinkPlaceholder, separator);
 
@@ -38,15 +34,8 @@ let OpenWith = {
 		this.contextLinkSubmenuPopup = document.getElementById('openwith-contextlinksubmenupopup');
 		this.locations.push({
 			prefName: 'contextmenulink.submenu',
-			empty: function() {
-				while (this.container.lastChild)
-					this.container.removeChild(this.container.lastChild);
-			},
-			factory: OpenWithCore.createMenuItem,
 			targetType: OpenWithCore.TARGET_LINK,
-			suffix: '_contextmenulinksubmenu',
-			container: this.contextLinkSubmenuPopup,
-			submenu: true
+			container: this.contextLinkSubmenuPopup
 		});
 		contextMenu.insertBefore(this.contextLinkSubmenu, separator);
 
