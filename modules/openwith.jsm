@@ -597,7 +597,7 @@ let OpenWithCore = {
 						}
 					}
 				}
-				for (let part of commandParts) {
+				for (let part of commandParts.slice(1)) {
 					params.push(part);
 				}
 
