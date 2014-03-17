@@ -86,8 +86,7 @@ let OpenWithCore = {
 			}
 
 			let apps = ['Camino', 'Google Chrome', 'Chromium', 'Firefox', 'Flock', 'Opera', 'Safari', 'SeaMonkey'];
-			for (let i = 0, iCount = apps.length; i < iCount; i++) {
-				let name = apps[i];
+			for (let name of apps) {
 				let appFile = locAppDir.clone();
 				appFile.append(name + '.app');
 				if (appFile.exists()) {
@@ -124,8 +123,7 @@ let OpenWithCore = {
 
 		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
-		for (let i = 0, iCount = manual.length; i < iCount; i++) {
-			let name = manual[i];
+		for (let name of manual) {
 			if (/\.(icon|name|usefilepath)$/.test(name)) {
 				continue;
 			}
@@ -165,9 +163,9 @@ let OpenWithCore = {
 		if (this.prefs.prefHasUserValue('order')) {
 			let order = JSON.parse(this.prefs.getCharPref('order'));
 			let newList = [];
-			for (let i = 0; i < order.length; i++) {
-				let auto = order[i][0] == 'a';
-				let keyName = order[i].substring(2);
+			for (let orderItem of order) {
+				let auto = orderItem[0] == 'a';
+				let keyName = orderItem.substring(2);
 				for (let j = 0; j < this.list.length; j++) {
 					let item = this.list[j];
 					if (item.auto == auto && item.keyName == keyName) {
@@ -177,16 +175,14 @@ let OpenWithCore = {
 					}
 				}
 			}
-			for (let j = 0; j < this.list.length; j++) {
-				let item = this.list[j];
+			for (let item of this.list) {
 				newList.push(item);
 			}
 			this.list = newList;
 		}
 
 		Services.console.logStringMessage('OpenWith: reloading lists');
-		for (let i = 0, iCount = this.list.length; i < iCount; i++) {
-			let item = this.list[i];
+		for (let item of this.list) {
 			Services.console.logStringMessage(item.name + ':\n\tCommand: ' +
 					item.command + '\n\tParams: ' + item.params.join(' ') + '\n\tIcon URL: ' + item.icon);
 		}
@@ -202,24 +198,22 @@ let OpenWithCore = {
 				let target = file.target;
 				file = new FileUtils.File(target);
 			}
-			let relPaths = [
+			for (let relPath of [
 				'browser/chrome/icons/default/default' + size + '.png',
 				'chrome/icons/default/default' + size + '.png',
 				'product_logo_' + size + '.png'
-			];
-			for (let i = 0, iCount = relPaths.length; i < iCount; i++) {
+			]) {
 				let relTest = file.parent;
-				relTest.appendRelativePath(relPaths[i]);
+				relTest.appendRelativePath(relPath);
 				if (relTest.exists()) {
 					return Services.io.newFileURI(relTest).spec;
 				}
 			}
-			let absPaths = [
+			for (let absPath of [
 				'/usr/share/icons/default.kde4/' + size + 'x' + size + '/apps/' + file.leafName + '.png',
 				'/usr/share/icons/hicolor/' + size + 'x' + size + '/apps/' + file.leafName + '.png'
-			];
-			for (let i = 0, iCount = absPaths.length; i < iCount; i++) {
-				let absTest = new FileUtils.File(absPaths[i]);
+			]) {
+				let absTest = new FileUtils.File(absPath);
 				if (absTest.exists()) {
 					return Services.io.newFileURI(absTest).spec;
 				}
@@ -595,16 +589,16 @@ let OpenWithCore = {
 				} else {
 					let env = Cc['@mozilla.org/process/environment;1'].getService(Ci.nsIEnvironment);
 					let paths = env.get('PATH').split(':');
-					for (let i = 0; i < paths.length; i++) {
-						file = new FileUtils.File(paths[i] + '/' + command);
+					for (let path of paths) {
+						file = new FileUtils.File(path + '/' + command);
 						if (file.exists()) {
 							command = file.path;
 							break;
 						}
 					}
 				}
-				for (let i = 1; i < commandParts.length; i++) {
-					params.push(commandParts[i]);
+				for (let part of commandParts) {
+					params.push(part);
 				}
 
 				if (!icon) {

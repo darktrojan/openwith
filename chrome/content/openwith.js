@@ -421,11 +421,11 @@ let OpenWith = {
 
 				if (pref) {
 					let next = placeholder.nextSibling;
-					for (let i = 0, iCount = items.length; i < iCount; i++) {
+					for (let item of items) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(items[i], next);
+							this.__MenuEdit_insertBefore_orig(item, next);
 						} else {
-							this.insertBefore(items[i], next);
+							this.insertBefore(item, next);
 						}
 					}
 				}
@@ -453,22 +453,22 @@ let OpenWith = {
 
 				if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
 					let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-					for (let i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
+					for (let item of OpenWith.contextMenuLinkItems) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
+							this.__MenuEdit_insertBefore_orig(item, next);
 						} else {
-							this.insertBefore(OpenWith.contextMenuLinkItems[i], next);
+							this.insertBefore(item, next);
 						}
 					}
 				}
 
 				if (contextMenuPref && shouldShow) {
 					let next = OpenWith.contextMenuPlaceholder.nextSibling;
-					for (let i = 0, iCount = OpenWith.contextMenuItems.length; i < iCount; i++) {
+					for (let item of OpenWith.contextMenuItems) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
-							this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuItems[i], next);
+							this.__MenuEdit_insertBefore_orig(item, next);
 						} else {
-							this.insertBefore(OpenWith.contextMenuItems[i], next);
+							this.insertBefore(item, next);
 						}
 					}
 				}
@@ -491,11 +491,11 @@ let OpenWith = {
 
 					if (tabMenuPref) {
 						let next = OpenWith.tabMenuPlaceholder.nextSibling;
-						for (let i = 0, iCount = OpenWith.tabMenuItems.length; i < iCount; i++) {
+						for (let item of OpenWith.tabMenuItems) {
 							if ('__MenuEdit_insertBefore_orig' in this) {
-								this.__MenuEdit_insertBefore_orig(OpenWith.tabMenuItems[i], next);
+								this.__MenuEdit_insertBefore_orig(item, next);
 							} else {
-								this.insertBefore(OpenWith.tabMenuItems[i], next);
+								this.insertBefore(item, next);
 							}
 						}
 					}

@@ -79,11 +79,11 @@ let OpenWith = {
 
 		if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
 			let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-			for (let i = 0, iCount = OpenWith.contextMenuLinkItems.length; i < iCount; i++) {
+			for (let item of OpenWith.contextMenuLinkItems) {
 				if ('__MenuEdit_insertBefore_orig' in this) {
-					this.__MenuEdit_insertBefore_orig(OpenWith.contextMenuLinkItems[i], next);
+					this.__MenuEdit_insertBefore_orig(item, next);
 				} else {
-					this.insertBefore(OpenWith.contextMenuLinkItems[i], next);
+					this.insertBefore(item, next);
 				}
 			}
 		}

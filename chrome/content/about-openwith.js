@@ -106,29 +106,28 @@ function loadBrowserList() {
 		list.removeItemAt(0);
 	}
 
-	for (let i = 0, iCount = OpenWithCore.list.length; i < iCount; i++) {
-		let entry = OpenWithCore.list[i];
+	for (let entry of OpenWithCore.list) {
 		let item = document.createElement('richlistitem');
-		for (let a in entry) {
-			switch (a) {
+		for (let [key, value] of Iterator(entry)) {
+			switch (key) {
 			case 'auto':
-				item.setAttribute('auto', entry[a]);
-				item.setAttribute('manual', !entry[a]);
+				item.setAttribute('auto', value);
+				item.setAttribute('manual', !value);
 				break;
 			case 'hidden':
-				item.setAttribute('browserHidden', entry[a]);
+				item.setAttribute('browserHidden', value);
 				break;
 			case 'icon':
-				let icon = entry[a];
+				let icon = value;
 				icon = icon.replace('?size=menu', '?size=dnd');
 				icon = icon.replace(/16/g, '32');
-				item.setAttribute(a, icon);
+				item.setAttribute(key, icon);
 				break;
 			case 'params':
-				item.setAttribute(a, entry[a].join(' '));
+				item.setAttribute(key, value.join(' '));
 				break;
 			default:
-				item.setAttribute(a, entry[a]);
+				item.setAttribute(key, value);
 				break;
 			}
 		}
