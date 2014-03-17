@@ -247,7 +247,6 @@ let OpenWithCore = {
 	},
 	refreshUI: function(document, locations) {
 		for (let location of locations) {
-		try {
 			if (typeof location.empty == 'function') {
 				location.empty.apply(location);
 			} else if (Array.isArray(location.container)) {
@@ -257,9 +256,7 @@ let OpenWithCore = {
 					location.container.lastChild.remove();
 				}
 			}
-		} catch (e) {
-			Services.console.logStringMessage(JSON.stringify(location));
-		}
+
 			if (typeof location.suffix != 'string') {
 				location.suffix = '_' + location.prefName.replace(/\W/, '');
 			}
