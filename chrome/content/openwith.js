@@ -231,6 +231,10 @@ let OpenWith = {
 			if (this.toolbarButtonContainer) {
 				this.locations.push({
 					prefName: 'toolbar',
+					empty: function() {
+						while (this.container.childNodes.length > 1)
+							this.container.removeChild(this.container.lastChild);
+					},
 					factory: OpenWithCore.createToolbarButton,
 					container: this.toolbarButtonContainer
 				});
