@@ -359,6 +359,85 @@ let OpenWith = {
 				container: document.getElementById('PanelUI-openwith'),
 				submenu: false
 			});
+
+			CustomizableUI.createWidget({
+				id: 'openwith-widewidget',
+				type: 'custom',
+				onBuild: function(aDocument) {
+					let areaType = CustomizableUI.getAreaType(this.currentArea);
+					let inPanel = areaType == CustomizableUI.TYPE_MENU_PANEL;
+					let className = inPanel ? 'panel-combined-button' : 'toolbarbutton-1 toolbarbutton-combined';
+
+					let toolbaritem = aDocument.createElement('toolbaritem');
+					toolbaritem.id = 'openwith-widewidget';
+					toolbaritem.className = 'chromeclass-toolbar-additional toolbaritem-combined-buttons panel-wide-item';
+					toolbaritem.setAttribute('removable', 'true');
+					toolbaritem.setAttribute('title', label);
+
+					OpenWithCore.loadList(false);
+					for (let item of OpenWithCore.list) {
+						let label = OpenWithCore.strings.formatStringFromName('openWithLabel', [item.name], 1);
+						let tbb = OpenWithCore.createToolbarButton(aDocument, item, label, OpenWithCore.TARGET_STANDARD);
+						tbb.className = className;
+						toolbaritem.appendChild(tbb);
+					}
+
+					OpenWith.locations.push({
+						empty: function() {
+							while (this.container.lastChild)
+								this.container.removeChild(this.container.lastChild);
+						},
+						factory: OpenWithCore.createToolbarButton,
+						targetType: OpenWithCore.TARGET_STANDARD,
+						suffix: '_widewidget',
+						container: toolbaritem,
+						submenu: false
+					});
+
+					function updateCombinedWidgetStyle(aArea) {
+						let inPanel = aArea == CustomizableUI.AREA_PANEL;
+						let className = inPanel ? 'panel-combined-button' : 'toolbarbutton-1 toolbarbutton-combined';
+						for (let [, tbb] of Iterator(toolbaritem.querySelectorAll('toolbarbutton'))) {
+							tbb.className = className;
+						}
+					}
+
+					let listener = {
+						onWidgetAdded: function(aWidgetId, aArea, aPosition) {
+							if (aWidgetId == this.id)
+								updateCombinedWidgetStyle(aArea);
+						}.bind(this),
+
+						onWidgetRemoved: function(aWidgetId, aPrevArea) {
+							if (aWidgetId == this.id)
+								updateCombinedWidgetStyle(null);
+						}.bind(this),
+
+						onWidgetReset: function(aWidgetNode) {
+						},
+
+						onWidgetMoved: function(aWidgetId, aArea) {
+							if (aWidgetId == this.id)
+								updateCombinedWidgetStyle(aArea);
+						}.bind(this),
+
+						onWidgetInstanceRemoved: function(aWidgetId, aDoc) {
+						},
+
+						onCustomizeStart: function(aWindow) {
+						},
+
+						onCustomizeEnd: function(aWindow) {
+						},
+
+						onWidgetDrag: function(aWidgetId, aArea) {
+						}
+					};
+					CustomizableUI.addListener(listener);
+
+					return toolbaritem;
+				}
+			});
 		}
 
 		OpenWithCore.loadList(false);
