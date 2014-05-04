@@ -641,6 +641,7 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 
 if (Services.appinfo.name == 'Firefox') {
 	Services.scriptloader.loadSubScript('resource://openwith/gcli.js');
+	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
 }
 
 OpenWithCore.versionUpdate();
