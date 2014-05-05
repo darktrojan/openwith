@@ -4,118 +4,127 @@
 
 <!DOCTYPE page SYSTEM "chrome://openwith/locale/openwith.dtd">
 
-<page title="&openwith-options.title;" orient="horizontal" style="padding: 8px; min-height: 30em"
+<page title="&openwith-options.title;" orient="horizontal"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png" style="display: none"/> 
+	<xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png"/>
 
-<hbox flex="1">
-	<spacer flex="1" />
-	<vbox style="-moz-margin-end: 2em;">
-		<hbox align="center" style="margin-bottom: 1em;">
-			<image src="chrome://openwith/content/openwith64.png" />
-			<label value="&openwith-options.title;" style="font-size: 2.5em;" />
-		</hbox>
-		<label value="&openwith-display-choose.label;" style="margin-bottom: 1em" />
-		<grid class="indent">
-			<rows>
-				<row align="center" id="openwith-viewmenu-row">
-					<label value="&openwith-display-pane.viewmenu.label;:" />
-					<menulist id="openwith-viewmenu-group" oncommand="updatePrefs('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-menuitems.label;" />
-							<menuitem label="&openwith-display-submenu.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-contextmenu-row">
-					<label value="&openwith-display-pane.contextmenu.label;:" />
-					<menulist id="openwith-contextmenu-group" oncommand="updatePrefs('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-menuitems.label;" />
-							<menuitem label="&openwith-display-submenu.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-contextmenulink-row">
-					<label value="&openwith-display-pane.contextmenulink.label;:" />
-					<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-menuitems.label;" />
-							<menuitem label="&openwith-display-submenu.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-placescontext-row">
-					<label value="&openwith-display-pane.placescontext.label;:" />
-					<menulist id="openwith-placescontext-group" oncommand="updatePrefs('placescontext', 'placescontext.submenu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-menuitems.label;" />
-							<menuitem label="&openwith-display-submenu.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-tabmenu-row">
-					<label value="&openwith-display-pane.tabmenu.label;:" />
-					<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-menuitems.label;" />
-							<menuitem label="&openwith-display-submenu.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-tabbar-row">
-					<label value="&openwith-display-pane.tabbar.label;:" />
-					<menulist id="openwith-tabbar-group" oncommand="updatePrefs('tabbar', 'tabbar.menu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-buttons.label;" />
-							<menuitem label="&openwith-display-dropdown.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-toolbar-row">
-					<label value="&openwith-display-pane.toolbar.label;:" />
-					<menulist id="openwith-toolbar-group" oncommand="updatePrefs('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
-						<menupopup>
-							<menuitem label="&openwith-display-buttons.label;" />
-							<menuitem label="&openwith-display-dropdown.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-				<row align="center" id="openwith-toolbox-row">
-					<label value="&openwith-display-pane.toolbox.label;:" />
-					<menulist id="openwith-toolbox-group" oncommand="updatePrefs('toolbox', 'toolbox.menu', this.selectedIndex);">
-						<menupopup>
-							<menuitem label="&openwith-display-none.label;" />
-							<menuitem label="&openwith-display-buttons.label;" />
-							<menuitem label="&openwith-display-dropdown.label;" />
-						</menupopup>
-					</menulist>
-				</row>
-			</rows>
-		</grid>
-	</vbox>
-	<vbox>
-		<label value="&openwith-browserlist.label;" />
-		<richlistbox id="list" flex="1" style="width: 40em; margin: 0.5em 0;"></richlistbox>
-		<hbox pack="end">
-			<button id="openwith-manualentry-pane.add-button"
-					oncommand="addNewItem();"
-					label="&openwith-browserlist-add.label;" />
-			<button id="openwith-browserlist-restoreorder-button"
-					oncommand="restoreOrder();"
-					label="&openwith-browserlist-restoreorder.label;" />
-		</hbox>
-	</vbox>
-	<spacer flex="1" />
-</hbox>
-<script src="chrome://openwith/content/about-openwith.js" type="application/javascript;version=1.7"></script>
+	<hbox flex="1" pack="center">
+		<vbox id="left">
+			<hbox align="center">
+				<image src="chrome://openwith/content/openwith64.png" />
+				<label id="title" value="&openwith-options.title;" />
+			</hbox>
+			<hbox align="baseline" pack="center">
+				<label class="text-link" value="&openwith-donate;" href="https://addons.mozilla.org/addon/open-with/about" />
+				<label value="&#xB7;" />
+				<label class="text-link" value="&openwith-github;" href="https://github.com/darktrojan/openwith" />
+			</hbox>
+			<groupbox>
+				<caption label="&openwith-display-choose.label;" />
+				<grid>
+					<rows>
+						<row align="center" id="openwith-viewmenu-row">
+							<label value="&openwith-display-pane.viewmenu.label;:" />
+							<menulist id="openwith-viewmenu-group" oncommand="updatePrefs('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-contextmenu-row">
+							<label value="&openwith-display-pane.contextmenu.label;:" />
+							<menulist id="openwith-contextmenu-group" oncommand="updatePrefs('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-contextmenulink-row">
+							<label value="&openwith-display-pane.contextmenulink.label;:" />
+							<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-placescontext-row">
+							<label value="&openwith-display-pane.placescontext.label;:" />
+							<menulist id="openwith-placescontext-group" oncommand="updatePrefs('placescontext', 'placescontext.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-tabmenu-row">
+							<label value="&openwith-display-pane.tabmenu.label;:" />
+							<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-tabbar-row">
+							<label value="&openwith-display-pane.tabbar.label;:" />
+							<menulist id="openwith-tabbar-group" oncommand="updatePrefs('tabbar', 'tabbar.menu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-buttons.label;" />
+									<menuitem label="&openwith-display-dropdown.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-toolbar-row">
+							<label value="&openwith-display-pane.toolbar.label;:" />
+							<menulist id="openwith-toolbar-group" oncommand="updatePrefs('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
+								<menupopup>
+									<menuitem label="&openwith-display-buttons.label;" />
+									<menuitem label="&openwith-display-dropdown.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+						<row align="center" id="openwith-toolbox-row">
+							<label value="&openwith-display-pane.toolbox.label;:" />
+							<menulist id="openwith-toolbox-group" oncommand="updatePrefs('toolbox', 'toolbox.menu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-buttons.label;" />
+									<menuitem label="&openwith-display-dropdown.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+					</rows>
+				</grid>
+				<description>&openwith-display-toolbarhelp;</description>
+			</groupbox>
+		</vbox>
+		<vbox id="right">
+			<groupbox flex="1">
+				<caption label="&openwith-browserlist.label;" />
+				<description>&openwith-browserlist-detectionchanged;</description>
+				<richlistbox id="list" flex="1"></richlistbox>
+				<hbox pack="end">
+					<button id="openwith-manualentry-pane.add-button"
+							oncommand="addNewItem();"
+							label="&openwith-browserlist-add.label;" />
+					<button id="openwith-browserlist-restoreorder-button"
+							oncommand="restoreOrder();"
+							label="&openwith-browserlist-restoreorder.label;" />
+				</hbox>
+			</groupbox>
+		</vbox>
+	</hbox>
+	<script src="chrome://openwith/content/about-openwith.js" type="application/javascript;version=1.7"></script>
 
 </page>

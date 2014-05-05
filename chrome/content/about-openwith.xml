@@ -9,20 +9,20 @@
 		<content>
 			<vbox flex="1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 				<hbox flex="1">
-					<vbox align="start">
-						<spacer flex="1" />
+					<vbox align="start" pack="center">
 						<image class="browserIcon" xbl:inherits="src=icon" />
-						<spacer flex="1" />
 					</vbox>
 					<vbox flex="1">
 						<hbox>
-							<label class="browserName" crop="end" flex="1" xbl:inherits="value=name" />
-							<spacer flex="5000" />
+							<label class="browserName" crop="end" xbl:inherits="value=name" />
+							<image class="browserAuto"
+								xbl:inherits="collapsed=manual"
+								src="chrome://openwith/content/star.svg"
+								tooltiptext="&openwith-browserlist-auto.tooltip;" />
 						</hbox>
 						<hbox>
-							<label crop="start" flex="1" xbl:inherits="value=command" />
+							<label crop="start" xbl:inherits="value=command" />
 							<label xbl:inherits="value=params" />
-							<spacer flex="5000" />
 						</hbox>
 					</vbox>
 				</hbox>

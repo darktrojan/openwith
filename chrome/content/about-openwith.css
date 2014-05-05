@@ -1,3 +1,28 @@
+:root {
+	padding: 8px;
+	min-height: 30em;
+}
+link[rel] {
+	display: none;
+}
+#left {
+	-moz-margin-end: 2em;
+}
+#left > groupbox {
+	margin-top: 1em;
+}
+#title {
+	font-size: 2.5em;
+}
+#right {
+	width: 40em;
+}
+description {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	width: 0;
+	font-style: italic;
+}
 richlistitem {
 	border-bottom: 1px dotted #c0c0c0;
 	padding: 4px;
