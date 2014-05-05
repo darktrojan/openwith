@@ -25,7 +25,9 @@
 	</menupopup>
 
 	<panelmultiview id="PanelUI-multiView">
-		<panelview id="PanelUI-openwith" flex="1" class="PanelUI-subView" />
+		<panelview id="PanelUI-openwith" flex="1" class="PanelUI-subView">
+			<vbox class="panel-subview-body" />
+		</panelview>
 	</panelmultiview>
 
 	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />

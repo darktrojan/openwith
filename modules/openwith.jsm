@@ -320,7 +320,7 @@ let OpenWithCore = {
 			toolbarButton.setAttribute('oncommand',
 					'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
 		} else {
-			toolbarButton.className = 'toolbarbutton-1';
+			toolbarButton.className = targetType == OpenWithCore.TARGET_PANEL_UI ? 'subviewbutton' : 'toolbarbutton-1';
 			toolbarButton.setAttribute('oncommand',
 					'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
 		}
