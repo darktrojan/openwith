@@ -257,7 +257,7 @@ let OpenWith = {
 				factory: OpenWithCore.createToolbarButton,
 				targetType: OpenWithCore.TARGET_PANEL_UI,
 				suffix: '_widget',
-				container: document.getElementById('PanelUI-openwith')
+				container: document.getElementById('PanelUI-openwith').firstElementChild
 			});
 		}
 
