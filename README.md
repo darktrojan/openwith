@@ -1,5 +1,5 @@
 Open With add-on
-====================
+================
 
 Releases
 --------
@@ -12,6 +12,12 @@ To get a working version of this repo in your Firefox profile, clone it into you
 cd [your profile dir]/extensions
 git clone git://github.com/darktrojan/openwith.git openwith@darktrojan.net
 ```
+
+**Branches**
+Releases are made from the `master` branch, except if a major version has its own branch for bugfixes, such as `v5.5`. Anything yet to be released is on the `unreleased` branch, or a descendant.
+
+**Tags**
+Each version I upload to AMO is tagged with a version number. Some things tagged with a version number are not on AMO.
 
 Localizing
 ----------
