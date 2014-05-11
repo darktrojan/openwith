@@ -401,13 +401,18 @@ let OpenWithCore = {
 		}
 	},
 	versionUpdate: function() {
+		function parseVersion(aVersion) {
+			let match = /^\d+(\.\d+)?/.exec(aVersion);
+			return match ? parseFloat(match[0], 10) : 0;
+		}
+
 		if (this.prefs.getPrefType('version') == Ci.nsIPrefBranch.PREF_STRING) {
-			oldVersion = this.prefs.getCharPref('version');
+			oldVersion = parseVersion(this.prefs.getCharPref('version'));
 		}
 		Cu.import('resource://gre/modules/AddonManager.jsm');
 		AddonManager.getAddonByID(ID, (function(addon) {
-			currentVersion = addon.version;
-			this.prefs.setCharPref('version', currentVersion);
+			currentVersion = parseVersion(addon.version);
+			this.prefs.setCharPref('version', addon.version);
 
 			let appname = Services.appinfo.name;
 			let appversion = parseFloat(Services.appinfo.version);
@@ -511,63 +516,66 @@ let OpenWithCore = {
 			recentWindow.openDialog(REAL_OPTIONS_URL, null, features);
 		}
 	},
-	showNotifications: function() {
-		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-		let notifyBox;
-		if (recentWindow) {
-			notifyBox = recentWindow.gBrowser.getNotificationBox();
+	openDonatePage: function() {
+		let url = 'https://addons.mozilla.org/addon/open-with/about';
+		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE) || Services.wm.getMostRecentWindow(MAIL_TYPE);
+		if ('switchToTabHavingURI' in recentWindow) {
+			recentWindow.switchToTabHavingURI(url, true);
 		} else {
-			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
-			notifyBox = recentWindow.document.getElementById('mail-notification-box');
+			recentWindow.openLinkExternally(url);
 		}
+	},
+	showNotifications: function() {
+		let label, value, buttons;
 
-		recentWindow.setTimeout((function() {
-			if (this.list.length == 0) {
-				let label = this.strings.GetStringFromName('noBrowsersSetUp');
-				let value = 'openwith-nobrowsers';
-				let buttons = [{
+		if (this.list.length == 0) {
+			label = this.strings.GetStringFromName('noBrowsersSetUp');
+			value = 'openwith-nobrowsers';
+			buttons = [{
+				label: this.strings.GetStringFromName('buttonLabel'),
+				accessKey: this.strings.GetStringFromName('buttonAccessKey'),
+				popup: null,
+				callback: this.openOptionsTab
+			}];
+		} else if (oldVersion != 0 && Services.vc.compare(oldVersion, currentVersion) < 0) {
+			if (Services.vc.compare(oldVersion, 5.4) <= 0 && !WINDOWS && !OS_X) {
+				label = this.strings.GetStringFromName('browserDetectionChanged');
+				value = 'openwith-browserdetectionchanged';
+				buttons = [{
 					label: this.strings.GetStringFromName('buttonLabel'),
 					accessKey: this.strings.GetStringFromName('buttonAccessKey'),
 					popup: null,
 					callback: this.openOptionsTab
 				}];
-				notifyBox.appendNotification(label, value,
-						'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 			} else {
-				this.showDonateReminder(notifyBox, function(aNotificationBar, aButton) {
-					let url = 'https://addons.mozilla.org/addon/11097/about';
-					recentWindow.gBrowser.selectedTab = recentWindow.gBrowser.addTab(url);
-				});
+				label = this.strings.formatStringFromName('versionChanged', [currentVersion], 1);
+				value = 'openwith-donate';
+				buttons = [{
+					label: this.strings.GetStringFromName('donateButtonLabel'),
+					accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
+					popup: null,
+					callback: this.openDonatePage
+				}];
 			}
-		}).bind(this), 1000);
-	},
-	showDonateReminder: function(notifyBox, callback) {
-		function parseVersion(aVersion) {
-			let match = /^\d+(\.\d+)?/.exec(aVersion);
-			return match ? match[0] : aVersion;
-		}
-
-		if (oldVersion == 0 || Services.vc.compare(parseVersion(oldVersion), parseVersion(currentVersion)) >= 0) {
+		} else {
 			return;
 		}
 
-		let locale = Cc['@mozilla.org/chrome/chrome-registry;1'].getService(Ci.nsIXULChromeRegistry).getSelectedLocale('openwith');
-		if (!/^en-/.test(locale)) {
-			return;
-		}
-
-		let label = 'Open With has been updated to version ' + currentVersion + '. ' +
-				'Please consider making a donation to the project.';
-		let value = 'openwith-donate';
-		let buttons = [{
-			label: 'Donate',
-			accessKey: 'D',
-			popup: null,
-			callback: callback
-		}];
-		this.prefs.setIntPref('donationreminder', Date.now() / 1000);
-		notifyBox.appendNotification(label, value,
-				'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
+		this.timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+		this.timer.initWithCallback(() => {
+			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
+			let notifyBox;
+			if (recentWindow) {
+				notifyBox = recentWindow.gBrowser.getNotificationBox();
+			} else {
+				recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+				notifyBox = recentWindow.document.getElementById('mail-notification-box');
+			}
+			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
+			if (value == 'openwith-donate') {
+				this.prefs.setIntPref('donationreminder', Date.now() / 1000);
+			}
+		}, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
 	},
 	readDesktopFile: function(aFile, aHidePref) {
 		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);

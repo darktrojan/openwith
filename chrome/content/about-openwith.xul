@@ -16,11 +16,6 @@
 				<image src="chrome://openwith/content/openwith64.png" />
 				<label id="title" value="&openwith-options.title;" />
 			</hbox>
-			<hbox align="baseline" pack="center">
-				<label class="text-link" value="&openwith-donate;" href="https://addons.mozilla.org/addon/open-with/about" />
-				<label value="&#xB7;" />
-				<label class="text-link" value="&openwith-github;" href="https://github.com/darktrojan/openwith" />
-			</hbox>
 			<groupbox>
 				<caption label="&openwith-display-choose.label;" />
 				<grid>
@@ -106,13 +101,22 @@
 						</row>
 					</rows>
 				</grid>
-				<description>&openwith-display-toolbarhelp;</description>
+				<description id="openwith-toolbarhelp">&openwith-display-toolbarhelp;</description>
 			</groupbox>
+			<vbox align="center">
+				<hbox align="baseline">
+					<label value="&openwith-donationsrequest;" />
+					<button label="&openwith-donate;" oncommand="OpenWith.openDonatePage();" />
+				</hbox>
+				<hbox align="baseline" pack="center">
+					<label class="text-link" value="&openwith-github;"
+						href="https://github.com/darktrojan/openwith" />
+				</hbox>
+			</vbox>
 		</vbox>
 		<vbox id="right">
 			<groupbox flex="1">
 				<caption label="&openwith-browserlist.label;" />
-				<description>&openwith-browserlist-detectionchanged;</description>
 				<richlistbox id="list" flex="1"></richlistbox>
 				<hbox pack="end">
 					<button id="openwith-manualentry-pane.add-button"

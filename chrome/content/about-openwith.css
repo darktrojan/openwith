@@ -10,6 +10,7 @@ link[rel] {
 }
 #left > groupbox {
 	margin-top: 1em;
+	margin-bottom: 2em;
 }
 #title {
 	font-size: 2.5em;
@@ -52,7 +53,7 @@ richlistitem[selected="true"] .buttons {
 richlistitem[browserHidden="true"] {
 	color: graytext;
 }
-richlistitem[browserHidden="true"] .browserIcon {
+richlistitem[browserHidden="true"] image {
 	opacity: 0.5;
 }
 richlistitem[browserHidden="true"] button.hide,

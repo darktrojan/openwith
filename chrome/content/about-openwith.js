@@ -11,14 +11,14 @@ let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 fp.init(this, document.title, Ci.nsIFilePicker.modeOpen);
 fp.appendFilters(Ci.nsIFilePicker.filterApps);
+
+let appsDir = null;
 if (Services.dirsvc.has('ProgF')) {
-	fp.displayDirectory = Services.dirsvc.get('ProgF', Ci.nsIFile);
+	appsDir = Services.dirsvc.get('ProgF', Ci.nsIFile);
 } else if (Services.dirsvc.has('LocApp')) {
-	fp.displayDirectory = Services.dirsvc.get('LocApp', Ci.nsIFile);
+	appsDir = Services.dirsvc.get('LocApp', Ci.nsIFile);
 } else {
-	let appsDir = new FileUtils.File('/usr/share/applications');
-	if (appsDir.exists())
-		fp.displayDirectory = appsDir;
+	appsDir = new FileUtils.File('/usr/share/applications');
 }
 
 function $(id) {
@@ -86,6 +86,10 @@ function loadDropDowns() {
 				(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
 	} else {
 		$('openwith-toolbox-row').collapsed = true;
+	}
+
+	if (appname != 'Firefox' || appversion < 29) {
+		$('openwith-toolbarhelp').collapsed = true;
 	}
 
 	loadingDropDowns = false;
@@ -234,7 +238,12 @@ function saveItemToPrefs(item, saveIcon) {
 }
 
 function addNewItem() {
+	if (appsDir && appsDir.exists()) {
+		fp.displayDirectory = appsDir;
+	}
+
 	if (fp.show() == Ci.nsIFilePicker.returnOK) {
+		appsDir = fp.file.parent;
 		let item = document.createElement('richlistitem');
 
 		if (/\.desktop$/.test(fp.file.leafName)) {
