@@ -538,7 +538,7 @@ let OpenWithCore = {
 				callback: this.openOptionsTab
 			}];
 		} else if (oldVersion != 0 && Services.vc.compare(oldVersion, currentVersion) < 0) {
-			if (Services.vc.compare(oldVersion, 5.4) <= 0 && !WINDOWS && !OS_X) {
+			if (Services.vc.compare(oldVersion, 5.5) <= 0 && !WINDOWS && !OS_X) {
 				label = this.strings.GetStringFromName('browserDetectionChanged');
 				value = 'openwith-browserdetectionchanged';
 				buttons = [{
