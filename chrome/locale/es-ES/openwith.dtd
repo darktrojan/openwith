@@ -1,7 +1,16 @@
 <!ENTITY openwith-name "Abrir con">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):		these are placeholders for where the menu items will appear -->
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
 <!ENTITY openwith-dropdown.tooltip "Abrir con...">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!ENTITY openwith-placeholder.label "Elementos Abrir Con">
+<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!ENTITY openwith-linkplaceholder.label "L">
+<!ENTITY openwith-submenu.label "Abrir con">
+<!ENTITY openwith-linksubmenu.label "Abrir enlace con">
+
 <!ENTITY openwith-options.title "Abrir con opciones">
+
+<!ENTITY openwith-display-choose.label "Elegir como mostrar elementos Abrir Con:">
 <!ENTITY openwith-display-pane.viewmenu.label "Ver menú">
 <!ENTITY openwith-display-pane.contextmenu.label "Menú contextual principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menú principal contextual (enlaces)">
@@ -10,28 +19,29 @@
 <!ENTITY openwith-display-pane.tabbar.label "Barra de pestañas">
 <!ENTITY openwith-display-pane.toolbar.label "Barra de herramientas">
 <!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label, openwith-linkplaceholder.label):
-		these are placeholders for where the menu items will appear 
 
--->
-<!ENTITY openwith-placeholder.label "Elementos Abrir Con">
-<!ENTITY openwith-linkplaceholder.label "L">
-<!ENTITY openwith-submenu.label "Abrir con">
-<!ENTITY openwith-linksubmenu.label "Abrir enlace con">
-<!ENTITY openwith-display-choose.label "Elegir como mostrar elementos Abrir Con:">
 <!ENTITY openwith-display-none.label "No mostrar">
 <!ENTITY openwith-display-menuitems.label "Mostrar como elemento de menú">
 <!ENTITY openwith-display-submenu.label "Mostrar como submenú">
 <!ENTITY openwith-display-buttons.label "Mostrar como botones">
 <!ENTITY openwith-display-dropdown.label "Mostrar como menú desplegable">
+
+<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+
+<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
+<!ENTITY openwith-donate "Donate">
+<!ENTITY openwith-github "Open With on GitHub">
+
 <!ENTITY openwith-browserlist.label "Seleccione los elementos a mostrar:">
+<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-moveup.tooltip "Subir">
+<!ENTITY openwith-browserlist-movedown.tooltip "Subir">
 <!ENTITY openwith-browserlist-show.label "Mostrar">
 <!ENTITY openwith-browserlist-hide.label "Ocultar">
 <!ENTITY openwith-browserlist-rename.label "Renombrar...">
 <!ENTITY openwith-browserlist-editcommand.label "Comando...">
 <!ENTITY openwith-browserlist-editparams.label "Argumentos...">
 <!ENTITY openwith-browserlist-remove.label "Quitar">
+
 <!ENTITY openwith-browserlist-add.label "Añadir...">
-<!ENTITY openwith-browserlist-moveup.tooltip "Subir">
-<!ENTITY openwith-browserlist-movedown.tooltip "Subir">
 <!ENTITY openwith-browserlist-restoreorder.label "Orden predeterminada">
