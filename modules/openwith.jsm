@@ -74,7 +74,7 @@ let OpenWithCore = {
 						command: command,
 						params: params,
 						icon: this.findIconURL(file, 16),
-						hidden: hidePref.indexOf(name) >= 0
+						hidden: hidePref.indexOf(name.toLowerCase()) >= 0
 					});
 				} catch (e) {
 					Cu.reportError(e);
@@ -97,7 +97,7 @@ let OpenWithCore = {
 						command: appFile.path,
 						params: [],
 						icon: this.findIconURL(appFile, 16),
-						hidden: hidePref.indexOf(name) >= 0
+						hidden: hidePref.indexOf(name.toLowerCase()) >= 0
 					});
 				}
 			}
@@ -634,7 +634,7 @@ let OpenWithCore = {
 			command: command,
 			params: params,
 			icon: icon,
-			hidden: aHidePref.indexOf(aFile.leafName) >= 0
+			hidden: aHidePref.indexOf(aFile.leafName.toLowerCase()) >= 0
 		};
 	}
 };
