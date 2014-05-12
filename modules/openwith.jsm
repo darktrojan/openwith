@@ -183,8 +183,12 @@ let OpenWithCore = {
 
 		Services.console.logStringMessage('OpenWith: reloading lists');
 		for (let item of this.list) {
-			Services.console.logStringMessage(item.name + ':\n\tCommand: ' +
-					item.command + '\n\tParams: ' + item.params.join(' ') + '\n\tIcon URL: ' + item.icon);
+			Services.console.logStringMessage(
+				item.name + (item.hidden ? ' (hidden)' : '') + ':\n' +
+				'\tCommand: ' + item.command + '\n' +
+				'\tParams: ' + item.params.join(' ') + '\n' +
+				'\tIcon URL: ' + item.icon
+			);
 		}
 
 		Services.obs.notifyObservers(null, 'openWithListChanged', 'data');

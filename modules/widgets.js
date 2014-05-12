@@ -30,18 +30,13 @@ CustomizableUI.createWidget({
 		toolbaritem.setAttribute('title', label);
 
 		OpenWithCore.loadList(false);
-		for (let item of OpenWithCore.list) {
-			let label = OpenWithCore.strings.formatStringFromName('openWithLabel', [item.name], 1);
-			let tbb = OpenWithCore.createToolbarButton(aDocument, item, label, OpenWithCore.TARGET_STANDARD);
-			tbb.className = className;
-			toolbaritem.appendChild(tbb);
-		}
-
-		aDocument.defaultView.OpenWith.locations.push({
+		let location = {
 			factory: OpenWithCore.createToolbarButton,
 			suffix: '_widewidget',
 			container: toolbaritem
-		});
+		};
+		OpenWithCore.refreshUI(aDocument, [location]);
+		aDocument.defaultView.OpenWith.locations.push(location);
 
 		function updateCombinedWidgetStyle(aArea) {
 			let inPanel = aArea == CustomizableUI.AREA_PANEL;
