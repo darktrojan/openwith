@@ -162,14 +162,19 @@ function updatePrefs(pref1, pref2, index) {
 }
 
 function setHidden(item, hidden) {
-	let keyName = item.getAttribute('keyName').toLowerCase();
-	let pref = OpenWithCore.prefs.getCharPref('hide').toLowerCase();
-	if (hidden) {
-		pref += ' ' + keyName;
-	} else {
-		pref = pref.replace(new RegExp('\\b' + keyName + '\\b'), '');
+	let keyName = item.getAttribute('keyName');
+	let hidePref = OpenWithCore.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
+	if (hidePref.length == 1 && hidePref[0] == '') {
+		hidePref = [];
 	}
-	OpenWithCore.prefs.setCharPref('hide', pref.trim().replace(/\s+/g, ' '));
+	let index = hidePref.indexOf(keyName);
+
+	if (hidden && index < 0) {
+		hidePref.push(keyName);
+	} else if (!hidden && index >= 0) {
+		hidePref.splice(index, 1);
+	}
+	OpenWithCore.prefs.setCharPref('hide', hidePref.join(' '));
 
 	item.setAttribute('browserHidden', hidden);
 	item.parentNode.focus();

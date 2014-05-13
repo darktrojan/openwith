@@ -37,6 +37,10 @@ let OpenWithCore = {
 		}
 
 		let hidePref = this.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
+		if (hidePref.length == 1 && hidePref[0] == '') {
+			hidePref = [];
+		}
+
 		this.list = [];
 		if (WINDOWS) {
 			if (!registryKey) {
@@ -66,15 +70,16 @@ let OpenWithCore = {
 					});
 
 					let file = new FileUtils.File(command);
+					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
 
 					this.list.push({
 						auto: true,
-						keyName: name,
+						keyName: keyName,
 						name: value,
 						command: command,
 						params: params,
 						icon: this.findIconURL(file, 16),
-						hidden: hidePref.indexOf(name.toLowerCase()) >= 0
+						hidden: hidePref.indexOf(keyName) >= 0
 					});
 				} catch (e) {
 					Cu.reportError(e);
@@ -90,14 +95,15 @@ let OpenWithCore = {
 				let appFile = locAppDir.clone();
 				appFile.append(name + '.app');
 				if (appFile.exists()) {
+					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
 					this.list.push({
 						auto: true,
-						keyName: name,
+						keyName: keyName,
 						name: name,
 						command: appFile.path,
 						params: [],
 						icon: this.findIconURL(appFile, 16),
-						hidden: hidePref.indexOf(name.toLowerCase()) >= 0
+						hidden: hidePref.indexOf(keyName) >= 0
 					});
 				}
 			}
@@ -149,6 +155,7 @@ let OpenWithCore = {
 
 			this.list.push({
 				auto: false,
+				// Do not normalize or old entries will be stranded
 				keyName: name.substring(7),
 				name: value,
 				command: command,
@@ -410,69 +417,38 @@ let OpenWithCore = {
 			return match ? parseFloat(match[0], 10) : 0;
 		}
 
+		let appname = Services.appinfo.name;
+		let appversion = parseFloat(Services.appinfo.version);
+
 		if (this.prefs.getPrefType('version') == Ci.nsIPrefBranch.PREF_STRING) {
 			oldVersion = parseVersion(this.prefs.getCharPref('version'));
 		}
+
+		// Set initial value to this app's name
+		if (!this.prefs.prefHasUserValue('hide')) {
+			let hide = appname.toLowerCase();
+			if (WINDOWS) {
+				hide += '.exe';
+			} else if (!OS_X) {
+				hide += '.desktop';
+			}
+			this.prefs.setCharPref('hide', hide);
+		}
+
+		// Normalize hidden items
+		if (Services.vc.compare(oldVersion, '5.6.1') < 0) {
+			let hide = this.prefs.getCharPref('hide');
+			hide = hide.toLowerCase().replace(/google chrome/g, 'google_chrome');
+			this.prefs.setCharPref('hide', hide);
+		}
+
 		Cu.import('resource://gre/modules/AddonManager.jsm');
 		AddonManager.getAddonByID(ID, (function(addon) {
 			currentVersion = parseVersion(addon.version);
 			this.prefs.setCharPref('version', addon.version);
 
-			let appname = Services.appinfo.name;
-			let appversion = parseFloat(Services.appinfo.version);
-			if (appname == 'Firefox' && appversion >= 4) {
-				let shouldUpdateToolbar = false;
-				if (this.prefs.prefHasUserValue('tabbar')) {
-					let value = this.prefs.getBoolPref('tabbar');
-					this.prefs.setBoolPref('toolbar', value);
-					this.prefs.setBoolPref('toolbar.menu', !value);
-					this.prefs.clearUserPref('tabbar');
-					shouldUpdateToolbar = true;
-				}
-				if (this.prefs.prefHasUserValue('tabbar.menu')) {
-					let value = this.prefs.getBoolPref('tabbar.menu');
-					this.prefs.setBoolPref('toolbar.menu', value);
-					this.prefs.setBoolPref('toolbar', !value);
-					this.prefs.clearUserPref('tabbar.menu');
-					shouldUpdateToolbar = true;
-				}
-				if (shouldUpdateToolbar) {
-					try {
-						Services.console.logStringMessage('OpenWith: updating prefs');
-						let window = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-						let document = window.document;
-						let tabsToolbar = document.getElementById('TabsToolbar');
-						let currentSet;
-						if (tabsToolbar.hasAttribute('currentset')) {
-							currentSet = tabsToolbar.getAttribute('currentset').split(',');
-						} else {
-							currentSet = tabsToolbar.getAttribute('defaultset').split(',');
-						}
-						let index = currentSet.indexOf('alltabs-button');
-						if (index == -1) {
-							currentSet.push('openwith-toolbarbox');
-						} else {
-							currentSet.splice(index, 0, 'openwith-toolbarbox');
-						}
-						tabsToolbar.setAttribute('currentset', currentSet.join(','));
-						tabsToolbar.currentSet = currentSet.join(',');
-						document.persist('TabsToolbar', 'currentset');
-						window.BrowserToolboxCustomizeDone(true);
-					} catch (e) {
-						Cu.reportError(e);
-					}
-				}
-			}
-			if (appname == 'Thunderbird' && parseFloat(oldVersion) < 5.3) {
+			if (appname == 'Thunderbird' && Services.vc.compare(oldVersion, 5.3) < 0) {
 				this.prefs.setBoolPref('contextmenulink.submenu', true);
-				this.prefs.setCharPref('hide', '');
-			}
-			if (parseFloat(oldVersion) < 4.2) {
-				if (WINDOWS && appname == 'SeaMonkey') {
-					this.prefs.setCharPref('hide', 'seamonkey.exe');
-				} else if (OS_X) {
-					this.prefs.setCharPref('hide', appname);
-				}
 			}
 			this.showNotifications();
 		}).bind(this));
@@ -631,14 +607,16 @@ let OpenWithCore = {
 		name = name || aFile.leafName.replace(/\.desktop$/i, '');
 		istream.close();
 
+		let keyName = aFile.leafName.replace(/[^\w\.-]/g, '_').toLowerCase();
+
 		return {
 			auto: true,
-			keyName: aFile.leafName,
+			keyName: keyName,
 			name: name,
 			command: command,
 			params: params,
 			icon: icon,
-			hidden: aHidePref.indexOf(aFile.leafName.toLowerCase()) >= 0
+			hidden: aHidePref.indexOf(keyName) >= 0
 		};
 	}
 };
