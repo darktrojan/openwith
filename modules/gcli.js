@@ -38,9 +38,9 @@ let gcliCommand = {
 	}
 };
 
-if (typeof gcli.addItems == 'function') {
-	gcli.addItems([gcliType, gcliCommand]);
-} else {
+if (typeof gcli.addType == 'function') {
 	gcli.addType(gcliType);
 	gcli.addCommand(gcliCommand);
+} else {
+	gcli.addItems([gcliType, gcliCommand]);
 }
