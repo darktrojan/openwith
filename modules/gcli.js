@@ -1,6 +1,7 @@
 Components.utils.import('resource://gre/modules/devtools/gcli.jsm');
 
-gcli.addType({
+let gcliType = {
+	item: 'type',
 	name: 'openwith-browsers',
 	parent: 'selection',
 	cacheable: true,
@@ -15,8 +16,8 @@ gcli.addType({
 			return { name: aItem.keyName, value: aItem };
 		});
 	}
-});
-gcli.addCommand({
+};
+let gcliCommand = {
 	name: 'openwith',
 	description: OpenWithCore.strings.GetStringFromName('gcli.command.description'),
 	params: [{
@@ -35,4 +36,11 @@ gcli.addCommand({
 		}
         OpenWithCore.doCommandInternal(args.browser.command, params);
 	}
-});
+};
+
+if (typeof gcli.addItems == 'function') {
+	gcli.addItems([gcliType, gcliCommand]);
+} else {
+	gcli.addType(gcliType);
+	gcli.addCommand(gcliCommand);
+}
