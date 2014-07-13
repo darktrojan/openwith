@@ -3,10 +3,10 @@
 
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>openwith@darktrojan.net</em:id>
-		<em:version>5.6.1</em:version>
+		<em:version>5.6.2</em:version>
 		<em:type>2</em:type>
 		<em:name>Open With</em:name>
-		<em:description>Open With adds options to your menus and tab bar for opening the current page in another browser.</em:description>
+		<em:description>Quickly test out your web pages in Internet Explorer, Chrome, Safari, or Opera. Open With opens the current page in your other browsers with just one click.</em:description>
 		<em:creator>Geoff Lankow</em:creator>
 		<em:homepageURL>https://github.com/darktrojan/openwith</em:homepageURL>
 		<em:iconURL>chrome://openwith/content/openwith32.png</em:iconURL>
@@ -18,7 +18,7 @@
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id><!-- firefox -->
 				<em:minVersion>24.0</em:minVersion>
-				<em:maxVersion>32.0a1</em:maxVersion>
+				<em:maxVersion>33.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<em:targetApplication>
@@ -32,7 +32,7 @@
 			<Description>
 				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id><!-- thunderbird -->
 				<em:minVersion>24.0</em:minVersion>
-				<em:maxVersion>32.0a1</em:maxVersion>
+				<em:maxVersion>33.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
