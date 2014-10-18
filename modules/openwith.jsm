@@ -369,13 +369,42 @@ let OpenWithCore = {
 		}
 		return toolbarButton;
 	},
+	splitArgs: function(argString) {
+		let args = [];
+
+		let temp = '';
+		let last = null;
+		let inQuotes = false;
+		for (let c of argString) {
+			if (c == '"') {
+				if (last == '\\') {
+					temp.length--;
+					temp += '"';
+				} else {
+					inQuotes = !inQuotes;
+				}
+			} else if (c == ' ' && !inQuotes) {
+				args.push(temp);
+				temp = '';
+			} else {
+				temp += c;
+			}
+			last = c;
+		}
+
+		if (temp.length > 0) {
+			args.push(temp);
+		}
+
+		return args;
+	},
 	doCommand: function(event, uri) {
 		if (!(uri instanceof Ci.nsIURI)) {
 			uri = Services.io.newURI(uri, null, null);
 		}
 		let command = event.target.getAttribute('openwith-command');
 		let paramsAttr = event.target.getAttribute('openwith-params');
-		let params = paramsAttr == '' ? [] : paramsAttr.split(' ');
+		let params = paramsAttr == '' ? [] : this.splitArgs(paramsAttr);
 		if (!event.ctrlKey) {
 			if (uri.schemeIs('file') && event.target.hasAttribute('openwith-usefilepath')) {
 				params.push(uri.QueryInterface(Ci.nsIFileURL).file.path);
