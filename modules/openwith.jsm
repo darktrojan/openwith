@@ -377,12 +377,7 @@ let OpenWithCore = {
 		let inQuotes = false;
 		for (let c of argString) {
 			if (c == '"') {
-				if (last == '\\') {
-					temp.length--;
-					temp += '"';
-				} else {
-					inQuotes = !inQuotes;
-				}
+				inQuotes = !inQuotes;
 			} else if (c == ' ' && !inQuotes) {
 				args.push(temp);
 				temp = '';
