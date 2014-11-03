@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Μετακίνηση κάτω">
 <!ENTITY openwith-browserlist-show.label "Εμφάνιση">
 <!ENTITY openwith-browserlist-hide.label "Απόκρυψη">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "Μετονομασία…">
 <!ENTITY openwith-browserlist-editcommand.label "Εντολή…">
 <!ENTITY openwith-browserlist-editparams.label "Ορίσματα…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Κατάργηση">
 
 <!ENTITY openwith-browserlist-add.label "Προσθήκη…">

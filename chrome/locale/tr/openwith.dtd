@@ -1,6 +1,6 @@
 <!ENTITY openwith-name "Birlikte Aç">
 <!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
-<!ENTITY openwith-dropdown.tooltip "Birlikte Aç...">
+<!ENTITY openwith-dropdown.tooltip "Birlikte Aç…">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
 <!ENTITY openwith-placeholder.label "Birlikte Aç Nesneleri">
 <!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
@@ -38,10 +38,12 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Yukarıya">
 <!ENTITY openwith-browserlist-show.label "Göster">
 <!ENTITY openwith-browserlist-hide.label "Gizle">
-<!ENTITY openwith-browserlist-rename.label "Yeniden adlandır...">
-<!ENTITY openwith-browserlist-editcommand.label "Komut...">
-<!ENTITY openwith-browserlist-editparams.label "Argumanlar...">
+<!ENTITY openwith-browserlist-edit.label "Edit">
+<!ENTITY openwith-browserlist-rename.label "Yeniden adlandır…">
+<!ENTITY openwith-browserlist-editcommand.label "Komut…">
+<!ENTITY openwith-browserlist-editparams.label "Argumanlar…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Kaldır">
 
-<!ENTITY openwith-browserlist-add.label "Ekle...">
+<!ENTITY openwith-browserlist-add.label "Ekle…">
 <!ENTITY openwith-browserlist-restoreorder.label "Varsayılan">

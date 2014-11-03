@@ -1,6 +1,6 @@
 <!ENTITY openwith-name "Open With">
 <!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
-<!ENTITY openwith-dropdown.tooltip "Mở với...">
+<!ENTITY openwith-dropdown.tooltip "Mở với…">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
 <!ENTITY openwith-placeholder.label "Các mục của Open With">
 <!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
@@ -38,10 +38,12 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Di chuyển xuống">
 <!ENTITY openwith-browserlist-show.label "Hiện">
 <!ENTITY openwith-browserlist-hide.label "Ẩn">
-<!ENTITY openwith-browserlist-rename.label "Đổi tên...">
-<!ENTITY openwith-browserlist-editcommand.label "Lệnh...">
-<!ENTITY openwith-browserlist-editparams.label "Đối số...">
+<!ENTITY openwith-browserlist-edit.label "Edit">
+<!ENTITY openwith-browserlist-rename.label "Đổi tên…">
+<!ENTITY openwith-browserlist-editcommand.label "Lệnh…">
+<!ENTITY openwith-browserlist-editparams.label "Đối số…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Gỡ bỏ">
 
-<!ENTITY openwith-browserlist-add.label "Thêm...">
+<!ENTITY openwith-browserlist-add.label "Thêm…">
 <!ENTITY openwith-browserlist-restoreorder.label "Lệnh mặc định">

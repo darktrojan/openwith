@@ -338,3 +338,18 @@ function restoreOrder() {
 		loadBrowserList();
 	}
 }
+
+function cloneItem(srcItem) {
+	let name = OpenWithCore.strings.formatStringFromName('clonedBrowserNewName', [srcItem.getAttribute('name')], 1);
+	let item = document.createElement('richlistitem');
+	item.setAttribute('auto', 'false');
+	item.setAttribute('manual', 'true');
+	item.setAttribute('name', name);
+	item.setAttribute('keyName', name.replace(/\W+/g, '_'));
+	item.setAttribute('command', srcItem.getAttribute('command'));
+	item.setAttribute('params', srcItem.getAttribute('params'));
+	item.setAttribute('icon', srcItem.getAttribute('icon'));
+	list.insertBefore(item, srcItem.nextSibling);
+	saveItemToPrefs(item, true);
+	saveOrder();
+}

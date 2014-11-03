@@ -38,10 +38,12 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Move Down">
 <!ENTITY openwith-browserlist-show.label "Voir">
 <!ENTITY openwith-browserlist-hide.label "Cacher">
-<!ENTITY openwith-browserlist-rename.label "Renommer...">
-<!ENTITY openwith-browserlist-editcommand.label "Commande...">
+<!ENTITY openwith-browserlist-edit.label "Edit">
+<!ENTITY openwith-browserlist-rename.label "Renommer…">
+<!ENTITY openwith-browserlist-editcommand.label "Commande…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Supprimer">
 
-<!ENTITY openwith-browserlist-add.label "Ajouter...">
+<!ENTITY openwith-browserlist-add.label "Ajouter…">
 <!ENTITY openwith-browserlist-restoreorder.label "Réglage par défaut">

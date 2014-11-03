@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Flytta nedåt">
 <!ENTITY openwith-browserlist-show.label "Visa">
 <!ENTITY openwith-browserlist-hide.label "Dölj">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "Byt namn…">
 <!ENTITY openwith-browserlist-editcommand.label "Kommando…">
 <!ENTITY openwith-browserlist-editparams.label "Argument…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Ta bort">
 
 <!ENTITY openwith-browserlist-add.label "Lägg till…">

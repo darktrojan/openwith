@@ -38,10 +38,12 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Mou avall">
 <!ENTITY openwith-browserlist-show.label "Mostra">
 <!ENTITY openwith-browserlist-hide.label "Amaga">
-<!ENTITY openwith-browserlist-rename.label "Reanomena...">
+<!ENTITY openwith-browserlist-edit.label "Edit">
+<!ENTITY openwith-browserlist-rename.label "Reanomena…">
 <!ENTITY openwith-browserlist-editcommand.label "Comandament…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
-<!ENTITY openwith-browserlist-remove.label "Elimina...">
+<!ENTITY openwith-browserlist-clone.label "Clone">
+<!ENTITY openwith-browserlist-remove.label "Elimina…">
 
 <!ENTITY openwith-browserlist-add.label "Afegeix.">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordre per omissió">

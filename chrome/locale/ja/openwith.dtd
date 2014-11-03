@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "ひとつ下へ">
 <!ENTITY openwith-browserlist-show.label "表示">
 <!ENTITY openwith-browserlist-hide.label "非表示">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "表示名の変更">
 <!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
 <!ENTITY openwith-browserlist-editparams.label "引数">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "削除">
 
 <!ENTITY openwith-browserlist-add.label "追加">

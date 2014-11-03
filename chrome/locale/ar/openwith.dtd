@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "نقل للأسفل">
 <!ENTITY openwith-browserlist-show.label "عرض">
 <!ENTITY openwith-browserlist-hide.label "إخفاء">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "إعادة تسمية…">
 <!ENTITY openwith-browserlist-editcommand.label "الأمر…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "إزالة">
 
 <!ENTITY openwith-browserlist-add.label "إضافة…">

@@ -4,11 +4,11 @@
 <!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
 <!ENTITY openwith-placeholder.label "Відкрити з допомогою програм">
 <!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
-<!ENTITY openwith-linkplaceholder.label "Відкрити з допомогою... посилання по-пунктам">
+<!ENTITY openwith-linkplaceholder.label "Відкрити з допомогою… посилання по-пунктам">
 <!ENTITY openwith-submenu.label "Open with">
 <!ENTITY openwith-linksubmenu.label "Open Link with">
 
-<!ENTITY openwith-options.title "Налаштування Відкрити з допомогою...">
+<!ENTITY openwith-options.title "Налаштування Відкрити з допомогою…">
 
 <!ENTITY openwith-display-choose.label "Choose how to display Open With items:">
 <!ENTITY openwith-display-pane.viewmenu.label "Переглянути меню">
@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Move Down">
 <!ENTITY openwith-browserlist-show.label "Show">
 <!ENTITY openwith-browserlist-hide.label "Hide">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "Rename…">
 <!ENTITY openwith-browserlist-editcommand.label "Command…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Remove">
 
 <!ENTITY openwith-browserlist-add.label "Add…">

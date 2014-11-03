@@ -1,6 +1,6 @@
 <!ENTITY openwith-name "Otwórz za pomocą">
 <!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
-<!ENTITY openwith-dropdown.tooltip "Otwórz za pomocą ...">
+<!ENTITY openwith-dropdown.tooltip "Otwórz za pomocą …">
 <!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
 <!ENTITY openwith-placeholder.label "Otwórz za pomocą - Elementy">
 <!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
@@ -38,10 +38,12 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "Przenieś w dół">
 <!ENTITY openwith-browserlist-show.label "Pokaż">
 <!ENTITY openwith-browserlist-hide.label "Ukryj">
-<!ENTITY openwith-browserlist-rename.label "Zmień nazwę ...">
-<!ENTITY openwith-browserlist-editcommand.label "Komenda...">
-<!ENTITY openwith-browserlist-editparams.label "Argumenty...">
+<!ENTITY openwith-browserlist-edit.label "Edit">
+<!ENTITY openwith-browserlist-rename.label "Zmień nazwę…">
+<!ENTITY openwith-browserlist-editcommand.label "Komenda…">
+<!ENTITY openwith-browserlist-editparams.label "Argumenty…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "Usuń">
 
-<!ENTITY openwith-browserlist-add.label "Dodaj...">
+<!ENTITY openwith-browserlist-add.label "Dodaj…">
 <!ENTITY openwith-browserlist-restoreorder.label "Kolejność domyślna">

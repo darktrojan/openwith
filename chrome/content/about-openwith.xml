@@ -41,15 +41,19 @@
 					<button class="hide" label="&openwith-browserlist-hide.label;"
 						xbl:inherits="collapsed=manual"
 						oncommand="setHidden(document.getBindingParent(this), true);" />
-					<button label="&openwith-browserlist-rename.label;"
-						xbl:inherits="collapsed=auto"
-						oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
-					<button label="&openwith-browserlist-editcommand.label;"
-						xbl:inherits="collapsed=auto"
-						oncommand="editCommand(document.getBindingParent(this));" />
-					<button label="&openwith-browserlist-editparams.label;"
-						xbl:inherits="collapsed=auto"
-						oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
+					<button type="menu" label="&openwith-browserlist-edit.label;"
+						xbl:inherits="collapsed=auto">
+						<menupopup>
+							<menuitem label="&openwith-browserlist-rename.label;"
+								oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
+							<menuitem label="&openwith-browserlist-editcommand.label;"
+								oncommand="editCommand(document.getBindingParent(this));" />
+							<menuitem label="&openwith-browserlist-editparams.label;"
+								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
+						</menupopup>
+					</button>
+					<button label="&openwith-browserlist-clone.label;"
+						oncommand="cloneItem(document.getBindingParent(this));" />
 					<button label="&openwith-browserlist-remove.label;"
 						xbl:inherits="collapsed=auto"
 						oncommand="removeItem(document.getBindingParent(this));" />

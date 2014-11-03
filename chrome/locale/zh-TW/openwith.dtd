@@ -38,9 +38,11 @@
 <!ENTITY openwith-browserlist-movedown.tooltip "下移">
 <!ENTITY openwith-browserlist-show.label "顯示">
 <!ENTITY openwith-browserlist-hide.label "隱藏">
+<!ENTITY openwith-browserlist-edit.label "Edit">
 <!ENTITY openwith-browserlist-rename.label "重新命名…">
 <!ENTITY openwith-browserlist-editcommand.label "命令…">
 <!ENTITY openwith-browserlist-editparams.label "參數…">
+<!ENTITY openwith-browserlist-clone.label "Clone">
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!ENTITY openwith-browserlist-add.label "新增…">
