@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "Đổi tên…">
 <!ENTITY openwith-browserlist-editcommand.label "Lệnh…">
 <!ENTITY openwith-browserlist-editparams.label "Đối số…">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Gỡ bỏ">
 
 <!ENTITY openwith-browserlist-add.label "Thêm…">

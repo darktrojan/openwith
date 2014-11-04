@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "Преименуј…">
 <!ENTITY openwith-browserlist-editcommand.label "Команда…">
 <!ENTITY openwith-browserlist-editparams.label "Аргументи…">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Уклони">
 
 <!ENTITY openwith-browserlist-add.label "Додај…">

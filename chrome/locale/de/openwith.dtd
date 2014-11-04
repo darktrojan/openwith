@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "Umbenennen…">
 <!ENTITY openwith-browserlist-editcommand.label "Aufruf…">
 <!ENTITY openwith-browserlist-editparams.label "Argumente…">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Entfernen">
 
 <!ENTITY openwith-browserlist-add.label "Hinzufügen…">

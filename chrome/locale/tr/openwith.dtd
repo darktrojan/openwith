@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "Yeniden adlandır…">
 <!ENTITY openwith-browserlist-editcommand.label "Komut…">
 <!ENTITY openwith-browserlist-editparams.label "Argumanlar…">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Kaldır">
 
 <!ENTITY openwith-browserlist-add.label "Ekle…">

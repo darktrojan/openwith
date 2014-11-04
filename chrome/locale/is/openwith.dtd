@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "Endurnefna…">
 <!ENTITY openwith-browserlist-editcommand.label "Skipun…">
 <!ENTITY openwith-browserlist-editparams.label "Viðföng…">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Fjarlægja">
 
 <!ENTITY openwith-browserlist-add.label "Bæta við…">

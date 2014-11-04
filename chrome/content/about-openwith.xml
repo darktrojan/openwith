@@ -52,8 +52,8 @@
 								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
 						</menupopup>
 					</button>
-					<button label="&openwith-browserlist-clone.label;"
-						oncommand="cloneItem(document.getBindingParent(this));" />
+					<button label="&openwith-browserlist-duplicate.label;"
+						oncommand="duplicateItem(document.getBindingParent(this));" />
 					<button label="&openwith-browserlist-remove.label;"
 						xbl:inherits="collapsed=auto"
 						oncommand="removeItem(document.getBindingParent(this));" />

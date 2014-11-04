@@ -339,8 +339,8 @@ function restoreOrder() {
 	}
 }
 
-function cloneItem(srcItem) {
-	let name = OpenWithCore.strings.formatStringFromName('clonedBrowserNewName', [srcItem.getAttribute('name')], 1);
+function duplicateItem(srcItem) {
+	let name = OpenWithCore.strings.formatStringFromName('duplicatedBrowserNewName', [srcItem.getAttribute('name')], 1);
 	let item = document.createElement('richlistitem');
 	item.setAttribute('auto', 'false');
 	item.setAttribute('manual', 'true');

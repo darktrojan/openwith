@@ -42,7 +42,8 @@
 <!ENTITY openwith-browserlist-rename.label "表示名の変更">
 <!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
 <!ENTITY openwith-browserlist-editparams.label "引数">
-<!ENTITY openwith-browserlist-clone.label "Clone">
+<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "削除">
 
 <!ENTITY openwith-browserlist-add.label "追加">
