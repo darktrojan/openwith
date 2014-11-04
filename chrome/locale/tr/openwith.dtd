@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "Göster">
 <!ENTITY openwith-browserlist-hide.label "Gizle">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-rename.label "Yeniden adlandır…">
+<!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Komut…">
 <!ENTITY openwith-browserlist-editparams.label "Argumanlar…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->

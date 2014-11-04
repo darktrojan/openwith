@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "Εμφάνιση">
 <!ENTITY openwith-browserlist-hide.label "Απόκρυψη">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-rename.label "Μετονομασία…">
+<!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Εντολή…">
 <!ENTITY openwith-browserlist-editparams.label "Ορίσματα…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->

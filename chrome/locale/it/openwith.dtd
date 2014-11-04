@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "Mostra">
 <!ENTITY openwith-browserlist-hide.label "Nascondi">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-rename.label "Rinomina…">
+<!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Modifica comando…">
 <!ENTITY openwith-browserlist-editparams.label "Modifica parametri…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->

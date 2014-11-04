@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "عرض">
 <!ENTITY openwith-browserlist-hide.label "إخفاء">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-rename.label "إعادة تسمية…">
+<!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "الأمر…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->

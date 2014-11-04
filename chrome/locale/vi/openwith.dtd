@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "Hiện">
 <!ENTITY openwith-browserlist-hide.label "Ẩn">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-rename.label "Đổi tên…">
+<!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Lệnh…">
 <!ENTITY openwith-browserlist-editparams.label "Đối số…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->

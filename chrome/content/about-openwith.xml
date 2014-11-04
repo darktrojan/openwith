@@ -35,7 +35,7 @@
 					<button type="menu" label="&openwith-browserlist-edit.label;"
 						xbl:inherits="collapsed=auto">
 						<menupopup>
-							<menuitem label="&openwith-browserlist-rename.label;"
+							<menuitem label="&openwith-browserlist-editname.label;"
 								oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
 							<menuitem label="&openwith-browserlist-editcommand.label;"
 								oncommand="editCommand(document.getBindingParent(this));" />
