@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Välj vilka objekt som skall visas:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Flytta uppåt">
-<!ENTITY openwith-browserlist-movedown.tooltip "Flytta nedåt">
 <!ENTITY openwith-browserlist-show.label "Visa">
 <!ENTITY openwith-browserlist-hide.label "Dölj">
 <!ENTITY openwith-browserlist-edit.label "Edit">

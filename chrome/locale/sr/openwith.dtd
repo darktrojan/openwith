@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Изаберите ставке које желите да прикажете:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Помери нагоре">
-<!ENTITY openwith-browserlist-movedown.tooltip "Помери надоле">
 <!ENTITY openwith-browserlist-show.label "Прикажи">
 <!ENTITY openwith-browserlist-hide.label "Сакриј">
 <!ENTITY openwith-browserlist-edit.label "Edit">

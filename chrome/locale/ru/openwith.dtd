@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Выберите какие элементы отображать:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Переместить вверх">
-<!ENTITY openwith-browserlist-movedown.tooltip "Переместить вниз">
 <!ENTITY openwith-browserlist-show.label "Показать">
 <!ENTITY openwith-browserlist-hide.label "Спрятать">
 <!ENTITY openwith-browserlist-edit.label "Edit">

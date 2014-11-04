@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Tria els ítems a mostrar:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Mou amunt">
-<!ENTITY openwith-browserlist-movedown.tooltip "Mou avall">
 <!ENTITY openwith-browserlist-show.label "Mostra">
 <!ENTITY openwith-browserlist-hide.label "Amaga">
 <!ENTITY openwith-browserlist-edit.label "Edit">

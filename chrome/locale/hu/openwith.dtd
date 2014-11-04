@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Choose which items to display:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Move Up">
-<!ENTITY openwith-browserlist-movedown.tooltip "Move Down">
 <!ENTITY openwith-browserlist-show.label "Show">
 <!ENTITY openwith-browserlist-hide.label "Hide">
 <!ENTITY openwith-browserlist-edit.label "Edit">

@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Επιλέξτε ποιές καταχωρίσεις θα εμφανίζονται:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Μετακίνηση πάνω">
-<!ENTITY openwith-browserlist-movedown.tooltip "Μετακίνηση κάτω">
 <!ENTITY openwith-browserlist-show.label "Εμφάνιση">
 <!ENTITY openwith-browserlist-hide.label "Απόκρυψη">
 <!ENTITY openwith-browserlist-edit.label "Edit">

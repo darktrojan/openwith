@@ -319,24 +319,6 @@ function removeItem(item) {
 	OpenWithCore.loadList(true); // grrr, bug 343600
 }
 
-function moveUp(button) {
-	let item = document.getBindingParent(button);
-	let previous = item.previousSibling;
-	if (previous) {
-		item.parentNode.insertBefore(item, previous);
-	}
-	saveOrder();
-}
-
-function moveDown(button) {
-	let item = document.getBindingParent(button);
-	let next = item.nextSibling;
-	if (next) {
-		item.parentNode.insertBefore(next, item);
-	}
-	saveOrder();
-}
-
 function saveOrder() {
 	let order = [];
 	for (let i = 0; i < list.itemCount; i++) {
@@ -370,3 +352,88 @@ function duplicateItem(srcItem) {
 	saveItemToPrefs(item, true);
 	saveOrder();
 }
+
+let itemToMove, itemToPlaceBefore;
+let dummy = document.createElement('richlistitem');
+dummy.id = 'dummy';
+dummy.className = 'placebefore';
+function cleanUpDrag() {
+	dummy.remove();
+	let oldPlaceBefore = document.querySelector('.placebefore');
+	if (oldPlaceBefore) {
+		oldPlaceBefore.classList.remove('placebefore');
+	}
+}
+function dragStart(event) {
+	let target = event.target;
+	event.dataTransfer.setData('openwith/key-name', target.fullKeyName);
+	event.dataTransfer.setDragImage(document.getAnonymousElementByAttribute(target, 'class', 'browserIcon'), 16, 16);
+	event.dataTransfer.effectAllowed = 'move';
+
+	target.removeAttribute('current');
+	target.removeAttribute('selected');
+}
+list.addEventListener('dragover', function(event) {
+	let keyName = event.dataTransfer.getData('openwith/key-name');
+	if (!keyName) {
+		return;
+	}
+
+	event.preventDefault();
+	cleanUpDrag();
+
+	itemToMove = null;
+	for (let i = 0; i < list.itemCount; i++) {
+		let item = list.getItemAtIndex(i);
+		if (item.fullKeyName == keyName) {
+			itemToMove = item;
+			break;
+		}
+	}
+
+	let indexOfItem = list.getIndexOfItem(itemToMove);
+	itemToPlaceBefore = null;
+	for (let i = 0; i <= indexOfItem; i++) {
+		let item = list.getItemAtIndex(i);
+		let rect = item.getBoundingClientRect();
+		if (event.clientY < (rect.top + rect.height / 2)) {
+			itemToPlaceBefore = item;
+			break;
+		}
+	}
+	if (!itemToPlaceBefore) {
+		for (let i = list.itemCount - 1; i >= indexOfItem; i--) {
+			let item = list.getItemAtIndex(i);
+			let rect = item.getBoundingClientRect();
+			if (event.clientY > (rect.top + rect.height / 2)) {
+				itemToPlaceBefore = item.nextElementSibling;
+				break;
+			}
+		}
+	}
+
+	if (!itemToPlaceBefore) {
+		list.appendChild(dummy);
+	} else if (itemToMove != itemToPlaceBefore && itemToMove != itemToPlaceBefore.previousSibling) {
+		itemToPlaceBefore.classList.add('placebefore');
+	}
+});
+list.addEventListener('dragexit', function(event) {
+	if (event.target == list && !!event.dataTransfer.getData('openwith/key-name')) {
+		cleanUpDrag();
+		event.dataTransfer.dropEffect = 'none';
+	}
+});
+list.addEventListener('drop', function(event) {
+	if (!!event.dataTransfer.getData('openwith/key-name')) {
+		event.preventDefault();
+	}
+});
+list.addEventListener('dragend', function(event) {
+	cleanUpDrag();
+	if (!!event.dataTransfer.getData('openwith/key-name') && event.dataTransfer.dropEffect == 'move' && itemToMove != itemToPlaceBefore) {
+		list.insertBefore(itemToMove, itemToPlaceBefore);
+		saveOrder();
+	}
+	itemToMove = itemToPlaceBefore = null;
+});

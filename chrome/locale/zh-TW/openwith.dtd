@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "選擇要顯示的功能項目：">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "上移">
-<!ENTITY openwith-browserlist-movedown.tooltip "下移">
 <!ENTITY openwith-browserlist-show.label "顯示">
 <!ENTITY openwith-browserlist-hide.label "隱藏">
 <!ENTITY openwith-browserlist-edit.label "Edit">

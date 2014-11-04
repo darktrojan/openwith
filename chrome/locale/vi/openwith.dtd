@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Chọn thứ mà bạn muốn hiện:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Di chuyển lên">
-<!ENTITY openwith-browserlist-movedown.tooltip "Di chuyển xuống">
 <!ENTITY openwith-browserlist-show.label "Hiện">
 <!ENTITY openwith-browserlist-hide.label "Ẩn">
 <!ENTITY openwith-browserlist-edit.label "Edit">

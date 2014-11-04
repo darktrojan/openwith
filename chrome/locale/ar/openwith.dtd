@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "إختر العناصر المراد عرضها:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "نقل للأعلى">
-<!ENTITY openwith-browserlist-movedown.tooltip "نقل للأسفل">
 <!ENTITY openwith-browserlist-show.label "عرض">
 <!ENTITY openwith-browserlist-hide.label "إخفاء">
 <!ENTITY openwith-browserlist-edit.label "Edit">

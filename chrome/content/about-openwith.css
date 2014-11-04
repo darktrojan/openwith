@@ -25,8 +25,9 @@ description {
 	font-style: italic;
 }
 richlistitem {
+	border-top: 3px solid transparent;
 	border-bottom: 1px dotted #c0c0c0;
-	padding: 4px;
+	padding: 1px 4px 4px;
 	-moz-binding: url(chrome://openwith/content/about-openwith.xml#browser);
 }
 richlistbox:focus > richlistitem[selected="true"] {
@@ -58,7 +59,13 @@ richlistitem[browserHidden="true"] image {
 }
 richlistitem[browserHidden="true"] button.hide,
 richlistitem[browserHidden="false"] button.show,
-richlistitem:first-child .upbutton,
-richlistitem:last-child .downbutton {
+richlistitem[manual="true"] image.browserAuto {
 	visibility: collapse;
+}
+richlistitem.placebefore {
+	border-top-color: highlight;
+}
+richlistitem#dummy {
+	-moz-binding: none;
+	border-bottom: none;
 }

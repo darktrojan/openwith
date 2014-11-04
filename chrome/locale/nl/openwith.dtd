@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Kies welke onderdelen worden weergegeven:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Omhoog">
-<!ENTITY openwith-browserlist-movedown.tooltip "Omlaag">
 <!ENTITY openwith-browserlist-show.label "Weergeven">
 <!ENTITY openwith-browserlist-hide.label "Verbergen">
 <!ENTITY openwith-browserlist-edit.label "Edit">

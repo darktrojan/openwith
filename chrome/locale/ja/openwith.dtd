@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "表示する項目を選択">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "ひとつ上へ">
-<!ENTITY openwith-browserlist-movedown.tooltip "ひとつ下へ">
 <!ENTITY openwith-browserlist-show.label "表示">
 <!ENTITY openwith-browserlist-hide.label "非表示">
 <!ENTITY openwith-browserlist-edit.label "Edit">

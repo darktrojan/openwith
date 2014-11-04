@@ -6,7 +6,7 @@
           xmlns:xbl="http://www.mozilla.org/xbl">
 
 	<binding id="browser" extends="chrome://global/content/bindings/richlistbox.xml#richlistitem">
-		<content>
+		<content ondragstart="dragStart(event);">
 			<vbox flex="1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 				<hbox flex="1">
 					<vbox align="start" pack="center">
@@ -16,7 +16,6 @@
 						<hbox>
 							<label class="browserName" crop="end" xbl:inherits="value=name" />
 							<image class="browserAuto"
-								xbl:inherits="collapsed=manual"
 								src="chrome://openwith/content/star.svg"
 								tooltiptext="&openwith-browserlist-auto.tooltip;" />
 						</hbox>
@@ -27,14 +26,6 @@
 					</vbox>
 				</hbox>
 				<hbox class="buttons" flex="1" pack="end">
-					<button class="upbutton" style="min-width: 0;"
-						image="chrome://openwith/content/moveup.png"
-						oncommand="moveUp(this);"
-						tooltiptext="&openwith-browserlist-moveup.tooltip;" />
-					<button class="downbutton" style="min-width: 0;"
-						image="chrome://openwith/content/movedown.png"
-						oncommand="moveDown(this);"
-						tooltiptext="&openwith-browserlist-movedown.tooltip;" />
 					<button class="show" label="&openwith-browserlist-show.label;"
 						xbl:inherits="collapsed=manual"
 						oncommand="setHidden(document.getBindingParent(this), false);" />
@@ -60,6 +51,10 @@
 				</hbox>
 			</vbox>
 		</content>
+		<implementation>
+			<property name="auto" onget="return this.getAttribute('auto') == 'true';" />
+			<property name="fullKeyName" onget="return (this.auto ? 'a/' : 'm/') + this.getAttribute('keyName');" />
+		</implementation>
 	</binding>
 
 </bindings>

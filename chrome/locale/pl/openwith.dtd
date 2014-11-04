@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Wybierz elementy do wyświetlenia:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Przenieś w górę">
-<!ENTITY openwith-browserlist-movedown.tooltip "Przenieś w dół">
 <!ENTITY openwith-browserlist-show.label "Pokaż">
 <!ENTITY openwith-browserlist-hide.label "Ukryj">
 <!ENTITY openwith-browserlist-edit.label "Edit">

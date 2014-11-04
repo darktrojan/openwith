@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "选择要显示的项目:">
 <!ENTITY openwith-browserlist-auto.tooltip "自动检测">
-<!ENTITY openwith-browserlist-moveup.tooltip "上移">
-<!ENTITY openwith-browserlist-movedown.tooltip "下移">
 <!ENTITY openwith-browserlist-show.label "显示">
 <!ENTITY openwith-browserlist-hide.label "隐藏">
 <!ENTITY openwith-browserlist-edit.label "Edit">

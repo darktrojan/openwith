@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Gösterilecek nesneleri seçin:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Yukarı">
-<!ENTITY openwith-browserlist-movedown.tooltip "Yukarıya">
 <!ENTITY openwith-browserlist-show.label "Göster">
 <!ENTITY openwith-browserlist-hide.label "Gizle">
 <!ENTITY openwith-browserlist-edit.label "Edit">

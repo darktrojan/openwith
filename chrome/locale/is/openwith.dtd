@@ -34,8 +34,6 @@
 
 <!ENTITY openwith-browserlist.label "Veldu hvaða atriði eigi að sýna:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-moveup.tooltip "Færa upp">
-<!ENTITY openwith-browserlist-movedown.tooltip "Færa niður">
 <!ENTITY openwith-browserlist-show.label "Birta">
 <!ENTITY openwith-browserlist-hide.label "Fela">
 <!ENTITY openwith-browserlist-edit.label "Edit">
