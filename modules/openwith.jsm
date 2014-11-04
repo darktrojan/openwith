@@ -41,7 +41,7 @@ let OpenWithCore = {
 			hidePref = [];
 		}
 
-		this.list = [];
+		let unsorted = [];
 		if (WINDOWS) {
 			if (!registryKey) {
 				registryKey = Cc['@mozilla.org/windows-registry-key;1'].createInstance(Ci.nsIWindowsRegKey);
@@ -72,7 +72,7 @@ let OpenWithCore = {
 					let file = new FileUtils.File(command);
 					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
 
-					this.list.push({
+					unsorted.push({
 						auto: true,
 						keyName: keyName,
 						name: value,
@@ -96,7 +96,7 @@ let OpenWithCore = {
 				appFile.append(name + '.app');
 				if (appFile.exists()) {
 					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
-					this.list.push({
+					unsorted.push({
 						auto: true,
 						keyName: keyName,
 						name: name,
@@ -111,17 +111,17 @@ let OpenWithCore = {
 			for (let app of ['google-chrome', 'chromium-browser', 'firefox', 'opera', 'seamonkey']) {
 				let desktopFile = FileUtils.getFile('ProfD', ['.local', 'share', 'applications'], true);
 				if (desktopFile.exists()) {
-					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
 					continue;
 				}
 				desktopFile = new FileUtils.File('/usr/local/share/applications/' + app + '.desktop');
 				if (desktopFile.exists()) {
-					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
 					continue;
 				}
 				desktopFile = new FileUtils.File('/usr/share/applications/' + app + '.desktop');
 				if (desktopFile.exists()) {
-					this.list.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
 					continue;
 				}
 			}
@@ -153,7 +153,7 @@ let OpenWithCore = {
 				icon = this.findIconURL(file, 16);
 			}
 
-			this.list.push({
+			unsorted.push({
 				auto: false,
 				// Do not normalize or old entries will be stranded
 				keyName: name.substring(7),
@@ -167,25 +167,28 @@ let OpenWithCore = {
 			});
 		}
 
+		this.list = [];
 		if (this.prefs.prefHasUserValue('order')) {
 			let order = JSON.parse(this.prefs.getCharPref('order'));
-			let newList = [];
 			for (let orderItem of order) {
 				let auto = orderItem[0] == 'a';
 				let keyName = orderItem.substring(2);
-				for (let j = 0; j < this.list.length; j++) {
-					let item = this.list[j];
+				for (let j = 0; j < unsorted.length; j++) {
+					let item = unsorted[j];
 					if (item.auto == auto && item.keyName == keyName) {
-						newList.push(item);
-						this.list.splice(j, 1);
+						this.list.push(item);
+						unsorted.splice(j, 1);
 						break;
 					}
 				}
 			}
-			for (let item of this.list) {
-				newList.push(item);
-			}
-			this.list = newList;
+		}
+		for (let item of unsorted.sort(function(a, b) {
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		})) {
+			this.list.push(item);
 		}
 
 		Services.console.logStringMessage('OpenWith: reloading lists');
