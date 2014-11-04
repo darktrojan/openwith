@@ -206,21 +206,23 @@ function changeAttribute(item, attrName) {
 		break;
 	}
 	if (Services.prompt.prompt(this, document.title, text, attr, null, {}) && attr.value != original) {
-		item.setAttribute(attrName, attr.value);
-
-		OpenWithCore.suppressLoadList = true;
-		if (attrName == 'name') {
-			let oldKeyName = item.getAttribute('keyName');
-			let newKeyName = attr.value.replace(/\W+/g, '_');
-			if (oldKeyName != newKeyName) {
-				OpenWithCore.prefs.deleteBranch('manual.' + oldKeyName);
-				item.setAttribute('keyName', newKeyName);
+		let oldName = item.getAttribute('name');
+		let oldKeyName = item.getAttribute('keyName');
+		if (oldKeyName.toLowerCase() == oldName.replace(/\W+/g, '_').toLowerCase()) {
+			OpenWithCore.suppressLoadList = true;
+			let newKeyName = generateRandomKeyName();
+			if (OpenWithCore.prefs.getPrefType('manual.' + oldKeyName + '.icon') == Services.prefs.PREF_STRING) {
+				OpenWithCore.prefs.setCharPref(
+					'manual.' + newKeyName + '.icon',
+					OpenWithCore.prefs.getCharPref('manual.' + oldKeyName + '.icon')
+				);
 			}
-			saveOrder();
+			OpenWithCore.prefs.deleteBranch('manual.' + oldKeyName);
+			item.setAttribute('keyName', newKeyName);
 		}
+
+		item.setAttribute(attrName, attr.value);
 		saveItemToPrefs(item);
-		OpenWithCore.suppressLoadList = false;
-		OpenWithCore.loadList(true);
 	}
 }
 
@@ -230,16 +232,31 @@ function saveItemToPrefs(item, saveIcon) {
 	let command = item.getAttribute('command');
 	let params = item.getAttribute('params');
 
+	OpenWithCore.suppressLoadList = true;
+
 	OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
-	if (name != keyName) {
-		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
-	}
+	OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
+
 	if (saveIcon) {
 		let icon = item.getAttribute('icon');
 		icon = icon.replace(/32/g, '16');
 		icon = icon.replace('?size=dnd', '?size=menu');
 		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.icon', icon);
 	}
+
+	OpenWithCore.suppressLoadList = false;
+	saveOrder(); // Calls OpenWithCore.loadList()
+}
+
+function generateRandomKeyName() {
+	let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+
+	let keyName = '';
+	for (let i = 0; i < 8; i++) {
+		keyName += chars[Math.floor(Math.random() * chars.length)];
+	}
+
+	return keyName;
 }
 
 function addNewItem() {
@@ -257,7 +274,7 @@ function addNewItem() {
 			program.auto = false;
 			program.icon = program.icon.replace('?size=menu', '?size=dnd');
 			program.icon = program.icon.replace(/16/g, '32');
-			program.keyName = program.keyName.replace(/\.desktop$/, '');
+			program.keyName = generateRandomKeyName();
 			program.manual = true;
 			program.params = program.params.join(' ');
 			for (let [name, value] of Iterator(program)) {
@@ -271,7 +288,7 @@ function addNewItem() {
 
 			item.setAttribute('auto', false);
 			item.setAttribute('manual', true);
-			item.setAttribute('keyName', name.replace(/\W+/g, '_'));
+			item.setAttribute('keyName', generateRandomKeyName());
 			item.setAttribute('name', name);
 			item.setAttribute('command', command);
 			item.setAttribute('params', '');
@@ -345,7 +362,7 @@ function duplicateItem(srcItem) {
 	item.setAttribute('auto', 'false');
 	item.setAttribute('manual', 'true');
 	item.setAttribute('name', name);
-	item.setAttribute('keyName', name.replace(/\W+/g, '_'));
+	item.setAttribute('keyName', generateRandomKeyName());
 	item.setAttribute('command', srcItem.getAttribute('command'));
 	item.setAttribute('params', srcItem.getAttribute('params'));
 	item.setAttribute('icon', srcItem.getAttribute('icon'));
