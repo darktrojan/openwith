@@ -365,31 +365,21 @@ function cleanUpDrag() {
 	}
 }
 function dragStart(event) {
-	let target = event.target;
-	event.dataTransfer.setData('openwith/key-name', target.fullKeyName);
-	event.dataTransfer.setDragImage(document.getAnonymousElementByAttribute(target, 'class', 'browserIcon'), 16, 16);
+	itemToMove = event.target;
+	event.dataTransfer.setData('openwith/drag', 'true');
+	event.dataTransfer.setDragImage(document.getAnonymousElementByAttribute(itemToMove, 'class', 'browserIcon'), 16, 16);
 	event.dataTransfer.effectAllowed = 'move';
 
-	target.removeAttribute('current');
-	target.removeAttribute('selected');
+	itemToMove.removeAttribute('current');
+	itemToMove.removeAttribute('selected');
 }
 list.addEventListener('dragover', function(event) {
-	let keyName = event.dataTransfer.getData('openwith/key-name');
-	if (!keyName) {
+	if (!event.dataTransfer.getData('openwith/drag')) {
 		return;
 	}
 
 	event.preventDefault();
 	cleanUpDrag();
-
-	itemToMove = null;
-	for (let i = 0; i < list.itemCount; i++) {
-		let item = list.getItemAtIndex(i);
-		if (item.fullKeyName == keyName) {
-			itemToMove = item;
-			break;
-		}
-	}
 
 	let indexOfItem = list.getIndexOfItem(itemToMove);
 	itemToPlaceBefore = null;
@@ -419,19 +409,19 @@ list.addEventListener('dragover', function(event) {
 	}
 });
 list.addEventListener('dragexit', function(event) {
-	if (event.target == list && !!event.dataTransfer.getData('openwith/key-name')) {
+	if (event.target == list && !!event.dataTransfer.getData('openwith/drag')) {
 		cleanUpDrag();
 		event.dataTransfer.dropEffect = 'none';
 	}
 });
 list.addEventListener('drop', function(event) {
-	if (!!event.dataTransfer.getData('openwith/key-name')) {
+	if (!!event.dataTransfer.getData('openwith/drag')) {
 		event.preventDefault();
 	}
 });
 list.addEventListener('dragend', function(event) {
 	cleanUpDrag();
-	if (!!event.dataTransfer.getData('openwith/key-name') && event.dataTransfer.dropEffect == 'move' && itemToMove != itemToPlaceBefore) {
+	if (!!event.dataTransfer.getData('openwith/drag') && event.dataTransfer.dropEffect == 'move' && itemToMove != itemToPlaceBefore) {
 		list.insertBefore(itemToMove, itemToPlaceBefore);
 		saveOrder();
 	}

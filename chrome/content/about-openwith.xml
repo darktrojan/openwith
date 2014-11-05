@@ -51,10 +51,6 @@
 				</hbox>
 			</vbox>
 		</content>
-		<implementation>
-			<property name="auto" onget="return this.getAttribute('auto') == 'true';" />
-			<property name="fullKeyName" onget="return (this.auto ? 'a/' : 'm/') + this.getAttribute('keyName');" />
-		</implementation>
 	</binding>
 
 </bindings>
