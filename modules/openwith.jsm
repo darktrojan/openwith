@@ -397,19 +397,36 @@ let OpenWithCore = {
 		return args;
 	},
 	doCommand: function(event, uri) {
-		if (!(uri instanceof Ci.nsIURI)) {
-			uri = Services.io.newURI(uri, null, null);
+		let uriParam = null;
+		if (!event.ctrlKey) {
+			if (!(uri instanceof Ci.nsIURI)) {
+				uri = Services.io.newURI(uri, null, null);
+			}
+			if (uri.schemeIs('file') && event.target.hasAttribute('openwith-usefilepath')) {
+				uriParam = uri.QueryInterface(Ci.nsIFileURL).file.path;
+			} else {
+				uriParam = uri.spec;
+			}
 		}
+
 		let command = event.target.getAttribute('openwith-command');
 		let paramsAttr = event.target.getAttribute('openwith-params');
 		let params = paramsAttr == '' ? [] : this.splitArgs(paramsAttr);
-		if (!event.ctrlKey) {
-			if (uri.schemeIs('file') && event.target.hasAttribute('openwith-usefilepath')) {
-				params.push(uri.QueryInterface(Ci.nsIFileURL).file.path);
-			} else {
-				params.push(uri.spec);
+		for (var i = 0; i < params.length; i++) {
+			if (params[i] == '%s') {
+				if (uriParam) {
+					params[i] = uriParam;
+					uriParam = null;
+				} else {
+					params.splice(i, 1);
+					i--;
+				}
 			}
 		}
+		if (uriParam) {
+			params.push(uriParam);
+		}
+
 		this.doCommandInternal(command, params);
 	},
 	doCommandInternal: function(command, params) {
