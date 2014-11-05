@@ -367,7 +367,7 @@ function cleanUpDrag() {
 function dragStart(event) {
 	itemToMove = event.target;
 	event.dataTransfer.setData('openwith/drag', 'true');
-	event.dataTransfer.setDragImage(document.getAnonymousElementByAttribute(itemToMove, 'class', 'browserIcon'), 16, 16);
+	event.dataTransfer.setDragImage(itemToMove, 16, 16);
 	event.dataTransfer.effectAllowed = 'move';
 
 	itemToMove.removeAttribute('current');
