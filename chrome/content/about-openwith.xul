@@ -106,7 +106,7 @@
 			<vbox align="center">
 				<hbox align="baseline">
 					<label value="&openwith-donationsrequest;" />
-					<button label="&openwith-donate;" oncommand="OpenWith.openDonatePage();" />
+					<button label="&openwith-donate;" oncommand="OpenWithCore.openDonatePage();" />
 				</hbox>
 				<hbox align="baseline" pack="center">
 					<label class="text-link" value="&openwith-github;"
