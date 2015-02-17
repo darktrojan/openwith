@@ -1,4 +1,4 @@
-Components.utils.import('resource://app/modules/CustomizableUI.jsm');
+Components.utils.import('resource:///modules/CustomizableUI.jsm');
 
 let label = OpenWithCore.strings.GetStringFromName('openWithDropDownTooltip');
 
