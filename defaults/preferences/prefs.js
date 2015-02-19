@@ -14,3 +14,4 @@ pref('extensions.openwith.contextmenu', false);
 pref('extensions.openwith.contextmenu.submenu', false);
 pref('extensions.openwith.contextmenulink', false);
 pref('extensions.openwith.contextmenulink.submenu', false);
+pref('extensions.openwith.log.enabled', false);

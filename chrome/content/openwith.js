@@ -211,7 +211,7 @@ let OpenWith = {
 			} catch (e) {
 				this.tabButtonContainer = null;
 				Components.utils.reportError(e);
-				Services.console.logStringMessage('OpenWith: tab bar buttons will be unavailable');
+				OpenWithCore.log('OpenWith: tab bar buttons will be unavailable');
 			}
 		}
 
@@ -249,7 +249,7 @@ let OpenWith = {
 		} catch (e) {
 			this.tabButtonContainer = null;
 			Components.utils.reportError(e);
-			Services.console.logStringMessage('OpenWith: toolbar buttons will be unavailable');
+			OpenWithCore.log('OpenWith: toolbar buttons will be unavailable');
 		}
 
 		if ('CustomizableUI' in window) {

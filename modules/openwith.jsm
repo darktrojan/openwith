@@ -191,9 +191,9 @@ let OpenWithCore = {
 			this.list.push(item);
 		}
 
-		Services.console.logStringMessage('OpenWith: reloading lists');
+		this.log('OpenWith: reloading lists');
 		for (let item of this.list) {
-			Services.console.logStringMessage(
+			this.log(
 				item.name + (item.hidden ? ' (hidden)' : '') + ':\n' +
 				'\tCommand: ' + item.command + '\n' +
 				'\tParams: ' + item.params.join(' ') + '\n' +
@@ -443,7 +443,7 @@ let OpenWithCore = {
 				fileToRun = file;
 			}
 
-			Services.console.logStringMessage('OpenWith: opening\n\tCommand: ' + fileToRun.path + '\n\tParams: ' + params.join(' '));
+			this.log('OpenWith: opening\n\tCommand: ' + fileToRun.path + '\n\tParams: ' + params.join(' '));
 			let process = Cc['@mozilla.org/process/util;1'].createInstance(Ci.nsIProcess);
 			process.init(fileToRun);
 			if ('runw' in process) {
@@ -662,6 +662,12 @@ let OpenWithCore = {
 			icon: icon,
 			hidden: aHidePref.indexOf(keyName) >= 0
 		};
+	},
+	log: function(message) {
+		if (this.prefs.getBoolPref('log.enabled')) {
+			Services.console.logStringMessage(message);
+			dump(message + '\n');
+		}
 	}
 };
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
