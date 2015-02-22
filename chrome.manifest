@@ -12,6 +12,7 @@ contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e
 
 locale openwith en-US chrome/locale/en-US/
 
+locale openwith ab-CD chrome/locale/ab-CD/
 locale openwith ar    chrome/locale/ar/
 locale openwith bg    chrome/locale/bg/
 locale openwith ca    chrome/locale/ca/

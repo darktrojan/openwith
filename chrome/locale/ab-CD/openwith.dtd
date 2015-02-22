@@ -1,0 +1,47 @@
+<!ENTITY openwith-name "Opêń Wīth">
+<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!ENTITY openwith-dropdown.tooltip "Opėñ wĩth…">
+<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!ENTITY openwith-placeholder.label "Opëň Wĩth îtēms">
+<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!ENTITY openwith-linkplaceholder.label "Opèñ Wîth ŀïñk ítêms">
+<!ENTITY openwith-submenu.label "Opêñ wíth">
+<!ENTITY openwith-linksubmenu.label "Opěŋ Lîņk wìth">
+
+<!ENTITY openwith-options.title "Opëŋ Wĭth Optıŏņs">
+
+<!ENTITY openwith-display-choose.label "Chŏösę høw tö dïspľăy Opéň Wíth îtėms:">
+<!ENTITY openwith-display-pane.viewmenu.label "Vìéw mëņù">
+<!ENTITY openwith-display-pane.contextmenu.label "Máĩň ċøňtęxt męńû">
+<!ENTITY openwith-display-pane.contextmenulink.label "Mãĩŉ ċôŉtēxt mĕņû (ŀĭńks)">
+<!ENTITY openwith-display-pane.placescontext.label "Bőőkmärks čôñtęxt mĕñų">
+<!ENTITY openwith-display-pane.tabmenu.label "Tâb ċøŉtęxt mëñů">
+<!ENTITY openwith-display-pane.tabbar.label "Táb bår">
+<!ENTITY openwith-display-pane.toolbar.label "Tôòĺ bâr">
+<!ENTITY openwith-display-pane.toolbox.label "Dēvęĺøpêr Tõöłs">
+
+<!ENTITY openwith-display-none.label "Dôñ't dīspŀây">
+<!ENTITY openwith-display-menuitems.label "Dïspļáy às měñŭ įtęms">
+<!ENTITY openwith-display-submenu.label "Dīspŀåy äs ã sūb-mĕñũ">
+<!ENTITY openwith-display-buttons.label "Dįspļãy âs bŭttóŋs">
+<!ENTITY openwith-display-dropdown.label "Dĩspļäy ãs â drōp-dõwń mêņù">
+
+<!ENTITY openwith-display-toolbarhelp "Tó âdd Opĕň Wïth tö yōűr tõŏļbär ör pãńêł měŉų, ōpèŋ thè páņēľ mĕńů ąńd ĉĺıčk 'Cųstōmįzè'.">
+
+<!ENTITY openwith-donationsrequest "Opèň Wìth įs fúňdèd by ûsër dőŋătìòńs.">
+<!ENTITY openwith-donate "Döńàtĕ">
+<!ENTITY openwith-github "Opēñ Wíth òŉ GĩtHůb">
+
+<!ENTITY openwith-browserlist.label "Chőôsĕ whĭĉh îtéms tō dĭspľāy:">
+<!ENTITY openwith-browserlist-auto.tooltip "Dētéĉtêd ąųtómàtĩćąĺły">
+<!ENTITY openwith-browserlist-moveup.tooltip "Môvē Up">
+<!ENTITY openwith-browserlist-movedown.tooltip "Mŏvě Dówņ">
+<!ENTITY openwith-browserlist-show.label "Shōw">
+<!ENTITY openwith-browserlist-hide.label "Hîdé">
+<!ENTITY openwith-browserlist-rename.label "Rĕŋāmê…">
+<!ENTITY openwith-browserlist-editcommand.label "Cőmmãŋd…">
+<!ENTITY openwith-browserlist-editparams.label "Argůmĕňts…">
+<!ENTITY openwith-browserlist-remove.label "Rémővé">
+
+<!ENTITY openwith-browserlist-add.label "Add…">
+<!ENTITY openwith-browserlist-restoreorder.label "Dėfáűŀt Ordèr">
