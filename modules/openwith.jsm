@@ -665,7 +665,18 @@ let OpenWithCore = {
 	},
 	log: function(message) {
 		if (this.prefs.getBoolPref('log.enabled')) {
-			Services.console.logStringMessage(message);
+			if ("infoFlag" in Ci.nsIScriptError) {
+				let frame = Components.stack.caller;
+				let filename = frame.filename ? frame.filename.split(" -> ").pop() : null;
+				let scriptError = Cc["@mozilla.org/scripterror;1"].createInstance(Ci.nsIScriptError);
+				scriptError.init(
+					message, filename, null, frame.lineNumber, frame.columnNumber,
+					Ci.nsIScriptError.infoFlag, "component javascript"
+				);
+				Services.console.logMessage(scriptError);
+			} else {
+				Services.console.logStringMessage(message);
+			}
 			dump(message + '\n');
 		}
 	}
