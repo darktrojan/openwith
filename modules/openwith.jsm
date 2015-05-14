@@ -585,7 +585,7 @@ let OpenWithCore = {
 			return;
 		}
 
-		this.timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+		this.timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
 		this.timer.initWithCallback(() => {
 			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
 			let notifyBox;
@@ -665,13 +665,13 @@ let OpenWithCore = {
 	},
 	log: function(message) {
 		if (this.prefs.getBoolPref('log.enabled')) {
-			if ("infoFlag" in Ci.nsIScriptError) {
+			if ('infoFlag' in Ci.nsIScriptError) {
 				let frame = Components.stack.caller;
-				let filename = frame.filename ? frame.filename.split(" -> ").pop() : null;
-				let scriptError = Cc["@mozilla.org/scripterror;1"].createInstance(Ci.nsIScriptError);
+				let filename = frame.filename ? frame.filename.split(' -> ').pop() : null;
+				let scriptError = Cc['@mozilla.org/scripterror;1'].createInstance(Ci.nsIScriptError);
 				scriptError.init(
 					message, filename, null, frame.lineNumber, frame.columnNumber,
-					Ci.nsIScriptError.infoFlag, "component javascript"
+					Ci.nsIScriptError.infoFlag, 'component javascript'
 				);
 				Services.console.logMessage(scriptError);
 			} else {
