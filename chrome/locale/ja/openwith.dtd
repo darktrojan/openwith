@@ -14,11 +14,11 @@
 <!ENTITY openwith-display-pane.viewmenu.label "メニュー">
 <!ENTITY openwith-display-pane.contextmenu.label "コンテクストメニュー">
 <!ENTITY openwith-display-pane.contextmenulink.label "コンテクストメニュー (リンク)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
+<!ENTITY openwith-display-pane.placescontext.label "ブックマークコンテクストメニュー">
 <!ENTITY openwith-display-pane.tabmenu.label "タブメニュー">
 <!ENTITY openwith-display-pane.tabbar.label "タブバー">
 <!ENTITY openwith-display-pane.toolbar.label "ツールバー">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbox.label "開発者ツール">
 
 <!ENTITY openwith-display-none.label "非表示">
 <!ENTITY openwith-display-menuitems.label "メニュー項目として表示">
@@ -26,22 +26,22 @@
 <!ENTITY openwith-display-buttons.label "ボタンとして表示">
 <!ENTITY openwith-display-dropdown.label "ドロップダウンメニューとして表示">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "ツールバーやパネルメニューにOpen Withを追加するには、パネルメニューを開き『カスタマイズ』をクリックしてください。">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
+<!ENTITY openwith-donationsrequest "Open Withはユーザーの皆様の寄付により作られております。">
+<!ENTITY openwith-donate "寄付する">
 <!ENTITY openwith-github "Open With on GitHub">
 
 <!ENTITY openwith-browserlist.label "表示する項目を選択">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "自動的に認識されました">
 <!ENTITY openwith-browserlist-show.label "表示">
 <!ENTITY openwith-browserlist-hide.label "非表示">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "編集">
+<!ENTITY openwith-browserlist-editname.label "名前">
 <!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
 <!ENTITY openwith-browserlist-editparams.label "引数">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "複製する">
 <!ENTITY openwith-browserlist-remove.label "削除">
 
 <!ENTITY openwith-browserlist-add.label "追加">
