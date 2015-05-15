@@ -462,7 +462,6 @@ let OpenWithCore = {
 		}
 
 		let appname = Services.appinfo.name;
-		let appversion = parseFloat(Services.appinfo.version);
 
 		if (this.prefs.getPrefType('version') == Ci.nsIPrefBranch.PREF_STRING) {
 			oldVersion = parseVersion(this.prefs.getCharPref('version'));

@@ -14,7 +14,6 @@ let OpenWith = {
 		Components.utils.import('resource://openwith/openwith.jsm');
 
 		let appname = Services.appinfo.name;
-		let appversion = parseFloat(Services.appinfo.version);
 
 		let content = document.getElementById('content');
 
@@ -154,34 +153,16 @@ let OpenWith = {
 		}
 
 		/** tab bar **/
-		if (appname != 'Firefox' || appversion < 4) {
+		if (appname == 'SeaMonkey') {
 			try {
 				this.tabButtonContainer = document.createElement('toolbaritem');
 				this.tabButtonContainer.id = 'openwith-tabbarbox';
-				if (appname == 'SeaMonkey') {
-					this.tabButtonContainer.className = 'openwith-tabbarbox-seamonkey tabs-right';
-				} else {
-					this.tabButtonContainer.className = 'openwith-tabbarbox-firefox';
-				}
+				this.tabButtonContainer.className = 'tabs-right';
 				this.tabButtonContainer.setAttribute('align', 'center');
 				this.tabButtonContainer.setAttribute('context', '');
 
-				let parent, before;
-				parent = document.getAnonymousElementByAttribute(content, 'anonid', 'tabcontainer');
-				parent = document.getAnonymousNodes(parent).item(0).childNodes[1];
-				if (appname == 'SeaMonkey') {
-					parent = parent.firstChild;
-				}
-				before = parent.firstChild;
-				while (before && before.localName != 'arrowscrollbox' &&
-						before.id != 'tabs-right-space' && // tab mix plus
-						(appname != 'SeaMonkey' || before.localName != 'hbox')) { // seamonkey
-					before = before.nextSibling;
-				}
-				if (before) {
-					before = before.nextSibling;
-				}
-				parent.insertBefore(this.tabButtonContainer, before);
+				let tabcontainer = document.getAnonymousElementByAttribute(content, 'anonid', 'tabcontainer');
+				tabcontainer.appendChild(this.tabButtonContainer);
 
 				let toolbarButton = document.createElement('toolbarbutton');
 				toolbarButton.setAttribute('type', 'menu');

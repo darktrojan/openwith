@@ -37,7 +37,6 @@ function loadDropDowns() {
 	loadingDropDowns = true;
 
 	let appname = Services.appinfo.name;
-	let appversion = parseFloat(Services.appinfo.version);
 
 	if (appname == 'Thunderbird') {
 		$('openwith-viewmenu-row').collapsed = true;
@@ -83,15 +82,12 @@ function loadDropDowns() {
 		$('openwith-toolbar-row').collapsed = true;
 	}
 
-	if (appname == 'Firefox' && appversion >= 20) {
+	if (appname == 'Firefox') {
 		$('openwith-toolbox-group').selectedIndex =
 			OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
 				(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
 	} else {
 		$('openwith-toolbox-row').collapsed = true;
-	}
-
-	if (appname != 'Firefox' || appversion < 29) {
 		$('openwith-toolbarhelp').collapsed = true;
 	}
 
