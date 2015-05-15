@@ -1,4 +1,4 @@
-content openwith chrome/content/
+content openwith content/
 overlay chrome://browser/content/browser.xul chrome://openwith/content/openwith-fx.xul
 overlay chrome://navigator/content/navigator.xul chrome://openwith/content/openwith-sm.xul
 overlay chrome://messenger/content/messenger.xul chrome://openwith/content/openwith-mail.xul
@@ -9,30 +9,30 @@ resource openwith modules/
 component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
 contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e-ad11-55a7bd190185}
 
-locale openwith en-US chrome/locale/en-US/
+locale openwith en-US locale/en-US/
 
-locale openwith ar    chrome/locale/ar/
-locale openwith bg    chrome/locale/bg/
-locale openwith ca    chrome/locale/ca/
-locale openwith cs    chrome/locale/cs/
-locale openwith de    chrome/locale/de/
-locale openwith el    chrome/locale/el/
-locale openwith es-ES chrome/locale/es-ES/
-locale openwith fi    chrome/locale/fi/
-locale openwith fr    chrome/locale/fr/
-locale openwith hu    chrome/locale/hu/
-locale openwith is    chrome/locale/is/
-locale openwith it    chrome/locale/it/
-locale openwith ja    chrome/locale/ja/
-locale openwith nl    chrome/locale/nl/
-locale openwith pl    chrome/locale/pl/
-locale openwith pt-BR chrome/locale/pt-BR/
-locale openwith pt-PT chrome/locale/pt-PT/
-locale openwith ru    chrome/locale/ru/
-locale openwith sr    chrome/locale/sr/
-locale openwith sv-SE chrome/locale/sv-SE/
-locale openwith tr    chrome/locale/tr/
-locale openwith uk    chrome/locale/uk/
-locale openwith vi    chrome/locale/vi/
-locale openwith zh-CN chrome/locale/zh-CN/
-locale openwith zh-TW chrome/locale/zh-TW/
+locale openwith ar    locale/ar/
+locale openwith bg    locale/bg/
+locale openwith ca    locale/ca/
+locale openwith cs    locale/cs/
+locale openwith de    locale/de/
+locale openwith el    locale/el/
+locale openwith es-ES locale/es-ES/
+locale openwith fi    locale/fi/
+locale openwith fr    locale/fr/
+locale openwith hu    locale/hu/
+locale openwith is    locale/is/
+locale openwith it    locale/it/
+locale openwith ja    locale/ja/
+locale openwith nl    locale/nl/
+locale openwith pl    locale/pl/
+locale openwith pt-BR locale/pt-BR/
+locale openwith pt-PT locale/pt-PT/
+locale openwith ru    locale/ru/
+locale openwith sr    locale/sr/
+locale openwith sv-SE locale/sv-SE/
+locale openwith tr    locale/tr/
+locale openwith uk    locale/uk/
+locale openwith vi    locale/vi/
+locale openwith zh-CN locale/zh-CN/
+locale openwith zh-TW locale/zh-TW/
