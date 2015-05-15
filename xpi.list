@@ -1,14 +1,13 @@
-chrome
-chrome/content/*
-chrome/locale/*
 chrome.manifest
 components/*
+content/*
 defaults
 defaults/preferences
 defaults/preferences/prefs.js
 icon.png
 icon64.png
 install.rdf
+locale/*
 modules
-modules/widgets.js
 modules/openwith.jsm
+modules/widgets.js
