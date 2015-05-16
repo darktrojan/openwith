@@ -584,8 +584,7 @@ let OpenWithCore = {
 			return;
 		}
 
-		this.timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
-		this.timer.initWithCallback(() => {
+		function callback() {
 			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
 			let notifyBox;
 			if (recentWindow) {
@@ -595,10 +594,20 @@ let OpenWithCore = {
 				notifyBox = recentWindow.document.getElementById('mail-notification-box');
 			}
 			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
-			if (value == 'openwith-donate') {
-				this.prefs.setIntPref('donationreminder', Date.now() / 1000);
-			}
-		}, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
+		};
+
+		if (value == 'openwith-donate') {
+			idleService.addIdleObserver({
+				observe: function() {
+					idleService.removeIdleObserver(this, 12);
+					callback();
+					OpenWithCore.prefs.setIntPref('donationreminder', Date.now() / 1000);
+				}
+			}, 12);
+		} else {
+			this.timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
+			this.timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
+		}
 	},
 	readDesktopFile: function(aFile, aHidePref) {
 		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
@@ -688,6 +697,7 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
+XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 
 if (Services.appinfo.name == 'Firefox') {
 	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
