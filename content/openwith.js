@@ -149,7 +149,7 @@ let OpenWith = {
 		} catch (e) {
 			this.tabMenuPlaceholder = null;
 			Components.utils.reportError(e);
-			Services.console.logStringMessage('OpenWith: tab menu items will be unavailable');
+			OpenWithCore.log('OpenWith: tab menu items will be unavailable');
 		}
 
 		/** tab bar **/
@@ -162,7 +162,8 @@ let OpenWith = {
 				this.tabButtonContainer.setAttribute('context', '');
 
 				let tabcontainer = document.getAnonymousElementByAttribute(content, 'anonid', 'tabcontainer');
-				tabcontainer.appendChild(this.tabButtonContainer);
+				let before = document.getAnonymousElementByAttribute(tabcontainer, 'anonid', 'arrowscrollbox').nextSibling;
+				before.parentNode.insertBefore(this.tabButtonContainer, before);
 
 				let toolbarButton = document.createElement('toolbarbutton');
 				toolbarButton.setAttribute('type', 'menu');
