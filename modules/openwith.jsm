@@ -456,8 +456,8 @@ let OpenWithCore = {
 		}
 	},
 	versionUpdate: function() {
-		function parseVersion(aVersion) {
-			let match = /^\d+(\.\d+)?/.exec(aVersion);
+		function parseVersion(version) {
+			let match = /^\d+(\.\d+)?/.exec(version);
 			return match ? parseFloat(match[0], 10) : 0;
 		}
 
@@ -550,6 +550,12 @@ let OpenWithCore = {
 	},
 	showNotifications: function() {
 		let label, value, buttons;
+		let shouldRemind = true;
+
+		if (this.prefs.getPrefType('donationreminder') == Ci.nsIPrefBranch.PREF_INT) {
+			let lastReminder = this.prefs.getIntPref('donationreminder') * 1000;
+			shouldRemind = Date.now() - lastReminder > 604800000;
+		}
 
 		if (this.list.length == 0) {
 			label = this.strings.GetStringFromName('noBrowsersSetUp');
@@ -570,6 +576,8 @@ let OpenWithCore = {
 					popup: null,
 					callback: this.openOptionsTab
 				}];
+			} else if (!shouldRemind) {
+				return;
 			} else {
 				label = this.strings.formatStringFromName('versionChanged', [currentVersion], 1);
 				value = 'openwith-donate';
