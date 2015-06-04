@@ -8,7 +8,7 @@
 }
 
 #openwith-widget[cui-areatype="menu-panel"],
-toolbarpaletteitem[place="palette"] > #openwith-widget {
+#wrapper-openwith-widget[place="palette"] > #openwith-widget {
 	list-style-image: url("chrome://openwith/content/openwith32.png");
 }
 
@@ -38,6 +38,12 @@ toolbarpaletteitem[place="palette"] > #openwith-widget {
   min-width: 0;
 }
 
-#openwith-widewidget > toolbarbutton > .toolbarbutton-text {
+#openwith-widewidget[cui-areatype="menu-panel"] > toolbarbutton > image,
+#wrapper-openwith-widewidget[place="palette"] > #openwith-widewidget > toolbarbutton > image {
+  width: 16px;
+  height: 16px;
+}
+
+#openwith-widewidget > toolbarbutton > label {
   display: none;
 }
