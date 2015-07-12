@@ -339,6 +339,7 @@ let OpenWith = {
 				let shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
 					gContextMenu.onImage || gContextMenu.onCanvas || gContextMenu.onVideo ||
 					gContextMenu.onAudio || gContextMenu.onTextInput);
+				let shouldShowLink = gContextMenu.onSaveableLink || gContextMenu.onPlainTextLink;
 
 				OpenWith.contextMenuLinkPlaceholder.hidden = true;
 				OpenWith.contextMenuPlaceholder.hidden = true;
@@ -348,9 +349,9 @@ let OpenWith = {
 				OpenWith.contextSubmenu.hidden = !contextSubmenuPref ||
 							OpenWith.emptyList || !shouldShow;
 				OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref ||
-							OpenWith.emptyList || !gContextMenu.onLink || gContextMenu.onMailtoLink;
+							OpenWith.emptyList || !shouldShowLink;
 
-				if (contextMenuLinkPref && gContextMenu.onLink && !gContextMenu.onMailtoLink) {
+				if (contextMenuLinkPref && shouldShowLink) {
 					let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
 					for (let item of OpenWith.contextMenuLinkItems) {
 						if ('__MenuEdit_insertBefore_orig' in this) {
