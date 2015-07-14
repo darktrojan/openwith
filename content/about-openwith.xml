@@ -20,8 +20,8 @@
 								tooltiptext="&openwith-browserlist-auto.tooltip;" />
 						</hbox>
 						<hbox>
-							<label crop="start" xbl:inherits="value=command" />
-							<label xbl:inherits="value=params" />
+							<label flex="1" crop="start" xbl:inherits="value=command" />
+							<label flex="999" xbl:inherits="value=params" />
 						</hbox>
 					</vbox>
 				</hbox>

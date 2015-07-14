@@ -376,7 +376,6 @@ let OpenWithCore = {
 		let args = [];
 
 		let temp = '';
-		let last = null;
 		let inQuotes = false;
 		for (let c of argString) {
 			if (c == '"') {
@@ -387,7 +386,6 @@ let OpenWithCore = {
 			} else {
 				temp += c;
 			}
-			last = c;
 		}
 
 		if (temp.length > 0) {
@@ -413,9 +411,9 @@ let OpenWithCore = {
 		let paramsAttr = event.target.getAttribute('openwith-params');
 		let params = paramsAttr == '' ? [] : this.splitArgs(paramsAttr);
 		for (var i = 0; i < params.length; i++) {
-			if (params[i] == '%s') {
+			if (params[i].indexOf('%s') >= 0) {
 				if (uriParam) {
-					params[i] = uriParam;
+					params[i] = params[i].replace('%s', uriParam);
 					uriParam = null;
 				} else {
 					params.splice(i, 1);
