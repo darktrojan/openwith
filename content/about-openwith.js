@@ -130,7 +130,9 @@ function loadBrowserList() {
 				item.setAttribute(key, value.join(' '));
 				break;
 			default:
-				item.setAttribute(key, value);
+				if (value !== null) {
+					item.setAttribute(key, value);
+				}
 				break;
 			}
 		}
@@ -225,16 +227,61 @@ function changeAttribute(item, attrName) {
 	}
 }
 
+function editKeyInfo(item) {
+	let current = item.getAttribute('keyInfo');
+	let existingKeys = ['VK_F7'];
+	for (let k of getTopWindow().document.getElementsByTagName('key')) {
+		let key = (k.getAttribute('key') || k.getAttribute('keycode')).toUpperCase();
+		let modifiers = k.getAttribute('modifiers') || [];
+
+		if (!Array.isArray(modifiers)) {
+			modifiers = modifiers.split(',');
+		}
+		modifiers.push(key);
+		existingKeys.push(modifiers.join('+'))
+	}
+
+	let returnValues = Object.create(null);
+	if (current) {
+		returnValues.previous = current.split('+');
+		let index = existingKeys.indexOf(current);
+		if (index >= 0) {
+			existingKeys.splice(index, 1);
+		}
+	}
+	returnValues.existingKeys = existingKeys;
+	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
+	if (Array.isArray(returnValues.keyInfo)) {
+		item.setAttribute('keyInfo', returnValues.keyInfo.join('+'));
+		saveItemToPrefs(item);
+	}
+}
+
+function getTopWindow() {
+	return window.QueryInterface(Ci.nsIInterfaceRequestor)
+		.getInterface(Ci.nsIWebNavigation)
+		.QueryInterface(Ci.nsIDocShellTreeItem)
+		.rootTreeItem
+		.QueryInterface(Ci.nsIInterfaceRequestor)
+		.getInterface(Ci.nsIDOMWindow)
+		.wrappedJSObject;
+}
+
 function saveItemToPrefs(item, saveIcon) {
 	let name = item.getAttribute('name');
 	let keyName = item.getAttribute('keyName');
 	let command = item.getAttribute('command');
 	let params = item.getAttribute('params');
+	let keyInfo = item.getAttribute('keyInfo');
 
 	OpenWithCore.suppressLoadList = true;
 
 	OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
 	OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
+
+	if (keyInfo) {
+		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.keyinfo', keyInfo);
+	}
 
 	if (saveIcon) {
 		let icon = item.getAttribute('icon');

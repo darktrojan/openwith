@@ -40,9 +40,17 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Command…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut&#x2026;">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Remove">
 
 <!ENTITY openwith-browserlist-add.label "Add…">
 <!ENTITY openwith-browserlist-restoreorder.label "Default Order">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">

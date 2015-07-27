@@ -41,6 +41,8 @@
 								oncommand="editCommand(document.getBindingParent(this));" />
 							<menuitem label="&openwith-browserlist-editparams.label;"
 								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
+							<menuitem label="&openwith-browserlist-editshortcut.label;"
+								oncommand="editKeyInfo(document.getBindingParent(this));" />
 						</menupopup>
 					</button>
 					<button label="&openwith-browserlist-duplicate.label;"
