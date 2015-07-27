@@ -130,7 +130,7 @@ let OpenWithCore = {
 		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
 		for (let name of manual) {
-			if (/\.(icon|name|usefilepath)$/.test(name)) {
+			if (/\.(icon|keyinfo|name|usefilepath)$/.test(name)) {
 				continue;
 			}
 			let value;
@@ -152,6 +152,10 @@ let OpenWithCore = {
 				let file = new FileUtils.File(command);
 				icon = this.findIconURL(file, 16);
 			}
+			let keyInfo = null;
+			if (this.prefs.getPrefType(name + '.keyinfo') == Ci.nsIPrefBranch.PREF_STRING) {
+				keyInfo = this.prefs.getCharPref(name + '.keyinfo');
+			}
 
 			unsorted.push({
 				auto: false,
@@ -163,7 +167,8 @@ let OpenWithCore = {
 				icon: icon,
 				hidden: false,
 				useFilePath: this.prefs.getPrefType(name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL &&
-						this.prefs.getBoolPref(name + '.usefilepath')
+						this.prefs.getBoolPref(name + '.usefilepath'),
+				keyInfo: keyInfo
 			});
 		}
 
@@ -276,6 +281,15 @@ let OpenWithCore = {
 			}
 		}
 
+		let keyset = document.getElementById('openwith-keyset');
+		if (keyset === null) {
+			keyset = document.createElement('keyset');
+			keyset.id = 'openwith-keyset';
+		}
+		while (keyset.lastChild) {
+			keyset.lastChild.remove();
+		}
+
 		for (let item of this.list) {
 			if (item.hidden) {
 				continue;
@@ -306,7 +320,35 @@ let OpenWithCore = {
 					}
 				}
 			}
+
+			if (item.keyInfo) {
+				let keys = item.keyInfo.split('+');
+				let keycode = keys.pop();
+				let modifiers = [];
+				for (let m of ['accel', 'shift', 'alt']) {
+					if (keys.indexOf(m) >= 0) {
+						modifiers.push(m);
+					}
+				}
+
+				let key = document.createElement('key');
+				if (keycode.startsWith('VK_')) {
+					key.setAttribute('keycode', keycode);
+				} else {
+					key.setAttribute('key', keycode);
+				}
+				key.setAttribute('modifiers', modifiers.join(','));
+				key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);')
+				key.setAttribute('openwith-command', item.command);
+				key.setAttribute('openwith-params', item.params.join(' '));
+				if ('useFilePath' in item && item.useFilePath) {
+					key.setAttribute('openwith-usefilepath', 'true');
+				}
+				keyset.appendChild(key);
+			}
 		}
+
+		document.documentElement.appendChild(keyset);
 	},
 	createMenuItem: function(document, item, label, targetType = OpenWithCore.TARGET_STANDARD) {
 		let command = item.command;
@@ -396,7 +438,7 @@ let OpenWithCore = {
 	},
 	doCommand: function(event, uri) {
 		let uriParam = null;
-		if (!event.ctrlKey) {
+		if (!event.ctrlKey || event.target.localName == 'key') {
 			if (!(uri instanceof Ci.nsIURI)) {
 				uri = Services.io.newURI(uri, null, null);
 			}
