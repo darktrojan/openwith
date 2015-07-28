@@ -41,6 +41,12 @@ richlistbox:focus > richlistitem[selected="true"] {
 .browserName {
 	font-weight: bold;
 }
+richlistitem:not([keyInfoHuman]) .browserKeyInfoIcon {
+	visibility: collapse;
+}
+.browserKeyInfo {
+	-moz-margin-start: 5px;
+}
 .buttons {
 	visibility: collapse;
 	margin-top: 3px;
@@ -56,11 +62,6 @@ richlistitem[browserHidden="true"] {
 }
 richlistitem[browserHidden="true"] image {
 	opacity: 0.5;
-}
-richlistitem[browserHidden="true"] button.hide,
-richlistitem[browserHidden="false"] button.show,
-richlistitem[manual="true"] image.browserAuto {
-	visibility: collapse;
 }
 richlistitem.placebefore {
 	border-top-color: highlight;

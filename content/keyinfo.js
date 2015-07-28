@@ -4,8 +4,8 @@ let returnValues = window.arguments[0];
 let accelkey;
 let accelkey_ctrl = document.getElementById('accelkey_ctrl');
 let accelkey_cmd = document.getElementById('accelkey_cmd');
-let shiftkey = document.getElementById('shiftkey');
 let altkey = document.getElementById('altkey');
+let shiftkey = document.getElementById('shiftkey');
 let keycode = document.getElementById('keycode');
 let nomodifier = document.getElementById('nomodifier');
 let comboinuse = document.getElementById('comboinuse');
@@ -35,7 +35,7 @@ for (let c = 1; c <= 12; c++) {
 
 if (!!returnValues.previous && returnValues.previous.length > 0 && returnValues.previous[0] != '') {
 	keycode.value = returnValues.previous.pop();
-	for (let k of [accelkey, shiftkey, altkey]) {
+	for (let k of [accelkey, altkey, shiftkey]) {
 		k.checked = returnValues.previous.indexOf(k.getAttribute('value')) >= 0;
 	}
 } else {
@@ -54,7 +54,7 @@ function addItem(label, value = label) {
 
 function getValue() {
 	let keys = [];
-	for (let k of [accelkey, shiftkey, altkey]) {
+	for (let k of [accelkey, altkey, shiftkey]) {
 		if (k.checked && !k.disabled) {
 			keys.push(k.getAttribute('value'));
 		}

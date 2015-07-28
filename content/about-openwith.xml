@@ -15,9 +15,14 @@
 					<vbox flex="1">
 						<hbox>
 							<label class="browserName" crop="end" xbl:inherits="value=name" />
-							<image class="browserAuto"
+							<image xbl:inherits="collapsed=manual"
 								src="chrome://openwith/content/star.svg"
 								tooltiptext="&openwith-browserlist-auto.tooltip;" />
+							<spacer flex="1" />
+							<image class="browserKeyInfoIcon"
+								xbl:inherits="collapsed=browserHidden"
+								src="chrome://openwith/content/keyboard.svg" />
+							<label class="browserKeyInfo" xbl:inherits="value=keyInfoHuman,collapsed=browserHidden" />
 						</hbox>
 						<hbox>
 							<label flex="1" crop="start" xbl:inherits="value=command" />
@@ -33,13 +38,16 @@
 						xbl:inherits="collapsed=manual"
 						oncommand="setHidden(document.getBindingParent(this), true);" />
 					<button type="menu" label="&openwith-browserlist-edit.label;"
-						xbl:inherits="collapsed=auto">
+						xbl:inherits="collapsed=browserHidden">
 						<menupopup>
 							<menuitem label="&openwith-browserlist-editname.label;"
+								xbl:inherits="collapsed=auto"
 								oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
 							<menuitem label="&openwith-browserlist-editcommand.label;"
+								xbl:inherits="collapsed=auto"
 								oncommand="editCommand(document.getBindingParent(this));" />
 							<menuitem label="&openwith-browserlist-editparams.label;"
+								xbl:inherits="collapsed=auto"
 								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
 							<menuitem label="&openwith-browserlist-editshortcut.label;"
 								oncommand="editKeyInfo(document.getBindingParent(this));" />

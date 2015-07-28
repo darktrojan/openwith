@@ -1,16 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="16" viewBox="0 0 16 16">
-	<defs>
-		<linearGradient id="linearGradient4079">
-			<stop style="stop-color:#0ab40a" offset="0" />
-			<stop style="stop-color:#87de87" offset="1" />
-		</linearGradient>
-		<radialGradient cx="8" cy="1044.3622" r="7.6004944" fx="8" fy="1044.3622" id="radialGradient4085" xlink:href="#linearGradient4079" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.85065025,-0.61803207,0.61803535,0.85065478,-644.25793,160.91479)" />
-	</defs>
-	<g
-		 transform="translate(0,-1036.3622)"
-		 id="layer1">
-		<path d="m 8.0000002,1052.3538 -1.6162415,-2.4872 -2.7043615,1.2186 -0.014977,-2.9662 -2.93386553,-0.437 1.59104323,-2.5034 -2.23188797,-1.9537 2.69191817,-1.2459 -0.8213018,-2.8502 2.938128,0.4073 0.8500419,-2.8418 2.2515031,1.9311 2.2515033,-1.9311 0.850042,2.8418 2.938128,-0.4073 -0.821302,2.8502 2.691919,1.2459 -2.231888,1.9537 1.591043,2.5034 -2.933865,0.437 -0.01498,2.9662 -2.704361,-1.2186 z" style="fill:url(#radialGradient4085)" />
-		<path d="m 4.2556976,1044.3408 2.4672037,2.4672 4.9752737,-5.6975" style="fill:none;stroke:#ffffff;stroke-width:1.8" />
-	</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <linearGradient id="a">
+            <stop offset="0" stop-color="#0ab40a"/>
+            <stop offset="1" stop-color="#87de87"/>
+        </linearGradient>
+        <radialGradient cx="8" cy="8" r="8" fx="8" fy="8" id="b" xlink:href="#a" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <path d="M 8,15.992 6.384,13.505 3.679,14.723 3.662,11.757 0.729,11.317 2.321,8.815 0.089,6.86 2.781,5.614 1.959,2.764 4.897,3.17 5.747,0.328 8,2.258 l 2.252,-1.93 0.85,2.843 2.938,-0.407 -0.822,2.85 2.692,1.245 -2.232,1.955 1.59,2.502 -2.932,0.437 -0.015,2.965 -2.703,-1.22 z" fill="url(#b)"/>
+    <path d="M4.256 7.98l2.467 2.466 4.975-5.698" fill="none" stroke="#fff" stroke-width="1.8"/>
 </svg>

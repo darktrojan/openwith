@@ -127,6 +127,12 @@ let OpenWithCore = {
 			}
 		}
 
+		for (let item of unsorted) {
+			if (this.prefs.getPrefType('auto.' + item.keyName + '.keyinfo') == Ci.nsIPrefBranch.PREF_STRING) {
+				item.keyInfo = this.prefs.getCharPref('auto.' + item.keyName + '.keyinfo');
+			}
+		}
+
 		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
 		for (let name of manual) {

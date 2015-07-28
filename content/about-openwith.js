@@ -4,7 +4,10 @@ const Cu = Components.utils;
 
 Cu.import('resource://gre/modules/FileUtils.jsm');
 Cu.import('resource://gre/modules/Services.jsm');
+Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://openwith/openwith.jsm');
+
+XPCOMUtils.defineLazyModuleGetter(this, 'AppConstants', 'resource://gre/modules/AppConstants.jsm');
 
 let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 
@@ -129,6 +132,12 @@ function loadBrowserList() {
 			case 'params':
 				item.setAttribute(key, value.join(' '));
 				break;
+			case 'keyInfo':
+				if (value !== null) {
+					item.setAttribute(key, value);
+					item.setAttribute('keyInfoHuman', getHumanKeyInfo(value));
+				}
+				break;
 			default:
 				if (value !== null) {
 					item.setAttribute(key, value);
@@ -138,6 +147,14 @@ function loadBrowserList() {
 		}
 		list.appendChild(item);
 	}
+}
+
+function getHumanKeyInfo(value) {
+	value = value.replace('VK_', '');
+	value = value.replace('accel', AppConstants.MOZ_WIDGET_TOOLKIT == 'cocoa' ? 'Cmd' : 'Ctrl');
+	value = value.replace('shift', 'Shift');
+	value = value.replace('alt', 'Alt');
+	return value;
 }
 
 function updatePrefs(pref1, pref2, index) {
@@ -255,8 +272,11 @@ function editKeyInfo(item) {
 	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
 	if (returnValues.removeKeyInfo == true) {
 		item.removeAttribute('keyInfo');
+		item.removeAttribute('keyInfoHuman');
 	} else if (Array.isArray(returnValues.keyInfo)) {
-		item.setAttribute('keyInfo', returnValues.keyInfo.join('+'));
+		let value = returnValues.keyInfo.join('+');
+		item.setAttribute('keyInfo', value);
+		item.setAttribute('keyInfoHuman', getHumanKeyInfo(value));
 	}
 	saveItemToPrefs(item);
 }
@@ -277,23 +297,26 @@ function saveItemToPrefs(item, saveIcon) {
 	let command = item.getAttribute('command');
 	let params = item.getAttribute('params');
 	let keyInfo = item.getAttribute('keyInfo');
+	let type = item.getAttribute('auto') == 'true' ? 'auto' : 'manual';
 
 	OpenWithCore.suppressLoadList = true;
 
-	OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
-	OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
-
 	if (keyInfo) {
-		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.keyinfo', keyInfo);
+		OpenWithCore.prefs.setCharPref(type + '.' + keyName + '.keyinfo', keyInfo);
 	} else {
-		OpenWithCore.prefs.clearUserPref('manual.' + keyName + '.keyinfo');
+		OpenWithCore.prefs.clearUserPref(type + '.' + keyName + '.keyinfo');
 	}
 
-	if (saveIcon) {
-		let icon = item.getAttribute('icon');
-		icon = icon.replace(/32/g, '16');
-		icon = icon.replace('?size=dnd', '?size=menu');
-		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.icon', icon);
+	if (type == 'manual') {
+		OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
+		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
+
+		if (saveIcon) {
+			let icon = item.getAttribute('icon');
+			icon = icon.replace(/32/g, '16');
+			icon = icon.replace('?size=dnd', '?size=menu');
+			OpenWithCore.prefs.setCharPref('manual.' + keyName + '.icon', icon);
+		}
 	}
 
 	OpenWithCore.suppressLoadList = false;

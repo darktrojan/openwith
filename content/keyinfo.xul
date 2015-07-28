@@ -11,8 +11,8 @@
 	<hbox pack="center">
 		<checkbox id="accelkey_ctrl" value="accel" label="&openwith-ctrlkey;" oncommand="checkValue();" />
 		<checkbox id="accelkey_cmd" value="accel" label="&openwith-cmdkey;" oncommand="checkValue();" />
-		<checkbox id="shiftkey" value="shift" label="&openwith-shiftkey;" oncommand="checkValue();" />
 		<checkbox id="altkey" value="alt" label="&openwith-altkey;" oncommand="checkValue();" />
+		<checkbox id="shiftkey" value="shift" label="&openwith-shiftkey;" oncommand="checkValue();" />
 		<menulist id="keycode" oncommand="checkValue();">
 			<menupopup>
 			</menupopup>
