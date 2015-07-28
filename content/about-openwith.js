@@ -1,3 +1,6 @@
+/* globals OpenWithCore, openDialog */
+/* exported updatePrefs, setHidden, editCommand, changeAttribute, editKeyInfo,
+	addNewItem, removeItem, restoreOrder, duplicateItem, dragStart */
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -31,77 +34,79 @@ function $(id) {
 
 let loadingDropDowns = false;
 let changingPref = false;
-function loadDropDowns() {
-	if (changingPref) {
-		return;
-	}
-	loadingDropDowns = true;
+let locationObserver = {
+	observe: function() {
+		if (changingPref) {
+			return;
+		}
+		loadingDropDowns = true;
 
-	let appname = Services.appinfo.name;
-	document.documentElement.setAttribute('appname', appname);
+		let appname = Services.appinfo.name;
+		document.documentElement.setAttribute('appname', appname);
 
-	if (appname == 'Thunderbird') {
-		$('openwith-viewmenu-row').collapsed = true;
-		$('openwith-contextmenu-row').collapsed = true;
-		$('openwith-placescontext-row').collapsed = true;
-		$('openwith-tabmenu-row').collapsed = true;
-		$('openwith-tabbar-row').collapsed = true;
-		$('openwith-toolbar-row').collapsed = true;
-	}
+		if (appname == 'Thunderbird') {
+			$('openwith-viewmenu-row').collapsed = true;
+			$('openwith-contextmenu-row').collapsed = true;
+			$('openwith-placescontext-row').collapsed = true;
+			$('openwith-tabmenu-row').collapsed = true;
+			$('openwith-tabbar-row').collapsed = true;
+			$('openwith-toolbar-row').collapsed = true;
+		}
 
-	$('openwith-viewmenu-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('viewmenu') ? 1 :
-			(OpenWithCore.prefs.getBoolPref('viewmenu.submenu') ? 2 : 0);
+		$('openwith-viewmenu-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('viewmenu') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('viewmenu.submenu') ? 2 : 0);
 
-	$('openwith-contextmenu-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('contextmenu') ? 1 :
-			(OpenWithCore.prefs.getBoolPref('contextmenu.submenu') ? 2 : 0);
+		$('openwith-contextmenu-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('contextmenu') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('contextmenu.submenu') ? 2 : 0);
 
-	$('openwith-contextmenulink-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
-			(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
+		$('openwith-contextmenulink-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
 
-	$('openwith-placescontext-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('placescontext') ? 1 :
-			(OpenWithCore.prefs.getBoolPref('placescontext.submenu') ? 2 : 0);
+		$('openwith-placescontext-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('placescontext') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('placescontext.submenu') ? 2 : 0);
 
-	$('openwith-tabmenu-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('tabmenu') ? 1 :
-			(OpenWithCore.prefs.getBoolPref('tabmenu.submenu') ? 2 : 0);
+		$('openwith-tabmenu-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('tabmenu') ? 1 :
+				(OpenWithCore.prefs.getBoolPref('tabmenu.submenu') ? 2 : 0);
 
-	if (browserWindow && browserWindow.OpenWith.tabButtonContainer) {
-		$('openwith-tabbar-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('tabbar') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('tabbar.menu') ? 2 : 0);
-	} else {
-		$('openwith-tabbar-row').collapsed = true;
-	}
+		if (browserWindow && browserWindow.OpenWith.tabButtonContainer) {
+			$('openwith-tabbar-group').selectedIndex =
+					OpenWithCore.prefs.getBoolPref('tabbar') ? 1 :
+					(OpenWithCore.prefs.getBoolPref('tabbar.menu') ? 2 : 0);
+		} else {
+			$('openwith-tabbar-row').collapsed = true;
+		}
 
-	if (browserWindow && browserWindow.OpenWith.toolbarButtonContainer) {
-		$('openwith-toolbar-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('toolbar') ? 0 : 1;
-	} else {
-		$('openwith-toolbar-row').collapsed = true;
-	}
+		if (browserWindow && browserWindow.OpenWith.toolbarButtonContainer) {
+			$('openwith-toolbar-group').selectedIndex =
+					OpenWithCore.prefs.getBoolPref('toolbar') ? 0 : 1;
+		} else {
+			$('openwith-toolbar-row').collapsed = true;
+		}
 
-	if (appname == 'Firefox') {
-		$('openwith-toolbox-group').selectedIndex =
-			OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
-	} else {
-		$('openwith-toolbox-row').collapsed = true;
-		$('openwith-toolbarhelp').collapsed = true;
-	}
+		if (appname == 'Firefox') {
+			$('openwith-toolbox-group').selectedIndex =
+				OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
+					(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
+		} else {
+			$('openwith-toolbox-row').collapsed = true;
+			$('openwith-toolbarhelp').collapsed = true;
+		}
 
-	loadingDropDowns = false;
-}
-
-loadDropDowns();
-Services.obs.addObserver({
-	observe: function(subject, topic, data) {
-		loadDropDowns();
-	}
-}, 'openWithLocationsChanged', false);
+		loadingDropDowns = false;
+	},
+	QueryInterface: XPCOMUtils.generateQI([
+		Components.interfaces.nsIObserver,
+		Components.interfaces.nsISupportsWeakReference,
+		Components.interfaces.nsISupports
+	])
+};
+locationObserver.observe();
+Services.obs.addObserver(locationObserver, 'openWithLocationsChanged', true);
 
 let loggingObserver = {
 	checkbox: $('logging'),
@@ -273,7 +278,7 @@ function editKeyInfo(item) {
 			modifiers = modifiers.split(',');
 		}
 		modifiers.push(key);
-		existingKeys.push(modifiers.join('+'))
+		existingKeys.push(modifiers.join('+'));
 	}
 
 	let returnValues = Object.create(null);
