@@ -54,3 +54,4 @@
 <!ENTITY openwith-altkey "Alt">
 <!ENTITY openwith-nomodifier "Select at least one modifier.">
 <!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

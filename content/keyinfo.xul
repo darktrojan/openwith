@@ -3,7 +3,10 @@
 
 <!DOCTYPE dialog SYSTEM "chrome://openwith/locale/openwith.dtd">
 
-<dialog buttons="accept,cancel" ondialogaccept="dialogAccept();" title="&openwith-options.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onerror="alert(event)">
+<dialog buttons="accept,cancel,extra1" title="&openwith-options.title;"
+		buttonlabelextra1="&openwith-removecombo;" ondialogextra1="dialogRemove();"
+		ondialogaccept="dialogAccept();"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<hbox>
 		<checkbox id="accelkey_ctrl" value="accel" label="&openwith-ctrlkey;" oncommand="checkValue();" />
 		<checkbox id="accelkey_cmd" value="accel" label="&openwith-cmdkey;" oncommand="checkValue();" />

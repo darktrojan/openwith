@@ -7,6 +7,7 @@ let altkey = document.getElementById('altkey');
 let keycode = document.getElementById('keycode');
 let nomodifier = document.getElementById('nomodifier');
 let comboinuse = document.getElementById('comboinuse');
+let acceptButton = document.documentElement.getButton('accept');
 
 Components.utils.import('resource://gre/modules/AppConstants.jsm');
 if (AppConstants.MOZ_WIDGET_TOOLKIT == 'cocoa') {
@@ -28,12 +29,17 @@ for (let c = 1; c <= 12; c++) {
 	addItem('F' + c, 'VK_F' + c);
 }
 
-if (returnValues.previous.length > 0 && returnValues.previous[0] != '') {
+if (!!returnValues.previous && returnValues.previous.length > 0 && returnValues.previous[0] != '') {
 	keycode.value = returnValues.previous.pop();
 	for (let k of [accelkey, shiftkey, altkey]) {
 		k.checked = returnValues.previous.indexOf(k.getAttribute('value')) >= 0;
 	}
+} else {
+	document.documentElement.getButton('extra1').hidden = true;
+	keycode.value = 'A';
 }
+
+checkValue();
 
 function addItem(label, value = label) {
 	let item = document.createElement('menuitem');
@@ -45,7 +51,7 @@ function addItem(label, value = label) {
 function getValue() {
 	let keys = [];
 	for (let k of [accelkey, shiftkey, altkey]) {
-		if (k.checked) {
+		if (k.checked && !k.disabled) {
 			keys.push(k.getAttribute('value'));
 		}
 	}
@@ -54,15 +60,24 @@ function getValue() {
 }
 
 function checkValue() {
+	shiftkey.disabled = keycode.value >= '0' && keycode.value <= '9';
+
 	let value = getValue();
-	if (value.length < 2) {
+	if (value.length < 2 && !keycode.value.startsWith('VK_')) {
 		nomodifier.hidden = false;
 		comboinuse.hidden = true;
+		acceptButton.disabled = true;
 	} else {
 		nomodifier.hidden = true;
 		comboinuse.hidden = returnValues.existingKeys.indexOf(value.join('+')) < 0;
+		acceptButton.disabled = false;
 	}
 	sizeToContent();
+}
+
+function dialogRemove() {
+	returnValues.removeKeyInfo = true;
+	document.documentElement.acceptDialog();
 }
 
 function dialogAccept() {

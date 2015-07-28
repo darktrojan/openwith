@@ -251,10 +251,12 @@ function editKeyInfo(item) {
 	}
 	returnValues.existingKeys = existingKeys;
 	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
-	if (Array.isArray(returnValues.keyInfo)) {
+	if (returnValues.removeKeyInfo == true) {
+		item.removeAttribute('keyInfo');
+	} else if (Array.isArray(returnValues.keyInfo)) {
 		item.setAttribute('keyInfo', returnValues.keyInfo.join('+'));
-		saveItemToPrefs(item);
 	}
+	saveItemToPrefs(item);
 }
 
 function getTopWindow() {
@@ -281,6 +283,8 @@ function saveItemToPrefs(item, saveIcon) {
 
 	if (keyInfo) {
 		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.keyinfo', keyInfo);
+	} else {
+		OpenWithCore.prefs.clearUserPref('manual.' + keyName + '.keyinfo');
 	}
 
 	if (saveIcon) {
