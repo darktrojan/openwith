@@ -36,7 +36,7 @@
 			</Description>
 		</em:targetApplication>
 
-		<em:localized locale="ar">
+		<em:localized>
 			<Description>
 				<em:locale>ar</em:locale>
 				<em:name>فتح بإستخدام</em:name>
@@ -44,7 +44,7 @@
 				<em:translator>Natty Dreed</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="el">
+		<em:localized>
 			<Description>
 				<em:locale>el</em:locale>
 				<em:name>Άνοιγμα με</em:name>
@@ -52,7 +52,7 @@
 				<em:translator>Γιώργος Μαλαμάς</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="es-ES">
+		<em:localized>
 			<Description>
 				<em:locale>es-ES</em:locale>
 				<em:name>Abrir Con</em:name>
@@ -60,7 +60,7 @@
 				<em:translator>RigoNet</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="hu-HU">
+		<em:localized>
 			<Description>
 				<em:locale>hu-HU</em:locale>
 				<em:name>Open With</em:name>
@@ -68,7 +68,7 @@
 				<em:translator>Bling</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="is-IS">
+		<em:localized>
 			<Description>
 				<em:locale>is-IS</em:locale>
 				<em:name>Opna me</em:name>
@@ -76,7 +76,7 @@
 				<em:translator>Sveinn Felli</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="ja-JP">
+		<em:localized>
 			<Description>
 				<em:locale>ja-JP</em:locale>
 				<em:name>Open With</em:name>
@@ -84,7 +84,7 @@
 				<em:translator>Hidekazu N.</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="pt-BR">
+		<em:localized>
 			<Description>
 				<em:locale>pt-BR</em:locale>
 				<em:name>Open With</em:name>
@@ -92,31 +92,6 @@
 				<em:translator>Muzeum</em:translator>
 			</Description>
 		</em:localized>
-		<em:localized locale="tr-TR">
-			<Description>
-				<em:locale>tr-TR</em:locale>
-				<em:name>Open With (Birlikte A)</em:name>
-				<em:description>Open With menünüze ve sekme çubuğunuza gezdiğiniz saydayı başka tarayıcı ile görmeniz için seçenekler ekler.</em:description>
-				<em:translator>Serdar Şahin</em:translator>
-			</Description>
-		</em:localized>
-		<em:localized locale="zh-CN">
-			<Description>
-				<em:locale>zh-CN</em:locale>
-				<em:name>Open With</em:name>
-				<em:description>Open With 在菜单和标签栏提供选项让您在其它浏览器打开当前页面.</em:description>
-				<em:translator>Cye3s</em:translator>
-			</Description>
-		</em:localized>
-		<em:localized locale="zh-TW">
-			<Description>
-				<em:locale>zh-TW</em:locale>
-				<em:name>Open With</em:name>
-				<em:description>Open With 會在功能表和分頁列上加入以其他瀏覽器開啟目前網頁的選項</em:description>
-				<em:translator>velociraptor</em:translator>
-			</Description>
-		</em:localized>
-
 		<em:localized>
 			<Description>
 				<em:locale>sv-SE</em:locale>
@@ -124,5 +99,30 @@
 				<em:description>Testa kvickt dina websidor i Internet Explorer, Chrome, Safari eller Opera. Tillägget Öppna med öppnar den öppna sidan i andra webbläsare med bara ett musklick.</em:description>
 			</Description>
 		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>tr-TR</em:locale>
+				<em:name>Open With (Birlikte A)</em:name>
+				<em:description>Open With menünüze ve sekme çubuğunuza gezdiğiniz saydayı başka tarayıcı ile görmeniz için seçenekler ekler.</em:description>
+				<em:translator>Serdar Şahin</em:translator>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>zh-CN</em:locale>
+				<em:name>Open With</em:name>
+				<em:description>Open With 在菜单和标签栏提供选项让您在其它浏览器打开当前页面.</em:description>
+				<em:translator>Cye3s</em:translator>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>zh-TW</em:locale>
+				<em:name>Open With</em:name>
+				<em:description>Open With 會在功能表和分頁列上加入以其他瀏覽器開啟目前網頁的選項</em:description>
+				<em:translator>velociraptor</em:translator>
+			</Description>
+		</em:localized>
 	</Description>
+
 </RDF>

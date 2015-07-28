@@ -37,7 +37,7 @@
 <!ENTITY openwith-browserlist-show.label "Visa">
 <!ENTITY openwith-browserlist-hide.label "Dölj">
 <!ENTITY openwith-browserlist-edit.label "Ändra">
-<!ENTITY openwith-browserlist-editname.label "Namn...">
+<!ENTITY openwith-browserlist-editname.label "Namn…">
 <!ENTITY openwith-browserlist-editcommand.label "Kommando…">
 <!ENTITY openwith-browserlist-editparams.label "Argument…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
