@@ -11,14 +11,14 @@
 <!ENTITY openwith-options.title "Inställningar för Open With">
 
 <!ENTITY openwith-display-choose.label "Välj hur Open With-objekt skall visas:">
-<!ENTITY openwith-display-pane.viewmenu.label "Visa-menyn">
+<!ENTITY openwith-display-pane.viewmenu.label "Visameny">
 <!ENTITY openwith-display-pane.contextmenu.label "Snabbmeny">
 <!ENTITY openwith-display-pane.contextmenulink.label "Snabbmeny (länkar)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
+<!ENTITY openwith-display-pane.placescontext.label "Bokmärkesmeny">
 <!ENTITY openwith-display-pane.tabmenu.label "Flikmeny">
 <!ENTITY openwith-display-pane.tabbar.label "Flikfält">
 <!ENTITY openwith-display-pane.toolbar.label "Verktygsfält">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbox.label "Utvecklingsverktyg">
 
 <!ENTITY openwith-display-none.label "Visa inte">
 <!ENTITY openwith-display-menuitems.label "Visa som menyobjekt">
@@ -26,23 +26,23 @@
 <!ENTITY openwith-display-buttons.label "Visa som knappar">
 <!ENTITY openwith-display-dropdown.label "Visa som en rullgardinsmeny">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "För att få Open With i verktygsfältet eller i panelmenyn: öppna panelmenyn och välj 'Anpassa'.">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "Open With finansieras med donationer från användare.">
+<!ENTITY openwith-donate "Donera">
+<!ENTITY openwith-github "Open With på GitHub">
 
 <!ENTITY openwith-browserlist.label "Välj vilka objekt som skall visas:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "Upptäck automatiskt">
 <!ENTITY openwith-browserlist-show.label "Visa">
 <!ENTITY openwith-browserlist-hide.label "Dölj">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "Ändra">
+<!ENTITY openwith-browserlist-editname.label "Namn...">
 <!ENTITY openwith-browserlist-editcommand.label "Kommando…">
 <!ENTITY openwith-browserlist-editparams.label "Argument…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "Duplicera">
 <!ENTITY openwith-browserlist-remove.label "Ta bort">
 
 <!ENTITY openwith-browserlist-add.label "Lägg till…">
-<!ENTITY openwith-browserlist-restoreorder.label "Standardsortering">
+<!ENTITY openwith-browserlist-restoreorder.label "Standardordning">
