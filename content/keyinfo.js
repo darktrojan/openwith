@@ -1,3 +1,5 @@
+/* globals AppConstants, sizeToContent */
+/* exported dialogRemove, dialogAccept */
 let returnValues = window.arguments[0];
 let accelkey;
 let accelkey_ctrl = document.getElementById('accelkey_ctrl');
@@ -17,6 +19,8 @@ if (AppConstants.MOZ_WIDGET_TOOLKIT == 'cocoa') {
 	accelkey = accelkey_ctrl;
 	accelkey_cmd.hidden = true;
 }
+
+document.getElementById('promptText').value = returnValues.promptText;
 
 for (let c = 65; c <= 90; c++) {
 	addItem(String.fromCharCode(c));

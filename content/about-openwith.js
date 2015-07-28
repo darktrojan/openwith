@@ -249,6 +249,8 @@ function editKeyInfo(item) {
 			existingKeys.splice(index, 1);
 		}
 	}
+	returnValues.promptText =
+			OpenWithCore.strings.formatStringFromName('keyinfoPromptText', [item.getAttribute('name')], 1);
 	returnValues.existingKeys = existingKeys;
 	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
 	if (returnValues.removeKeyInfo == true) {

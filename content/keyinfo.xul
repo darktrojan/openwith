@@ -7,7 +7,8 @@
 		buttonlabelextra1="&openwith-removecombo;" ondialogextra1="dialogRemove();"
 		ondialogaccept="dialogAccept();"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<hbox>
+	<label id="promptText" />
+	<hbox pack="center">
 		<checkbox id="accelkey_ctrl" value="accel" label="&openwith-ctrlkey;" oncommand="checkValue();" />
 		<checkbox id="accelkey_cmd" value="accel" label="&openwith-cmdkey;" oncommand="checkValue();" />
 		<checkbox id="shiftkey" value="shift" label="&openwith-shiftkey;" oncommand="checkValue();" />
@@ -17,7 +18,7 @@
 			</menupopup>
 		</menulist>
 	</hbox>
-	<description id="nomodifier" hidden="true" style="font-style: italic">&openwith-nomodifier;</description>
-	<description id="comboinuse" hidden="true" style="font-style: italic">&openwith-comboinuse;</description>
+	<label id="nomodifier" hidden="true" style="text-align: center; font-style: italic" value="&openwith-nomodifier;" />
+	<label id="comboinuse" hidden="true" style="text-align: center; font-style: italic" value="&openwith-comboinuse;" />
 	<script src="keyinfo.js" type="application/javascript;version=1.8"></script>
 </dialog>
