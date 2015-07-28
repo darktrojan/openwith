@@ -283,7 +283,7 @@ let OpenWith = {
 		}
 
 		this.emptyList = OpenWithCore.list.length == 0;
-		OpenWithCore.refreshUI(document, this.locations);
+		OpenWithCore.refreshUI(document, this.locations, { keyTargetType: OpenWithCore.TARGET_STANDARD });
 	},
 
 	popupShowing: function(event) {

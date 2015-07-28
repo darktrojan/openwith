@@ -58,7 +58,7 @@ let OpenWith = {
 
 	loadLists: function() {
 		this.emptyList = OpenWithCore.list.length == 0;
-		OpenWithCore.refreshUI(document, this.locations);
+		OpenWithCore.refreshUI(document, this.locations, {});
 	},
 
 	popupShowing: function(event) {

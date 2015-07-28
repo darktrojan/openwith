@@ -37,7 +37,7 @@
 					<button class="hide" label="&openwith-browserlist-hide.label;"
 						xbl:inherits="collapsed=manual"
 						oncommand="setHidden(document.getBindingParent(this), true);" />
-					<button type="menu" label="&openwith-browserlist-edit.label;"
+					<button class="edit" type="menu" label="&openwith-browserlist-edit.label;"
 						xbl:inherits="collapsed=browserHidden">
 						<menupopup>
 							<menuitem label="&openwith-browserlist-editname.label;"
@@ -49,7 +49,7 @@
 							<menuitem label="&openwith-browserlist-editparams.label;"
 								xbl:inherits="collapsed=auto"
 								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
-							<menuitem label="&openwith-browserlist-editshortcut.label;"
+							<menuitem class="editkeyinfo" label="&openwith-browserlist-editshortcut.label;"
 								oncommand="editKeyInfo(document.getBindingParent(this));" />
 						</menupopup>
 					</button>

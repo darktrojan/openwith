@@ -4,10 +4,7 @@ const Cu = Components.utils;
 
 Cu.import('resource://gre/modules/FileUtils.jsm');
 Cu.import('resource://gre/modules/Services.jsm');
-Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://openwith/openwith.jsm');
-
-XPCOMUtils.defineLazyModuleGetter(this, 'AppConstants', 'resource://gre/modules/AppConstants.jsm');
 
 let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 
@@ -40,6 +37,7 @@ function loadDropDowns() {
 	loadingDropDowns = true;
 
 	let appname = Services.appinfo.name;
+	document.documentElement.setAttribute('appname', appname);
 
 	if (appname == 'Thunderbird') {
 		$('openwith-viewmenu-row').collapsed = true;
@@ -151,9 +149,11 @@ function loadBrowserList() {
 
 function getHumanKeyInfo(value) {
 	value = value.replace('VK_', '');
-	value = value.replace('accel', AppConstants.MOZ_WIDGET_TOOLKIT == 'cocoa' ? 'Cmd' : 'Ctrl');
-	value = value.replace('shift', 'Shift');
-	value = value.replace('alt', 'Alt');
+	value = value.replace('accel', Services.appinfo.OS == 'Darwin' ?
+			OpenWithCore.strings.GetStringFromName('cmdkey') :
+			OpenWithCore.strings.GetStringFromName('ctrlkey'));
+	value = value.replace('shift', OpenWithCore.strings.GetStringFromName('shiftkey'));
+	value = value.replace('alt', OpenWithCore.strings.GetStringFromName('altkey'));
 	return value;
 }
 

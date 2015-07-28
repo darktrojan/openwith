@@ -264,7 +264,7 @@ let OpenWithCore = {
 			break;
 		}
 	},
-	refreshUI: function(document, locations) {
+	refreshUI: function(document, locations, { keyTargetType }) {
 		for (let location of locations) {
 			if (typeof location.empty == 'function') {
 				location.empty.apply(location);
@@ -327,7 +327,7 @@ let OpenWithCore = {
 				}
 			}
 
-			if (item.keyInfo) {
+			if (keyTargetType && item.keyInfo) {
 				let keys = item.keyInfo.split('+');
 				let keycode = keys.pop();
 				let modifiers = [];
@@ -344,7 +344,14 @@ let OpenWithCore = {
 					key.setAttribute('key', keycode);
 				}
 				key.setAttribute('modifiers', modifiers.join(','));
-				key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);')
+				switch (keyTargetType) {
+				case OpenWithCore.TARGET_STANDARD:
+					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
+					break;
+				case OpenWithCore.TARGET_DEVTOOLS:
+					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
+					break;
+				}
 				key.setAttribute('openwith-command', item.command);
 				key.setAttribute('openwith-params', item.params.join(' '));
 				if ('useFilePath' in item && item.useFilePath) {

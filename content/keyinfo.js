@@ -1,5 +1,7 @@
 /* globals AppConstants, sizeToContent */
 /* exported dialogRemove, dialogAccept */
+Components.utils.import('resource://gre/modules/Services.jsm');
+
 let returnValues = window.arguments[0];
 let accelkey;
 let accelkey_ctrl = document.getElementById('accelkey_ctrl');
@@ -11,8 +13,7 @@ let nomodifier = document.getElementById('nomodifier');
 let comboinuse = document.getElementById('comboinuse');
 let acceptButton = document.documentElement.getButton('accept');
 
-Components.utils.import('resource://gre/modules/AppConstants.jsm');
-if (AppConstants.MOZ_WIDGET_TOOLKIT == 'cocoa') {
+if (Services.appinfo.OS == 'Darwin') {
 	accelkey = accelkey_cmd;
 	accelkey_ctrl.hidden = true;
 } else {

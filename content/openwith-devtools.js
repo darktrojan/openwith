@@ -66,7 +66,7 @@ let OpenWith = {
 			this.menuLocation.container.parentNode.removeAttribute('hidden');
 		}
 
-		OpenWithCore.refreshUI(document, [this.location, this.menuLocation]);
+		OpenWithCore.refreshUI(document, [this.location, this.menuLocation], { keyTargetType: OpenWithCore.TARGET_DEVTOOLS });
 	}
 };
 

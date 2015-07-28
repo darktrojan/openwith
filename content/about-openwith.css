@@ -54,6 +54,10 @@ richlistitem:not([keyInfoHuman]) .browserKeyInfoIcon {
 .buttons > button {
 	margin: 0 2px;
 }
+:root[appname="Thunderbird"] richlistitem[auto="true"] .edit,
+:root[appname="Thunderbird"] .editkeyinfo {
+	visibility: collapse;
+}
 richlistitem[selected="true"] .buttons {
 	visibility: visible;
 }
