@@ -4,6 +4,7 @@ const Cu = Components.utils;
 
 Cu.import('resource://gre/modules/FileUtils.jsm');
 Cu.import('resource://gre/modules/Services.jsm');
+Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://openwith/openwith.jsm');
 
 let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
@@ -101,6 +102,23 @@ Services.obs.addObserver({
 		loadDropDowns();
 	}
 }, 'openWithLocationsChanged', false);
+
+let loggingObserver = {
+	checkbox: $('logging'),
+	enable: function() {
+		OpenWithCore.prefs.setBoolPref('log.enabled', this.checkbox.checked);
+	},
+	observe: function() {
+		this.checkbox.checked = OpenWithCore.prefs.getBoolPref('log.enabled');
+	},
+	QueryInterface: XPCOMUtils.generateQI([
+		Components.interfaces.nsIObserver,
+		Components.interfaces.nsISupportsWeakReference,
+		Components.interfaces.nsISupports
+	])
+};
+loggingObserver.observe();
+OpenWithCore.prefs.addObserver('log.enabled', loggingObserver, true);
 
 let list = $('list');
 loadBrowserList();

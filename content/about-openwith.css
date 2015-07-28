@@ -12,6 +12,9 @@ link[rel] {
 	margin-top: 1em;
 	margin-bottom: 2em;
 }
+#left > groupbox + groupbox {
+	margin-top: 0;
+}
 #title {
 	font-size: 2.5em;
 }

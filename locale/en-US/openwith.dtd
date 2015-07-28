@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
 <!ENTITY openwith-donate "Donate">
 <!ENTITY openwith-github "Open With on GitHub">
