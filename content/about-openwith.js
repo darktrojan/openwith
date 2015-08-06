@@ -217,7 +217,7 @@ function setHidden(item, hidden) {
 	}
 	OpenWithCore.prefs.setCharPref('hide', hidePref.join(' '));
 
-	item.setAttribute('browserHidden', hidden);
+	item.isHidden = hidden;
 	item.parentNode.focus();
 }
 
