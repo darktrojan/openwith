@@ -85,6 +85,29 @@ let OpenWithCore = {
 					Cu.reportError(e);
 				}
 			}
+
+			let edgeDir = Services.dirsvc.get('WinD', Ci.nsIFile);
+			edgeDir.append('SystemApps');
+			edgeDir.append('Microsoft.MicrosoftEdge_8wekyb3d8bbwe');
+			let edgeFile = edgeDir.clone();
+			edgeFile.append('MicrosoftEdge.exe');
+			if (edgeFile.exists()) {
+				let commandFile = Services.dirsvc.get('WinD', Ci.nsIFile);
+				commandFile.append('explorer.exe');
+				let iconFile = edgeDir.clone();
+				iconFile.append('Assets');
+				iconFile.append('MicrosoftEdgeSquare44x44.targetsize-16_altform-unplated.png');
+				let iconURL = Services.io.newFileURI(iconFile);
+				unsorted.push({
+					auto: true,
+					keyName: 'msedge',
+					name: 'Microsoft Edge',
+					command: commandFile.path,
+					params: ['microsoft-edge:%s'],
+					icon: iconURL.spec,
+					hidden: hidePref.indexOf('msedge') >= 0
+				});
+			}
 		} else if (OS_X) {
 			if (!locAppDir) {
 				locAppDir = Services.dirsvc.get('LocApp', Ci.nsIFile);
