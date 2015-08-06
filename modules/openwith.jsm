@@ -151,8 +151,11 @@ let OpenWithCore = {
 		}
 
 		for (let item of unsorted) {
-			if (this.prefs.getPrefType('auto.' + item.keyName + '.keyinfo') == Ci.nsIPrefBranch.PREF_STRING) {
-				item.keyInfo = this.prefs.getCharPref('auto.' + item.keyName + '.keyinfo');
+			for (let k of ['icon', 'keyInfo', 'name']) {
+				let k_lc = k.toLowerCase();
+				if (this.prefs.getPrefType('auto.' + item.keyName + '.' + k_lc) == Ci.nsIPrefBranch.PREF_STRING) {
+					item[k] = this.prefs.getCharPref('auto.' + item.keyName + '.' + k_lc);
+				}
 			}
 		}
 
@@ -274,7 +277,7 @@ let OpenWithCore = {
 		if (this.suppressLoadList) {
 			return;
 		}
-		if (/^manual/.test(data) || data == 'hide') {
+		if (/^(auto|manual)/.test(data) || data == 'hide') {
 			this.loadList(true);
 			return;
 		}

@@ -263,7 +263,13 @@ function changeAttribute(item, attrName) {
 		}
 
 		item.setAttribute(attrName, attr.value);
-		saveItemToPrefs(item);
+		if (attrName == 'name' && item.getAttribute('auto') == 'true') {
+			// Avoid saving everything
+			let keyName = item.getAttribute('keyName');
+			OpenWithCore.prefs.setCharPref('auto.' + keyName + '.name', attr.value);
+		} else {
+			saveItemToPrefs(item);
+		}
 	}
 }
 

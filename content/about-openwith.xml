@@ -39,7 +39,6 @@
 						xbl:inherits="collapsed=browserHidden">
 						<menupopup>
 							<menuitem label="&openwith-browserlist-editname.label;"
-								xbl:inherits="collapsed=auto"
 								oncommand="changeAttribute(document.getBindingParent(this), 'name');" />
 							<menuitem label="&openwith-browserlist-editcommand.label;"
 								xbl:inherits="collapsed=auto"
