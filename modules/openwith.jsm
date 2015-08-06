@@ -36,11 +36,6 @@ let OpenWithCore = {
 			return;
 		}
 
-		let hidePref = this.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
-		if (hidePref.length == 1 && hidePref[0] == '') {
-			hidePref = [];
-		}
-
 		let unsorted = [];
 		if (WINDOWS) {
 			if (!registryKey) {
@@ -78,8 +73,7 @@ let OpenWithCore = {
 						name: value,
 						command: command,
 						params: params,
-						icon: this.findIconURL(file, 16),
-						hidden: hidePref.indexOf(keyName) >= 0
+						icon: this.findIconURL(file, 16)
 					});
 				} catch (e) {
 					Cu.reportError(e);
@@ -104,8 +98,7 @@ let OpenWithCore = {
 					name: 'Microsoft Edge',
 					command: commandFile.path,
 					params: ['microsoft-edge:%s'],
-					icon: iconURL.spec,
-					hidden: hidePref.indexOf('msedge') >= 0
+					icon: iconURL.spec
 				});
 			}
 		} else if (OS_X) {
@@ -125,8 +118,7 @@ let OpenWithCore = {
 						name: name,
 						command: appFile.path,
 						params: [],
-						icon: this.findIconURL(appFile, 16),
-						hidden: hidePref.indexOf(keyName) >= 0
+						icon: this.findIconURL(appFile, 16)
 					});
 				}
 			}
@@ -134,17 +126,17 @@ let OpenWithCore = {
 			for (let app of ['google-chrome', 'chromium-browser', 'firefox', 'opera', 'seamonkey']) {
 				let desktopFile = FileUtils.getFile('ProfD', ['.local', 'share', 'applications'], true);
 				if (desktopFile.exists()) {
-					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile));
 					continue;
 				}
 				desktopFile = new FileUtils.File('/usr/local/share/applications/' + app + '.desktop');
 				if (desktopFile.exists()) {
-					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile));
 					continue;
 				}
 				desktopFile = new FileUtils.File('/usr/share/applications/' + app + '.desktop');
 				if (desktopFile.exists()) {
-					unsorted.push(this.readDesktopFile(desktopFile, hidePref));
+					unsorted.push(this.readDesktopFile(desktopFile));
 					continue;
 				}
 			}
@@ -157,6 +149,9 @@ let OpenWithCore = {
 					item[k] = this.prefs.getCharPref('auto.' + item.keyName + '.' + k_lc);
 				}
 			}
+			item['hidden'] =
+				this.prefs.getPrefType('auto.' + item.keyName + '.hidden') == Ci.nsIPrefBranch.PREF_BOOL &&
+				this.prefs.getBoolPref('auto.' + item.keyName + '.hidden');
 		}
 
 		let manual = this.prefs.getChildList('manual.', {});
@@ -277,7 +272,7 @@ let OpenWithCore = {
 		if (this.suppressLoadList) {
 			return;
 		}
-		if (/^(auto|manual)/.test(data) || data == 'hide') {
+		if (/^(auto|manual)/.test(data)) {
 			this.loadList(true);
 			return;
 		}
@@ -547,21 +542,23 @@ let OpenWithCore = {
 		}
 
 		// Set initial value to this app's name
-		if (!this.prefs.prefHasUserValue('hide')) {
-			let hide = appname.toLowerCase();
+		if (oldVersion === 0) {
+			let keyName = appname.toLowerCase();
 			if (WINDOWS) {
-				hide += '.exe';
+				keyName += '.exe';
 			} else if (!OS_X) {
-				hide += '.desktop';
+				keyName += '.desktop';
 			}
-			this.prefs.setCharPref('hide', hide);
+			this.prefs.setBoolPref('auto.' + keyName + '.hidden', true);
 		}
 
 		// Normalize hidden items
-		if (Services.vc.compare(oldVersion, '5.6.1') < 0) {
-			let hide = this.prefs.getCharPref('hide');
-			hide = hide.toLowerCase().replace(/google chrome/g, 'google_chrome');
-			this.prefs.setCharPref('hide', hide);
+		if (this.prefs.prefHasUserValue('hide')) {
+			let hidePref = this.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
+			for (let keyName of hidePref) if (keyName !== '') {
+				this.prefs.setBoolPref('auto.' + keyName + '.hidden', true);
+			}
+			this.prefs.clearUserPref('hide');
 		}
 
 		Cu.import('resource://gre/modules/AddonManager.jsm');
@@ -696,7 +693,7 @@ let OpenWithCore = {
 			this.timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
 		}
 	},
-	readDesktopFile: function(aFile, aHidePref) {
+	readDesktopFile: function(aFile) {
 		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
 		istream.init(aFile, 0x01, 0444, 0);
 		istream.QueryInterface(Components.interfaces.nsILineInputStream);
@@ -754,8 +751,7 @@ let OpenWithCore = {
 			name: name,
 			command: command,
 			params: params,
-			icon: icon,
-			hidden: aHidePref.indexOf(keyName) >= 0
+			icon: icon
 		};
 	},
 	log: function(message) {

@@ -203,19 +203,12 @@ function updatePrefs(pref1, pref2, index) {
 }
 
 function setHidden(item, hidden) {
-	let keyName = item.getAttribute('keyName');
-	let hidePref = OpenWithCore.prefs.getCharPref('hide').toLowerCase().split(/\s+/);
-	if (hidePref.length == 1 && hidePref[0] == '') {
-		hidePref = [];
+	let prefName = 'auto.' + item.getAttribute('keyName') + '.hidden';
+	if (hidden) {
+		OpenWithCore.prefs.setBoolPref(prefName, true);
+	} else {
+		OpenWithCore.prefs.clearUserPref(prefName);
 	}
-	let index = hidePref.indexOf(keyName);
-
-	if (hidden && index < 0) {
-		hidePref.push(keyName);
-	} else if (!hidden && index >= 0) {
-		hidePref.splice(index, 1);
-	}
-	OpenWithCore.prefs.setCharPref('hide', hidePref.join(' '));
 
 	item.isHidden = hidden;
 	item.parentNode.focus();
