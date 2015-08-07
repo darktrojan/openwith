@@ -486,18 +486,19 @@ let OpenWithCore = {
 		let command = event.target.getAttribute('openwith-command');
 		let paramsAttr = event.target.getAttribute('openwith-params');
 		let params = paramsAttr == '' ? [] : this.splitArgs(paramsAttr);
+		let appendURIParam = !!uriParam;
 		for (var i = 0; i < params.length; i++) {
 			if (params[i].indexOf('%s') >= 0) {
 				if (uriParam) {
 					params[i] = params[i].replace('%s', uriParam);
-					uriParam = null;
+					appendURIParam = false;
 				} else {
 					params.splice(i, 1);
 					i--;
 				}
 			}
 		}
-		if (uriParam) {
+		if (appendURIParam) {
 			params.push(uriParam);
 		}
 
