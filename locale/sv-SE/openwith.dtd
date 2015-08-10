@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "För att få Open With i verktygsfältet eller i panelmenyn: öppna panelmenyn och välj 'Anpassa'.">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open With finansieras med donationer från användare.">
 <!ENTITY openwith-donate "Donera">
 <!ENTITY openwith-github "Open With på GitHub">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "Namn…">
 <!ENTITY openwith-browserlist-editcommand.label "Kommando…">
 <!ENTITY openwith-browserlist-editparams.label "Argument…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicera">
 <!ENTITY openwith-browserlist-remove.label "Ta bort">
 
 <!ENTITY openwith-browserlist-add.label "Lägg till…">
 <!ENTITY openwith-browserlist-restoreorder.label "Standardordning">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

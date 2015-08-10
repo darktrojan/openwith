@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "Openen met kan worden toegevoegd aan uw werkbalk of paneelmenu door het paneelmenu te openen en te klikken op 'Aanpassen'.">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Openen met wordt gefinancierd door gebruikersdonaties.">
 <!ENTITY openwith-donate "Doneren">
 <!ENTITY openwith-github "Openen met op GitHub">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "Naam…">
 <!ENTITY openwith-browserlist-editcommand.label "Opdracht…">
 <!ENTITY openwith-browserlist-editparams.label "Argumenten…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Dupliceren">
 <!ENTITY openwith-browserlist-remove.label "Verwijderen">
 
 <!ENTITY openwith-browserlist-add.label "Toevoegen…">
 <!ENTITY openwith-browserlist-restoreorder.label "Standaard volgorde">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

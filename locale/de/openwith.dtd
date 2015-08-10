@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
 <!ENTITY openwith-donate "Donate">
 <!ENTITY openwith-github "Open With on GitHub">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Aufruf…">
 <!ENTITY openwith-browserlist-editparams.label "Argumente…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Entfernen">
 
 <!ENTITY openwith-browserlist-add.label "Hinzufügen…">
 <!ENTITY openwith-browserlist-restoreorder.label "Standardreihenfolge">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

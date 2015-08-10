@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "Για να προσθέσετε το «Άνοιγμα με» στην εργαλειοθήκη σας ή στο μενού πίνακα, ανοίξτε το μενού πίνακα και κάντε κλικ στο «Προσαρμογή».">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Το «Άνοιγμα με» χρηματοδοτείται από δωρεές χρηστών.">
 <!ENTITY openwith-donate "Δωρεά">
 <!ENTITY openwith-github "Το «Άνοιγμα με» στο GitHub">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "Όνομα…">
 <!ENTITY openwith-browserlist-editcommand.label "Εντολή…">
 <!ENTITY openwith-browserlist-editparams.label "Ορίσματα…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Αντίτυπο">
 <!ENTITY openwith-browserlist-remove.label "Κατάργηση">
 
 <!ENTITY openwith-browserlist-add.label "Προσθήκη…">
 <!ENTITY openwith-browserlist-restoreorder.label "Προκαθορισμένη ταξινόμηση">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

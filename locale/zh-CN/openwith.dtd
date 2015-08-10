@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "要在工具栏和菜单上添加Open With，打开菜单并点击“定制”。">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open With由用户捐赠资助。">
 <!ENTITY openwith-donate "捐赠">
 <!ENTITY openwith-github "GitHub上的Open With">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "命令行…">
 <!ENTITY openwith-browserlist-editparams.label "参数…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!ENTITY openwith-browserlist-add.label "添加…">
 <!ENTITY openwith-browserlist-restoreorder.label "默认排序">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

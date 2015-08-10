@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "要將 Open With 加入到您的工具列或是控制選單中，開啟控制選單並點選「自訂」。">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open With 是依靠使用者的捐款來支撐的。">
 <!ENTITY openwith-donate "捐款">
 <!ENTITY openwith-github "Open With 在 GitHub 上">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "名稱…">
 <!ENTITY openwith-browserlist-editcommand.label "命令…">
 <!ENTITY openwith-browserlist-editparams.label "參數…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "複製">
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!ENTITY openwith-browserlist-add.label "新增…">
 <!ENTITY openwith-browserlist-restoreorder.label "預設順序">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">

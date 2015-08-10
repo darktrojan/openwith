@@ -28,6 +28,9 @@
 
 <!ENTITY openwith-display-toolbarhelp "ツールバーやパネルメニューにOpen Withを追加するには、パネルメニューを開き『カスタマイズ』をクリックしてください。">
 
+<!ENTITY openwith-logging.label "Logging">
+<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+
 <!ENTITY openwith-donationsrequest "Open Withはユーザーの皆様の寄付により作られております。">
 <!ENTITY openwith-donate "寄付する">
 <!ENTITY openwith-github "Open With on GitHub">
@@ -40,9 +43,18 @@
 <!ENTITY openwith-browserlist-editname.label "名前">
 <!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
 <!ENTITY openwith-browserlist-editparams.label "引数">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
 <!ENTITY openwith-browserlist-duplicate.label "複製する">
 <!ENTITY openwith-browserlist-remove.label "削除">
 
 <!ENTITY openwith-browserlist-add.label "追加">
 <!ENTITY openwith-browserlist-restoreorder.label "元の順に戻す">
+
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
+<!ENTITY openwith-nomodifier "Select at least one modifier.">
+<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
+<!ENTITY openwith-removecombo "Remove Shortcut">
