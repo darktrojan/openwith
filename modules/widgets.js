@@ -35,7 +35,7 @@ CustomizableUI.createWidget({
 			suffix: '_widewidget',
 			container: toolbaritem
 		};
-		OpenWithCore.refreshUI(aDocument, [location], {});
+		OpenWithCore.refreshUI(aDocument, [location], { keyTargetType: OpenWithCore.TARGET_STANDARD });
 		aDocument.defaultView.OpenWith.locations.push(location);
 
 		function updateCombinedWidgetStyle(aArea) {
