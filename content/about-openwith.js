@@ -151,7 +151,7 @@ function loadBrowserList() {
 				item.setAttribute(key, icon);
 				break;
 			case 'params':
-				item.setAttribute(key, value.join(' '));
+				item.setAttribute(key, value);
 				break;
 			case 'keyInfo':
 				if (value !== null) {
@@ -373,7 +373,7 @@ function addNewItem() {
 			program.icon = program.icon.replace(/16/g, '32');
 			program.keyName = generateRandomKeyName();
 			program.manual = true;
-			program.params = program.params.join(' ');
+			program.params = program.params;
 			for (let [name, value] of Iterator(program)) {
 				item.setAttribute(name, value);
 			}

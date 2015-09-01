@@ -55,10 +55,7 @@ let OpenWithCore = {
 					let command = subkey2.readStringValue(null);
 					subkey2.close();
 
-					let params = command.indexOf('"') >= 0 ? command.replace(/^"[^"]+"\s*/, '').split(' ') : [];
-					if (params.length > 0 && params[0] == '') {
-						params.shift();
-					}
+					let params = command.indexOf('"') >= 0 ? command.replace(/^"[^"]+"\s*/, '') : '';
 					command = command.replace(/^"/, '').replace(/".*$/, '');
 					command = command.replace(/%(\w+)%/g, function(m) {
 						return env.get(m.substring(1, m.length - 1));
@@ -97,7 +94,7 @@ let OpenWithCore = {
 					keyName: 'msedge',
 					name: 'Microsoft Edge',
 					command: commandFile.path,
-					params: ['microsoft-edge:%s'],
+					params: '"microsoft-edge:%s "',
 					icon: iconURL.spec
 				});
 			}
@@ -117,7 +114,7 @@ let OpenWithCore = {
 						keyName: keyName,
 						name: name,
 						command: appFile.path,
-						params: [],
+						params: '',
 						icon: this.findIconURL(appFile, 16)
 					});
 				}
@@ -167,10 +164,7 @@ let OpenWithCore = {
 				value = name.substring(7).replace(/_/g, ' ');
 			}
 			let command = this.prefs.getCharPref(name);
-			let params = command.indexOf('"') >= 0 ? command.replace(/^"[^"]+"\s*/, '').split(' ') : [];
-			if (params.length > 0 && params[0] == '') {
-				params.shift();
-			}
+			let params = command.indexOf('"') >= 0 ? command.replace(/^"[^"]+"\s*/, '') : '';
 			command = command.replace(/^"/, '').replace(/".*$/, '');
 			let icon;
 			if (this.prefs.getPrefType(name + '.icon') == Ci.nsIPrefBranch.PREF_STRING) {
@@ -228,7 +222,7 @@ let OpenWithCore = {
 			this.log(
 				item.name + (item.hidden ? ' (hidden)' : '') + ':\n' +
 				'\tCommand: ' + item.command + '\n' +
-				'\tParams: ' + item.params.join(' ') + '\n' +
+				'\tParams: ' + item.params + '\n' +
 				'\tIcon URL: ' + item.icon
 			);
 		}
@@ -373,20 +367,21 @@ let OpenWithCore = {
 					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
 					break;
 				}
-				key.setAttribute('openwith-command', item.command);
-				key.setAttribute('openwith-params', item.params.join(' '));
-				if ('useFilePath' in item && item.useFilePath) {
-					key.setAttribute('openwith-usefilepath', 'true');
-				}
+				OpenWithCore.addItemToElement(key, item);
 				keyset.appendChild(key);
 			}
 		}
 
 		document.documentElement.appendChild(keyset);
 	},
+	addItemToElement: function(element, item) {
+		element.setAttribute('openwith-command', item.command);
+		element.setAttribute('openwith-params', item.params);
+		if ('useFilePath' in item && item.useFilePath) {
+			element.setAttribute('openwith-usefilepath', 'true');
+		}
+	},
 	createMenuItem: function(document, item, label, targetType = OpenWithCore.TARGET_STANDARD) {
-		let command = item.command;
-		let params = item.params;
 		let icon = item.icon;
 		let menuItem = document.createElement('menuitem');
 		menuItem.setAttribute('class', 'openwith menuitem-iconic menuitem-with-favicon');
@@ -414,16 +409,10 @@ let OpenWithCore = {
 				'OpenWithCore.doCommand(event, PlacesUIUtils.getViewForNode(document.popupNode).selectedNode.uri);');
 			break;
 		}
-		menuItem.setAttribute('openwith-command', command);
-		menuItem.setAttribute('openwith-params', params.join(' '));
-		if ('useFilePath' in item && item.useFilePath) {
-			menuItem.setAttribute('openwith-usefilepath', 'true');
-		}
+		OpenWithCore.addItemToElement(menuItem, item);
 		return menuItem;
 	},
 	createToolbarButton: function(document, item, tooltip, targetType = OpenWithCore.TARGET_STANDARD) {
-		let command = item.command;
-		let params = item.params;
 		let icon = item.icon;
 		let toolbarButton = document.createElement('toolbarbutton');
 		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
@@ -432,11 +421,7 @@ let OpenWithCore = {
 			toolbarButton.setAttribute('tooltiptext', tooltip);
 		}
 		toolbarButton.setAttribute('image', icon);
-		toolbarButton.setAttribute('openwith-command', command);
-		toolbarButton.setAttribute('openwith-params', params.join(' '));
-		if ('useFilePath' in item && item.useFilePath) {
-			toolbarButton.setAttribute('openwith-usefilepath', 'true');
-		}
+		OpenWithCore.addItemToElement(toolbarButton, item);
 		if (targetType == OpenWithCore.TARGET_DEVTOOLS) {
 			toolbarButton.className = 'command-button';
 			toolbarButton.setAttribute('oncommand',
@@ -751,7 +736,7 @@ let OpenWithCore = {
 			keyName: keyName,
 			name: name,
 			command: command,
-			params: params,
+			params: params.join(' '),
 			icon: icon
 		};
 	},
