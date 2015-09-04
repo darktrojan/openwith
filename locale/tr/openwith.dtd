@@ -14,11 +14,11 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menüyü göster">
 <!ENTITY openwith-display-pane.contextmenu.label "Ana Ek menü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Ana Ek menü(linkler)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
+<!ENTITY openwith-display-pane.placescontext.label "Yer imleri menüsü">
 <!ENTITY openwith-display-pane.tabmenu.label "Sekme ek menüsü">
 <!ENTITY openwith-display-pane.tabbar.label "Sekme çubuğu">
 <!ENTITY openwith-display-pane.toolbar.label "Araç çubuğu">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbox.label "Geliştirici Araçları">
 
 <!ENTITY openwith-display-none.label "Gösterme">
 <!ENTITY openwith-display-menuitems.label "Menü öğesi olarak göster">
@@ -26,26 +26,26 @@
 <!ENTITY openwith-display-buttons.label "Buton olarak göster">
 <!ENTITY openwith-display-dropdown.label "Açılır menü olarak göster">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "Birlikte Aç'ı araç çubuğuna veya panele eklemek için panel menüsünü açın ve Özelleştir'e tıklayın">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "Günlüğe yazma">
+<!ENTITY openwith-logging.checkbox.label "Tarayıcının konsoluna günlük çıktısını onayla">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "Birlikte Aç kullanıcı bağışlarıyla giderleri karşılanan bir eklentidir.">
+<!ENTITY openwith-donate "Bağış Yap">
+<!ENTITY openwith-github "Birlikte Aç'ı GitHub'da göster">
 
 <!ENTITY openwith-browserlist.label "Gösterilecek nesneleri seçin:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "Otomatik olarak bulundu">
 <!ENTITY openwith-browserlist-show.label "Göster">
 <!ENTITY openwith-browserlist-hide.label "Gizle">
 <!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-editname.label "İsim…">
 <!ENTITY openwith-browserlist-editcommand.label "Komut…">
 <!ENTITY openwith-browserlist-editparams.label "Argumanlar…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist-editshortcut.label "Klavye Kısayolu.…">
 <!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "Tekrarla">
 <!ENTITY openwith-browserlist-remove.label "Kaldır">
 
 <!ENTITY openwith-browserlist-add.label "Ekle…">
@@ -55,6 +55,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-nomodifier "En az bir modifier seçin.">
+<!ENTITY openwith-comboinuse "Bu tuş kombinasyonu kullanılmakta gözüküyor.">
+<!ENTITY openwith-removecombo "Kısayolu Kaldır">
