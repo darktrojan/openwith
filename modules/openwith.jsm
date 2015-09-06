@@ -628,7 +628,21 @@ let OpenWithCore = {
 				popup: null,
 				callback: this.openOptionsTab
 			}];
-		} else if (oldVersion != 0 && Services.vc.compare(oldVersion, currentVersion) < 0) {
+		} else if (oldVersion === 0) {
+			label = this.strings.GetStringFromName('installed');
+			value = 'openwith-instaled';
+			buttons = [{
+				label: this.strings.GetStringFromName('buttonLabel'),
+				accessKey: this.strings.GetStringFromName('buttonAccessKey'),
+				popup: null,
+				callback: this.openOptionsTab
+			},{
+				label: this.strings.GetStringFromName('donateButtonLabel'),
+				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
+				popup: null,
+				callback: this.openDonatePage
+			}];
+		} else if (Services.vc.compare(oldVersion, currentVersion) < 0) {
 			if (Services.vc.compare(oldVersion, 5.5) <= 0 && !WINDOWS && !OS_X) {
 				label = this.strings.GetStringFromName('browserDetectionChanged');
 				value = 'openwith-browserdetectionchanged';
@@ -675,8 +689,8 @@ let OpenWithCore = {
 				}
 			}, 12);
 		} else {
-			this.timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
-			this.timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
+			let timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
+			timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
 		}
 	},
 	readDesktopFile: function(aFile) {
