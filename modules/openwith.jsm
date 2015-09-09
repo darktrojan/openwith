@@ -602,7 +602,9 @@ let OpenWithCore = {
 		}
 	},
 	openDonatePage: function() {
-		let url = 'https://addons.mozilla.org/addon/open-with/about';
+		this.openURL('https://addons.mozilla.org/addon/open-with/about');
+	},
+	openURL: function(url) {
 		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE) || Services.wm.getMostRecentWindow(MAIL_TYPE);
 		if ('switchToTabHavingURI' in recentWindow) {
 			recentWindow.switchToTabHavingURI(url, true);
@@ -663,6 +665,43 @@ let OpenWithCore = {
 					popup: null,
 					callback: this.openDonatePage
 				}];
+
+				let updateLanguages = {
+					'ar': 'Arabic',
+					'bg': 'Bulgarian',
+					'ca': 'Catalan',
+					'cs': 'Czech',
+					'de': 'German',
+					'es-ES': 'Spanish',
+					'fi': 'Finnish',
+					'fr': 'French',
+					'hu': 'Hungarian',
+					'is': 'Icelandic',
+					'it': 'Italian',
+					'pl': 'Polish',
+					'pt-BR': 'Brazilian Portuguese',
+					'pt-PT': 'Portuguese',
+					'ru': 'Russian',
+					'sr': 'Serbian',
+					'uk': 'Ukrainian',
+					'vi': 'Vietnamese',
+					'zh-CN': 'Chinese'
+				};
+
+				let chromeRegistry = Components.classes['@mozilla.org/chrome/chrome-registry;1']
+					.getService(Components.interfaces.nsIXULChromeRegistry);
+				let currentLocale = chromeRegistry.getSelectedLocale('openwith');
+
+				if (currentLocale in updateLanguages) {
+					label = 'Open With has been updated to version ' + currentVersion + '. ' +
+						'We need somebody to update the ' + updateLanguages[currentLocale] + ' translation. Can you help?';
+					buttons.unshift({
+						label: 'Find out more',
+						accessKey: 'F',
+						popup: null,
+						callback: () => this.openURL('https://github.com/darktrojan/openwith/issues/56')
+					});
+				}
 			}
 		} else {
 			return;
@@ -678,7 +717,7 @@ let OpenWithCore = {
 				notifyBox = recentWindow.document.getElementById('mail-notification-box');
 			}
 			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
-		};
+		}
 
 		if (value == 'openwith-donate') {
 			idleService.addIdleObserver({
