@@ -473,6 +473,12 @@ function cleanUpDrag() {
 }
 function dragStart(event) {
 	itemToMove = event.target;
+	let editButton = document.getAnonymousElementByAttribute(itemToMove, 'class', 'edit');
+	if (editButton.open) {
+		event.preventDefault();
+		return;
+	}
+
 	event.dataTransfer.setData('openwith/drag', 'true');
 	event.dataTransfer.setDragImage(itemToMove, 16, 16);
 	event.dataTransfer.effectAllowed = 'move';
@@ -530,6 +536,9 @@ list.addEventListener('dragend', function(event) {
 	cleanUpDrag();
 	if (!!event.dataTransfer.getData('openwith/drag') && event.dataTransfer.dropEffect == 'move' && itemToMove != itemToPlaceBefore) {
 		list.insertBefore(itemToMove, itemToPlaceBefore);
+		// Re-set the selected item to reselect it
+		list.selectedIndex = -1;
+		list.selectedItem = itemToMove;
 		saveOrder();
 	}
 	itemToMove = itemToPlaceBefore = null;
