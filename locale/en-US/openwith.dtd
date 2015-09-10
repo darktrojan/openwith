@@ -45,7 +45,8 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Command…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut&#x2026;">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
+<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
 <!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Remove">

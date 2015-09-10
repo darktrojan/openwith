@@ -14,7 +14,7 @@
 					</vbox>
 					<vbox flex="1">
 						<hbox>
-							<label class="browserName" crop="end" xbl:inherits="value=name" />
+							<label class="browserName" crop="end" xbl:inherits="value=name,accesskey=accessKey" />
 							<image xbl:inherits="collapsed=manual"
 								src="chrome://openwith/content/star.svg"
 								tooltiptext="&openwith-browserlist-auto.tooltip;" />
@@ -46,6 +46,8 @@
 							<menuitem label="&openwith-browserlist-editparams.label;"
 								xbl:inherits="collapsed=auto"
 								oncommand="changeAttribute(document.getBindingParent(this), 'params');" />
+							<menuitem label="&openwith-browserlist-editaccesskey.label;"
+								oncommand="changeAttribute(document.getBindingParent(this), 'accessKey');" />
 							<menuitem class="editkeyinfo" label="&openwith-browserlist-editshortcut.label;"
 								oncommand="editKeyInfo(document.getBindingParent(this));" />
 						</menupopup>

@@ -140,7 +140,7 @@ let OpenWithCore = {
 		}
 
 		for (let item of unsorted) {
-			for (let k of ['icon', 'keyInfo', 'name']) {
+			for (let k of ['icon', 'name']) {
 				let k_lc = k.toLowerCase();
 				if (this.prefs.getPrefType('auto.' + item.keyName + '.' + k_lc) == Ci.nsIPrefBranch.PREF_STRING) {
 					item[k] = this.prefs.getCharPref('auto.' + item.keyName + '.' + k_lc);
@@ -154,7 +154,7 @@ let OpenWithCore = {
 		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
 		for (let name of manual) {
-			if (/\.(icon|keyinfo|name|usefilepath)$/.test(name)) {
+			if (/\.(accesskey|icon|keyinfo|name|usefilepath)$/.test(name)) {
 				continue;
 			}
 			let value;
@@ -173,10 +173,6 @@ let OpenWithCore = {
 				let file = new FileUtils.File(command);
 				icon = this.findIconURL(file, 16);
 			}
-			let keyInfo = null;
-			if (this.prefs.getPrefType(name + '.keyinfo') == Ci.nsIPrefBranch.PREF_STRING) {
-				keyInfo = this.prefs.getCharPref(name + '.keyinfo');
-			}
 
 			unsorted.push({
 				auto: false,
@@ -188,9 +184,18 @@ let OpenWithCore = {
 				icon: icon,
 				hidden: false,
 				useFilePath: this.prefs.getPrefType(name + '.usefilepath') == Ci.nsIPrefBranch.PREF_BOOL &&
-						this.prefs.getBoolPref(name + '.usefilepath'),
-				keyInfo: keyInfo
+						this.prefs.getBoolPref(name + '.usefilepath')
 			});
+		}
+
+		for (let item of unsorted) {
+			for (let k of ['accessKey', 'keyInfo']) {
+				let t = item.auto ? 'auto.' : 'manual.';
+				let k_lc = k.toLowerCase();
+				if (this.prefs.getPrefType(t + item.keyName + '.' + k_lc) == Ci.nsIPrefBranch.PREF_STRING) {
+					item[k] = this.prefs.getCharPref(t + item.keyName + '.' + k_lc);
+				}
+			}
 		}
 
 		this.list = [];
@@ -382,11 +387,13 @@ let OpenWithCore = {
 		}
 	},
 	createMenuItem: function(document, item, label, targetType = OpenWithCore.TARGET_STANDARD) {
-		let icon = item.icon;
 		let menuItem = document.createElement('menuitem');
 		menuItem.setAttribute('class', 'openwith menuitem-iconic menuitem-with-favicon');
-		menuItem.setAttribute('image', icon);
+		menuItem.setAttribute('image', item.icon);
 		menuItem.setAttribute('label', label);
+		if (item.accessKey) {
+			menuItem.setAttribute('accesskey', item.accessKey);
+		}
 		switch (targetType) {
 		case OpenWithCore.TARGET_STANDARD:
 			menuItem.setAttribute('oncommand',
@@ -413,14 +420,13 @@ let OpenWithCore = {
 		return menuItem;
 	},
 	createToolbarButton: function(document, item, tooltip, targetType = OpenWithCore.TARGET_STANDARD) {
-		let icon = item.icon;
 		let toolbarButton = document.createElement('toolbarbutton');
 		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
 			toolbarButton.setAttribute('label', tooltip);
 		} else {
 			toolbarButton.setAttribute('tooltiptext', tooltip);
 		}
-		toolbarButton.setAttribute('image', icon);
+		toolbarButton.setAttribute('image', item.icon);
 		OpenWithCore.addItemToElement(toolbarButton, item);
 		if (targetType == OpenWithCore.TARGET_DEVTOOLS) {
 			toolbarButton.className = 'command-button';

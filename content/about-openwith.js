@@ -238,6 +238,9 @@ function changeAttribute(item, attrName) {
 		let file = new FileUtils.File(item.getAttribute('command'));
 		text = OpenWithCore.strings.formatStringFromName('paramsPromptText', [file.leafName], 1);
 		break;
+	case 'accessKey':
+		text = OpenWithCore.strings.GetStringFromName('accessKeyPromptText');
+		break;
 	}
 	if (Services.prompt.prompt(this, document.title, text, attr, null, {}) && attr.value != original) {
 		let oldName = item.getAttribute('name');
@@ -255,7 +258,11 @@ function changeAttribute(item, attrName) {
 			item.setAttribute('keyName', newKeyName);
 		}
 
-		item.setAttribute(attrName, attr.value);
+		if (attrName == 'accessKey' && !attr.value) {
+			item.removeAttribute(attrName);
+		} else {
+			item.setAttribute(attrName, attr.value);
+		}
 		if (attrName == 'name' && item.getAttribute('auto') == 'true') {
 			// Avoid saving everything
 			let keyName = item.getAttribute('keyName');
@@ -318,15 +325,18 @@ function saveItemToPrefs(item, saveIcon) {
 	let keyName = item.getAttribute('keyName');
 	let command = item.getAttribute('command');
 	let params = item.getAttribute('params');
-	let keyInfo = item.getAttribute('keyInfo');
 	let type = item.getAttribute('auto') == 'true' ? 'auto' : 'manual';
 
 	OpenWithCore.suppressLoadList = true;
 
-	if (keyInfo) {
-		OpenWithCore.prefs.setCharPref(type + '.' + keyName + '.keyinfo', keyInfo);
-	} else {
-		OpenWithCore.prefs.clearUserPref(type + '.' + keyName + '.keyinfo');
+	for (let k of ['accessKey', 'keyInfo']) {
+		let k_lc = k.toLowerCase();
+		let v = item.getAttribute(k);
+		if (v) {
+			OpenWithCore.prefs.setCharPref(type + '.' + keyName + '.' + k_lc, v);
+		} else {
+			OpenWithCore.prefs.clearUserPref(type + '.' + keyName + '.' + k_lc);
+		}
 	}
 
 	if (type == 'manual') {
