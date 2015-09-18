@@ -29,8 +29,8 @@
 
 <!ENTITY openwith-display-toolbarhelp "要在工具栏和菜单上添加Open With，打开菜单并点击“定制”。">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "日志">
+<!ENTITY openwith-logging.checkbox.label "启用输出日志到浏览器控制台">
 
 <!ENTITY openwith-donationsrequest "Open With由用户捐赠资助。">
 <!ENTITY openwith-donate "捐赠">
@@ -41,14 +41,14 @@
 <!ENTITY openwith-browserlist-auto.tooltip "自动检测">
 <!ENTITY openwith-browserlist-show.label "显示">
 <!ENTITY openwith-browserlist-hide.label "隐藏">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "编辑">
+<!ENTITY openwith-browserlist-editname.label "名称…">
 <!ENTITY openwith-browserlist-editcommand.label "命令行…">
 <!ENTITY openwith-browserlist-editparams.label "参数…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist-editaccesskey.label "菜单快捷键…">
+<!ENTITY openwith-browserlist-editshortcut.label "键盘快捷键…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "复制">
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!ENTITY openwith-browserlist-add.label "添加…">
@@ -60,6 +60,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-nomodifier "请至少选择一个组合键。">
+<!ENTITY openwith-comboinuse "该按键组合已被占用。">
+<!ENTITY openwith-removecombo "移除快捷方式">
