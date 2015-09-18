@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "Open with…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "Open With 項目">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Open With リンク項目">
 <!ENTITY openwith-submenu.label "アプリで開く">
 <!ENTITY openwith-linksubmenu.label "リンクを他のアプリで開く">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Open With オプション">
 
 <!ENTITY openwith-display-choose.label "Open With の項目の表示方法を選択してください。">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "寄付する">
 <!ENTITY openwith-github "Open With on GitHub">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "表示する項目を選択">
 <!ENTITY openwith-browserlist-auto.tooltip "自動的に認識されました">
 <!ENTITY openwith-browserlist-show.label "表示">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "名前">
 <!ENTITY openwith-browserlist-editcommand.label "コマンドを編集">
 <!ENTITY openwith-browserlist-editparams.label "引数">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "複製する">
 <!ENTITY openwith-browserlist-remove.label "削除">
 
 <!ENTITY openwith-browserlist-add.label "追加">
 <!ENTITY openwith-browserlist-restoreorder.label "元の順に戻す">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Control">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">

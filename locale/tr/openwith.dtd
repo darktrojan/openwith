@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Birlikte Aç">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "Birlikte Aç…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "Birlikte Aç Nesneleri">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Birlikte Aç link nesneleri">
 <!ENTITY openwith-submenu.label "Birlikte Aç">
 <!ENTITY openwith-linksubmenu.label "Linki Beraber Aç">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Birlikte Aç Seçenekleri">
 
 <!ENTITY openwith-display-choose.label "Open With'in nesneleri nasıl göstereceğini seçin:">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "Bağış Yap">
 <!ENTITY openwith-github "Birlikte Aç'ı GitHub'da göster">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Gösterilecek nesneleri seçin:">
 <!ENTITY openwith-browserlist-auto.tooltip "Otomatik olarak bulundu">
 <!ENTITY openwith-browserlist-show.label "Göster">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "İsim…">
 <!ENTITY openwith-browserlist-editcommand.label "Komut…">
 <!ENTITY openwith-browserlist-editparams.label "Argumanlar…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "Klavye Kısayolu.…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Tekrarla">
 <!ENTITY openwith-browserlist-remove.label "Kaldır">
 
 <!ENTITY openwith-browserlist-add.label "Ekle…">
 <!ENTITY openwith-browserlist-restoreorder.label "Varsayılan">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Control">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">

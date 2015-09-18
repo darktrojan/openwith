@@ -638,7 +638,7 @@ let OpenWithCore = {
 			}];
 		} else if (oldVersion === 0) {
 			label = this.strings.GetStringFromName('installed');
-			value = 'openwith-instaled';
+			value = 'openwith-installed';
 			buttons = [{
 				label: this.strings.GetStringFromName('buttonLabel'),
 				accessKey: this.strings.GetStringFromName('buttonAccessKey'),

@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "Obre amb…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "ítems de l' Open With">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "ítems de l' Open With (amb links)">
 <!ENTITY openwith-submenu.label "Obre amb">
 <!ENTITY openwith-linksubmenu.label "Obre el Link amb">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Opcions d'Open With">
 
 <!ENTITY openwith-display-choose.label "Escull com mostrar els ítems de l'Open With :">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "Donate">
 <!ENTITY openwith-github "Open With on GitHub">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Tria els ítems a mostrar:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
 <!ENTITY openwith-browserlist-show.label "Mostra">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Comandament…">
 <!ENTITY openwith-browserlist-editparams.label "Arguments…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Elimina…">
 
 <!ENTITY openwith-browserlist-add.label "Afegeix.">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordre per omissió">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Control">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">

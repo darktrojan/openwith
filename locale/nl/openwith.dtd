@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Openen met">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "Openen met…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "Openen met-items">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Openen met-linkitems">
 <!ENTITY openwith-submenu.label "Openen met">
 <!ENTITY openwith-linksubmenu.label "Koppeling openen met">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Openen met-voorkeuren">
 
 <!ENTITY openwith-display-choose.label "Kies hoe Openen met-items dienen te worden weergegeven:">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "Doneren">
 <!ENTITY openwith-github "Openen met op GitHub">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Kies welke items moeten worden weergegeven:">
 <!ENTITY openwith-browserlist-auto.tooltip "Automatisch gedetecteerd">
 <!ENTITY openwith-browserlist-show.label "Weergeven">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "Naam…">
 <!ENTITY openwith-browserlist-editcommand.label "Opdracht…">
 <!ENTITY openwith-browserlist-editparams.label "Argumenten…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Dupliceren">
 <!ENTITY openwith-browserlist-remove.label "Verwijderen">
 
 <!ENTITY openwith-browserlist-add.label "Toevoegen…">
 <!ENTITY openwith-browserlist-restoreorder.label "Standaard volgorde">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Control">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">

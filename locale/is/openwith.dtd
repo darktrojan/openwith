@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Opna með">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "Opna með…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "Færslur í 'Opna_með'">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Tenglafærslur í 'Opna_með'">
 <!ENTITY openwith-submenu.label "Opna með">
 <!ENTITY openwith-linksubmenu.label "Opna tengil með">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Stillingar 'Opna með'">
 
 <!ENTITY openwith-display-choose.label "Veldu hvernig eigi að birta færslur í 'Opna_með':">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "Donate">
 <!ENTITY openwith-github "Open With on GitHub">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Veldu hvaða atriði eigi að sýna:">
 <!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
 <!ENTITY openwith-browserlist-show.label "Birta">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Skipun…">
 <!ENTITY openwith-browserlist-editparams.label "Viðföng…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Duplicate">
 <!ENTITY openwith-browserlist-remove.label "Fjarlægja">
 
 <!ENTITY openwith-browserlist-add.label "Bæta við…">
 <!ENTITY openwith-browserlist-restoreorder.label "Sjálfgefin röð">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Control">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">

@@ -1,13 +1,14 @@
 <!ENTITY openwith-name "Open With">
-<!-- LOCALIZATION NOTE (openwith-dropdown.tooltip): should match openWithDropDownTooltip in openwith.properties -->
+<!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "以其他瀏覽器開啟…">
-<!-- LOCALIZATION NOTE (openwith-placeholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-placeholder.label "Open With 項目">
-<!-- LOCALIZATION NOTE (openwith-linkplaceholder.label): this is a placeholder for where the menu items will appear -->
+<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Open With 連結項目">
 <!ENTITY openwith-submenu.label "以其他瀏覽器開啟">
 <!ENTITY openwith-linksubmenu.label "以其他瀏覽器開啟連結">
 
+<!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Open With 選項">
 
 <!ENTITY openwith-display-choose.label "請選擇 Open With 功能項目的顯示方式:">
@@ -35,6 +36,7 @@
 <!ENTITY openwith-donate "捐款">
 <!ENTITY openwith-github "Open With 在 GitHub 上">
 
+<!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "選擇要顯示的功能項目：">
 <!ENTITY openwith-browserlist-auto.tooltip "自動偵測到的">
 <!ENTITY openwith-browserlist-show.label "顯示">
@@ -43,14 +45,17 @@
 <!ENTITY openwith-browserlist-editname.label "名稱…">
 <!ENTITY openwith-browserlist-editcommand.label "命令…">
 <!ENTITY openwith-browserlist-editparams.label "參數…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
 <!ENTITY openwith-browserlist-editshortcut.label "鍵盤快捷鍵…">
-<!-- LOCALIZATION NOTE (openwith-browserlist-duplicate.label): Duplicate is a verb here -->
+<!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "複製">
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!ENTITY openwith-browserlist-add.label "新增…">
 <!ENTITY openwith-browserlist-restoreorder.label "預設順序">
 
+<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
+     choose a browser, then Edit, Keyboard Shortcut. -->
 <!ENTITY openwith-ctrlkey "Ctrl">
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
