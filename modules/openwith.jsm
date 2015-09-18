@@ -673,7 +673,6 @@ let OpenWithCore = {
 				}];
 
 				let updateLanguages = {
-					'ar': 'Arabic',
 					'bg': 'Bulgarian',
 					'ca': 'Catalan',
 					'cs': 'Czech',
@@ -686,12 +685,8 @@ let OpenWithCore = {
 					'it': 'Italian',
 					'pl': 'Polish',
 					'pt-BR': 'Brazilian Portuguese',
-					'pt-PT': 'Portuguese',
-					'ru': 'Russian',
 					'sr': 'Serbian',
-					'uk': 'Ukrainian',
-					'vi': 'Vietnamese',
-					'zh-CN': 'Chinese'
+					'vi': 'Vietnamese'
 				};
 
 				let chromeRegistry = Components.classes['@mozilla.org/chrome/chrome-registry;1']
