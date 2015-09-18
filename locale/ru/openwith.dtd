@@ -1,25 +1,25 @@
-<!ENTITY openwith-name "Open With">
+<!ENTITY openwith-name "Открыть С">
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Открыть с помощью…">
+<!ENTITY openwith-dropdown.tooltip "Открыть в …">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Элементы Open With">
+<!ENTITY openwith-placeholder.label "Открыть в …">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Ссылки Open With">
-<!ENTITY openwith-submenu.label "Открыть с помощью">
-<!ENTITY openwith-linksubmenu.label "Открыть ссылку с">
+<!ENTITY openwith-linkplaceholder.label "Элементы Open With">
+<!ENTITY openwith-submenu.label "Открыть в">
+<!ENTITY openwith-linksubmenu.label "Открыть ссылку в">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Настройки Open With">
 
-<!ENTITY openwith-display-choose.label "Выберите где отображать элементы Open With:">
-<!ENTITY openwith-display-pane.viewmenu.label "в меню Вид">
-<!ENTITY openwith-display-pane.contextmenu.label "в главном контекстном меню">
-<!ENTITY openwith-display-pane.contextmenulink.label "в главном контекстном меню (ссылки)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
-<!ENTITY openwith-display-pane.tabmenu.label "в контекстном меню вкладок">
-<!ENTITY openwith-display-pane.tabbar.label "на панеле вкладок">
-<!ENTITY openwith-display-pane.toolbar.label "на панели инструментов">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-choose.label "Выберите как отображать элементы Open With:">
+<!ENTITY openwith-display-pane.viewmenu.label "Меню Вид">
+<!ENTITY openwith-display-pane.contextmenu.label "Главное контекстное меню">
+<!ENTITY openwith-display-pane.contextmenulink.label "Главное контекстное меню (ссылки)">
+<!ENTITY openwith-display-pane.placescontext.label "Контекстное меню закладок">
+<!ENTITY openwith-display-pane.tabmenu.label "Контекстное меню вкладок">
+<!ENTITY openwith-display-pane.tabbar.label "Панель вкладок">
+<!ENTITY openwith-display-pane.toolbar.label "Панель инструментов">
+<!ENTITY openwith-display-pane.toolbox.label "Инструменты разработчика">
 
 <!ENTITY openwith-display-none.label "Не показывать">
 <!ENTITY openwith-display-menuitems.label "Показывать как элемент меню">
@@ -27,28 +27,28 @@
 <!ENTITY openwith-display-buttons.label "Показывать в виде кнопки">
 <!ENTITY openwith-display-dropdown.label "Показывать в виде выпадающего списка">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "Что бы добавить Open With на Вашу панель инструментов или меню, откройте меню панели и нажмите 'Изменить'.">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "Журналирование">
+<!ENTITY openwith-logging.checkbox.label "Включить журналирование в консоли браузера">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "Open With существует на добровольные взносы и пожертвования пользователей.">
+<!ENTITY openwith-donate "Пожертвовать">
+<!ENTITY openwith-github "Open With на GitHub">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Выберите какие элементы отображать:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "Определено автоматически">
 <!ENTITY openwith-browserlist-show.label "Показать">
 <!ENTITY openwith-browserlist-hide.label "Спрятать">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "Изменить">
+<!ENTITY openwith-browserlist-editname.label "Имя…">
 <!ENTITY openwith-browserlist-editcommand.label "Команда">
 <!ENTITY openwith-browserlist-editparams.label "Аргументы…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Кнопка доступа к меню…">
+<!ENTITY openwith-browserlist-editshortcut.label "Горячая клавиша…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "Дублировать">
 <!ENTITY openwith-browserlist-remove.label "Удалить">
 
 <!ENTITY openwith-browserlist-add.label "Добавить…">
@@ -56,10 +56,10 @@
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Command">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-ctrlkey "Управление">
+<!ENTITY openwith-cmdkey "Комманда">
+<!ENTITY openwith-shiftkey "Кнопка Shift">
+<!ENTITY openwith-altkey "Кнопка Alt">
+<!ENTITY openwith-nomodifier "Выберите минимум один модификатор.">
+<!ENTITY openwith-comboinuse "Комбинация клавиш уже используется.">
+<!ENTITY openwith-removecombo "Удалить комбинацию">
