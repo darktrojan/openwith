@@ -1,25 +1,25 @@
-<!ENTITY openwith-name "فتح بإستخدام">
+<!ENTITY openwith-name "فتح باستخدام">
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "فتح بإستخدام…">
+<!ENTITY openwith-dropdown.tooltip "فتح باستخدام…">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "عنآصر Open With">
+<!ENTITY openwith-placeholder.label "عناصر &quot;فتح باستخدام&quot;">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Open With link عناصر">
-<!ENTITY openwith-submenu.label "فتح بإستخدام">
-<!ENTITY openwith-linksubmenu.label "فتح الرآبط بإستخدام">
+<!ENTITY openwith-linkplaceholder.label "عناصر ارتباط &quot;فتح باستخدام&quot;">
+<!ENTITY openwith-submenu.label "فتح بستخدام">
+<!ENTITY openwith-linksubmenu.label "فتح الرابط باستخدام">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
-<!ENTITY openwith-options.title "خيارات Open With">
+<!ENTITY openwith-options.title "إعدادات &quot;فتح باستخدام&quot;">
 
-<!ENTITY openwith-display-choose.label "إختر طريقة عرض عناصر Open With:">
+<!ENTITY openwith-display-choose.label "اختر طريقة عرض عناصر &quot;فتح باستخدام&quot;:">
 <!ENTITY openwith-display-pane.viewmenu.label "قائمة العرض">
 <!ENTITY openwith-display-pane.contextmenu.label "القائمة المنسدلة الرئيسية">
 <!ENTITY openwith-display-pane.contextmenulink.label "القائمة المنسدلة الرئيسية (الروابط)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
-<!ENTITY openwith-display-pane.tabmenu.label "قائمة التبويب المنسدلة">
-<!ENTITY openwith-display-pane.tabbar.label "شريط التبويب">
+<!ENTITY openwith-display-pane.placescontext.label "القائمة المنسدلة لشريط العلامات">
+<!ENTITY openwith-display-pane.tabmenu.label "القائمة المنسدلة لشريط الألسنة">
+<!ENTITY openwith-display-pane.tabbar.label "شريط الألسنة">
 <!ENTITY openwith-display-pane.toolbar.label "شريط الأدوات">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbox.label "أدوات المطورين">
 
 <!ENTITY openwith-display-none.label "عدم العرض">
 <!ENTITY openwith-display-menuitems.label "عرض كعناصر قائمة">
@@ -27,32 +27,32 @@
 <!ENTITY openwith-display-buttons.label "عرض كأزرار">
 <!ENTITY openwith-display-dropdown.label "عرض كقائمة منسدلة">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "لإضافة &quot;فتح باستخدام&quot; إلى شريطك أو إلى قائمة الإضافات، قم بفتح قائمة الإضافات واضغط على 'خصّص'.">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "تسجيل المحوظات">
+<!ENTITY openwith-logging.checkbox.label "تمكين حفظ المحفوظات في وحدة تحكم المتصفح.">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "إضافة &quot;فتح باستخدام&quot; ممولة بتبرعات المستخدمين.">
+<!ENTITY openwith-donate "تبرع">
+<!ENTITY openwith-github "&quot;فتح باستخدام&quot; على GitHub">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "إختر العناصر المراد عرضها:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "تم اكتشافه تلقائياً">
 <!ENTITY openwith-browserlist-show.label "عرض">
 <!ENTITY openwith-browserlist-hide.label "إخفاء">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "تعديل">
+<!ENTITY openwith-browserlist-editname.label "الاسم…">
 <!ENTITY openwith-browserlist-editcommand.label "الأمر…">
-<!ENTITY openwith-browserlist-editparams.label "Arguments…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist-editparams.label "العوارض…">
+<!ENTITY openwith-browserlist-editaccesskey.label "مفتاح مرور القائمة…">
+<!ENTITY openwith-browserlist-editshortcut.label "اختصار لوحة المفاتيح…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "مضاعفة">
 <!ENTITY openwith-browserlist-remove.label "إزالة">
 
 <!ENTITY openwith-browserlist-add.label "إضافة…">
-<!ENTITY openwith-browserlist-restoreorder.label "الترتيب الإفتراضي">
+<!ENTITY openwith-browserlist-restoreorder.label "الترتيب الافتراضي">
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
@@ -60,6 +60,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-nomodifier "اختر زراً واحداً على الأقل.">
+<!ENTITY openwith-comboinuse "يبدو أن هذا الاختصار مستعمل من قبل.">
+<!ENTITY openwith-removecombo "حذف الاختصار">

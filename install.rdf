@@ -39,8 +39,8 @@
 		<em:localized>
 			<Description>
 				<em:locale>ar</em:locale>
-				<em:name>فتح بإستخدام</em:name>
-				<em:description>فتح بإستخدآم يضيف خيار لقائمتك وتبويب لفتح الصفحة الحالية في متصفح آخر.</em:description>
+				<em:name>فتح باستخدام</em:name>
+				<em:description>تقوم هذه الإضافة بفتح مواقعك على انترنت اكسبلورر، كروم، سفاري أو أوبيرا. تقوم إضافة &quot;فتح باستخدام&quot; بفتح الموقع الحالي باستخدام متصفحاتك الأخرى بضغطة زر.</em:description>
 				<em:translator>Natty Dreed</em:translator>
 			</Description>
 		</em:localized>
