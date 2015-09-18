@@ -1,58 +1,58 @@
-<!ENTITY openwith-name "Open With">
+<!ENTITY openwith-name "Відкрити за допомогою">
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Open with…">
+<!ENTITY openwith-dropdown.tooltip "Відкрити за допомогою…">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Відкрити з допомогою програм">
+<!ENTITY openwith-placeholder.label "Пункти &quot;Відкрити з допомогою&quot;">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Відкрити з допомогою… посилання по-пунктам">
-<!ENTITY openwith-submenu.label "Open with">
-<!ENTITY openwith-linksubmenu.label "Open Link with">
+<!ENTITY openwith-linkplaceholder.label "Пункти-посилання &quot;Відкрити з допомогою&quot;">
+<!ENTITY openwith-submenu.label "Відкрити за допомогою">
+<!ENTITY openwith-linksubmenu.label "Відкрити посилання через">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
-<!ENTITY openwith-options.title "Налаштування Відкрити з допомогою…">
+<!ENTITY openwith-options.title "Налаштування &quot;Відкрити з допомогою&quot;…">
 
-<!ENTITY openwith-display-choose.label "Choose how to display Open With items:">
+<!ENTITY openwith-display-choose.label "Оберіть як відображати пункти у &quot;Відкрити з допомогою&quot;:">
 <!ENTITY openwith-display-pane.viewmenu.label "Переглянути меню">
 <!ENTITY openwith-display-pane.contextmenu.label "Головне контекстне меню">
 <!ENTITY openwith-display-pane.contextmenulink.label "Контекстне меню вкладок (посилання)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
+<!ENTITY openwith-display-pane.placescontext.label "Контекстне меню закладок">
 <!ENTITY openwith-display-pane.tabmenu.label "Контекстне меню вкладок">
 <!ENTITY openwith-display-pane.tabbar.label "Панель вкладок">
-<!ENTITY openwith-display-pane.toolbar.label "Tool bar">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbar.label "Головна панель">
+<!ENTITY openwith-display-pane.toolbox.label "Засоби розробника">
 
-<!ENTITY openwith-display-none.label "Don't display">
-<!ENTITY openwith-display-menuitems.label "Display as menu items">
-<!ENTITY openwith-display-submenu.label "Display as a sub-menu">
-<!ENTITY openwith-display-buttons.label "Display as buttons">
-<!ENTITY openwith-display-dropdown.label "Display as a drop-down menu">
+<!ENTITY openwith-display-none.label "Не відображати">
+<!ENTITY openwith-display-menuitems.label "Відображати як пункти меню">
+<!ENTITY openwith-display-submenu.label "Відображати як підменю">
+<!ENTITY openwith-display-buttons.label "Відображати як кнопки">
+<!ENTITY openwith-display-dropdown.label "Відображати як випадне меню">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "Аби додати">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "Лоґи">
+<!ENTITY openwith-logging.checkbox.label "Увімкнути передавання лоґів до консолі браузера">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "&quot;Відкрити за допомогою&quot; фінансується завдяки вашим пожертувавнням.">
+<!ENTITY openwith-donate "Пожертвувати">
+<!ENTITY openwith-github "&quot;Відкрити за допомогою&quot; на GitHub">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
-<!ENTITY openwith-browserlist.label "Choose which items to display:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
-<!ENTITY openwith-browserlist-show.label "Show">
-<!ENTITY openwith-browserlist-hide.label "Hide">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
-<!ENTITY openwith-browserlist-editcommand.label "Command…">
-<!ENTITY openwith-browserlist-editparams.label "Arguments…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist.label "Оберіть, які пункти показувати:">
+<!ENTITY openwith-browserlist-auto.tooltip "Визначено автоматично">
+<!ENTITY openwith-browserlist-show.label "Показати">
+<!ENTITY openwith-browserlist-hide.label "Приховати">
+<!ENTITY openwith-browserlist-edit.label "Змінити">
+<!ENTITY openwith-browserlist-editname.label "Назва…">
+<!ENTITY openwith-browserlist-editcommand.label "Команда…">
+<!ENTITY openwith-browserlist-editparams.label "Аргументи…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Клавіша доступу до меню…">
+<!ENTITY openwith-browserlist-editshortcut.label "Поєднання клавіш…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
-<!ENTITY openwith-browserlist-remove.label "Remove">
+<!ENTITY openwith-browserlist-duplicate.label "Дублювати">
+<!ENTITY openwith-browserlist-remove.label "Прибрати">
 
-<!ENTITY openwith-browserlist-add.label "Add…">
-<!ENTITY openwith-browserlist-restoreorder.label "Default Order">
+<!ENTITY openwith-browserlist-add.label "Додати…">
+<!ENTITY openwith-browserlist-restoreorder.label "Порядок за замовчуванням">
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
@@ -60,6 +60,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-nomodifier "Оберіть хоча б один модифікатор.">
+<!ENTITY openwith-comboinuse "Схоже це поєднання клавіш вже використовується.">
+<!ENTITY openwith-removecombo "Прибрати">
