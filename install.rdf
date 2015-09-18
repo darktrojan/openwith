@@ -94,6 +94,13 @@
 		</em:localized>
 		<em:localized>
 			<Description>
+				<em:locale>ru</em:locale>
+				<em:name>Открыть С</em:name>
+				<em:description>Быстро тестируйте свои веб-страницы в Internet Explorer, Chrome, Safari, или Opera. Open With открывает текущую страницу в других Ваших браузерах в один клик.</em:description>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
 				<em:locale>sv-SE</em:locale>
 				<em:name>Open With</em:name>
 				<em:description>Testa kvickt dina websidor i Internet Explorer, Chrome, Safari eller Opera. Tillägget Öppna med öppnar den öppna sidan i andra webbläsare med bara ett musklick.</em:description>
