@@ -1,58 +1,58 @@
-<!ENTITY openwith-name "Otwórz za pomocą">
+<!ENTITY openwith-name "Open With">
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Otwórz za pomocą …">
+<!ENTITY openwith-dropdown.tooltip "Otwórz za pomocą…">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Otwórz za pomocą - Elementy">
+<!ENTITY openwith-placeholder.label "Wpisy Open With">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Otwórz za pomocą - Elementy linku">
+<!ENTITY openwith-linkplaceholder.label "Linki wpisów Open With">
 <!ENTITY openwith-submenu.label "Otwórz za pomocą">
 <!ENTITY openwith-linksubmenu.label "Otwórz link za pomocą">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
-<!ENTITY openwith-options.title "Otwórz za pomocą - Opcje">
+<!ENTITY openwith-options.title "Opcje Open With">
 
-<!ENTITY openwith-display-choose.label "Wybierz sposób wyświetlania elementów dodatku Otwórz za pomocą:">
-<!ENTITY openwith-display-pane.viewmenu.label "Menu Widok">
+<!ENTITY openwith-display-choose.label "Wybierz sposób wyświetlania wpisów dodatku Open With:">
+<!ENTITY openwith-display-pane.viewmenu.label "Menu widok">
 <!ENTITY openwith-display-pane.contextmenu.label "Główne menu kontekstowe">
 <!ENTITY openwith-display-pane.contextmenulink.label "Główne menu kontekstowe (linki)">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmarks context menu">
+<!ENTITY openwith-display-pane.placescontext.label "Menu kontekstowe zakładek">
 <!ENTITY openwith-display-pane.tabmenu.label "Menu kontekstowe karty">
-<!ENTITY openwith-display-pane.tabbar.label "Pasek karty">
+<!ENTITY openwith-display-pane.tabbar.label "Pasek kart">
 <!ENTITY openwith-display-pane.toolbar.label "Pasek narzędzi">
-<!ENTITY openwith-display-pane.toolbox.label "Developer Tools">
+<!ENTITY openwith-display-pane.toolbox.label "Narzędzia programisty">
 
 <!ENTITY openwith-display-none.label "Nie wyświetlaj">
-<!ENTITY openwith-display-menuitems.label "Wyświetl jako elementy menu">
-<!ENTITY openwith-display-submenu.label "Wyświetl jako pod-menu">
-<!ENTITY openwith-display-buttons.label "Wyświetl jako przyciski">
-<!ENTITY openwith-display-dropdown.label "Wyświetl jako menu rozwijane">
+<!ENTITY openwith-display-menuitems.label "Wyświetlaj jako elementy menu">
+<!ENTITY openwith-display-submenu.label "Wyświetlaj jako podmenu">
+<!ENTITY openwith-display-buttons.label "Wyświetlaj jako przyciski">
+<!ENTITY openwith-display-dropdown.label "Wyświetlaj jako menu rozwijane">
 
-<!ENTITY openwith-display-toolbarhelp "To add Open With to your toolbar or panel menu, open the panel menu and click 'Customize'.">
+<!ENTITY openwith-display-toolbarhelp "Otwórz panel menu i kliknij &quot;Dostosuj&quot;, aby dodać Open With do paska narzędzi lub do panelu menu">
 
-<!ENTITY openwith-logging.label "Logging">
-<!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
+<!ENTITY openwith-logging.label "Logowanie">
+<!ENTITY openwith-logging.checkbox.label "Włącz logowanie do Konsoli przeglądarki">
 
-<!ENTITY openwith-donationsrequest "Open With is funded by user donations.">
-<!ENTITY openwith-donate "Donate">
-<!ENTITY openwith-github "Open With on GitHub">
+<!ENTITY openwith-donationsrequest "Open With istnieje dzięki wsparciu użytkowników.">
+<!ENTITY openwith-donate "Wesprzyj">
+<!ENTITY openwith-github "Open With na GitHubie">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "Wybierz elementy do wyświetlenia:">
-<!ENTITY openwith-browserlist-auto.tooltip "Detected automatically">
+<!ENTITY openwith-browserlist-auto.tooltip "Automatycznie wykryte">
 <!ENTITY openwith-browserlist-show.label "Pokaż">
 <!ENTITY openwith-browserlist-hide.label "Ukryj">
-<!ENTITY openwith-browserlist-edit.label "Edit">
-<!ENTITY openwith-browserlist-editname.label "Name…">
+<!ENTITY openwith-browserlist-edit.label "Edytuj">
+<!ENTITY openwith-browserlist-editname.label "Nazwa…">
 <!ENTITY openwith-browserlist-editcommand.label "Komenda…">
-<!ENTITY openwith-browserlist-editparams.label "Argumenty…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
-<!ENTITY openwith-browserlist-editshortcut.label "Keyboard Shortcut…">
+<!ENTITY openwith-browserlist-editparams.label "Parametry…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Klawisz dostępu do menu…">
+<!ENTITY openwith-browserlist-editshortcut.label "Skróty klawiszowe…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Duplicate">
+<!ENTITY openwith-browserlist-duplicate.label "Sklonuj">
 <!ENTITY openwith-browserlist-remove.label "Usuń">
 
 <!ENTITY openwith-browserlist-add.label "Dodaj…">
-<!ENTITY openwith-browserlist-restoreorder.label "Kolejność domyślna">
+<!ENTITY openwith-browserlist-restoreorder.label "Domyślne sortowanie">
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
@@ -60,6 +60,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Shift">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">
+<!ENTITY openwith-nomodifier "Musisz wybrać przynajmniej jeden klawisz modyfikatora.">
+<!ENTITY openwith-comboinuse "Ten skrót klawiszowy jest już w użyciu.">
+<!ENTITY openwith-removecombo "Usuń skrót">
