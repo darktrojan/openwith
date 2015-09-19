@@ -45,6 +45,13 @@
 		</em:localized>
 		<em:localized>
 			<Description>
+				<em:locale>de</em:locale>
+				<em:name>ÖffneMit</em:name>
+				<em:description>Öffnen Sie Web Seiten in Internet Explorer, Chrome, Safari oder Opera. Ein Klick genügt, um die aktuelle URL in anderen Browsern darzustellen.</em:description>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
 				<em:locale>el</em:locale>
 				<em:name>Άνοιγμα με</em:name>
 				<em:description>Δοκιμάστε γρήγορα τις ιστοσελίδες σας στον Internet Explorer, Chrome,Safari ή Opera. Το «Άνοιγμα με» ανοίγει την τρέχουσα σελίδα στους άλλους περιηγητές σας με μόνο ένα κλικ.</em:description>
