@@ -679,11 +679,9 @@ let OpenWithCore = {
 					'de': 'German',
 					'es-ES': 'Spanish',
 					'fi': 'Finnish',
-					'fr': 'French',
 					'hu': 'Hungarian',
 					'is': 'Icelandic',
 					'it': 'Italian',
-					'pl': 'Polish',
 					'pt-BR': 'Brazilian Portuguese',
 					'sr': 'Serbian',
 					'vi': 'Vietnamese'
