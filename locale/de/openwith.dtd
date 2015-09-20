@@ -15,11 +15,11 @@
 <!ENTITY openwith-display-pane.viewmenu.label "Menü &quot;Ansicht&quot;">
 <!ENTITY openwith-display-pane.contextmenu.label "Seiten-Kontextmenü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Link-Kontextmenü">
-<!ENTITY openwith-display-pane.placescontext.label "Bookmark-Kontextmenü">
+<!ENTITY openwith-display-pane.placescontext.label "Lesezeichen-Kontextmenü">
 <!ENTITY openwith-display-pane.tabmenu.label "Tab-Kontextmenü">
 <!ENTITY openwith-display-pane.tabbar.label "Tab-Leiste">
 <!ENTITY openwith-display-pane.toolbar.label "Symbolleiste">
-<!ENTITY openwith-display-pane.toolbox.label "Entwickler Werkzeuge">
+<!ENTITY openwith-display-pane.toolbox.label "Entwickler-Werkzeuge">
 
 <!ENTITY openwith-display-none.label "Nicht anzeigen">
 <!ENTITY openwith-display-menuitems.label "Als Menüpunkte anzeigen">
@@ -27,12 +27,12 @@
 <!ENTITY openwith-display-buttons.label "Als Schaltflächen anzeigen">
 <!ENTITY openwith-display-dropdown.label "Als Ausklappmenü anzeigen">
 
-<!ENTITY openwith-display-toolbarhelp "Um ÖffneMit in Werkzeugleiste bzw. Menü anzuzeigen, klicken Sie mit Rechts auf die Werkzeugleiste und wählen &quot;Anpassen&quot;.">
+<!ENTITY openwith-display-toolbarhelp "Um ÖffneMit in Werkzeugleiste bzw. Menü anzuzeigen, klicken Sie mit Rechts auf die Werkzeugleiste und wählen 'Anpassen'.">
 
 <!ENTITY openwith-logging.label "Ereignis-Protokoll">
 <!ENTITY openwith-logging.checkbox.label "Ereignisse in Browser Konsole protokollieren">
 
-<!ENTITY openwith-donationsrequest "ÖffneMit finanziert sich durch Ihre Spenden">
+<!ENTITY openwith-donationsrequest "ÖffneMit finanziert wird durch Ihre Spenden">
 <!ENTITY openwith-donate "Spenden">
 <!ENTITY openwith-github "ÖffneMit auf GitHub">
 
@@ -41,14 +41,14 @@
 <!ENTITY openwith-browserlist-auto.tooltip "Automatisch erkennen">
 <!ENTITY openwith-browserlist-show.label "Anzeigen">
 <!ENTITY openwith-browserlist-hide.label "Verbergen">
-<!ENTITY openwith-browserlist-edit.label "Editieren">
+<!ENTITY openwith-browserlist-edit.label "Bearbeiten">
 <!ENTITY openwith-browserlist-editname.label "Name…">
 <!ENTITY openwith-browserlist-editcommand.label "Aufruf…">
 <!ENTITY openwith-browserlist-editparams.label "Argumente…">
 <!ENTITY openwith-browserlist-editaccesskey.label "Menü-Zugriffstaste…">
 <!ENTITY openwith-browserlist-editshortcut.label "Tastenkombination…">
 <!-- "Duplicate" is a verb here. -->
-<!ENTITY openwith-browserlist-duplicate.label "Kopieren">
+<!ENTITY openwith-browserlist-duplicate.label "Kopie erstellen">
 <!ENTITY openwith-browserlist-remove.label "Entfernen">
 
 <!ENTITY openwith-browserlist-add.label "Hinzufügen…">
@@ -60,6 +60,6 @@
 <!ENTITY openwith-cmdkey "Command">
 <!ENTITY openwith-shiftkey "Umschalt">
 <!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Mindestens eine Modifiziertaste auswählen">
-<!ENTITY openwith-comboinuse "Die Tastenkombination ist bereits vergeben.">
+<!ENTITY openwith-nomodifier "Wählen Sie mindestens eine Modifikationstaste.">
+<!ENTITY openwith-comboinuse "Diese Tastenkombination ist bereits vergeben.">
 <!ENTITY openwith-removecombo "Tastenkombination entfernen">
