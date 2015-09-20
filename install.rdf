@@ -45,6 +45,13 @@
 		</em:localized>
 		<em:localized>
 			<Description>
+				<em:locale>cs</em:locale>
+				<em:name>Open With</em:name>
+				<em:description>Rychle otestujte vaše webové stránky v Internet Exploreru, Chrome, Safari, nebo Opeře. Open With otevře aktuální stránku ve vaších ostatních prohlížečích jediným kliknutím.</em:description>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
 				<em:locale>de</em:locale>
 				<em:name>ÖffneMit</em:name>
 				<em:description>Öffnen Sie Web Seiten in Internet Explorer, Chrome, Safari oder Opera. Ein Klick genügt, um die aktuelle URL in anderen Browsern darzustellen.</em:description>
