@@ -5,7 +5,7 @@
 <!ENTITY openwith-placeholder.label "عناصر &quot;فتح باستخدام&quot;">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "عناصر ارتباط &quot;فتح باستخدام&quot;">
-<!ENTITY openwith-submenu.label "فتح بستخدام">
+<!ENTITY openwith-submenu.label "فتح باستخدام">
 <!ENTITY openwith-linksubmenu.label "فتح الرابط باستخدام">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
@@ -27,9 +27,9 @@
 <!ENTITY openwith-display-buttons.label "عرض كأزرار">
 <!ENTITY openwith-display-dropdown.label "عرض كقائمة منسدلة">
 
-<!ENTITY openwith-display-toolbarhelp "لإضافة &quot;فتح باستخدام&quot; إلى شريطك أو إلى قائمة الإضافات، قم بفتح قائمة الإضافات واضغط على 'خصّص'.">
+<!ENTITY openwith-display-toolbarhelp "لإضافة &quot;فتح باستخدام&quot; إلى شريط الأدوات إو إلى قائمة الإضافات، قم بفتح قائمة الإضافات واضغط على 'خصّص'.">
 
-<!ENTITY openwith-logging.label "تسجيل المحوظات">
+<!ENTITY openwith-logging.label "تسجيل المحفوظات">
 <!ENTITY openwith-logging.checkbox.label "تمكين حفظ المحفوظات في وحدة تحكم المتصفح.">
 
 <!ENTITY openwith-donationsrequest "إضافة &quot;فتح باستخدام&quot; ممولة بتبرعات المستخدمين.">
