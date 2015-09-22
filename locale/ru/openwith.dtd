@@ -56,10 +56,10 @@
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Управление">
-<!ENTITY openwith-cmdkey "Комманда">
-<!ENTITY openwith-shiftkey "Кнопка Shift">
-<!ENTITY openwith-altkey "Кнопка Alt">
+<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-cmdkey "Command">
+<!ENTITY openwith-shiftkey "Shift">
+<!ENTITY openwith-altkey "Alt">
 <!ENTITY openwith-nomodifier "Выберите минимум один модификатор.">
 <!ENTITY openwith-comboinuse "Комбинация клавиш уже используется.">
 <!ENTITY openwith-removecombo "Удалить комбинацию">
