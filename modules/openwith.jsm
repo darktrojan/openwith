@@ -675,16 +675,10 @@ let OpenWithCore = {
 				let updateLanguages = {
 					'bg': 'Bulgarian',
 					'ca': 'Catalan',
-					'cs': 'Czech',
-					'de': 'German',
-					'es-ES': 'Spanish',
 					'fi': 'Finnish',
 					'hu': 'Hungarian',
 					'is': 'Icelandic',
-					'it': 'Italian',
-					'pt-BR': 'Brazilian Portuguese',
-					'sr': 'Serbian',
-					'vi': 'Vietnamese'
+					'sr': 'Serbian'
 				};
 
 				let chromeRegistry = Components.classes['@mozilla.org/chrome/chrome-registry;1']
