@@ -45,7 +45,7 @@
 <!ENTITY openwith-browserlist-editname.label "名稱…">
 <!ENTITY openwith-browserlist-editcommand.label "命令…">
 <!ENTITY openwith-browserlist-editparams.label "參數…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
+<!ENTITY openwith-browserlist-editaccesskey.label "選單快捷鍵…">
 <!ENTITY openwith-browserlist-editshortcut.label "鍵盤快捷鍵…">
 <!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "複製">
