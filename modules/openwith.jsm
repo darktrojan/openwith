@@ -648,7 +648,7 @@ let OpenWithCore = {
 				label: this.strings.GetStringFromName('donateButtonLabel'),
 				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 				popup: null,
-				callback: this.openDonatePage
+				callback: this.openDonatePage.bind(this)
 			}];
 		} else if (Services.vc.compare(oldVersion, currentVersion) < 0) {
 			if (Services.vc.compare(oldVersion, 5.5) <= 0 && !WINDOWS && !OS_X) {
@@ -669,7 +669,7 @@ let OpenWithCore = {
 					label: this.strings.GetStringFromName('donateButtonLabel'),
 					accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 					popup: null,
-					callback: this.openDonatePage
+					callback: this.openDonatePage.bind(this)
 				}];
 
 				let updateLanguages = {
