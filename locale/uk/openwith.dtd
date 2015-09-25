@@ -12,7 +12,7 @@
 <!ENTITY openwith-options.title "Налаштування &quot;Відкрити з допомогою&quot;…">
 
 <!ENTITY openwith-display-choose.label "Оберіть як відображати пункти у &quot;Відкрити з допомогою&quot;:">
-<!ENTITY openwith-display-pane.viewmenu.label "Переглянути меню">
+<!ENTITY openwith-display-pane.viewmenu.label "Меню &quot;Вигляд&quot;">
 <!ENTITY openwith-display-pane.contextmenu.label "Головне контекстне меню">
 <!ENTITY openwith-display-pane.contextmenulink.label "Контекстне меню вкладок (посилання)">
 <!ENTITY openwith-display-pane.placescontext.label "Контекстне меню закладок">
@@ -27,7 +27,7 @@
 <!ENTITY openwith-display-buttons.label "Відображати як кнопки">
 <!ENTITY openwith-display-dropdown.label "Відображати як випадне меню">
 
-<!ENTITY openwith-display-toolbarhelp "Аби додати">
+<!ENTITY openwith-display-toolbarhelp "Аби додати &quot;Відкрити за допомогою до вашого меню чи панелі інструментів, відкрийте меню панелі та натисніть &quot;Пристосування&quot;">
 
 <!ENTITY openwith-logging.label "Лоґи">
 <!ENTITY openwith-logging.checkbox.label "Увімкнути передавання лоґів до консолі браузера">
