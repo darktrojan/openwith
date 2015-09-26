@@ -2,16 +2,16 @@
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
 <!ENTITY openwith-dropdown.tooltip "打开用…">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Open With项目">
+<!ENTITY openwith-placeholder.label "Open With 项目">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Open With链接项目">
+<!ENTITY openwith-linkplaceholder.label "Open With 链接项目">
 <!ENTITY openwith-submenu.label "打开用">
 <!ENTITY openwith-linksubmenu.label "打开链接用">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Open With 选项">
 
-<!ENTITY openwith-display-choose.label "选择显示Open With项目的方式:">
+<!ENTITY openwith-display-choose.label "选择显示 Open With 项目的位置:">
 <!ENTITY openwith-display-pane.viewmenu.label "查看菜单">
 <!ENTITY openwith-display-pane.contextmenu.label "页面右键菜单">
 <!ENTITY openwith-display-pane.contextmenulink.label "页面右键菜单(链接)">
@@ -19,7 +19,7 @@
 <!ENTITY openwith-display-pane.tabmenu.label "标签页右键菜单">
 <!ENTITY openwith-display-pane.tabbar.label "标签栏">
 <!ENTITY openwith-display-pane.toolbar.label "工具栏">
-<!ENTITY openwith-display-pane.toolbox.label "开发工具">
+<!ENTITY openwith-display-pane.toolbox.label "开发者工具">
 
 <!ENTITY openwith-display-none.label "不显示">
 <!ENTITY openwith-display-menuitems.label "显示为菜单项">
@@ -27,14 +27,14 @@
 <!ENTITY openwith-display-buttons.label "显示为按钮">
 <!ENTITY openwith-display-dropdown.label "显示为下拉菜单">
 
-<!ENTITY openwith-display-toolbarhelp "要在工具栏和菜单上添加Open With，打开菜单并点击“定制”。">
+<!ENTITY openwith-display-toolbarhelp "要在工具栏或菜单面板上添加 Open With，请打开菜单面板并点击“定制”。">
 
 <!ENTITY openwith-logging.label "日志">
 <!ENTITY openwith-logging.checkbox.label "启用输出日志到浏览器控制台">
 
-<!ENTITY openwith-donationsrequest "Open With由用户捐赠资助。">
+<!ENTITY openwith-donationsrequest "Open With 依靠用户捐赠资助。">
 <!ENTITY openwith-donate "捐赠">
-<!ENTITY openwith-github "GitHub上的Open With">
+<!ENTITY openwith-github "GitHub 上的 Open With">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "选择要显示的项目:">
@@ -45,7 +45,7 @@
 <!ENTITY openwith-browserlist-editname.label "名称…">
 <!ENTITY openwith-browserlist-editcommand.label "命令行…">
 <!ENTITY openwith-browserlist-editparams.label "参数…">
-<!ENTITY openwith-browserlist-editaccesskey.label "菜单快捷键…">
+<!ENTITY openwith-browserlist-editaccesskey.label "菜单访问键…">
 <!ENTITY openwith-browserlist-editshortcut.label "键盘快捷键…">
 <!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "复制">
