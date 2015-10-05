@@ -714,15 +714,20 @@ let OpenWithCore = {
 
 		if (value == 'openwith-donate') {
 			idleService.addIdleObserver({
-				observe: function() {
-					idleService.removeIdleObserver(this, 12);
+				observe: function(service, state) {
+					if (state != 'idle') {
+					  return;
+					}
+
+					idleService.removeIdleObserver(this, 8);
 					callback();
 					OpenWithCore.prefs.setIntPref('donationreminder', Date.now() / 1000);
 				}
-			}, 12);
+			}, 8);
 		} else {
-			let timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
-			timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
+			// Tied to this to avoid GC
+			this.timer = Cc['@mozilla.org/timer;1'].createInstance(Ci.nsITimer);
+			this.timer.initWithCallback(callback, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
 		}
 	},
 	readDesktopFile: function(aFile) {
