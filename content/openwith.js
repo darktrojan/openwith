@@ -1,3 +1,4 @@
+/* globals Components, Services, XPCOMUtils, OpenWithCore, gContextMenu */
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
@@ -195,43 +196,43 @@ let OpenWith = {
 				Components.utils.reportError(e);
 				OpenWithCore.log('OpenWith: tab bar buttons will be unavailable');
 			}
-		}
 
-		/** tool bar **/
-		this.toolbarButtonContainer = null;
-		try {
-			this.toolbarButtonContainer = document.getElementById('openwith-toolbarbox');
-			if (!this.toolbarButtonContainer) {
-				let palette = document.getElementById('navigator-toolbox').palette;
-				for (let i = palette.childElementCount - 1; i >= 0; i--) {
-					if (palette.children[i].id == 'openwith-toolbarbox') {
-						this.toolbarButtonContainer = palette.children[i];
-						break;
+			/** tool bar **/
+			this.toolbarButtonContainer = null;
+			try {
+				this.toolbarButtonContainer = document.getElementById('openwith-toolbarbox');
+				if (!this.toolbarButtonContainer) {
+					let palette = document.getElementById('navigator-toolbox').palette;
+					for (let i = palette.childElementCount - 1; i >= 0; i--) {
+						if (palette.children[i].id == 'openwith-toolbarbox') {
+							this.toolbarButtonContainer = palette.children[i];
+							break;
+						}
 					}
 				}
-			}
-			if (this.toolbarButtonContainer) {
-				this.locations.push({
-					prefName: 'toolbar',
-					empty: function() {
-						while (this.container.childNodes.length > 1)
-							this.container.removeChild(this.container.lastChild);
-					},
-					factory: OpenWithCore.createToolbarButton,
-					container: this.toolbarButtonContainer
-				});
+				if (this.toolbarButtonContainer) {
+					this.locations.push({
+						prefName: 'toolbar',
+						empty: function() {
+							while (this.container.childNodes.length > 1)
+								this.container.removeChild(this.container.lastChild);
+						},
+						factory: OpenWithCore.createToolbarButton,
+						container: this.toolbarButtonContainer
+					});
 
-				/** tool bar menu **/
-				this.toolbarMenu = this.toolbarButtonContainer.getElementsByTagName('menupopup').item(0);
-				this.locations.push({
-					prefName: 'toolbar.menu',
-					container: this.toolbarMenu
-				});
+					/** tool bar menu **/
+					this.toolbarMenu = this.toolbarButtonContainer.getElementsByTagName('menupopup').item(0);
+					this.locations.push({
+						prefName: 'toolbar.menu',
+						container: this.toolbarMenu
+					});
+				}
+			} catch (e) {
+				this.tabButtonContainer = null;
+				Components.utils.reportError(e);
+				OpenWithCore.log('OpenWith: toolbar buttons will be unavailable');
 			}
-		} catch (e) {
-			this.tabButtonContainer = null;
-			Components.utils.reportError(e);
-			OpenWithCore.log('OpenWith: toolbar buttons will be unavailable');
 		}
 
 		if ('CustomizableUI' in window) {
@@ -256,7 +257,7 @@ let OpenWith = {
 		Components.interfaces.nsISupports
 	]),
 
-	observe: function(subject, topic, data) {
+	observe: function(subject, topic) {
 		switch (topic) {
 		case 'openWithListChanged':
 		case 'openWithLocationsChanged':
@@ -282,7 +283,7 @@ let OpenWith = {
 			}
 		}
 
-		this.emptyList = OpenWithCore.list.length == 0;
+		this.emptyList = OpenWithCore.list.length === 0;
 		OpenWithCore.refreshUI(document, this.locations, { keyTargetType: OpenWithCore.TARGET_STANDARD });
 	},
 
@@ -297,9 +298,7 @@ let OpenWith = {
 			case 'placesContext':
 				let pref, submenuPref, placeholder, submenu, items;
 				if (this.id == 'placesContext') {
-					if ((document.popupNode.localName == 'menuitem' ||
-							(document.popupNode.localName == 'toolbarbutton' && document.popupNode.getAttribute('type') != 'menu'))
-							&& document.popupNode.classList.contains('bookmark-item')) {
+					if (document.popupNode.matches('menuitem.bookmark-item, toolbarbutton[type="menu"].bookmark-item')) {
 						pref = OpenWithCore.prefs.getBoolPref('placescontext');
 						submenuPref = OpenWithCore.prefs.getBoolPref('placescontext.submenu');
 					}
@@ -423,7 +422,7 @@ let OpenWith = {
 				placeholder.hidden = false;
 
 				let next = placeholder.nextSibling;
-				while (next && next.className.indexOf('openwith') == 0) {
+				while (next && next.classList.contains('openwith')) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
 					} else {
@@ -438,7 +437,7 @@ let OpenWith = {
 				OpenWith.contextMenuPlaceholder.hidden = false;
 
 				let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-				while (next && next.className.indexOf('openwith') == 0) {
+				while (next && next.classList.contains('openwith')) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
 					} else {
@@ -448,7 +447,7 @@ let OpenWith = {
 				}
 
 				next = OpenWith.contextMenuPlaceholder.nextSibling;
-				while (next && next.className.indexOf('openwith') == 0) {
+				while (next && next.classList.contains('openwith')) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
 					} else {
@@ -463,7 +462,7 @@ let OpenWith = {
 					OpenWith.tabMenuPlaceholder.hidden = false;
 
 					let next = OpenWith.tabMenuPlaceholder.nextSibling;
-					while (next && next.className.indexOf('openwith') == 0) {
+					while (next && next.classList.contains('openwith')) {
 						if ('__MenuEdit_removeChild_orig' in this) {
 							this.__MenuEdit_removeChild_orig(next);
 						} else {

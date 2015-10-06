@@ -1,3 +1,4 @@
+/* globals Components, CustomizableUI, OpenWithCore, Iterator */
 Components.utils.import('resource:///modules/CustomizableUI.jsm');
 
 let label = OpenWithCore.strings.GetStringFromName('openWithDropDownTooltip');
@@ -19,10 +20,6 @@ CustomizableUI.createWidget({
 	id: 'openwith-widewidget',
 	type: 'custom',
 	onBuild: function(aDocument) {
-		let areaType = CustomizableUI.getAreaType(this.currentArea);
-		let inPanel = areaType == CustomizableUI.TYPE_MENU_PANEL;
-		let className = inPanel ? 'panel-combined-button' : 'toolbarbutton-1 toolbarbutton-combined';
-
 		let toolbaritem = aDocument.createElement('toolbaritem');
 		toolbaritem.id = 'openwith-widewidget';
 		toolbaritem.className = 'chromeclass-toolbar-additional toolbaritem-combined-buttons panel-wide-item';
@@ -47,11 +44,11 @@ CustomizableUI.createWidget({
 		}
 
 		let listener = {
-			onWidgetAdded: (aWidgetId, aArea, aPosition) => {
+			onWidgetAdded: (aWidgetId, aArea) => {
 				if (aWidgetId == this.id)
 					updateCombinedWidgetStyle(aArea);
 			},
-			onWidgetRemoved: (aWidgetId, aPrevArea) => {
+			onWidgetRemoved: (aWidgetId) => {
 				if (aWidgetId == this.id)
 					updateCombinedWidgetStyle(null);
 			},
@@ -59,11 +56,11 @@ CustomizableUI.createWidget({
 				if (aWidgetId == this.id)
 					updateCombinedWidgetStyle(aArea);
 			},
-			onWidgetReset: function(aWidgetNode) {},
-			onWidgetInstanceRemoved: function(aWidgetId, aDoc) {},
-			onCustomizeStart: function(aWindow) {},
-			onCustomizeEnd: function(aWindow) {},
-			onWidgetDrag: function(aWidgetId, aArea) {}
+			onWidgetReset: function() {},
+			onWidgetInstanceRemoved: function() {},
+			onCustomizeStart: function() {},
+			onCustomizeEnd: function() {},
+			onWidgetDrag: function() {}
 		};
 		CustomizableUI.addListener(listener);
 

@@ -1,3 +1,4 @@
+/* globals Components, Services, XPCOMUtils, OpenWithCore, gContextMenu */
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
@@ -52,12 +53,12 @@ let OpenWith = {
 		Components.interfaces.nsISupports
 	]),
 
-	observe: function(subject, topic, data) {
+	observe: function() {
 		OpenWith.loadLists();
 	},
 
 	loadLists: function() {
-		this.emptyList = OpenWithCore.list.length == 0;
+		this.emptyList = OpenWithCore.list.length === 0;
 		OpenWithCore.refreshUI(document, this.locations, {});
 	},
 
@@ -67,11 +68,6 @@ let OpenWith = {
 		}
 		let contextMenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink');
 		let contextSubmenuLinkPref = OpenWithCore.prefs.getBoolPref('contextmenulink.submenu');
-
-		// from http://mxr.mozilla.org/mozilla-central/source/browser/base/content/nsContextMenu.js
-		let shouldShow = !(gContextMenu.isContentSelected || gContextMenu.onLink ||
-			gContextMenu.onImage || gContextMenu.onCanvas || gContextMenu.onVideo ||
-			gContextMenu.onAudio || gContextMenu.onTextInput);
 
 		OpenWith.contextMenuLinkPlaceholder.hidden = true;
 		OpenWith.contextLinkSubmenu.hidden = !contextSubmenuLinkPref ||
@@ -97,7 +93,7 @@ let OpenWith = {
 		OpenWith.contextMenuLinkPlaceholder.hidden = false;
 
 		let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-		while (next && next.className.indexOf('openwith') == 0) {
+		while (next && next.classList.contains('openwith')) {
 			if ('__MenuEdit_removeChild_orig' in this) {
 				this.__MenuEdit_removeChild_orig(next);
 			} else {

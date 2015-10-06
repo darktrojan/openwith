@@ -1,4 +1,4 @@
-/* globals OpenWithCore, openDialog */
+/* globals Components, FileUtils, Services, XPCOMUtils, OpenWithCore, Iterator, openDialog, -name */
 /* exported updatePrefs, setHidden, editCommand, changeAttribute, editKeyInfo,
 	addNewItem, removeItem, restoreOrder, duplicateItem, dragStart */
 const Cc = Components.classes;
@@ -299,7 +299,7 @@ function editKeyInfo(item) {
 			OpenWithCore.strings.formatStringFromName('keyinfoPromptText', [item.getAttribute('name')], 1);
 	returnValues.existingKeys = existingKeys;
 	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
-	if (returnValues.removeKeyInfo == true) {
+	if (returnValues.removeKeyInfo === true) {
 		item.removeAttribute('keyInfo');
 		item.removeAttribute('keyInfoHuman');
 	} else if (Array.isArray(returnValues.keyInfo)) {

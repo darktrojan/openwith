@@ -1,4 +1,4 @@
-/* globals AppConstants, sizeToContent */
+/* globals Components, Services, sizeToContent */
 /* exported dialogRemove, dialogAccept */
 Components.utils.import('resource://gre/modules/Services.jsm');
 
@@ -34,7 +34,7 @@ for (let c = 1; c <= 12; c++) {
 	addItem('F' + c, 'VK_F' + c);
 }
 
-if (!!returnValues.previous && returnValues.previous.length > 0 && returnValues.previous[0] != '') {
+if (!!returnValues.previous && returnValues.previous.length > 0 && returnValues.previous[0] !== '') {
 	keycode.value = returnValues.previous.pop();
 	for (let k of [accelkey, altkey, shiftkey]) {
 		k.checked = returnValues.previous.indexOf(k.getAttribute('value')) >= 0;

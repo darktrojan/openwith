@@ -1,3 +1,4 @@
+/* globals Components, Services, XPCOMUtils, OpenWithCore */
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
@@ -39,7 +40,7 @@ let OpenWith = {
 				if (toolbox.doc == document) {
 					return toolbox;
 				}
-			};
+			}
 			return null; // this should never happen
 		});
 	},
@@ -50,7 +51,7 @@ let OpenWith = {
 		Components.interfaces.nsISupports
 	]),
 
-	observe: function(subject, topic, data) {
+	observe: function(subject, topic) {
 		switch (topic) {
 		case 'openWithListChanged':
 		case 'openWithLocationsChanged':

@@ -1,3 +1,5 @@
+/* globals Components, Services, XPCOMUtils, FileUtils, AddonManager, idleService, -name, -location, dump */
+/* exported EXPORTED_SYMBOLS */
 let EXPORTED_SYMBOLS = ['OpenWithCore'];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
@@ -146,7 +148,7 @@ let OpenWithCore = {
 					item[k] = this.prefs.getCharPref('auto.' + item.keyName + '.' + k_lc);
 				}
 			}
-			item['hidden'] =
+			item.hidden =
 				this.prefs.getPrefType('auto.' + item.keyName + '.hidden') == Ci.nsIPrefBranch.PREF_BOOL &&
 				this.prefs.getBoolPref('auto.' + item.keyName + '.hidden');
 		}
@@ -492,7 +494,7 @@ let OpenWithCore = {
 
 		let command = event.target.getAttribute('openwith-command');
 		let paramsAttr = event.target.getAttribute('openwith-params');
-		let params = paramsAttr == '' ? [] : this.splitArgs(paramsAttr);
+		let params = !paramsAttr ? [] : this.splitArgs(paramsAttr);
 		let appendURIParam = !!uriParam;
 		for (var i = 0; i < params.length; i++) {
 			if (params[i].indexOf('%s') >= 0) {
@@ -569,7 +571,6 @@ let OpenWithCore = {
 			this.prefs.clearUserPref('hide');
 		}
 
-		Cu.import('resource://gre/modules/AddonManager.jsm');
 		AddonManager.getAddonByID(ID, (function(addon) {
 			currentVersion = parseVersion(addon.version);
 			this.prefs.setCharPref('version', addon.version);
@@ -643,7 +644,7 @@ let OpenWithCore = {
 			shouldRemind = Date.now() - lastReminder > 604800000;
 		}
 
-		if (this.list.length == 0) {
+		if (this.list.length === 0) {
 			label = this.strings.GetStringFromName('noBrowsersSetUp');
 			value = 'openwith-nobrowsers';
 			buttons = [{
@@ -833,6 +834,7 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
+XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
 XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 
 if (Services.appinfo.name == 'Firefox') {
