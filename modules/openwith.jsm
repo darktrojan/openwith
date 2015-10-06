@@ -366,9 +366,11 @@ let OpenWithCore = {
 				key.setAttribute('modifiers', modifiers.join(','));
 				switch (keyTargetType) {
 				case OpenWithCore.TARGET_STANDARD:
+					// This can't be replaced with an event listener (bug 371900)
 					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
 					break;
 				case OpenWithCore.TARGET_DEVTOOLS:
+					// This can't be replaced with an event listener (bug 371900)
 					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
 					break;
 				}
@@ -396,24 +398,34 @@ let OpenWithCore = {
 		}
 		switch (targetType) {
 		case OpenWithCore.TARGET_STANDARD:
-			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
+			menuItem.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.gBrowser.selectedBrowser.currentURI);
+			});
 			break;
 		case OpenWithCore.TARGET_LINK:
-			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, gContextMenu.linkURI || gContextMenu.linkURL());');
+			menuItem.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.gContextMenu.linkURI || win.gContextMenu.linkURL());
+			});
 			break;
 		case OpenWithCore.TARGET_TAB:
-			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, gBrowser.mContextTab.linkedBrowser.currentURI);');
+			menuItem.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.gBrowser.mContextTab.linkedBrowser.currentURI);
+			});
 			break;
 		case OpenWithCore.TARGET_DEVTOOLS:
-			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
+			menuItem.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.OpenWith.toolbox.target.url);
+			});
 			break;
 		case OpenWithCore.TARGET_PLACES:
-			menuItem.setAttribute('oncommand',
-				'OpenWithCore.doCommand(event, PlacesUIUtils.getViewForNode(document.popupNode).selectedNode.uri);');
+			menuItem.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.PlacesUIUtils.getViewForNode(win.document.popupNode).selectedNode.uri);
+			});
 			break;
 		}
 		OpenWithCore.addItemToElement(menuItem, item);
@@ -430,12 +442,16 @@ let OpenWithCore = {
 		OpenWithCore.addItemToElement(toolbarButton, item);
 		if (targetType == OpenWithCore.TARGET_DEVTOOLS) {
 			toolbarButton.className = 'command-button';
-			toolbarButton.setAttribute('oncommand',
-					'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
+			toolbarButton.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.OpenWith.toolbox.target.url);
+			});
 		} else {
 			toolbarButton.className = targetType == OpenWithCore.TARGET_PANEL_UI ? 'subviewbutton' : 'toolbarbutton-1';
-			toolbarButton.setAttribute('oncommand',
-					'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
+			toolbarButton.addEventListener('command', function(event) {
+				let win = event.target.ownerDocument.defaultView;
+				OpenWithCore.doCommand(event, win.gBrowser.selectedBrowser.currentURI);
+			});
 		}
 		return toolbarButton;
 	},
