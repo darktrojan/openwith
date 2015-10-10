@@ -1,3 +1,4 @@
+/* globals Components, Services, XPCOMUtils */
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
@@ -9,14 +10,14 @@ function OpenWithAboutHandler() {
 
 OpenWithAboutHandler.prototype = {
 	newChannel: function(aURI) {
-		if (!aURI.spec == 'about:openwith')
+		if (aURI.spec != 'about:openwith')
 			return;
 
 		let channel = Services.io.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
 		channel.originalURI = aURI;
 		return channel;
 	},
-	getURIFlags: function(aURI) {
+	getURIFlags: function() {
 		return Ci.nsIAboutModule.ALLOW_SCRIPT;
 	},
 	classDescription: 'About OpenWith Page',
