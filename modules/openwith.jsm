@@ -1,6 +1,5 @@
 /* globals Components, Services, XPCOMUtils, FileUtils, AddonManager, idleService, -name, -location, dump */
-/* exported EXPORTED_SYMBOLS */
-let EXPORTED_SYMBOLS = ['OpenWithCore'];
+this.EXPORTED_SYMBOLS = ['OpenWithCore'];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;

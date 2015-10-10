@@ -2,7 +2,7 @@
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
-let OpenWith = {
+this.OpenWith = {
 	onLoad: function() {
 		window.removeEventListener('load', OpenWith.onLoad, false);
 		OpenWith.init();

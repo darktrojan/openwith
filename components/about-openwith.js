@@ -25,4 +25,4 @@ OpenWithAboutHandler.prototype = {
 	QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule])
 };
 
-let NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);
+this.NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);

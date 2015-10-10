@@ -2,7 +2,7 @@
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
-let OpenWith = {
+this.OpenWith = {
 
 	locations: [],
 
