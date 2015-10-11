@@ -169,7 +169,7 @@ let OpenWithCore = {
 			command = command.replace(/^"/, '').replace(/".*$/, '');
 			let icon;
 			if (this.prefs.getPrefType(name + '.icon') == Ci.nsIPrefBranch.PREF_STRING) {
-				 icon = this.prefs.getCharPref(name + '.icon');
+				icon = this.prefs.getCharPref(name + '.icon');
 			} else {
 				let file = new FileUtils.File(command);
 				icon = this.findIconURL(file, 16);
@@ -660,7 +660,7 @@ let OpenWithCore = {
 				accessKey: this.strings.GetStringFromName('buttonAccessKey'),
 				popup: null,
 				callback: this.openOptionsTab
-			},{
+			}, {
 				label: this.strings.GetStringFromName('donateButtonLabel'),
 				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 				popup: null,
@@ -732,7 +732,7 @@ let OpenWithCore = {
 			idleService.addIdleObserver({
 				observe: function(service, state) {
 					if (state != 'idle') {
-					  return;
+						return;
 					}
 
 					idleService.removeIdleObserver(this, 8);

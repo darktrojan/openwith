@@ -413,67 +413,67 @@ this.OpenWith = {
 		case 'menu_viewPopup':
 		case 'menu_View_Popup':
 		case 'placesContext': {
-				let placeholder;
-				if (this.id == 'placesContext') {
-					placeholder = OpenWith.placesContextPlaceholder;
+			let placeholder;
+			if (this.id == 'placesContext') {
+				placeholder = OpenWith.placesContextPlaceholder;
+			} else {
+				placeholder = OpenWith.viewMenuPlaceholder;
+			}
+
+			placeholder.hidden = false;
+
+			let next = placeholder.nextSibling;
+			while (next && next.classList.contains('openwith')) {
+				if ('__MenuEdit_removeChild_orig' in this) {
+					this.__MenuEdit_removeChild_orig(next);
 				} else {
-					placeholder = OpenWith.viewMenuPlaceholder;
+					this.removeChild(next);
 				}
-
-				placeholder.hidden = false;
-
-				let next = placeholder.nextSibling;
-				while (next && next.classList.contains('openwith')) {
-					if ('__MenuEdit_removeChild_orig' in this) {
-						this.__MenuEdit_removeChild_orig(next);
-					} else {
-						this.removeChild(next);
-					}
-					next = placeholder.nextSibling;
-				}
-				return;
+				next = placeholder.nextSibling;
 			}
+			return;
+		}
 		case 'contentAreaContextMenu': {
-				OpenWith.contextMenuLinkPlaceholder.hidden = false;
-				OpenWith.contextMenuPlaceholder.hidden = false;
+			OpenWith.contextMenuLinkPlaceholder.hidden = false;
+			OpenWith.contextMenuPlaceholder.hidden = false;
 
-				let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
-				while (next && next.classList.contains('openwith')) {
-					if ('__MenuEdit_removeChild_orig' in this) {
-						this.__MenuEdit_removeChild_orig(next);
-					} else {
-						this.removeChild(next);
-					}
-					next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+			let next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+			while (next && next.classList.contains('openwith')) {
+				if ('__MenuEdit_removeChild_orig' in this) {
+					this.__MenuEdit_removeChild_orig(next);
+				} else {
+					this.removeChild(next);
 				}
+				next = OpenWith.contextMenuLinkPlaceholder.nextSibling;
+			}
 
+			next = OpenWith.contextMenuPlaceholder.nextSibling;
+			while (next && next.classList.contains('openwith')) {
+				if ('__MenuEdit_removeChild_orig' in this) {
+					this.__MenuEdit_removeChild_orig(next);
+				} else {
+					this.removeChild(next);
+				}
 				next = OpenWith.contextMenuPlaceholder.nextSibling;
+			}
+			return;
+		}
+		default: { // tab menu doesn't have an id
+			if (OpenWith.tabMenuPlaceholder) {
+				OpenWith.tabMenuPlaceholder.hidden = false;
+
+				let next = OpenWith.tabMenuPlaceholder.nextSibling;
 				while (next && next.classList.contains('openwith')) {
 					if ('__MenuEdit_removeChild_orig' in this) {
 						this.__MenuEdit_removeChild_orig(next);
 					} else {
 						this.removeChild(next);
 					}
-					next = OpenWith.contextMenuPlaceholder.nextSibling;
+					next = OpenWith.tabMenuPlaceholder.nextSibling;
 				}
-				return;
 			}
-		default: { // tab menu doesn't have an id
-				if (OpenWith.tabMenuPlaceholder) {
-					OpenWith.tabMenuPlaceholder.hidden = false;
-
-					let next = OpenWith.tabMenuPlaceholder.nextSibling;
-					while (next && next.classList.contains('openwith')) {
-						if ('__MenuEdit_removeChild_orig' in this) {
-							this.__MenuEdit_removeChild_orig(next);
-						} else {
-							this.removeChild(next);
-						}
-						next = OpenWith.tabMenuPlaceholder.nextSibling;
-					}
-				}
-				return;
-			}
+			return;
+		}
 		}
 	}
 };
