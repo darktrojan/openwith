@@ -720,7 +720,8 @@ let OpenWithCore = {
 			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
 			let notifyBox;
 			if (recentWindow) {
-				notifyBox = recentWindow.gBrowser.getNotificationBox();
+				notifyBox = recentWindow.document.getElementById('global-notificationbox') ||
+					recentWindow.gBrowser.getNotificationBox();
 			} else {
 				recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
 				notifyBox = recentWindow.document.getElementById('mail-notification-box');
