@@ -31,6 +31,7 @@ let OpenWithCore = {
 	TARGET_PLACES: 6,
 
 	list: [],
+	map: new Map(),
 	suppressLoadList: false,
 	loadList: function(forceReload) {
 		if (this.list.length && !forceReload) {
@@ -200,6 +201,7 @@ let OpenWithCore = {
 		}
 
 		this.list = [];
+		this.map = new Map();
 		if (this.prefs.prefHasUserValue('order')) {
 			let order = JSON.parse(this.prefs.getCharPref('order'));
 			for (let orderItem of order) {
@@ -209,6 +211,7 @@ let OpenWithCore = {
 					let item = unsorted[j];
 					if (item.auto == auto && item.keyName == keyName) {
 						this.list.push(item);
+						this.map.set((item.auto ? 'auto.' : 'manual.') + item.keyName, item);
 						unsorted.splice(j, 1);
 						break;
 					}
@@ -221,6 +224,7 @@ let OpenWithCore = {
 			return 0;
 		})) {
 			this.list.push(item);
+			this.map.set((item.auto ? 'auto.' : 'manual.') + item.keyName, item);
 		}
 
 		this.log('OpenWith: reloading lists');
@@ -546,6 +550,21 @@ let OpenWithCore = {
 		}
 
 		this.doCommandInternal(command, params);
+	},
+	doCommandWithListItem: function(keyName, uri) {
+		let item = OpenWithCore.map.get(keyName);
+		let params = !item.params ? [] : this.splitArgs(item.params);
+		let appendURIParam = true;
+		for (var i = 0; i < params.length; i++) {
+			if (params[i].indexOf('%s') >= 0) {
+				params[i] = params[i].replace('%s', uri);
+				appendURIParam = false;
+			}
+		}
+		if (appendURIParam) {
+			params.push(uri);
+		}
+		this.doCommandInternal(item.command, params);
 	},
 	doCommandInternal: function(command, params) {
 		try {
