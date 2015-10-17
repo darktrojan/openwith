@@ -894,5 +894,12 @@ XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idl
 if (Services.appinfo.name == 'Firefox') {
 	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
 }
+if ('nsIMessageListenerManager' in Ci) {
+	let messageManager = Cc['@mozilla.org/parentprocessmessagemanager;1'].getService(Ci.nsIProcessScriptLoader);
+	messageManager.addMessageListener('OpenWith:DoStuff', function(message) {
+		OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
+	});
+	messageManager.loadProcessScript('resource://openwith/process.js', true);
+}
 
 OpenWithCore.versionUpdate();

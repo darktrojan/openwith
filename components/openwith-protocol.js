@@ -15,8 +15,8 @@ OpenWithProtocol.prototype = {
 	scheme: 'openwith',
 	protocolFlags: Ci.nsIProtocolHandler.URI_NORELATIVE |
 		Ci.nsIProtocolHandler.URI_NOAUTH |
-		Ci.nsIProtocolHandler.URI_FETCHABLE_BY_ANYONE |
-		// Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD |
+		// Ci.nsIProtocolHandler.URI_FETCHABLE_BY_ANYONE |
+		Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD |
 		Ci.nsIProtocolHandler.URI_DOES_NOT_RETURN_DATA,
 		// Ci.nsIProtocolHandler.URI_OPENING_EXECUTES_SCRIPT,
 
@@ -67,7 +67,13 @@ OpenWithChannel.prototype = {
 	asyncOpen: function(aListener, aContext) {
 		let match = /^openwith:((auto|manual)\.([\w\.-]+)):(.*)$/.exec(this.URI.spec);
 		if (match) {
-			OpenWithCore.doCommandWithListItem(match[1], match[4]);
+			if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_CONTENT) {
+				/* globals sendAsyncMessage */
+				flob(match);
+				Services.console.logStringMessage(flob.toString());
+			} else {
+				OpenWithCore.doCommandWithListItem(match[1], match[4]);
+			}
 		}
 		aListener.onStopRequest(this, aContext, Cr.NS_OK);
 	},
