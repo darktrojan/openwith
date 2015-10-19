@@ -17,8 +17,8 @@ OpenWithProtocol.prototype = {
 		Ci.nsIProtocolHandler.URI_NOAUTH |
 		// Ci.nsIProtocolHandler.URI_FETCHABLE_BY_ANYONE |
 		Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD |
-		Ci.nsIProtocolHandler.URI_DOES_NOT_RETURN_DATA,
-		// Ci.nsIProtocolHandler.URI_OPENING_EXECUTES_SCRIPT,
+		Ci.nsIProtocolHandler.URI_DOES_NOT_RETURN_DATA |
+		Ci.nsIProtocolHandler.URI_OPENING_EXECUTES_SCRIPT,
 
 	newURI: function(aSpec) {
 		var uri = Cc['@mozilla.org/network/simple-uri;1'].createInstance(Ci.nsIURI);
@@ -68,9 +68,10 @@ OpenWithChannel.prototype = {
 		let match = /^openwith:((auto|manual)\.([\w\.-]+)):(.*)$/.exec(this.URI.spec);
 		if (match) {
 			if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_CONTENT) {
-				/* globals sendAsyncMessage */
-				flob(match);
-				Services.console.logStringMessage(flob.toString());
+				// In a content process, this file is loaded into a scope that's empty,
+				// except for this callback, which comes from modules/process.js.
+				/* globals callback */
+				callback(match);
 			} else {
 				OpenWithCore.doCommandWithListItem(match[1], match[4]);
 			}

@@ -1,20 +1,24 @@
 /* globals Components, Services, sendAsyncMessage */
-Components.utils.import('resource://gre/modules/Services.jsm');
+const { interfaces: Ci, manager: Cm, utils: Cu } = Components;
+Cu.import('resource://gre/modules/Services.jsm');
 
 try {
 	if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_CONTENT) {
-		let componentRegistrar = Components.manager.QueryInterface(Components.interfaces.nsIComponentRegistrar);
+		let componentRegistrar = Cm.QueryInterface(Ci.nsIComponentRegistrar);
 		let scope = Object.create(null);
-		scope.flob = function(match) {
+		scope.callback = function(match) {
 			try {
-				sendAsyncMessage('OpenWith:DoStuff', { keyName: match[1], uri: match[4] });
-			} catch(ex) {
-				Components.utils.reportError(ex);
+				sendAsyncMessage('OpenWith:OpenURI', { keyName: match[1], uri: match[4] });
+			} catch (ex) {
+				Cu.reportError(ex);
 			}
 		};
-		sendAsyncMessage('OpenWith:DoStuff', { keyName: 'lol', uri: 'nope' });
 
-		Services.scriptloader.loadSubScript('file:///home/geoff/firefoxprofiles/sjua7g0g.test/extensions/openwith@darktrojan.net/components/openwith-protocol.js', scope);
+		let uri = Services.io.newURI('resource://openwith/', null, null);
+		let handler = Services.io.getProtocolHandler('resource').QueryInterface(Ci.nsIResProtocolHandler);
+		let resolved = handler.resolveURI(uri);
+
+		Services.scriptloader.loadSubScript(resolved.replace(/\/modules\/$/, '/components/openwith-protocol.js'), scope);
 		componentRegistrar.registerFactory(
 			scope.OpenWithProtocol.prototype.classID,
 			'',
@@ -23,5 +27,5 @@ try {
 		);
 	}
 } catch (ex) {
-	Components.utils.reportError(ex);
+	Cu.reportError(ex);
 }
