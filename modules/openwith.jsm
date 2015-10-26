@@ -463,7 +463,11 @@ let OpenWithCore = {
 		let inQuotes = false;
 		for (let c of argString) {
 			if (c == '"') {
-				inQuotes = !inQuotes;
+				if (temp.endsWith('\\')) {
+					temp = temp.substring(0, temp.length - 1) + c;
+				} else {
+					inQuotes = !inQuotes;
+				}
 			} else if (c == ' ' && !inQuotes) {
 				args.push(temp);
 				temp = '';
