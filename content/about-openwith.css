@@ -1,6 +1,9 @@
 :root {
-	padding: 8px;
 	min-height: 30em;
+}
+:root > hbox {
+	padding: 8px;
+	overflow: auto;
 }
 link[rel] {
 	display: none;

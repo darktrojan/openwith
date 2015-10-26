@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://browser/skin/places/places.css" ?>
+<?xml-stylesheet href="chrome://browser/content/places/places.css" ?>
+<?xul-overlay href="chrome://browser/content/places/placesOverlay.xul" ?>
+
+<!DOCTYPE dialog SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<dialog buttons="accept,cancel" title="&openwith-options.title;"
+		ondialogaccept="return dialogAccept();"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<grid>
+		<columns>
+			<column />
+			<column flex="1" />
+		</columns>
+		<rows>
+			<row align="center">
+				<label value="URL:" />
+				<textbox id="url" type="autocomplete" placeholder="Type or select a URL"
+					completeselectedindex="true" autocompletesearch="history"
+					enablehistory="true" showcommentcolumn="true" />
+			</row>
+			<row align="center">
+				<label value="Open with:" />
+				<menulist id="browser">
+					<menupopup />
+				</menulist>
+			</row>
+			<row>
+				<label value="Folder:" />
+				<tree id="folder" type="places" height="150" hidecolumnpicker="true" seltype="single">
+					<treecols>
+						<treecol anonid="title" flex="1" primary="true" hideheader="true" />
+					</treecols>
+					<treechildren />
+				</tree>
+			</row>
+		</rows>
+	</grid>
+	<script src="bookmark.js" type="application/javascript;version=1.8"></script>
+</dialog>
