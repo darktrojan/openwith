@@ -306,6 +306,9 @@ let OpenWithCore = {
 			if (typeof location.submenu != 'boolean') {
 				location.submenu = /\.submenu$/.test(location.prefName);
 			}
+			if (typeof location.menu != 'boolean') {
+				location.menu = /\.menu$/.test(location.prefName);
+			}
 		}
 
 		let keyset = document.getElementById('openwith-keyset');
@@ -340,7 +343,7 @@ let OpenWithCore = {
 				if (!location.prefName || this.prefs.getBoolPref(location.prefName)) {
 					let menuItem = location.factory(document, item, labelToUse, location.targetType);
 					menuItem.id = 'openwith_' + keyName + location.suffix;
-					if (location.container.push) { //array
+					if (Array.isArray(location.container)) {
 						location.container.push(menuItem);
 					} else {
 						location.container.appendChild(menuItem);
@@ -377,6 +380,34 @@ let OpenWithCore = {
 				}
 				OpenWithCore.addItemToElement(key, item);
 				keyset.appendChild(key);
+			}
+		}
+
+		for (let location of locations) {
+			let item;
+			if (location.submenu || location.menu) {
+				item = document.createElement('menuitem');
+				item.setAttribute('class', 'openwith menuitem-iconic');
+			} else if (location.targetType == OpenWithCore.TARGET_PANEL_UI) {
+				item = document.createElement('toolbarbutton');
+				item.className = 'subviewbutton';
+			} else {
+				continue;
+			}
+
+			let separator = document.createElement('menuseparator');
+			separator.setAttribute('class', 'openwith');
+
+			item.setAttribute('label', OpenWithCore.strings.GetStringFromName('buttonLabel'));
+			item.addEventListener('command', () => {
+				this.openOptionsTab();
+			});
+			if (Array.isArray(location.container)) {
+				location.container.push(separator);
+				location.container.push(item);
+			} else {
+				location.container.appendChild(separator);
+				location.container.appendChild(item);
 			}
 		}
 
