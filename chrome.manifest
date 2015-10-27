@@ -10,6 +10,9 @@ resource openwith modules/
 component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
 contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e-ad11-55a7bd190185}
 
+component {a4b89ac1-74f9-42f5-9fb7-80315cbbb94c} components/openwith-protocol.js
+contract @mozilla.org/network/protocol;1?name=openwith {a4b89ac1-74f9-42f5-9fb7-80315cbbb94c}
+
 locale openwith en-US locale/en-US/
 
 locale openwith ar    locale/ar/

@@ -31,6 +31,7 @@ let OpenWithCore = {
 	TARGET_PLACES: 6,
 
 	list: [],
+	map: new Map(),
 	suppressLoadList: false,
 	loadList: function(forceReload) {
 		if (this.list.length && !forceReload) {
@@ -200,6 +201,7 @@ let OpenWithCore = {
 		}
 
 		this.list = [];
+		this.map = new Map();
 		if (this.prefs.prefHasUserValue('order')) {
 			let order = JSON.parse(this.prefs.getCharPref('order'));
 			for (let orderItem of order) {
@@ -209,6 +211,7 @@ let OpenWithCore = {
 					let item = unsorted[j];
 					if (item.auto == auto && item.keyName == keyName) {
 						this.list.push(item);
+						this.map.set((item.auto ? 'auto.' : 'manual.') + item.keyName, item);
 						unsorted.splice(j, 1);
 						break;
 					}
@@ -221,6 +224,7 @@ let OpenWithCore = {
 			return 0;
 		})) {
 			this.list.push(item);
+			this.map.set((item.auto ? 'auto.' : 'manual.') + item.keyName, item);
 		}
 
 		this.log('OpenWith: reloading lists');
@@ -306,6 +310,9 @@ let OpenWithCore = {
 			if (typeof location.submenu != 'boolean') {
 				location.submenu = /\.submenu$/.test(location.prefName);
 			}
+			if (typeof location.menu != 'boolean') {
+				location.menu = /\.menu$/.test(location.prefName);
+			}
 		}
 
 		let keyset = document.getElementById('openwith-keyset');
@@ -340,7 +347,7 @@ let OpenWithCore = {
 				if (!location.prefName || this.prefs.getBoolPref(location.prefName)) {
 					let menuItem = location.factory(document, item, labelToUse, location.targetType);
 					menuItem.id = 'openwith_' + keyName + location.suffix;
-					if (location.container.push) { //array
+					if (Array.isArray(location.container)) {
 						location.container.push(menuItem);
 					} else {
 						location.container.appendChild(menuItem);
@@ -377,6 +384,34 @@ let OpenWithCore = {
 				}
 				OpenWithCore.addItemToElement(key, item);
 				keyset.appendChild(key);
+			}
+		}
+
+		for (let location of locations) {
+			let item;
+			if (location.submenu || location.menu) {
+				item = document.createElement('menuitem');
+				item.setAttribute('class', 'openwith menuitem-iconic');
+			} else if (location.targetType == OpenWithCore.TARGET_PANEL_UI) {
+				item = document.createElement('toolbarbutton');
+				item.className = 'subviewbutton';
+			} else {
+				continue;
+			}
+
+			let separator = document.createElement('menuseparator');
+			separator.setAttribute('class', 'openwith');
+
+			item.setAttribute('label', OpenWithCore.strings.GetStringFromName('buttonLabel'));
+			item.addEventListener('command', () => {
+				this.openOptionsTab();
+			});
+			if (Array.isArray(location.container)) {
+				location.container.push(separator);
+				location.container.push(item);
+			} else {
+				location.container.appendChild(separator);
+				location.container.appendChild(item);
 			}
 		}
 
@@ -463,7 +498,11 @@ let OpenWithCore = {
 		let inQuotes = false;
 		for (let c of argString) {
 			if (c == '"') {
-				inQuotes = !inQuotes;
+				if (temp.endsWith('\\')) {
+					temp = temp.substring(0, temp.length - 1) + c;
+				} else {
+					inQuotes = !inQuotes;
+				}
 			} else if (c == ' ' && !inQuotes) {
 				args.push(temp);
 				temp = '';
@@ -511,6 +550,21 @@ let OpenWithCore = {
 		}
 
 		this.doCommandInternal(command, params);
+	},
+	doCommandWithListItem: function(keyName, uri) {
+		let item = OpenWithCore.map.get(keyName);
+		let params = !item.params ? [] : this.splitArgs(item.params);
+		let appendURIParam = true;
+		for (var i = 0; i < params.length; i++) {
+			if (params[i].indexOf('%s') >= 0) {
+				params[i] = params[i].replace('%s', uri);
+				appendURIParam = false;
+			}
+		}
+		if (appendURIParam) {
+			params.push(uri);
+		}
+		this.doCommandInternal(item.command, params);
 	},
 	doCommandInternal: function(command, params) {
 		try {
@@ -720,7 +774,8 @@ let OpenWithCore = {
 			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
 			let notifyBox;
 			if (recentWindow) {
-				notifyBox = recentWindow.gBrowser.getNotificationBox();
+				notifyBox = recentWindow.document.getElementById('global-notificationbox') ||
+					recentWindow.gBrowser.getNotificationBox();
 			} else {
 				recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
 				notifyBox = recentWindow.document.getElementById('mail-notification-box');
@@ -838,6 +893,13 @@ XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idl
 
 if (Services.appinfo.name == 'Firefox') {
 	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
+}
+if ('nsIProcessScriptLoader' in Ci) {
+	let messageManager = Cc['@mozilla.org/parentprocessmessagemanager;1'].getService(Ci.nsIProcessScriptLoader);
+	messageManager.addMessageListener('OpenWith:OpenURI', function(message) {
+		OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
+	});
+	messageManager.loadProcessScript('resource://openwith/process.js', true);
 }
 
 OpenWithCore.versionUpdate();

@@ -100,9 +100,9 @@ let locationObserver = {
 		loadingDropDowns = false;
 	},
 	QueryInterface: XPCOMUtils.generateQI([
-		Components.interfaces.nsIObserver,
-		Components.interfaces.nsISupportsWeakReference,
-		Components.interfaces.nsISupports
+		Ci.nsIObserver,
+		Ci.nsISupportsWeakReference,
+		Ci.nsISupports
 	])
 };
 locationObserver.observe();
