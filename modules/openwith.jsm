@@ -527,6 +527,10 @@ let OpenWithCore = {
 				uriParam = uri.QueryInterface(Ci.nsIFileURL).file.path;
 			} else {
 				uriParam = uri.spec;
+				let match = /^openwith:((auto|manual)\.([\w\.-]+)):(.*)$/.exec(uriParam);
+				if (match) {
+					uriParam = match[4];
+				}
 			}
 		}
 
