@@ -15,9 +15,7 @@ let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 fp.init(this, document.title, Ci.nsIFilePicker.modeOpen);
 fp.appendFilters(Ci.nsIFilePicker.filterApps);
-if (Services.appinfo.OS == 'WINNT') {
-	fp.appendFilter(OpenWithCore.strings.GetStringFromName('allFiles'), '*.*');
-}
+fp.appendFilters(Ci.nsIFilePicker.filterAll);
 
 let appsDir = null;
 if (Services.dirsvc.has('ProgF')) {
