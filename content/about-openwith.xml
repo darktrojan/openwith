@@ -6,7 +6,7 @@
           xmlns:xbl="http://www.mozilla.org/xbl">
 
 	<binding id="browser" extends="chrome://global/content/bindings/richlistbox.xml#richlistitem">
-		<content ondragstart="dragStart(event);">
+		<content ondragstart="dragStart(event);" context="list-context">
 			<vbox flex="1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 				<hbox flex="1">
 					<vbox align="start" pack="center">
@@ -31,10 +31,6 @@
 					</vbox>
 				</hbox>
 				<hbox class="buttons" flex="1" pack="end">
-					<button anonid="show" label="&openwith-browserlist-show.label;"
-						oncommand="setHidden(document.getBindingParent(this), false);" />
-					<button anonid="hide" label="&openwith-browserlist-hide.label;"
-						oncommand="setHidden(document.getBindingParent(this), true);" />
 					<button class="edit" type="menu" label="&openwith-browserlist-edit.label;"
 						xbl:inherits="collapsed=browserHidden">
 						<menupopup>
@@ -52,6 +48,10 @@
 								oncommand="editKeyInfo(document.getBindingParent(this));" />
 						</menupopup>
 					</button>
+					<button anonid="show" label="&openwith-browserlist-show.label;"
+						oncommand="setHidden(document.getBindingParent(this), false);" />
+					<button anonid="hide" label="&openwith-browserlist-hide.label;"
+						oncommand="setHidden(document.getBindingParent(this), true);" />
 					<button label="&openwith-browserlist-duplicate.label;"
 						oncommand="duplicateItem(document.getBindingParent(this));" />
 					<button label="&openwith-browserlist-remove.label;"

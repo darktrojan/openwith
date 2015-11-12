@@ -1,14 +1,16 @@
-/* globals Components, FileUtils, Services, XPCOMUtils, OpenWithCore, Iterator, openDialog, -name */
-/* exported updatePrefs, setHidden, editCommand, changeAttribute, editKeyInfo,
-	addNewItem, removeItem, restoreOrder, duplicateItem, dragStart */
+/* globals Components, Iterator, openDialog, -name */
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
+/* globals FileUtils, Services, XPCOMUtils, OpenWithCore */
 Cu.import('resource://gre/modules/FileUtils.jsm');
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://openwith/openwith.jsm');
+
+/* globals clipboardHelper */
+XPCOMUtils.defineLazyServiceGetter(this, 'clipboardHelper', '@mozilla.org/widget/clipboardhelper;1', 'nsIClipboardHelper');
 
 let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 
@@ -178,6 +180,7 @@ function getHumanKeyInfo(value) {
 	return value;
 }
 
+/* exported updatePrefs */
 function updatePrefs(pref1, pref2, index) {
 	if (loadingDropDowns) {
 		return;
@@ -200,6 +203,7 @@ function updatePrefs(pref1, pref2, index) {
 	changingPref = false;
 }
 
+/* exported setHidden */
 function setHidden(item, hidden) {
 	let prefName = 'auto.' + item.getAttribute('keyName') + '.hidden';
 	if (hidden) {
@@ -212,6 +216,7 @@ function setHidden(item, hidden) {
 	item.parentNode.focus();
 }
 
+/* exported editCommand */
 function editCommand(item) {
 	let command = item.getAttribute('command');
 	let file = new FileUtils.File(command);
@@ -224,6 +229,7 @@ function editCommand(item) {
 	}
 }
 
+/* exported changeAttribute */
 function changeAttribute(item, attrName) {
 	let original = item.getAttribute(attrName);
 	let attr = { value: original };
@@ -271,6 +277,7 @@ function changeAttribute(item, attrName) {
 	}
 }
 
+/* exported editKeyInfo */
 function editKeyInfo(item) {
 	let current = item.getAttribute('keyInfo');
 	let existingKeys = ['VK_F7'];
@@ -364,6 +371,7 @@ function generateRandomKeyName() {
 	return keyName;
 }
 
+/* exported addNewItem */
 function addNewItem() {
 	if (appsDir && appsDir.exists()) {
 		fp.displayDirectory = appsDir;
@@ -407,6 +415,7 @@ function addNewItem() {
 	}
 }
 
+/* exported removeItem */
 function removeItem(item) {
 	list.removeItemAt(list.getIndexOfItem(item));
 
@@ -435,6 +444,7 @@ function saveOrder() {
 	OpenWithCore.loadList(true);
 }
 
+/* exported restoreOrder */
 function restoreOrder() {
 	if (OpenWithCore.prefs.prefHasUserValue('order')) {
 		OpenWithCore.prefs.clearUserPref('order');
@@ -443,6 +453,7 @@ function restoreOrder() {
 	}
 }
 
+/* exported duplicateItem */
 function duplicateItem(srcItem) {
 	let name = OpenWithCore.strings.formatStringFromName('duplicatedBrowserNewName', [srcItem.getAttribute('name')], 1);
 	let item = document.createElement('richlistitem');
@@ -458,6 +469,24 @@ function duplicateItem(srcItem) {
 	saveOrder();
 }
 
+/* exported contextShowing */
+function contextShowing(context) {
+	$('context-name').label = document.popupNode.getAttribute('name');
+	let auto = document.popupNode.getAttribute('auto') == 'true';
+	for (let item of context.querySelectorAll('.noauto')) {
+		item.hidden = auto;
+	}
+	for (let item of context.querySelectorAll('.nomanual')) {
+		item.hidden = !auto;
+	}
+}
+
+/* exported copyKeyName */
+function copyKeyName(item) {
+	let auto = document.popupNode.getAttribute('auto') == 'true';
+	clipboardHelper.copyString((auto ? 'auto.' : 'manual.') + item.getAttribute('keyName'));
+}
+
 let itemToMove, itemToPlaceBefore;
 let dummy = document.createElement('richlistitem');
 dummy.id = 'dummy';
@@ -469,6 +498,8 @@ function cleanUpDrag() {
 		oldPlaceBefore.classList.remove('placebefore');
 	}
 }
+
+/* exported dragStart */
 function dragStart(event) {
 	itemToMove = event.target;
 	let editButton = document.getAnonymousElementByAttribute(itemToMove, 'class', 'edit');

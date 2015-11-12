@@ -134,6 +134,23 @@
 			</groupbox>
 		</vbox>
 	</hbox>
+
+	<menupopup id="list-context" onpopupshowing="contextShowing(this);">
+		<menuitem id="context-name" style="font-weight: bold;" />
+		<menuitem label="&openwith-context-copykeyname.label;" oncommand="copyKeyName(document.popupNode);" />
+		<menuseparator />
+		<menuitem class="noauto" label="&openwith-browserlist-editname.label;" oncommand="changeAttribute(document.popupNode, 'name');" />
+		<menuitem class="noauto" label="&openwith-browserlist-editcommand.label;" oncommand="editCommand(document.popupNode);" />
+		<menuitem class="noauto" label="&openwith-browserlist-editparams.label;" oncommand="changeAttribute(document.popupNode, 'params');" />
+		<menuitem label="&openwith-browserlist-editaccesskey.label;" oncommand="changeAttribute(document.popupNode, 'accessKey');" />
+		<menuitem label="&openwith-browserlist-editshortcut.label;" oncommand="editKeyInfo(document.popupNode);" />
+		<menuseparator />
+		<menuitem class="nomanual" label="&openwith-browserlist-show.label;" oncommand="setHidden(document.popupNode, false);" />
+		<menuitem class="nomanual" label="&openwith-browserlist-hide.label;" oncommand="setHidden(document.popupNode, true);" />
+		<menuitem label="&openwith-browserlist-duplicate.label;" oncommand="duplicateItem(document.popupNode);" />
+		<menuitem class="noauto" label="&openwith-browserlist-remove.label;" oncommand="removeItem(document.popupNode);" />
+	</menupopup>
+
 	<script src="chrome://openwith/content/about-openwith.js" type="application/javascript;version=1.7"></script>
 
 </page>
