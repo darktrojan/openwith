@@ -2,3 +2,7 @@
 	width: 16px;
 	height: 16px;
 }
+#openwith-widewidget[cui-areatype="toolbar"] > toolbarbutton:not(:hover) {
+	border-color: transparent;
+	box-shadow: none;
+}
