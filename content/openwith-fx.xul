@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/css" href="chrome://openwith/content/openwith.css" ?>
+<?xml-stylesheet type="text/css" href="chrome://openwith/skin/openwith.css" ?>
 <!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
 
 <overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">

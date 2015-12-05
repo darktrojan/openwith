@@ -6,6 +6,8 @@ overlay chrome://messenger/content/messageWindow.xul chrome://openwith/content/o
 overlay chrome://browser/content/devtools/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
 overlay chrome://devtools/content/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
 resource openwith modules/
+skin openwith classic/1.0 skin/default/
+skin openwith classic/1.0 skin/osx/ os=Darwin
 
 component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
 contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e-ad11-55a7bd190185}

@@ -12,3 +12,4 @@ modules
 modules/openwith.jsm
 modules/process.js
 modules/widgets.js
+skin/*
