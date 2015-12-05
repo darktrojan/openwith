@@ -17,33 +17,33 @@
 }
 
 #wrapper-openwith-widewidget[place="palette"] > #openwith-widewidget > toolbarbutton {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 #wrapper-openwith-widewidget[place="palette"] > #openwith-widewidget > toolbarbutton {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 24px;
-  min-width: 24px;
-  max-height: 24px;
-  height: 24px;
-  padding: 4px;
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 24px;
+	min-width: 24px;
+	max-height: 24px;
+	height: 24px;
+	padding: 4px;
 }
 
 #openwith-widewidget[cui-areatype="menu-panel"] {
-  width: 22.35em;
+	width: 22.35em;
 }
 
 #openwith-widewidget > toolbarbutton {
-  min-width: 0;
+	min-width: 0;
 }
 
 #openwith-widewidget[cui-areatype="menu-panel"] > toolbarbutton > image,
 #wrapper-openwith-widewidget[place="palette"] > #openwith-widewidget > toolbarbutton > image {
-  width: 16px;
-  height: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 #openwith-widewidget > toolbarbutton > label {
-  display: none;
+	display: none;
 }

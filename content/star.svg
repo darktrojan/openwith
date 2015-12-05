@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
-    <defs>
-        <linearGradient id="a">
-            <stop offset="0" stop-color="#0ab40a"/>
-            <stop offset="1" stop-color="#87de87"/>
-        </linearGradient>
-        <radialGradient cx="8" cy="8" r="8" fx="8" fy="8" id="b" xlink:href="#a" gradientUnits="userSpaceOnUse"/>
-    </defs>
-    <path d="M 8,15.992 6.384,13.505 3.679,14.723 3.662,11.757 0.729,11.317 2.321,8.815 0.089,6.86 2.781,5.614 1.959,2.764 4.897,3.17 5.747,0.328 8,2.258 l 2.252,-1.93 0.85,2.843 2.938,-0.407 -0.822,2.85 2.692,1.245 -2.232,1.955 1.59,2.502 -2.932,0.437 -0.015,2.965 -2.703,-1.22 z" fill="url(#b)"/>
-    <path d="M4.256 7.98l2.467 2.466 4.975-5.698" fill="none" stroke="#fff" stroke-width="1.8"/>
+	<defs>
+		<linearGradient id="a">
+			<stop offset="0" stop-color="#0ab40a"/>
+			<stop offset="1" stop-color="#87de87"/>
+		</linearGradient>
+		<radialGradient cx="8" cy="8" r="8" fx="8" fy="8" id="b" xlink:href="#a" gradientUnits="userSpaceOnUse"/>
+	</defs>
+	<path d="M 8,15.992 6.384,13.505 3.679,14.723 3.662,11.757 0.729,11.317 2.321,8.815 0.089,6.86 2.781,5.614 1.959,2.764 4.897,3.17 5.747,0.328 8,2.258 l 2.252,-1.93 0.85,2.843 2.938,-0.407 -0.822,2.85 2.692,1.245 -2.232,1.955 1.59,2.502 -2.932,0.437 -0.015,2.965 -2.703,-1.22 z" fill="url(#b)"/>
+	<path d="M4.256 7.98l2.467 2.466 4.975-5.698" fill="none" stroke="#fff" stroke-width="1.8"/>
 </svg>

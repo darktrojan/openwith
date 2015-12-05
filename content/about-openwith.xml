@@ -2,8 +2,8 @@
 <!DOCTYPE bindings SYSTEM "chrome://openwith/locale/openwith.dtd">
 
 <bindings xmlns="http://www.mozilla.org/xbl"
-          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-          xmlns:xbl="http://www.mozilla.org/xbl">
+		xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		xmlns:xbl="http://www.mozilla.org/xbl">
 
 	<binding id="browser" extends="chrome://global/content/bindings/richlistbox.xml#richlistitem">
 		<content ondragstart="dragStart(event);" context="list-context">
