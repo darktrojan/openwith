@@ -51,6 +51,9 @@
 <!ENTITY openwith-browserlist-duplicate.label "Duplicar">
 <!ENTITY openwith-browserlist-remove.label "Remover">
 
+<!-- This appears in the about:openwith context menu. "Copy" is a verb. -->
+<!ENTITY openwith-context-copykeyname.label "Copy identifier">
+
 <!ENTITY openwith-browserlist-add.label "Adicionar…">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordem pré-definida">
 
