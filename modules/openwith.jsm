@@ -746,29 +746,23 @@ let OpenWithCore = {
 					callback: this.openDonatePage.bind(this)
 				}];
 
-				let updateLanguages = {
-					'bg': 'Bulgarian',
-					'ca': 'Catalan',
-					'fi': 'Finnish',
-					'hu': 'Hungarian',
-					'is': 'Icelandic',
-					'sr': 'Serbian'
-				};
+				// let updateLanguages = {
+				// };
 
-				let chromeRegistry = Components.classes['@mozilla.org/chrome/chrome-registry;1']
-					.getService(Components.interfaces.nsIXULChromeRegistry);
-				let currentLocale = chromeRegistry.getSelectedLocale('openwith');
+				// let chromeRegistry = Components.classes['@mozilla.org/chrome/chrome-registry;1']
+				// 	.getService(Components.interfaces.nsIXULChromeRegistry);
+				// let currentLocale = chromeRegistry.getSelectedLocale('openwith');
 
-				if (currentLocale in updateLanguages) {
-					label = 'Open With has been updated to version ' + currentVersion + '. ' +
-						'We need somebody to update the ' + updateLanguages[currentLocale] + ' translation. Can you help?';
-					buttons.unshift({
-						label: 'Find out more',
-						accessKey: 'F',
-						popup: null,
-						callback: () => this.openURL('https://github.com/darktrojan/openwith/issues/56')
-					});
-				}
+				// if (currentLocale in updateLanguages) {
+				// 	label = 'Open With has been updated to version ' + currentVersion + '. ' +
+				// 		'We need somebody to update the ' + updateLanguages[currentLocale] + ' translation. Can you help?';
+				// 	buttons.unshift({
+				// 		label: 'Find out more',
+				// 		accessKey: 'F',
+				// 		popup: null,
+				// 		callback: () => this.openURL('https://github.com/darktrojan/openwith/issues/56')
+				// 	});
+				// }
 			}
 		} else {
 			return;

@@ -18,16 +18,11 @@ contract @mozilla.org/network/protocol;1?name=openwith {a4b89ac1-74f9-42f5-9fb7-
 locale openwith en-US locale/en-US/
 
 locale openwith ar    locale/ar/
-locale openwith bg    locale/bg/
-locale openwith ca    locale/ca/
 locale openwith cs    locale/cs/
 locale openwith de    locale/de/
 locale openwith el    locale/el/
 locale openwith es-ES locale/es-ES/
-locale openwith fi    locale/fi/
 locale openwith fr    locale/fr/
-locale openwith hu    locale/hu/
-locale openwith is    locale/is/
 locale openwith it    locale/it/
 locale openwith ja    locale/ja/
 locale openwith nl    locale/nl/
@@ -35,7 +30,6 @@ locale openwith pl    locale/pl/
 locale openwith pt-BR locale/pt-BR/
 locale openwith pt-PT locale/pt-PT/
 locale openwith ru    locale/ru/
-locale openwith sr    locale/sr/
 locale openwith sv-SE locale/sv-SE/
 locale openwith tr    locale/tr/
 locale openwith uk    locale/uk/
