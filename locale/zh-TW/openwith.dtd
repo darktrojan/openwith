@@ -52,7 +52,7 @@
 <!ENTITY openwith-browserlist-remove.label "移除">
 
 <!-- This appears in the about:openwith context menu. "Copy" is a verb. -->
-<!ENTITY openwith-context-copykeyname.label "Copy identifier">
+<!ENTITY openwith-context-copykeyname.label "複製識別符">
 
 <!ENTITY openwith-browserlist-add.label "新增…">
 <!ENTITY openwith-browserlist-restoreorder.label "預設順序">
