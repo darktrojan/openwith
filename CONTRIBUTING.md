@@ -13,6 +13,6 @@ What to put in your bug report
 
 What to expect
 --------------
-You might be asked a number of questions to help track down bugs. The developer might add a number of labels or other comments to your issue. If a solution is found and your bug gets fixed, you may have to wait a while before the fix is released. Releases *usually* happen about every two weeks. If a release contains a fix for your bug, the issue will be closed automatically or by the developer.
+You might be asked a number of questions to help track down bugs. The developer might add a number of labels or other comments to your issue. If a solution is found and your bug gets fixed, you may have to wait a while before the fix is released. Releases *usually* happen about once a month. If a release contains a fix for your bug, the issue will be closed automatically or by the developer.
 
 If you find a solution that doesn't require anything to be fixed, make a comment in your issue saying what you learned, and if you're confident that nothing else needs to happen, close the issue.
