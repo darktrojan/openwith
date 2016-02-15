@@ -114,7 +114,7 @@
 					oncommand="dataCollectionObserver.enable();" />
 				<hbox align="baseline" pack="center">
 					<label class="text-link" value="&openwith-datacollection.privacypolicy;"
-						href="https://addons.mozilla.org/firefox/addon/new-tab-tools/privacy/" />
+						href="https://addons.mozilla.org/addon/open-with/privacy/" />
 				</hbox>
 			</groupbox>
 			<vbox align="center">
