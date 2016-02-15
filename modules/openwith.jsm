@@ -1,4 +1,4 @@
-/* globals Components, Services, XPCOMUtils, FileUtils, AddonManager, idleService, -name, -location, dump */
+/* globals Components, dump */
 this.EXPORTED_SYMBOLS = ['OpenWithCore'];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
@@ -10,9 +10,14 @@ const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
 const MAIL_TYPE = 'mail:3pane';
 
+/* globals Services, XPCOMUtils, FileUtils */
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://gre/modules/FileUtils.jsm');
+
+/* globals AddonManager, idleService */
+XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
+XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
@@ -59,7 +64,7 @@ let OpenWithCore = {
 
 					let params = command.indexOf('"') >= 0 ? command.replace(/^"[^"]+"\s*/, '') : '';
 					command = command.replace(/^"/, '').replace(/".*$/, '');
-					command = command.replace(/%(\w+)%/g, function(m) {
+					command = command.replace(/%(\w+)%/g, function(m) { // jshint ignore: line
 						return env.get(m.substring(1, m.length - 1));
 					});
 
@@ -571,6 +576,11 @@ let OpenWithCore = {
 		this.doCommandInternal(item.command, params);
 	},
 	doCommandInternal: function(command, params) {
+		if (Services.appinfo.processType != Services.appinfo.PROCESS_TYPE_DEFAULT) {
+			throw new Error('OpenWithCore.doCommandInternal called from child process');
+		}
+
+		OpenWithDataCollector.incrementCount('browserOpened');
 		try {
 			let file = new FileUtils.File(command);
 			if (!file.exists()) {
@@ -886,18 +896,19 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
-XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
-XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 
 if (Services.appinfo.name == 'Firefox') {
 	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
 }
-if ('nsIProcessScriptLoader' in Ci) {
-	let messageManager = Cc['@mozilla.org/parentprocessmessagemanager;1'].getService(Ci.nsIProcessScriptLoader);
-	messageManager.addMessageListener('OpenWith:OpenURI', function(message) {
+
+if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_DEFAULT) {
+	/* globals OpenWithDataCollector */
+	Cu.import('resource://openwith/dataCollection.jsm');
+
+	Services.ppmm.addMessageListener('OpenWith:OpenURI', function(message) {
 		OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
 	});
-	messageManager.loadProcessScript('resource://openwith/process.js', true);
+	Services.ppmm.loadProcessScript('resource://openwith/process.js', true);
 }
 
 OpenWithCore.versionUpdate();
