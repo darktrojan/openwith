@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Ghi nhật kí">
 <!ENTITY openwith-logging.checkbox.label "Kích hoạt ghi nhật kí ra Browser Console">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Open With được hỗ trợ bởi đóng góp từ người dùng.">
 <!ENTITY openwith-donate "Đóng góp">
 <!ENTITY openwith-github "Open With trên GitHub">

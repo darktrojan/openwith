@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Adicionando ao log">
 <!ENTITY openwith-logging.checkbox.label "Habilitar mensagens de log no Console do Navegador">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Open With é mantido por doações de usuários.">
 <!ENTITY openwith-donate "Doar">
 <!ENTITY openwith-github "Open With no GitHub">

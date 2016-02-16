@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "تسجيل المحفوظات">
 <!ENTITY openwith-logging.checkbox.label "تمكين حفظ المحفوظات في وحدة تحكم المتصفح.">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "إضافة &quot;فتح باستخدام&quot; ممولة بتبرعات المستخدمين.">
 <!ENTITY openwith-donate "تبرع">
 <!ENTITY openwith-github "&quot;فتح باستخدام&quot; على GitHub">

@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Journalisation">
 <!ENTITY openwith-logging.checkbox.label "Activer la journalisation dans la console du navigateur">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Open With est financé par les dons d'utilisateurs.">
 <!ENTITY openwith-donate "Faire un don">
 <!ENTITY openwith-github "Open With sur GitHub">
