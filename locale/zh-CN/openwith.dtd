@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "日志">
 <!ENTITY openwith-logging.checkbox.label "启用输出日志到浏览器控制台">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Open With 依靠用户捐赠资助。">
 <!ENTITY openwith-donate "捐赠">
 <!ENTITY openwith-github "GitHub 上的 Open With">

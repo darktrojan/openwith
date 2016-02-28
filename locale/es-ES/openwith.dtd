@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Registrar (Logging)">
 <!ENTITY openwith-logging.checkbox.label "Habilitar salida del historial (log) a la consola del navigador">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Abrir Con se financia con donaciones de usuarios.">
 <!ENTITY openwith-donate "Donar">
 <!ENTITY openwith-github "Abrir Con en GitHub">

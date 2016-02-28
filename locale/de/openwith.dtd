@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Ereignis-Protokoll">
 <!ENTITY openwith-logging.checkbox.label "Ereignisse in Browser Konsole protokollieren">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "ÖffneMit finanziert wird durch Ihre Spenden">
 <!ENTITY openwith-donate "Spenden">
 <!ENTITY openwith-github "ÖffneMit auf GitHub">

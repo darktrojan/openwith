@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Logging">
 <!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "Openen met wordt gefinancierd door gebruikersdonaties.">
 <!ENTITY openwith-donate "Doneren">
 <!ENTITY openwith-github "Openen met op GitHub">

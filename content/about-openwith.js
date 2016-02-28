@@ -108,13 +108,18 @@ let locationObserver = {
 locationObserver.observe();
 Services.obs.addObserver(locationObserver, 'openWithLocationsChanged', true);
 
-let loggingObserver = {
-	checkbox: $('logging'),
+function CheckboxObserver(checkboxID, pref) {
+	this.checkbox = $(checkboxID);
+	this.pref = pref;
+	this.observe();
+	OpenWithCore.prefs.addObserver(this.pref, this, true);
+}
+CheckboxObserver.prototype = {
 	enable: function() {
-		OpenWithCore.prefs.setBoolPref('log.enabled', this.checkbox.checked);
+		OpenWithCore.prefs.setBoolPref(this.pref, this.checkbox.checked);
 	},
 	observe: function() {
-		this.checkbox.checked = OpenWithCore.prefs.getBoolPref('log.enabled');
+		this.checkbox.checked = OpenWithCore.prefs.getBoolPref(this.pref);
 	},
 	QueryInterface: XPCOMUtils.generateQI([
 		Components.interfaces.nsIObserver,
@@ -122,8 +127,9 @@ let loggingObserver = {
 		Components.interfaces.nsISupports
 	])
 };
-loggingObserver.observe();
-OpenWithCore.prefs.addObserver('log.enabled', loggingObserver, true);
+/* exported loggingObserver, dataCollectionObserver */
+let loggingObserver = new CheckboxObserver('logging', 'log.enabled');
+let dataCollectionObserver = new CheckboxObserver('datacollection', 'datacollection.optin');
 
 let list = $('list');
 loadBrowserList();
@@ -572,3 +578,7 @@ list.addEventListener('dragend', function(event) {
 	}
 	itemToMove = itemToPlaceBefore = null;
 });
+
+/* globals OpenWithDataCollector */
+Cu.import('resource://openwith/dataCollection.jsm');
+OpenWithDataCollector.incrementCount('aboutOpenWithOpened');

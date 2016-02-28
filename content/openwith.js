@@ -299,7 +299,9 @@ this.OpenWith = {
 			case 'placesContext':
 				let pref, submenuPref, placeholder, submenu, items;
 				if (this.id == 'placesContext') {
-					if (document.popupNode.matches('menuitem.bookmark-item, toolbarbutton[type="menu"].bookmark-item')) {
+					if (document.popupNode.matches(
+						'menuitem.bookmark-item, toolbarbutton:not([type="menu"]).bookmark-item'
+					)) {
 						pref = OpenWithCore.prefs.getBoolPref('placescontext');
 						submenuPref = OpenWithCore.prefs.getBoolPref('placescontext.submenu');
 					}

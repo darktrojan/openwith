@@ -108,6 +108,15 @@
 				<checkbox id="logging" label="&openwith-logging.checkbox.label;"
 					oncommand="loggingObserver.enable();" />
 			</groupbox>
+			<groupbox>
+				<caption label="&openwith-datacollection.title;" />
+				<checkbox id="datacollection" label="&openwith-datacollection.optin;"
+					oncommand="dataCollectionObserver.enable();" />
+				<hbox align="baseline" pack="center">
+					<label class="text-link" value="&openwith-datacollection.privacypolicy;"
+						href="https://addons.mozilla.org/addon/open-with/privacy/" />
+				</hbox>
+			</groupbox>
 			<vbox align="center">
 				<hbox align="baseline">
 					<label value="&openwith-donationsrequest;" />

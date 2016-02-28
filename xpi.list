@@ -9,6 +9,7 @@ icon64.png
 install.rdf
 locale/*
 modules
+modules/dataCollection.jsm
 modules/openwith.jsm
 modules/process.js
 modules/widgets.js

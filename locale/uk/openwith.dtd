@@ -32,6 +32,10 @@
 <!ENTITY openwith-logging.label "Лоґи">
 <!ENTITY openwith-logging.checkbox.label "Увімкнути передавання лоґів до консолі браузера">
 
+<!ENTITY openwith-datacollection.title "Data collection">
+<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
+<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+
 <!ENTITY openwith-donationsrequest "&quot;Відкрити за допомогою&quot; фінансується завдяки вашим пожертвуванням.">
 <!ENTITY openwith-donate "Пожертвувати">
 <!ENTITY openwith-github "&quot;Відкрити за допомогою&quot; на GitHub">
