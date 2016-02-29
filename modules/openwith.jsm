@@ -877,10 +877,12 @@ if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_DEFAULT) {
 	/* globals OpenWithDataCollector */
 	Cu.import('resource://openwith/dataCollection.jsm');
 
-	Services.ppmm.addMessageListener('OpenWith:OpenURI', function(message) {
-		OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
-	});
-	Services.ppmm.loadProcessScript('resource://openwith/process.js', true);
+	if (!!Services.ppmm) {
+		Services.ppmm.addMessageListener('OpenWith:OpenURI', function(message) {
+			OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
+		});
+		Services.ppmm.loadProcessScript('resource://openwith/process.js', true);
+	}
 }
 
 OpenWithCore.versionUpdate();

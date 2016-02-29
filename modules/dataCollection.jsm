@@ -65,7 +65,7 @@ var actionReporter = {
 		}
 	},
 	incrementCount: function(key) {
-		if (!this.counters.includes(key)) {
+		if (this.counters.indexOf(key) < 0) {
 			throw new Error('Attempt to increment a non-active counter');
 		}
 		if (!!this.counterData) {
