@@ -9,12 +9,13 @@ function OpenWithAboutHandler() {
 }
 
 OpenWithAboutHandler.prototype = {
-	newChannel: function(aURI) {
-		if (aURI.spec != 'about:openwith')
+	newChannel: function(uri, loadInfo) {
+		if (uri.spec != 'about:openwith')
 			return;
 
-		let channel = Services.io.newChannel('chrome://openwith/content/about-openwith.xul', null, null);
-		channel.originalURI = aURI;
+		let newURI = Services.io.newURI('chrome://openwith/content/about-openwith.xul', null, null);
+		let channel = Services.io.newChannelFromURIWithLoadInfo(newURI, loadInfo);
+		channel.originalURI = uri;
 		return channel;
 	},
 	getURIFlags: function() {
