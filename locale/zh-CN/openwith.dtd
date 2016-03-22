@@ -1,20 +1,20 @@
-<!ENTITY openwith-name "Open With">
+<!ENTITY openwith-name "打开方式">
 <!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "打开用…">
+<!ENTITY openwith-dropdown.tooltip "打开方式…">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Open With 项目">
+<!ENTITY openwith-placeholder.label "“打开方式”项目">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-linkplaceholder.label "Open With 链接项目">
-<!ENTITY openwith-submenu.label "打开用">
-<!ENTITY openwith-linksubmenu.label "打开链接用">
+<!ENTITY openwith-linkplaceholder.label "“打开方式”链接项目">
+<!ENTITY openwith-submenu.label "打开方式">
+<!ENTITY openwith-linksubmenu.label "链接打开方式">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
-<!ENTITY openwith-options.title "Open With 选项">
+<!ENTITY openwith-options.title "“打开方式”选项">
 
-<!ENTITY openwith-display-choose.label "选择显示 Open With 项目的位置:">
+<!ENTITY openwith-display-choose.label "选择显示“打开方式”项的位置：">
 <!ENTITY openwith-display-pane.viewmenu.label "查看菜单">
 <!ENTITY openwith-display-pane.contextmenu.label "页面右键菜单">
-<!ENTITY openwith-display-pane.contextmenulink.label "页面右键菜单(链接)">
+<!ENTITY openwith-display-pane.contextmenulink.label "页面右键菜单（链接）">
 <!ENTITY openwith-display-pane.placescontext.label "书签右键菜单">
 <!ENTITY openwith-display-pane.tabmenu.label "标签页右键菜单">
 <!ENTITY openwith-display-pane.tabbar.label "标签栏">
@@ -27,18 +27,18 @@
 <!ENTITY openwith-display-buttons.label "显示为按钮">
 <!ENTITY openwith-display-dropdown.label "显示为下拉菜单">
 
-<!ENTITY openwith-display-toolbarhelp "要在工具栏或菜单面板上添加 Open With，请打开菜单面板并点击“定制”。">
+<!ENTITY openwith-display-toolbarhelp "要在工具栏或菜单面板上添加“打开方式”，请打开菜单面板并点击“定制”。">
 
 <!ENTITY openwith-logging.label "日志">
 <!ENTITY openwith-logging.checkbox.label "启用输出日志到浏览器控制台">
 
 <!ENTITY openwith-datacollection.title "数据收集">
-<!ENTITY openwith-datacollection.optin "提交匿名用户数据以帮助改进 Open With。">
+<!ENTITY openwith-datacollection.optin "提交匿名用户数据以帮助改进“打开方式”拓展。">
 <!ENTITY openwith-datacollection.privacypolicy "隐私权政策">
 
-<!ENTITY openwith-donationsrequest "Open With 依靠用户捐赠资助。">
+<!ENTITY openwith-donationsrequest "“打开方式”依靠用户捐赠资助。">
 <!ENTITY openwith-donate "捐赠">
-<!ENTITY openwith-github "GitHub 上的 Open With">
+<!ENTITY openwith-github "GitHub 上的“打开方式”（Open With）">
 
 <!-- These strings appear on the right-hand side of about:openwith. -->
 <!ENTITY openwith-browserlist.label "选择要显示的项目:">
@@ -47,7 +47,7 @@
 <!ENTITY openwith-browserlist-hide.label "隐藏">
 <!ENTITY openwith-browserlist-edit.label "编辑">
 <!ENTITY openwith-browserlist-editname.label "名称…">
-<!ENTITY openwith-browserlist-editcommand.label "命令行…">
+<!ENTITY openwith-browserlist-editcommand.label "命令…">
 <!ENTITY openwith-browserlist-editparams.label "参数…">
 <!ENTITY openwith-browserlist-editaccesskey.label "菜单访问键…">
 <!ENTITY openwith-browserlist-editshortcut.label "键盘快捷键…">
