@@ -15,9 +15,15 @@ Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://gre/modules/FileUtils.jsm');
 
-/* globals AddonManager, idleService */
+/* globals AddonManager, OS, idleService, profileService, socketTransportService */
 XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
-XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
+XPCOMUtils.defineLazyModuleGetter(this, 'OS', 'resource://gre/modules/osfile.jsm');
+XPCOMUtils.defineLazyServiceGetter(this, 'idleService',
+	'@mozilla.org/widget/idleservice;1', 'nsIIdleService');
+XPCOMUtils.defineLazyServiceGetter(this, 'profileService',
+	'@mozilla.org/toolkit/profile-service;1', 'nsIToolkitProfileService');
+XPCOMUtils.defineLazyServiceGetter(this, 'socketTransportService',
+	'@mozilla.org/network/socket-transport-service;1', 'nsISocketTransportService');
 
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
@@ -581,6 +587,32 @@ let OpenWithCore = {
 			if (!file.exists()) {
 				throw 'File not found';
 			}
+
+			if (['firefox', 'firefox.exe', 'Firefox.app'].indexOf(file.leafName) >= 0) {
+				for (let i = 0; i < params.length; i++) {
+					if (params[i] != '-P') {
+						continue;
+					}
+
+					try {
+						let profileName = params[i + 1];
+						let profile = profileService.getProfileByName(profileName);
+						if (!profile) {
+							continue;
+						}
+
+						let socketFile = profile.rootDir.clone();
+						socketFile.append('openwith-socket');
+						if (socketFile.exists()) {
+							this.doCommandIPC(socketFile, params.pop());
+							return;
+						}
+					} catch (ex) {
+						Cu.reportError(ex);
+					}
+				}
+			}
+
 			let fileToRun;
 			if (/\.app$/.test(file.path)) {
 				fileToRun = new FileUtils.File('/usr/bin/open');
@@ -599,6 +631,27 @@ let OpenWithCore = {
 			}
 		} catch (e) {
 			Cu.reportError(e);
+		}
+	},
+	doCommandIPC: function(socketFile, message) {
+		function finish() {
+			let output = client.openOutputStream(0, 0, 0);
+			output.write(message, message.length);
+		}
+
+		let client;
+		try {
+			client = socketTransportService.createUnixDomainTransport(socketFile);
+			finish();
+		} catch (ex) {
+			OS.File.read(socketFile.path).then(function(message) {
+				message = new TextDecoder().decode(message);
+				let port = parseInt(message.split(/\s/, 2)[0], 10);
+				if (port) {
+					client = socketTransportService.createTransport(null, 0, 'localhost', port, null);
+					finish();
+				}
+			});
 		}
 	},
 	versionUpdate: function() {
@@ -693,10 +746,15 @@ let OpenWithCore = {
 	openDonatePage: function() {
 		this.openURL('https://addons.mozilla.org/addon/open-with/about');
 	},
-	openURL: function(url) {
+	openURL: function(url, useExisting = true) {
 		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE) || Services.wm.getMostRecentWindow(MAIL_TYPE);
 		if ('switchToTabHavingURI' in recentWindow) {
-			recentWindow.switchToTabHavingURI(url, true);
+			if (useExisting) {
+				recentWindow.switchToTabHavingURI(url, true);
+			} else {
+				recentWindow.openLinkIn(url, 'tab', {});
+				recentWindow.focus();
+			}
 		} else {
 			recentWindow.openLinkExternally(url);
 		}
@@ -869,11 +927,12 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
 
-if (Services.appinfo.name == 'Firefox') {
-	Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
-}
-
 if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_DEFAULT) {
+	if (Services.appinfo.name == 'Firefox') {
+		Services.scriptloader.loadSubScript('resource://openwith/listener.js');
+		Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
+	}
+
 	/* globals OpenWithDataCollector */
 	Cu.import('resource://openwith/dataCollection.jsm');
 

@@ -10,6 +10,7 @@ install.rdf
 locale/*
 modules
 modules/dataCollection.jsm
+modules/listener.js
 modules/openwith.jsm
 modules/process.js
 modules/widgets.js
