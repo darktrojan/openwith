@@ -21,7 +21,7 @@ var OpenWithDataCollector = {
 		return Date.UTC(2016, 0, 1);
 	},
 	get activeUntil() {
-		return Date.UTC(2016, 3, 1);
+		return Date.UTC(2016, 4, 1);
 	},
 	get active() {
 		return prefs.getBoolPref('optin') && Date.now() < this.activeUntil;
@@ -44,7 +44,7 @@ XPCOMUtils.defineLazyGetter(OpenWithDataCollector, 'clientID', function() {
 });
 
 var actionReporter = {
-	collectionURL: 'https://www.darktrojan.net/data-collection/experiment4.php',
+	collectionURL: 'https://www.darktrojan.net/data-collection/experiment5.php',
 	counterData: null,
 	samplePeriod: 604800000, // A week
 	counters: ['browserOpened', 'aboutOpenWithOpened'],
@@ -96,6 +96,8 @@ var actionReporter = {
 
 		let data = new Services.appShell.hiddenDOMWindow.FormData();
 		data.set('clientID', OpenWithDataCollector.clientID);
+		data.set('start', Math.floor(this.counterData.start / 1000));
+		data.set('end', Math.floor(this.counterData.end / 1000));
 		for (let c of this.counters) {
 			data.set(c, this.counterData[c]);
 		}

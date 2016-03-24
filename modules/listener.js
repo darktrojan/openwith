@@ -18,7 +18,6 @@ server.asyncListen({
 			let message = NetUtil.readInputStreamToString(stream, stream.available());
 			let url = message.split(/\s/, 2)[0];
 			if (url) {
-				OpenWithCore.log('would now open ' + url);
 				OpenWithCore.openURL(url, false);
 			}
 			input.close();
