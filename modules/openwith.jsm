@@ -559,7 +559,7 @@ let OpenWithCore = {
 			params.push(uriParam);
 		}
 
-		this.doCommandInternal(command, params);
+		this.doCommandInternal(command, params, uriParam);
 	},
 	doCommandWithListItem: function(keyName, uri) {
 		let item = OpenWithCore.map.get(keyName);
@@ -574,9 +574,9 @@ let OpenWithCore = {
 		if (appendURIParam) {
 			params.push(uri);
 		}
-		this.doCommandInternal(item.command, params);
+		this.doCommandInternal(item.command, params, uri);
 	},
-	doCommandInternal: function(command, params) {
+	doCommandInternal: function(command, params, uri) {
 		if (Services.appinfo.processType != Services.appinfo.PROCESS_TYPE_DEFAULT) {
 			throw new Error('OpenWithCore.doCommandInternal called from child process');
 		}
@@ -588,7 +588,8 @@ let OpenWithCore = {
 				throw 'File not found';
 			}
 
-			if (['firefox', 'firefox.exe', 'Firefox.app'].indexOf(file.leafName) >= 0) {
+			if (uri && Services.appinfo.name == 'Firefox' &&
+					['firefox', 'firefox.exe', 'Firefox.app'].indexOf(file.leafName) >= 0) {
 				for (let i = 0; i < params.length; i++) {
 					if (params[i] != '-P') {
 						continue;
@@ -604,7 +605,13 @@ let OpenWithCore = {
 						let socketFile = profile.rootDir.clone();
 						socketFile.append('openwith-socket');
 						if (socketFile.exists()) {
-							this.doCommandIPC(socketFile, params.pop());
+							this.log(
+								'OpenWith: opening with IPC\n' +
+								'\tCommand: ' + file.path + '\n' +
+								'\tProfile: ' + profileName + '\n' +
+								'\tURL: ' + uri
+							);
+							this.doCommandIPC(socketFile, uri);
 							return;
 						}
 					} catch (ex) {
