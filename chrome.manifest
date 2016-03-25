@@ -5,6 +5,7 @@ overlay chrome://messenger/content/messenger.xul chrome://openwith/content/openw
 overlay chrome://messenger/content/messageWindow.xul chrome://openwith/content/openwith-mail.xul
 overlay chrome://browser/content/devtools/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
 overlay chrome://devtools/content/framework/toolbox.xul chrome://openwith/content/openwith-devtools.xul
+overlay about:devtools-toolbox chrome://openwith/content/openwith-devtools.xul
 resource openwith modules/
 skin openwith classic/1.0 skin/default/
 skin openwith classic/1.0 skin/osx/ os=Darwin
