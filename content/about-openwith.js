@@ -276,7 +276,11 @@ function changeAttribute(item, attrName) {
 		if (attrName == 'name' && item.getAttribute('auto') == 'true') {
 			// Avoid saving everything
 			let keyName = item.getAttribute('keyName');
-			OpenWithCore.prefs.setCharPref('auto.' + keyName + '.name', attr.value);
+			let nameData = {
+				data: attr.value,
+				QueryInterface: XPCOMUtils.generateQI([Ci.nsISupports, Ci.nsISupportsString])
+			};
+			OpenWithCore.prefs.setComplexValue('auto.' + keyName + '.name', Ci.nsISupportsString, nameData);
 		} else {
 			saveItemToPrefs(item);
 		}
@@ -352,7 +356,11 @@ function saveItemToPrefs(item, saveIcon) {
 
 	if (type == 'manual') {
 		OpenWithCore.prefs.setCharPref('manual.' + keyName, '"' + command + '"' + (params ? ' ' + params : ''));
-		OpenWithCore.prefs.setCharPref('manual.' + keyName + '.name', name);
+		let nameData = {
+			data: name,
+			QueryInterface: XPCOMUtils.generateQI([Ci.nsISupports, Ci.nsISupportsString])
+		};
+		OpenWithCore.prefs.setComplexValue('manual.' + keyName + '.name', Ci.nsISupportsString, nameData);
 
 		if (saveIcon) {
 			let icon = item.getAttribute('icon');

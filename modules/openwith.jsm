@@ -153,15 +153,16 @@ let OpenWithCore = {
 		}
 
 		for (let item of unsorted) {
-			for (let k of ['icon', 'name']) {
-				let k_lc = k.toLowerCase();
-				if (this.prefs.getPrefType('auto.' + item.keyName + '.' + k_lc) == Ci.nsIPrefBranch.PREF_STRING) {
-					item[k] = this.prefs.getCharPref('auto.' + item.keyName + '.' + k_lc);
-				}
+			let branch = Services.prefs.getBranch('extensions.openwith.auto.' + item.keyName);
+			if (branch.getPrefType('.icon') == Ci.nsIPrefBranch.PREF_STRING) {
+				item.icon = branch.getCharPref('.icon');
+			}
+			if (branch.getPrefType('.name') == Ci.nsIPrefBranch.PREF_STRING) {
+				item.name = branch.getComplexValue('.name', Ci.nsISupportsString).data;
 			}
 			item.hidden =
-				this.prefs.getPrefType('auto.' + item.keyName + '.hidden') == Ci.nsIPrefBranch.PREF_BOOL &&
-				this.prefs.getBoolPref('auto.' + item.keyName + '.hidden');
+				branch.getPrefType('.hidden') == Ci.nsIPrefBranch.PREF_BOOL &&
+				branch.getBoolPref('.hidden');
 		}
 
 		let manual = this.prefs.getChildList('manual.', {});
@@ -172,7 +173,7 @@ let OpenWithCore = {
 			}
 			let value;
 			if (this.prefs.getPrefType(name + '.name') == Ci.nsIPrefBranch.PREF_STRING) {
-				value = this.prefs.getCharPref(name + '.name');
+				value = this.prefs.getComplexValue(name + '.name', Ci.nsISupportsString).data;
 			} else {
 				value = name.substring(7).replace(/_/g, ' ');
 			}
