@@ -752,7 +752,7 @@ let OpenWithCore = {
 		this.openURL('https://addons.mozilla.org/addon/open-with/versions/' + version);
 	},
 	openDonatePage: function() {
-		this.openURL('https://addons.mozilla.org/addon/open-with/about');
+		this.openURL('https://darktrojan.github.io/donate.html?openwith');
 	},
 	openURL: function(url, useExisting = true) {
 		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE) || Services.wm.getMostRecentWindow(MAIL_TYPE);
