@@ -151,8 +151,8 @@
 		<em:localized>
 			<Description>
 				<em:locale>zh-CN</em:locale>
-				<em:name>Open With</em:name>
-				<em:description>轻轻一点，快速打开您的网页在 Internet Explorer、Chrome、Safari 和 Opera 等浏览器。</em:description>
+				<em:name>打开方式</em:name>
+				<em:description>轻轻一点，在 Internet Explorer、Chrome、Safari 和 Opera 等浏览器上快速打开您的网页。</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
