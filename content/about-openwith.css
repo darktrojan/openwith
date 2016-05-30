@@ -1,9 +1,12 @@
 :root {
-	padding: 8px;
 	min-height: 30em;
 }
 link[rel] {
 	display: none;
+}
+:root > hbox {
+	overflow: auto;
+	padding: 8px;
 }
 #left {
 	-moz-margin-end: 2em;
