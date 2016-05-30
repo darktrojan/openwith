@@ -19,7 +19,7 @@ contract @mozilla.org/network/protocol;1?name=openwith {a4b89ac1-74f9-42f5-9fb7-
 locale openwith en-US locale/en-US/
 
 locale openwith ar    locale/ar/
-locale openwith ca locale/ca/
+locale openwith ca    locale/ca/
 locale openwith cs    locale/cs/
 locale openwith de    locale/de/
 locale openwith el    locale/el/
