@@ -13,6 +13,7 @@
 		<em:icon64URL>chrome://openwith/content/openwith64.png</em:icon64URL>
 		<em:optionsURL>about:openwith</em:optionsURL>
 		<em:optionsType>3</em:optionsType>
+		<em:multiprocessCompatible>true</em:multiprocessCompatible>
 
 		<em:targetApplication>
 			<Description>
