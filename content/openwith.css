@@ -12,6 +12,9 @@
 	list-style-image: url("chrome://openwith/content/openwith32.png");
 }
 
+#openwith-toolboxbox toolbarbutton > label {
+	visibility: collapse;
+}
 #openwith-toolboxbox toolbarbutton > image {
 	filter: none;
 }

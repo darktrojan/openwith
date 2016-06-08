@@ -6,7 +6,7 @@
 <overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<hbox id="toolbox-buttons">
-		<hbox id="openwith-toolboxbox">
+		<hbox id="openwith-toolboxbox" insertbefore="command-button-frames">
 			<toolbarbutton id="openwith-toolbox" class="command-button" label="&openwith-name;"
 				image="chrome://openwith/content/openwith16.png" type="menu"
 				tooltiptext="&openwith-dropdown.tooltip;"
