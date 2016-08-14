@@ -32,9 +32,9 @@
 <!ENTITY openwith-logging.label "Logowanie">
 <!ENTITY openwith-logging.checkbox.label "Włącz logowanie do Konsoli przeglądarki">
 
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+<!ENTITY openwith-datacollection.title "Gromadzenie danych">
+<!ENTITY openwith-datacollection.optin "Pomóż ulepszyć Open With, wysyłając anonimowe dane użytkowania">
+<!ENTITY openwith-datacollection.privacypolicy "Polityka prywatności">
 
 <!ENTITY openwith-donationsrequest "Open With istnieje dzięki wsparciu użytkowników.">
 <!ENTITY openwith-donate "Wesprzyj">
@@ -56,7 +56,7 @@
 <!ENTITY openwith-browserlist-remove.label "Usuń">
 
 <!-- This appears in the about:openwith context menu. "Copy" is a verb. -->
-<!ENTITY openwith-context-copykeyname.label "Copy identifier">
+<!ENTITY openwith-context-copykeyname.label "Skopiuj identyfikator">
 
 <!ENTITY openwith-browserlist-add.label "Dodaj…">
 <!ENTITY openwith-browserlist-restoreorder.label "Domyślne sortowanie">
