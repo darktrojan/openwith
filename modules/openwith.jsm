@@ -15,9 +15,10 @@ Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 Cu.import('resource://gre/modules/FileUtils.jsm');
 
-/* globals AddonManager, OS, idleService, profileService, socketTransportService */
+/* globals AddonManager, OS, Preferences, idleService, profileService, socketTransportService */
 XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
 XPCOMUtils.defineLazyModuleGetter(this, 'OS', 'resource://gre/modules/osfile.jsm');
+XPCOMUtils.defineLazyModuleGetter(this, 'Preferences', 'resource://gre/modules/Preferences.jsm');
 XPCOMUtils.defineLazyServiceGetter(this, 'idleService',
 	'@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 XPCOMUtils.defineLazyServiceGetter(this, 'profileService',
@@ -153,12 +154,12 @@ let OpenWithCore = {
 		}
 
 		for (let item of unsorted) {
-			let branch = Services.prefs.getBranch('extensions.openwith.auto.' + item.keyName);
+			let branch = Services.prefs.getBranch(this.prefs.root + 'auto.' + item.keyName);
 			if (branch.getPrefType('.icon') == Ci.nsIPrefBranch.PREF_STRING) {
-				item.icon = branch.getCharPref('.icon');
+				item.icon = Preferences.get(branch.root + '.icon');
 			}
 			if (branch.getPrefType('.name') == Ci.nsIPrefBranch.PREF_STRING) {
-				item.name = branch.getComplexValue('.name', Ci.nsISupportsString).data;
+				item.name = Preferences.get(branch.root + '.name');
 			}
 			item.hidden =
 				branch.getPrefType('.hidden') == Ci.nsIPrefBranch.PREF_BOOL &&
@@ -173,7 +174,7 @@ let OpenWithCore = {
 			}
 			let value;
 			if (this.prefs.getPrefType(name + '.name') == Ci.nsIPrefBranch.PREF_STRING) {
-				value = this.prefs.getComplexValue(name + '.name', Ci.nsISupportsString).data;
+				value = this.prefs.getCharPref(name + '.name');
 			} else {
 				value = name.substring(7).replace(/_/g, ' ');
 			}
@@ -927,9 +928,23 @@ let OpenWithCore = {
 	}
 };
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {
-	let prefs = Services.prefs.getBranch('extensions.openwith.');
-	prefs.addObserver('', OpenWithCore, false);
-	return prefs;
+	let branch = Services.prefs.getBranch('extensions.openwith.');
+	branch.addObserver('', OpenWithCore, false);
+	return {
+		root: branch.root,
+		getBoolPref: branch.getBoolPref,
+		setBoolPref: branch.setBoolPref,
+		getIntPref: branch.getIntPref,
+		setIntPref: branch.setIntPref,
+		getCharPref: function(name) { return Preferences.get(this.root + name); },
+		setCharPref: function(name, value) { Preferences.set(this.root + name, value); },
+		getPrefType: branch.getPrefType,
+		getChildList: branch.getChildList,
+		prefHasUserValue: branch.prefHasUserValue,
+		clearUserPref: branch.clearUserPref,
+		addObserver: branch.addObserver,
+		deleteBranch: branch.deleteBranch
+	};
 });
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
