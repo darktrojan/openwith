@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://openwith/content/openwith.css" ?>
+<?xml-stylesheet type="text/css" href="chrome://openwith/skin/openwith.css" ?>
+<!DOCTYPE overlay SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<overlay id="openwith-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<menupopup id="menu_viewPopup">
+		<menuseparator id="openwith-viewmenuseparator" />
+		<menuitem id="openwith-viewmenuplaceholder" label="&openwith-placeholder.label;" />
+		<menu id="openwith-viewsubmenu" label="&openwith-submenu.label;">
+			<menupopup id="openwith-viewsubmenupopup" />
+		</menu>
+	</menupopup>
+
+	<menupopup id="contentAreaContextMenu">
+		<menuitem id="openwith-contextmenulinkplaceholder" label="&openwith-linkplaceholder.label;" insertbefore="context-sep-open" />
+		<menu id="openwith-contextlinksubmenu" label="&openwith-linksubmenu.label;" insertbefore="context-sep-open">
+			<menupopup id="openwith-contextlinksubmenupopup" />
+		</menu>
+		<menuseparator id="openwith-contextmenuseparator" />
+		<menuitem id="openwith-contextmenuplaceholder" label="&openwith-placeholder.label;" />
+		<menu id="openwith-contextsubmenu" label="&openwith-submenu.label;">
+			<menupopup id="openwith-contextsubmenupopup" />
+		</menu>
+	</menupopup>
+
+	<menupopup id="placesContext">
+		<menuitem id="openwith-placescontextlinkplaceholder" label="&openwith-placeholder.label;" insertbefore="placesContext_openSeparator" selectiontype="single" />
+		<menu id="openwith-placescontextsubmenu" label="&openwith-submenu.label;" insertbefore="placesContext_openSeparator" selectiontype="single">
+			<menupopup id="openwith-placescontextsubmenupopup" />
+		</menu>
+	</menupopup>
+
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbaritem id="openwith-toolbarbox" class="chromeclass-toolbar-additional" label="&openwith-name;">
+			<toolbarbutton id="openwith-toolbar" class="toolbarbutton-1" label="&openwith-name;"
+				image="chrome://openwith/content/openwith16.png" type="menu">
+				<menupopup id="openwith-toolbar-menu" />
+			</toolbarbutton>
+		</toolbaritem>
+	</toolbarpalette>
+
+	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />
+</overlay>

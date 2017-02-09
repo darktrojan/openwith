@@ -197,7 +197,9 @@ this.OpenWith = {
 				Components.utils.reportError(e);
 				OpenWithCore.log('OpenWith: tab bar buttons will be unavailable');
 			}
+		}
 
+		if (appname == 'SeaMonkey' || appname == 'Pale Moon') {
 			/** tool bar **/
 			this.toolbarButtonContainer = null;
 			try {

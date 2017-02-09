@@ -36,7 +36,11 @@ this.OpenWith = {
 
 		XPCOMUtils.defineLazyGetter(OpenWith, 'toolbox', function() {
 			let scope = {};
-			Components.utils.import('resource://devtools/client/framework/gDevTools.jsm', scope);
+			try {
+				Components.utils.import('resource://devtools/client/framework/gDevTools.jsm', scope);
+			} catch (e) {
+				Components.utils.import('resource://gre/modules/devtools/gDevTools.jsm', scope);
+			}
 			for (let [, toolbox] of scope.gDevTools._toolboxes) {
 				if (toolbox.doc == document) {
 					return toolbox;
