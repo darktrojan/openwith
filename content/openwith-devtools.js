@@ -2,6 +2,9 @@
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
+var HTML_NS = 'http://www.w3.org/1999/xhtml';
+var XUL_NS = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul';
+
 /* globals OpenWith */
 this.OpenWith = {
 	onLoad: function() {
@@ -12,6 +15,28 @@ this.OpenWith = {
 	init: function() {
 		Components.utils.import('resource://openwith/openwith.jsm');
 
+		let box = document.getElementById('openwith-toolboxbox');
+		let popup;
+
+		if (box) {
+			popup = document.getElementById('openwith-toolbox-menu');
+		} else {
+			box = document.createElementNS(HTML_NS, 'div');
+			box.id = 'openwith-toolboxbox';
+
+			let menuButton = document.createElementNS(XUL_NS, 'toolbarbutton');
+			menuButton.className = 'command-button';
+			menuButton.setAttribute('image', 'chrome://openwith/content/openwith16.png');
+			menuButton.setAttribute('type', 'menu');
+
+			popup = document.createElementNS(XUL_NS, 'menupopup');
+			menuButton.appendChild(popup);
+			box.appendChild(menuButton);
+
+			let parent = document.getElementById('toolbox-buttons-end');
+			parent.insertBefore(box, parent.firstChild);
+		}
+
 		this.location = {
 			prefName: 'toolbox',
 			empty: function() {
@@ -20,34 +45,21 @@ this.OpenWith = {
 			},
 			factory: OpenWithCore.createToolbarButton,
 			targetType: OpenWithCore.TARGET_DEVTOOLS,
-			container: document.getElementById('openwith-toolboxbox')
+			container: box
 		};
 
 		this.menuLocation = {
 			prefName: 'toolbox.menu',
 			targetType: OpenWithCore.TARGET_DEVTOOLS,
-			container: document.getElementById('openwith-toolbox-menu')
+			container: popup
 		};
+
 
 		this.loadLists();
 
 		Services.obs.addObserver(this, 'openWithListChanged', true);
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
 
-		XPCOMUtils.defineLazyGetter(OpenWith, 'toolbox', function() {
-			let scope = {};
-			try {
-				Components.utils.import('resource://devtools/client/framework/gDevTools.jsm', scope);
-			} catch (e) {
-				Components.utils.import('resource://gre/modules/devtools/gDevTools.jsm', scope);
-			}
-			for (let [, toolbox] of scope.gDevTools._toolboxes) {
-				if (toolbox.doc == document) {
-					return toolbox;
-				}
-			}
-			return null; // this should never happen
-		});
 	},
 
 	QueryInterface: XPCOMUtils.generateQI([
@@ -76,4 +88,21 @@ this.OpenWith = {
 	}
 };
 
-window.addEventListener('load', OpenWith.onLoad, false);
+XPCOMUtils.defineLazyGetter(OpenWith, 'toolbox', function() {
+	let scope = {};
+	try {
+		Components.utils.import('resource://devtools/client/framework/gDevTools.jsm', scope);
+	} catch (e) {
+		Components.utils.import('resource://gre/modules/devtools/gDevTools.jsm', scope);
+	}
+	for (let [, toolbox] of scope.gDevTools._toolboxes) {
+		if (toolbox.doc == document) {
+			return toolbox;
+		}
+	}
+	return null; // this should never happen
+});
+
+OpenWith.toolbox.on('ready', function() {
+	OpenWith.onLoad();
+});
