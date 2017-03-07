@@ -88,7 +88,7 @@ let locationObserver = {
 			$('openwith-toolbar-row').collapsed = true;
 		}
 
-		if (appname == 'Firefox') {
+		if (appname == 'Firefox' || appname == 'Pale Moon') {
 			$('openwith-toolbox-group').selectedIndex =
 				OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
 					(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
