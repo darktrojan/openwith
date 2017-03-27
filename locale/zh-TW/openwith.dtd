@@ -32,8 +32,8 @@
 <!ENTITY openwith-logging.label "記錄">
 <!ENTITY openwith-logging.checkbox.label "啟用記錄輸出到瀏覽器的 Console 中">
 
-<!ENTITY openwith-datacollection.title "收集資料">
-<!ENTITY openwith-datacollection.optin "透過遞送匿名的使用資訊來協助改進 Open With">
+<!ENTITY openwith-datacollection.title "收集數據">
+<!ENTITY openwith-datacollection.optin "透過遞送匿名的使用數據來協助改進 Open With">
 <!ENTITY openwith-datacollection.privacypolicy "隱私權政策">
 
 <!ENTITY openwith-donationsrequest "Open With 是依靠使用者的捐款來支撐的。">
