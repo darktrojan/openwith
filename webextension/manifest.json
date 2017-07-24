@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "Open With",
+	"version": "7",
+	"applications": {
+		"gecko": {
+			"id": "newopenwith@darktrojan.net",
+			"strict_min_version": "50.0"
+		}
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"permissions": [
+		"contextMenus",
+		"nativeMessaging",
+		"storage",
+		"tabs"
+	],
+	"browser_action": {
+		"default_icon": {
+			"48": "icons/message.svg"
+		},
+		"default_popup": "action.html",
+		"browser_style": true
+	}
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+:root {
+	font: message-box;
+	background-color: -moz-dialog;
+}
+ul#browsers {
+	width: 40em;
+	margin: 0;
+	border: 1px #999 solid;
+	padding: 0.5em;
+	list-style: none;
+	background-color: white;
+}
+li {
+	display: flex;
+	padding: 0.5em;
+}
+li:not(:first-of-type) {
+	border-top: 1px #999 dotted;
+}
+.iconHolder {
+	line-height: 0;
+}
+.configHolder {
+	margin-inline-start: 1em;
+	flex-grow: 1;
+	line-height: 1.33;
+}
+.name {
+	font-weight: bold;
+}
+.controls {
+	text-align: right;
+}
+</style>
+</head>
+<body>
+<ul id="browsers">
+	<template>
+		<li>
+			<div class="iconHolder">
+				<img src="" width="64" height="64" />
+			</div>
+			<div class="configHolder">
+				<div class="name"></div>
+				<div class="command"></div>
+				<div class="controls">
+					<button class="removeBrowser">Remove</button>
+				</div>
+			</div>
+		</li>
+	</template>
+</ul>
+<div>
+	<input type="file" />
+</div>
+<script type="text/javascript" src="options.js"></script>
+</body>
+</html>
