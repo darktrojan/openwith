@@ -4,9 +4,15 @@
 <meta charset="utf-8">
 <title></title>
 <style type="text/css">
-:root {
+html {
 	font: message-box;
 	background-color: -moz-dialog;
+	height: 100%;
+}
+body {
+	display: flex;
+	height: calc(100% - 16px);
+	margin: 8px;
 }
 ul#browsers {
 	width: 40em;
@@ -15,12 +21,14 @@ ul#browsers {
 	padding: 0.5em;
 	list-style: none;
 	background-color: white;
+	flex-shrink: 0;
+	overflow-y: auto;
 }
-li {
+ul#browsers li {
 	display: flex;
 	padding: 0.5em;
 }
-li:not(:first-of-type) {
+ul#browsers li:not(:first-of-type) {
 	border-top: 1px #999 dotted;
 }
 .iconHolder {
@@ -36,6 +44,36 @@ li:not(:first-of-type) {
 }
 .controls {
 	text-align: right;
+}
+form {
+	margin-inline-start: 16px;
+	flex-grow: 1;
+}
+label {
+	display: block;
+	margin-top: 0.5em;
+	line-height: 1.5;
+}
+input[type="text"] {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+}
+ul#logos {
+	margin: 0;
+	border: 1px #999 solid;
+	padding: 2px;
+	list-style: none;
+	background-color: white;
+}
+ul#logos li {
+	display: inline-block;
+	padding: 4px;
+	line-height: 0;
+}
+.selected {
+	background-color: highlight;
+	color: highlighttext;
 }
 </style>
 </head>
@@ -56,9 +94,24 @@ li:not(:first-of-type) {
 		</li>
 	</template>
 </ul>
-<div>
+<form name="details">
 	<input type="file" />
-</div>
+	<hr />
+	<label>Name:
+		<input type="text" name="name" />
+	</label>
+	<label>Command:
+		<input type="text" name="command" />
+	</label>
+	<label>Icon:</label>
+	<ul id="logos">
+		<template>
+			<li>
+				<img src="" width="32" height="32" />
+			</li>
+		</template>
+	</ul>
+</form>
 <script type="text/javascript" src="options.js"></script>
 </body>
 </html>
