@@ -6,13 +6,13 @@ port.onMessage.addListener(console.log.bind(console));
 
 function contextMenuClicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = info.pageUrl;
+	let url = info.modifiers.includes('Ctrl') ? null : info.pageUrl;
 	openBrowser(browser_id, url);
 }
 
 function contextMenuLinkClicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(13), 10);
-	let url = info.linkUrl;
+	let url = info.modifiers.includes('Ctrl') ? null : info.linkUrl;
 	openBrowser(browser_id, url);
 }
 
@@ -23,11 +23,16 @@ function openBrowser(browser_id, url) {
 			let found = false;
 			for (let i = 0; i < command.length; i++) {
 				if (command[i] == '%s') {
-					command[i] = url;
+					if (url) {
+						command[i] = url;
+					} else {
+						command.splice(i, 1);
+						i--;
+					}
 					found = true;
 				}
 			}
-			if (!found) {
+			if (url && !found) {
 				command.push(url);
 			}
 			console.log(command);

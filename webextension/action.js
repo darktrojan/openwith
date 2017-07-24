@@ -14,7 +14,11 @@ browsersList.onclick = function(event) {
 		target = target.parentNode;
 	}
 	browser.tabs.query({active:true, currentWindow:true}).then(function(tabs) {
-		browser.runtime.sendMessage({action: 'open_browser', id: target.dataset.id, url: tabs[0].url});
+		browser.runtime.sendMessage({
+			action: 'open_browser',
+			id: target.dataset.id,
+			url: event.ctrlKey ? null : tabs[0].url
+		});
 		window.close();
 	});
 };
