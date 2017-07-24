@@ -25,5 +25,10 @@
 		},
 		"default_popup": "action.html",
 		"browser_style": true
+	},
+	"options_ui": {
+		"browser_style": false,
+		"open_in_tab": true,
+		"page": "options.html"
 	}
 }
