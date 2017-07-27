@@ -21,8 +21,9 @@ browsersList.onclick = function(event) {
 	}
 	li.classList.add('selected');
 
-	document.forms.details.name.value = li.querySelector('.name').textContent;
-	document.forms.details.command.value = li.querySelector('.command').textContent;
+	detailsForm.browser_id.value = li.dataset.id;
+	detailsForm.name.value = li.querySelector('.name').textContent;
+	detailsForm.command.value = li.querySelector('.command').textContent;
 	selected = logosList.querySelector('.selected');
 	if (selected) {
 		selected.classList.remove('selected');
@@ -162,4 +163,31 @@ logosList.onclick = function(event) {
 		selected.classList.remove('selected');
 	}
 	target.classList.add('selected');
+};
+
+let detailsForm = document.forms.details;
+detailsForm.onsubmit = function() {
+	for (let li of browsersList.children) {
+		if (li.dataset.id == this.browser_id.value) {
+			let selected = logosList.querySelector('.selected');
+			if (selected) {
+				li.dataset.icon = selected.dataset.name;
+				li.querySelector('img').src = 'icons/' + selected.dataset.name + '_64x64.png';
+			}
+			li.querySelector('div.name').textContent = this.name.value;
+			li.querySelector('div.command').textContent = this.command.value;
+
+			chrome.runtime.sendMessage({
+				action: 'update_browser',
+				data: {
+					id: li.dataset.id,
+					icon: li.dataset.icon,
+					name: this.name.value,
+					command: this.command.value
+				}
+			});
+			break;
+		}
+	}
+	return false;
 };

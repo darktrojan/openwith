@@ -15,32 +15,28 @@ function contextMenuLinkClicked(info) {
 }
 
 function openBrowser(browser_id, url) {
-	for (let b of browsers) {
-		if (b.id == browser_id) {
-			let command = b.command.slice();
-			let found = false;
-			for (let i = 0; i < command.length; i++) {
-				if (command[i] == '%s') {
-					if (url) {
-						command[i] = url;
-					} else {
-						command.splice(i, 1);
-						i--;
-					}
-					found = true;
-				}
+	let browser = browsers.find(b => b.id == browser_id);
+	let command = browser.command.slice();
+	let found = false;
+	for (let i = 0; i < command.length; i++) {
+		if (command[i] == '%s') {
+			if (url) {
+				command[i] = url;
+			} else {
+				command.splice(i, 1);
+				i--;
 			}
-			if (url && !found) {
-				command.push(url);
-			}
-			console.log(command);
-			let port = chrome.runtime.connectNative('ping_pong');
-			port.onMessage.addListener(e => console.log(e));
-			port.onDisconnect.addListener(e => console.error(e, chrome.runtime.lastError));
-			port.postMessage(command);
-			return;
+			found = true;
 		}
 	}
+	if (url && !found) {
+		command.push(url);
+	}
+	console.log(command);
+	let port = chrome.runtime.connectNative('ping_pong');
+	port.onMessage.addListener(e => console.log(e));
+	port.onDisconnect.addListener(e => console.error(e, chrome.runtime.lastError));
+	port.postMessage(command);
 }
 
 chrome.storage.local.get({'browsers': []}, result => {
@@ -73,6 +69,7 @@ function makeMenus() {
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	console.log(message);
+	let {data} = message;
 	switch (message.action) {
 	case 'open_browser':
 		openBrowser(message.id, message.url);
@@ -81,10 +78,10 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		sendResponse(browsers);
 		return true;
 	case 'add_browser':
-		let {data} = message;
 		data.id = ++max_id;
-		browsers.push(message.data);
+		browsers.push(data);
 		chrome.storage.local.set({browsers}, function() {
+			makeMenus();
 			sendResponse(data.id);
 		});
 		return true;
@@ -99,7 +96,19 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			}
 		}
 		chrome.storage.local.set({browsers}, function() {
+			makeMenus();
 			sendResponse(removed);
+		});
+		return true;
+	case 'update_browser':
+		// Update the existing object to keep any stray stuff.
+		let browser = browsers.find(b => b.id == data.id);
+		browser.name = data.name;
+		browser.command = data.command;
+		browser.icon = data.icon;
+		chrome.storage.local.set({browsers}, function() {
+			makeMenus();
+			sendResponse(true);
 		});
 		return true;
 	case 'order_browsers':

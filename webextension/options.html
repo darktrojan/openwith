@@ -35,6 +35,7 @@ ul#browsers li:not(:first-of-type) {
 	line-height: 0;
 }
 .configHolder {
+	-webkit-margin-start: 1em;
 	margin-inline-start: 1em;
 	flex-grow: 1;
 	line-height: 1.33;
@@ -46,6 +47,7 @@ ul#browsers li:not(:first-of-type) {
 	text-align: right;
 }
 form {
+	-webkit-margin-start: 16px;
 	margin-inline-start: 16px;
 	flex-grow: 1;
 }
@@ -95,6 +97,7 @@ ul#logos li {
 	</template>
 </ul>
 <form name="details">
+	<input type="text" name="browser_id" />
 	<input type="file" />
 	<hr />
 	<label>Name:
@@ -111,6 +114,7 @@ ul#logos li {
 			</li>
 		</template>
 	</ul>
+	<button>Update</button>
 </form>
 <script type="text/javascript" src="options.js"></script>
 </body>
