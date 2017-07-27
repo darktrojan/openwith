@@ -1,8 +1,8 @@
-/* globals browser */
+/* globals chrome */
 let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
-browser.runtime.sendMessage({action: 'get_browsers'}).then(function(browsers) {
+chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 	for (let b of browsers) {
 		add_browser(b);
 	}
@@ -13,8 +13,8 @@ browsersList.onclick = function(event) {
 	while (target && target.localName != 'li') {
 		target = target.parentNode;
 	}
-	browser.tabs.query({active:true, currentWindow:true}).then(function(tabs) {
-		browser.runtime.sendMessage({
+	chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
+		chrome.runtime.sendMessage({
 			action: 'open_browser',
 			id: target.dataset.id,
 			url: event.ctrlKey ? null : tabs[0].url

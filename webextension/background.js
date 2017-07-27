@@ -1,8 +1,6 @@
-/* globals browser */
+/* globals chrome */
 var browsers;
 var max_id = 0;
-var port = browser.runtime.connectNative('ping_pong');
-port.onMessage.addListener(console.log.bind(console));
 
 function contextMenuClicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
@@ -36,31 +34,34 @@ function openBrowser(browser_id, url) {
 				command.push(url);
 			}
 			console.log(command);
+			let port = chrome.runtime.connectNative('ping_pong');
+			port.onMessage.addListener(e => console.log(e));
+			port.onDisconnect.addListener(e => console.error(e, chrome.runtime.lastError));
 			port.postMessage(command);
 			return;
 		}
 	}
 }
 
-browser.storage.local.get(['browsers']).then(result => {
+chrome.storage.local.get({'browsers': []}, result => {
 	browsers = result.browsers;
 	sortBrowsers();
 	makeMenus();
 });
 
 function makeMenus() {
-	browser.contextMenus.removeAll();
+	chrome.contextMenus.removeAll();
 
 	for (let b of browsers) {
 		max_id = Math.max(max_id, b.id);
-		browser.contextMenus.create({
+		chrome.contextMenus.create({
 			id: 'browser_' + b.id,
 			title: b.name,
-			contexts: ['page', 'tab'],
+			contexts: ['page'/*, 'tab'*/],
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: contextMenuClicked
 		});
-		browser.contextMenus.create({
+		chrome.contextMenus.create({
 			id: 'browser_link_' + b.id,
 			title: b.name,
 			contexts: ['link'],
@@ -70,7 +71,7 @@ function makeMenus() {
 	}
 }
 
-browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	console.log(message);
 	switch (message.action) {
 	case 'open_browser':
@@ -83,7 +84,7 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		let {data} = message;
 		data.id = ++max_id;
 		browsers.push(message.data);
-		browser.storage.local.set({browsers}).then(function() {
+		chrome.storage.local.set({browsers}, function() {
 			sendResponse(data.id);
 		});
 		return true;
@@ -97,7 +98,7 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 				break;
 			}
 		}
-		browser.storage.local.set({browsers}).then(function() {
+		chrome.storage.local.set({browsers}, function() {
 			sendResponse(removed);
 		});
 		return true;
@@ -106,7 +107,7 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			b.order = message.order.indexOf(b.id);
 		}
 		sortBrowsers();
-		browser.storage.local.set({browsers}).then(function() {
+		chrome.storage.local.set({browsers}, function() {
 			makeMenus();
 			sendResponse(true);
 		});

@@ -1,4 +1,4 @@
-/* globals browser */
+/* globals chrome */
 let browsersList = document.getElementById('browsers');
 browsersList.onclick = function(event) {
 	let li = event.target;
@@ -10,7 +10,7 @@ browsersList.onclick = function(event) {
 	}
 	if (event.target.classList.contains('removeBrowser')) {
 		let id = parseInt(li.dataset.id, 10);
-		browser.runtime.sendMessage({action: 'remove_browser', id}).then(function() {
+		chrome.runtime.sendMessage({action: 'remove_browser', id}, function() {
 			li.remove();
 		});
 		return;
@@ -42,14 +42,14 @@ fileInput.onchange = function() {
 	fr.readAsText(this.files[0]);
 	fr.onload = function() {
 		let data = read_desktop_file(this.result);
-		browser.runtime.sendMessage({action: 'add_browser', data}).then(function(id) {
+		chrome.runtime.sendMessage({action: 'add_browser', data}, function(id) {
 			data.id = id;
 			add_browser(data);
 		});
 	};
 };
 
-browser.runtime.sendMessage({action: 'get_browsers'}).then(function(browsers) {
+chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 	for (let b of browsers) {
 		add_browser(b);
 	}
@@ -92,8 +92,9 @@ function read_desktop_file(text) {
 	return {name, command, icon};
 }
 
+/* exported sort_alphabetically */
 function sort_alphabetically() {
-	browser.runtime.sendMessage({
+	chrome.runtime.sendMessage({
 		action: 'order_browsers',
 		order: Array.map(
 			browsersList.querySelectorAll('li'), function(li) {
