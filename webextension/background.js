@@ -16,7 +16,7 @@ function contextMenuLinkClicked(info) {
 
 function openBrowser(browser_id, url) {
 	let browser = browsers.find(b => b.id == browser_id);
-	let command = browser.command.slice();
+	let command = browser.command.split(/\s+/); // TODO: do this properly
 	let found = false;
 	for (let i = 0; i < command.length; i++) {
 		if (command[i] == '%s') {

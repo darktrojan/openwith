@@ -43,10 +43,20 @@ fileInput.onchange = function() {
 	fr.readAsText(this.files[0]);
 	fr.onload = function() {
 		let data = read_desktop_file(this.result);
-		chrome.runtime.sendMessage({action: 'add_browser', data}, function(id) {
-			data.id = id;
-			add_browser(data);
-		});
+		data.icon = find_icon(data);
+
+		detailsForm.browser_id.value = '';
+		detailsForm.name.value = data.name;
+		detailsForm.command.value = data.command;
+		let selected = logosList.querySelector('.selected');
+		if (selected) {
+			selected.classList.remove('selected');
+		}
+		for (let l of logosList.children) {
+			if (l.dataset.name == data.icon) {
+				l.classList.add('selected');
+			}
+		}
 	};
 };
 
@@ -83,10 +93,7 @@ function read_desktop_file(text) {
 			name = line.substring(5).trim();
 		}
 		else if (line.startsWith('Exec=')) {
-			command = line.substring(5).trim().replace(/%u/ig, '%s').split(/\s+/);
-		}
-		else if (line.startsWith('Icon=')) {
-			icon = line.substring(5).trim();
+			command = line.substring(5).trim().replace(/%u/ig, '%s');
 		}
 	}
 
@@ -105,7 +112,39 @@ function sort_alphabetically() {
 					name: li.querySelector('.name').textContent
 				};
 			}).sort(function(a, b) {
-				return a.name < b.name ? -1 : 1;
+				function split_apart(name) {
+					var parts = [];
+					var lastIsDigit = false;
+					var part = '';
+					for (let c of name) {
+						let currentIsDigit = c >= '0' && c <= '9';
+						if (lastIsDigit != currentIsDigit) {
+							if (part) parts.push(lastIsDigit ? parseInt(part, 10) : part);
+							part = c;
+						} else {
+							part += c;
+						}
+						lastIsDigit = currentIsDigit;
+					}
+					if (part) {
+						parts.push(lastIsDigit ? parseInt(part, 10) : part);
+					}
+					return parts;
+				}
+				let aParts = split_apart(a.name);
+				let bParts = split_apart(b.name);
+				let i;
+				for (i = 0; i < aParts.length && i < bParts.length; i++) {
+					if (aParts[i] < bParts[i]) {
+						return -1;
+					} else if (aParts[i] > bParts[i]) {
+						return 1;
+					}
+				}
+				if (aParts.length == bParts.length) {
+					return 0;
+				}
+				return i == aParts.length ? -1 : 1;
 			}).map(function(e) {
 				browsersList.appendChild(e.li);
 				return e.id;
@@ -167,15 +206,23 @@ logosList.onclick = function(event) {
 
 let detailsForm = document.forms.details;
 detailsForm.onsubmit = function() {
+	let data = {
+		name: this.name.value,
+		command: this.command.value
+	};
+	let selected = logosList.querySelector('.selected');
+	if (selected) {
+		data.icon = selected.dataset.name;
+	}
+
 	for (let li of browsersList.children) {
 		if (li.dataset.id == this.browser_id.value) {
-			let selected = logosList.querySelector('.selected');
-			if (selected) {
-				li.dataset.icon = selected.dataset.name;
-				li.querySelector('img').src = 'icons/' + selected.dataset.name + '_64x64.png';
+			if (data.icon) {
+				li.dataset.icon = data.icon;
+				li.querySelector('img').src = 'icons/' + data.icon + '_64x64.png';
 			}
-			li.querySelector('div.name').textContent = this.name.value;
-			li.querySelector('div.command').textContent = this.command.value;
+			li.querySelector('div.name').textContent = data.name;
+			li.querySelector('div.command').textContent = data.command;
 
 			chrome.runtime.sendMessage({
 				action: 'update_browser',
@@ -186,8 +233,62 @@ detailsForm.onsubmit = function() {
 					command: this.command.value
 				}
 			});
-			break;
+			return false;
 		}
 	}
+
+	chrome.runtime.sendMessage({action: 'add_browser', data}, id => {
+		data.id = id;
+		add_browser(data);
+		this.reset();
+	});
+
 	return false;
 };
+detailsForm.onreset = function() {
+	let selected = logosList.querySelector('.selected');
+	if (selected) {
+		selected.classList.remove('selected');
+	}
+};
+
+function find_icon(data) {
+	let {name, command} = data;
+	name = name.toLowerCase();
+	command = command.toLowerCase();
+
+	function matches(str) {
+		if (typeof str == 'object') {
+			return str.test(name) || str.test(command);
+		}
+		return name.includes(str) || command.includes(str);
+	}
+
+	if (matches('chrome')) {
+		if (matches('beta')) return 'chrome-beta';
+		if (matches('dev')) return 'chrome-dev';
+		if (matches('canary')) return 'chrome-canary';
+		return 'chrome';
+	}
+	if (matches('firefox')) {
+		if (matches('beta')) return 'firefox-beta';
+		if (matches('nightly')) return 'firefox-nightly';
+		return 'firefox';
+	}
+	if (matches('iexplore.exe') || matches(/\b(ms)?ie\d*\b/)) {
+		if (matches(/(explorer|ie) ?6/)) return 'internet-explorer_6';
+		if (matches(/(explorer|ie) ?[78]/)) return 'internet-explorer_7-8';
+		return 'internet-explorer_9-11';
+	}
+	if (matches('opera')) {
+		if (matches('beta')) return 'opera-beta';
+		if (matches('dev')) return 'opera-developer';
+		return 'opera';
+	}
+	for (let str of ['chromium', 'edge', 'pale-moon', 'safari', 'seamonkey', 'vivaldi', 'waterfox']) {
+		if (matches(str)) {
+			return str;
+		}
+	}
+	return null;
+}
