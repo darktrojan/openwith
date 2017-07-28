@@ -6,7 +6,6 @@ def read_desktop_file(path):
 		current_section = None
 		name = None
 		command = None
-		icon = None
 		for line in desktop_file:
 			if line[0] == '[':
 				current_section = line[1:-2]
@@ -17,10 +16,21 @@ def read_desktop_file(path):
 				name = line[5:].strip()
 			elif line.startswith('Exec='):
 				command = line[5:].strip()
-			elif line.startswith('Icon='):
-				icon = line[5:].strip()
 
-		print [name, command, icon]
+		return {
+			'name': name,
+			'command': command
+		}
+
+
+def do_it():
+	results = []
+	for p in paths:
+		for a in apps:
+			fp = os.path.join(p, a) + '.desktop'
+			if os.path.exists(fp):
+				results.append(read_desktop_file(fp))
+	return results
 
 apps = [
 	'Chrome',
@@ -41,8 +51,6 @@ paths = [
 	'/usr/share/applications'
 ]
 
-for p in paths:
-	for a in apps:
-		fp = os.path.join(p, a) + '.desktop'
-		if os.path.exists(fp):
-			read_desktop_file(fp)
+if __name__ == "__main__":
+	for b in do_it():
+		print b

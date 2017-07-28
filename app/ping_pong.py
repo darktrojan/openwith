@@ -62,6 +62,9 @@ except AttributeError:
 		receivedMessage = getMessage()
 		if receivedMessage == "ping":
 			sendMessage(encodeMessage("pong2"))
+		elif receivedMessage == "find":
+			import find_browsers
+			sendMessage(encodeMessage(find_browsers.do_it()))
 		else:
 			# args = [os.path.join('..', 'args.py')]
 			# args.extend(receivedMessage)

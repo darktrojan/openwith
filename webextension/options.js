@@ -80,7 +80,6 @@ function read_desktop_file(text) {
 	let current_section = null;
 	let name = null;
 	let command = null;
-	let icon = null;
 	for (let line of text.split(/\r?\n/)) {
 		if (line[0] == '[') {
 			current_section = line.substring(1, line.length - 1);
@@ -97,7 +96,7 @@ function read_desktop_file(text) {
 		}
 	}
 
-	return {name, command, icon};
+	return {name, command};
 }
 
 /* exported sort_alphabetically */
@@ -111,46 +110,48 @@ function sort_alphabetically() {
 					id: parseInt(li.dataset.id, 10),
 					name: li.querySelector('.name').textContent
 				};
-			}).sort(function(a, b) {
-				function split_apart(name) {
-					var parts = [];
-					var lastIsDigit = false;
-					var part = '';
-					for (let c of name) {
-						let currentIsDigit = c >= '0' && c <= '9';
-						if (lastIsDigit != currentIsDigit) {
-							if (part) parts.push(lastIsDigit ? parseInt(part, 10) : part);
-							part = c;
-						} else {
-							part += c;
-						}
-						lastIsDigit = currentIsDigit;
-					}
-					if (part) {
-						parts.push(lastIsDigit ? parseInt(part, 10) : part);
-					}
-					return parts;
-				}
-				let aParts = split_apart(a.name);
-				let bParts = split_apart(b.name);
-				let i;
-				for (i = 0; i < aParts.length && i < bParts.length; i++) {
-					if (aParts[i] < bParts[i]) {
-						return -1;
-					} else if (aParts[i] > bParts[i]) {
-						return 1;
-					}
-				}
-				if (aParts.length == bParts.length) {
-					return 0;
-				}
-				return i == aParts.length ? -1 : 1;
-			}).map(function(e) {
+			}).sort(version_aware_sort).map(function(e) {
 				browsersList.appendChild(e.li);
 				return e.id;
 			}
 		)
 	});
+}
+
+function version_aware_sort(a, b) {
+	function split_apart(name) {
+		var parts = [];
+		var lastIsDigit = false;
+		var part = '';
+		for (let c of name) {
+			let currentIsDigit = c >= '0' && c <= '9';
+			if (lastIsDigit != currentIsDigit) {
+				if (part) parts.push(lastIsDigit ? parseInt(part, 10) : part);
+				part = c;
+			} else {
+				part += c;
+			}
+			lastIsDigit = currentIsDigit;
+		}
+		if (part) {
+			parts.push(lastIsDigit ? parseInt(part, 10) : part);
+		}
+		return parts;
+	}
+	let aParts = split_apart(a.name);
+	let bParts = split_apart(b.name);
+	let i;
+	for (i = 0; i < aParts.length && i < bParts.length; i++) {
+		if (aParts[i] < bParts[i]) {
+			return -1;
+		} else if (aParts[i] > bParts[i]) {
+			return 1;
+		}
+	}
+	if (aParts.length == bParts.length) {
+		return 0;
+	}
+	return i == aParts.length ? -1 : 1;
 }
 
 // NB: this list isn't quite in order.
@@ -291,4 +292,24 @@ function find_icon(data) {
 		}
 	}
 	return null;
+}
+
+function find_new_browsers() {
+	chrome.runtime.sendNativeMessage('ping_pong', 'find', function(results) {
+		for (let data of results.sort(version_aware_sort)) {
+			data.command = data.command.replace(/%u/ig, '%s');
+
+			if ([...browsersList.querySelectorAll('li')].find(function(li) {
+				return li.querySelector('.command').textContent == data.command;
+			})) {
+				continue;
+			}
+
+			data.icon = find_icon(data);
+			chrome.runtime.sendMessage({action: 'add_browser', data}, id => {
+				data.id = id;
+				add_browser(data);
+			});
+		}
+	});
 }
