@@ -21,17 +21,20 @@ browsersList.onclick = function(event) {
 	}
 	li.classList.add('selected');
 
-	detailsForm.browser_id.value = li.dataset.id;
-	detailsForm.name.value = li.querySelector('.name').textContent;
-	detailsForm.command.value = li.querySelector('.command').textContent;
-	selected = logosList.querySelector('.selected');
-	if (selected) {
-		selected.classList.remove('selected');
-	}
-	for (let l of logosList.children) {
-		if (l.dataset.name == li.dataset.icon) {
-			l.classList.add('selected');
+	if (event.target.classList.contains('editBrowser')) {
+		detailsForm.browser_id.value = li.dataset.id;
+		detailsForm.name.value = li.querySelector('.name').textContent;
+		detailsForm.command.value = li.querySelector('.command').textContent;
+		selected = logosList.querySelector('.selected');
+		if (selected) {
+			selected.classList.remove('selected');
 		}
+		for (let l of logosList.children) {
+			if (l.dataset.name == li.dataset.icon) {
+				l.classList.add('selected');
+			}
+		}
+		document.documentElement.dataset.mode = 'editing';
 	}
 };
 
@@ -205,6 +208,17 @@ logosList.onclick = function(event) {
 	target.classList.add('selected');
 };
 
+let formBackground = document.getElementById('bg');
+formBackground.onclick = function() {
+	detailsForm.reset();
+};
+
+document.documentElement.onkeypress = function(event) {
+	if (event.key == "Escape") {
+		detailsForm.reset();
+	}
+};
+
 let detailsForm = document.forms.details;
 detailsForm.onsubmit = function() {
 	let data = {
@@ -234,6 +248,7 @@ detailsForm.onsubmit = function() {
 					command: this.command.value
 				}
 			});
+			this.reset();
 			return false;
 		}
 	}
@@ -251,6 +266,7 @@ detailsForm.onreset = function() {
 	if (selected) {
 		selected.classList.remove('selected');
 	}
+	delete document.documentElement.dataset.mode;
 };
 
 function find_icon(data) {

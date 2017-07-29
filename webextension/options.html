@@ -23,6 +23,7 @@ ul#browsers {
 	background-color: white;
 	flex-shrink: 0;
 	overflow-y: auto;
+	transition: filter 125ms;
 }
 ul#browsers li {
 	display: flex;
@@ -46,10 +47,50 @@ ul#browsers li:not(:first-of-type) {
 .controls {
 	text-align: right;
 }
-form {
-	-webkit-margin-start: 16px;
-	margin-inline-start: 16px;
-	flex-grow: 1;
+#bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	visibility: hidden;
+	transition: background-color 125ms, visibility 0s 125ms;
+}
+form[name="details"] {
+	position: fixed;
+	background: #fff;
+	padding: 1em;
+	width: 30em;
+	box-sizing: border-box;
+	left: 50%;
+	top: 5em;
+	border: 1px #999 solid;
+	transform: translate(-15em);
+	display: none;
+}
+:root[data-mode] #browsers {
+	filter: blur(2px);
+}
+:root[data-mode] #bg {
+	background-color: rgba(0, 0, 0, 0.25);
+	visibility: visible;
+	transition: background-color 125ms, visibility 0s;
+}
+:root[data-mode] form[name="details"] {
+	display: block;
+}
+h2 {
+	font-size: 2em;
+	font-weight: 100;
+}
+.adding,
+.editing {
+	display: none;
+}
+:root[data-mode="adding"] .adding,
+:root[data-mode="editing"] .editing {
+	display: unset;
 }
 label {
 	display: block;
@@ -90,13 +131,17 @@ ul#logos li {
 				<div class="name"></div>
 				<div class="command"></div>
 				<div class="controls">
+					<button class="editBrowser">Edit</button>
 					<button class="removeBrowser">Remove</button>
 				</div>
 			</div>
 		</li>
 	</template>
 </ul>
+<div id="bg"></div>
 <form name="details">
+	<h2 class="adding">Add browser</h2>
+	<h2 class="editing">Edit browser</h2>
 	<input type="text" name="browser_id" />
 	<input type="file" />
 	<hr />
@@ -114,7 +159,9 @@ ul#logos li {
 			</li>
 		</template>
 	</ul>
-	<button>Update</button>
+	<button class="adding">Add</button>
+	<button class="editing">Update</button>
+	<button type="reset">Cancel</button>
 </form>
 <script type="text/javascript" src="options.js"></script>
 </body>
