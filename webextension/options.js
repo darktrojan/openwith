@@ -1,4 +1,16 @@
 /* globals chrome */
+let clickMeButton = document.querySelector('#install > button');
+let clickMeResult = document.querySelector('#install > div');
+clickMeButton.onclick = function() {
+	chrome.runtime.sendNativeMessage('ping_pong', 'ping', function(message) {
+		if (message) {
+			clickMeResult.textContent = `Found version ${message.version} at ${message.file}`;
+		} else {
+			clickMeResult.textContent = chrome.runtime.lastError;
+		}
+	});
+};
+
 let browsersList = document.getElementById('browsers');
 browsersList.onclick = function(event) {
 	let li = event.target;
@@ -328,4 +340,17 @@ function find_new_browsers() {
 			});
 		}
 	});
+}
+
+function pointless_sha1_function() {
+	fetch('ping_pong.py')
+		.then(r => r.arrayBuffer())
+		.then(ab => crypto.subtle.digest('sha-1', ab))
+		.then(sha => new Promise(resolve => {
+			let fr = new FileReader();
+			fr.onload = () => resolve(fr.result);
+			fr.readAsBinaryString(new Blob([sha]));
+		}))
+		.then(bs => Array.map(bs, a => a.charCodeAt(0).toString(16).padStart(2, '0')).join(''))
+		.then(console.log.bind(console));
 }

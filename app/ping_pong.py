@@ -61,7 +61,10 @@ except AttributeError:
 	while True:
 		receivedMessage = getMessage()
 		if receivedMessage == "ping":
-			sendMessage(encodeMessage("pong2"))
+			sendMessage(encodeMessage({
+				'version': 7,
+				'file': os.path.realpath(__file__)
+			}))
 		elif receivedMessage == "find":
 			import find_browsers
 			sendMessage(encodeMessage(find_browsers.do_it()))

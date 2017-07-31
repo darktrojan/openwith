@@ -7,6 +7,15 @@ body {
 	display: flex;
 	height: calc(100% - 16px);
 	margin: 8px;
+	justify-content: center;
+}
+div#left {
+	width: 25em;
+	-webkit-margin-end: 16px;
+	margin-inline-end: 16px;
+	display: flex;
+	flex-direction: column;
+	transition: filter 125ms;
 }
 ul#browsers {
 	width: 40em;
@@ -63,6 +72,7 @@ form[name="details"] {
 	transform: translate(-15em);
 	display: none;
 }
+:root[data-mode] #left,
 :root[data-mode] #browsers {
 	filter: blur(2px);
 }
