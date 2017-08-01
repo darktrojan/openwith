@@ -19,13 +19,8 @@ function openBrowser(browser_id, url) {
 	let command = browser.command.split(/\s+/); // TODO: do this properly
 	let found = false;
 	for (let i = 0; i < command.length; i++) {
-		if (command[i] == '%s') {
-			if (url) {
-				command[i] = url;
-			} else {
-				command.splice(i, 1);
-				i--;
-			}
+		if (command[i].includes('%s')) {
+			command[i] = command[i].replace('%s', url ? url : '');
 			found = true;
 		}
 	}
