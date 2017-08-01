@@ -1,5 +1,6 @@
 html {
 	font: message-box;
+	line-height: 1.33;
 	background-color: -moz-dialog;
 	height: 100%;
 }
@@ -121,4 +122,8 @@ ul#logos li {
 .selected {
 	background-color: highlight;
 	color: highlighttext;
+}
+.submit {
+	margin-top: 1em;
+	text-align: center;
 }

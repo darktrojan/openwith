@@ -2,13 +2,32 @@
 let clickMeButton = document.querySelector('#install > button');
 let clickMeResult = document.querySelector('#install > div');
 clickMeButton.onclick = function() {
-	chrome.runtime.sendNativeMessage('ping_pong', 'ping', function(message) {
+	let port = chrome.runtime.connectNative('ping_pong');
+	port.onMessage.addListener(function(message) {
 		if (message) {
 			clickMeResult.textContent = `Found version ${message.version} at ${message.file}`;
 		} else {
 			clickMeResult.textContent = chrome.runtime.lastError;
 		}
+		port.disconnect();
 	});
+	port.postMessage('ping');
+};
+
+let findBrowsersButton = document.querySelectorAll('#addbrowser > button')[0];
+findBrowsersButton.onclick = function() {
+	find_new_browsers();
+};
+
+let addBrowserButton = document.querySelectorAll('#addbrowser > button')[1];
+addBrowserButton.onclick = function() {
+	document.documentElement.dataset.mode = 'adding';
+	detailsForm.name.select();
+};
+
+let sortListButton = document.querySelectorAll('#addbrowser > button')[2];
+sortListButton.onclick = function() {
+	sort_alphabetically();
 };
 
 let browsersList = document.getElementById('browsers');
@@ -47,33 +66,34 @@ browsersList.onclick = function(event) {
 			}
 		}
 		document.documentElement.dataset.mode = 'editing';
+		detailsForm.name.select();
 	}
 };
 
 let browsersTemplate = browsersList.querySelector('template');
 
-let fileInput = document.querySelector('input[type="file"]');
-fileInput.onchange = function() {
-	let fr = new FileReader();
-	fr.readAsText(this.files[0]);
-	fr.onload = function() {
-		let data = read_desktop_file(this.result);
-		data.icon = find_icon(data);
+// let fileInput = document.querySelector('input[type='file']');
+// fileInput.onchange = function() {
+// 	let fr = new FileReader();
+// 	fr.readAsText(this.files[0]);
+// 	fr.onload = function() {
+// 		let data = read_desktop_file(this.result);
+// 		data.icon = find_icon(data);
 
-		detailsForm.browser_id.value = '';
-		detailsForm.name.value = data.name;
-		detailsForm.command.value = data.command;
-		let selected = logosList.querySelector('.selected');
-		if (selected) {
-			selected.classList.remove('selected');
-		}
-		for (let l of logosList.children) {
-			if (l.dataset.name == data.icon) {
-				l.classList.add('selected');
-			}
-		}
-	};
-};
+// 		detailsForm.browser_id.value = '';
+// 		detailsForm.name.value = data.name;
+// 		detailsForm.command.value = data.command;
+// 		let selected = logosList.querySelector('.selected');
+// 		if (selected) {
+// 			selected.classList.remove('selected');
+// 		}
+// 		for (let l of logosList.children) {
+// 			if (l.dataset.name == data.icon) {
+// 				l.classList.add('selected');
+// 			}
+// 		}
+// 	};
+// };
 
 chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 	for (let b of browsers) {
@@ -118,8 +138,7 @@ function read_desktop_file(text) {
 function sort_alphabetically() {
 	chrome.runtime.sendMessage({
 		action: 'order_browsers',
-		order: Array.map(
-			browsersList.querySelectorAll('li'), function(li) {
+		order: [...browsersList.querySelectorAll('li')].map(function(li) {
 				return {
 					li,
 					id: parseInt(li.dataset.id, 10),
@@ -219,6 +238,53 @@ logosList.onclick = function(event) {
 	}
 	target.classList.add('selected');
 };
+logosList.onkeypress = function(event) {
+	let selected = this.querySelector('.selected');
+	if (!selected) {
+		if (['ArrowRight', 'ArrowDown'].includes(event.key)) {
+			this.querySelector('li').classList.add('selected');
+		}
+		return;
+	}
+	let rowLength = Math.floor(this.getBoundingClientRect().width / this.lastElementChild.getBoundingClientRect().width);
+	let items = [...this.querySelectorAll('li')];
+	let index = items.indexOf(selected);
+
+	switch (event.key) {
+	case 'ArrowUp':
+		if (index - rowLength >= 0) {
+			selected.classList.remove('selected');
+			items[index - rowLength].classList.add('selected');
+		}
+		event.preventDefault();
+		break;
+	case 'ArrowLeft':
+		if (selected.previousElementSibling) {
+			selected.classList.remove('selected');
+			selected.previousElementSibling.classList.add('selected');
+		}
+		event.preventDefault();
+		break;
+	case 'ArrowRight':
+		if (selected.nextElementSibling) {
+			selected.classList.remove('selected');
+			selected.nextElementSibling.classList.add('selected');
+		}
+		event.preventDefault();
+		break;
+	case 'ArrowDown':
+		if (index + rowLength < items.length) {
+			selected.classList.remove('selected');
+			items[index + rowLength].classList.add('selected');
+		}
+		event.preventDefault();
+		break;
+	case 'Enter':
+		event.preventDefault();
+		detailsForm.onsubmit();
+		break;
+	}
+};
 
 let formBackground = document.getElementById('bg');
 formBackground.onclick = function() {
@@ -226,7 +292,7 @@ formBackground.onclick = function() {
 };
 
 document.documentElement.onkeypress = function(event) {
-	if (event.key == "Escape") {
+	if (event.key == 'Escape') {
 		detailsForm.reset();
 	}
 };
@@ -323,7 +389,8 @@ function find_icon(data) {
 }
 
 function find_new_browsers() {
-	chrome.runtime.sendNativeMessage('ping_pong', 'find', function(results) {
+	let port = chrome.runtime.connectNative('ping_pong');
+	port.onMessage.addListener(function(results) {
 		for (let data of results.sort(version_aware_sort)) {
 			data.command = data.command.replace(/%u/ig, '%s');
 
@@ -339,7 +406,9 @@ function find_new_browsers() {
 				add_browser(data);
 			});
 		}
+		port.disconnect();
 	});
+	port.postMessage('find');
 }
 
 function pointless_sha1_function() {

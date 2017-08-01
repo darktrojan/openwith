@@ -8,10 +8,10 @@
 <body>
 <div id="left">
 	<div id="install">
-		<a href="ping_pong.py" download="">Download</a>
-
+		<h2 style="margin: 0">Install:</h2>
+		<p>Open With needs a file outside of the browser to communicate with.</p>
 		<ol>
-			<li>Click the download button above and save the file to your computer.</li>
+			<li><a href="ping_pong.py" download="">Click here to download</a> and save the file to your computer.</li>
 			<li>Ensure the file permissions allow you to run it ("x" permission).</li>
 			<li>
 				Run the file with the argument "install", like this:
@@ -22,6 +22,11 @@
 
 		<button>Test</button>
 		<div id="result"></div>
+	</div>
+	<div id="addbrowser">
+		<button>Look for browsers</button>
+		<button>Add browser</button>
+		<button>Sort list</button>
 	</div>
 	<div style="flex-grow: 1"></div>
 	<div align="center">
@@ -50,9 +55,9 @@
 <form name="details">
 	<h2 class="adding">Add browser</h2>
 	<h2 class="editing">Edit browser</h2>
-	<input type="text" name="browser_id" />
-	<input type="file" />
-	<hr />
+	<input type="hidden" name="browser_id" />
+	<!-- <input type="file" /> -->
+	<!-- <hr /> -->
 	<label>Name:
 		<input type="text" name="name" />
 	</label>
@@ -60,16 +65,18 @@
 		<input type="text" name="command" />
 	</label>
 	<label>Icon:</label>
-	<ul id="logos">
+	<ul id="logos" tabindex="0">
 		<template>
 			<li>
 				<img src="" width="32" height="32" />
 			</li>
 		</template>
 	</ul>
-	<button class="adding">Add</button>
-	<button class="editing">Update</button>
-	<button type="reset">Cancel</button>
+	<div class="submit">
+		<button class="adding">Add</button>
+		<button class="editing">Update</button>
+		<button type="reset">Cancel</button>
+	</div>
 </form>
 <script type="text/javascript" src="options.js"></script>
 </body>
