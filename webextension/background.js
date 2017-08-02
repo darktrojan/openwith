@@ -28,7 +28,7 @@ function openBrowser(browser_id, url) {
 		command.push(url);
 	}
 	console.log(command);
-	let port = chrome.runtime.connectNative('ping_pong');
+	let port = chrome.runtime.connectNative('open_with');
 	port.onMessage.addListener(e => console.log(e));
 	port.onDisconnect.addListener(e => console.error(e, chrome.runtime.lastError));
 	port.postMessage(command);

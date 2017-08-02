@@ -2,7 +2,7 @@
 let clickMeButton = document.querySelector('#install > button');
 let clickMeResult = document.querySelector('#install > div');
 clickMeButton.onclick = function() {
-	let port = chrome.runtime.connectNative('ping_pong');
+	let port = chrome.runtime.connectNative('open_with');
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			clickMeResult.textContent = `Found version ${message.version} at ${message.file}`;
@@ -389,7 +389,7 @@ function find_icon(data) {
 }
 
 function find_new_browsers() {
-	let port = chrome.runtime.connectNative('ping_pong');
+	let port = chrome.runtime.connectNative('open_with');
 	port.onMessage.addListener(function(results) {
 		for (let data of results.sort(version_aware_sort)) {
 			data.command = data.command.replace(/%u/ig, '%s');
@@ -412,7 +412,7 @@ function find_new_browsers() {
 }
 
 function pointless_sha1_function() {
-	fetch('ping_pong.py')
+	fetch('open_with.py')
 		.then(r => r.arrayBuffer())
 		.then(ab => crypto.subtle.digest('sha-1', ab))
 		.then(sha => new Promise(resolve => {
