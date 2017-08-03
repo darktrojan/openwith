@@ -15,8 +15,35 @@ function contextMenuLinkClicked(info) {
 }
 
 function openBrowser(browser_id, url) {
+	function splitArgs(argString) {
+		let args = [];
+
+		let temp = '';
+		let inQuotes = false;
+		for (let c of argString) {
+			if (c == '"') {
+				if (temp.endsWith('\\')) {
+					temp = temp.substring(0, temp.length - 1) + c;
+				} else {
+					inQuotes = !inQuotes;
+				}
+			} else if (c == ' ' && !inQuotes) {
+				args.push(temp);
+				temp = '';
+			} else {
+				temp += c;
+			}
+		}
+
+		if (temp.length > 0) {
+			args.push(temp);
+		}
+
+		return args;
+	}
+
 	let browser = browsers.find(b => b.id == browser_id);
-	let command = browser.command.split(/\s+/); // TODO: do this properly
+	let command = splitArgs(browser.command); // TODO: do this properly
 	let found = false;
 	for (let i = 0; i < command.length; i++) {
 		if (command[i].includes('%s')) {

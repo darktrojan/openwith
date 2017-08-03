@@ -1,4 +1,9 @@
 /* globals chrome */
+chrome.runtime.getPlatformInfo(function(platformInfo) {
+	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os))
+	document.getElementById('install').hidden = false;
+});
+
 let clickMeButton = document.querySelector('#install > button');
 let clickMeResult = document.querySelector('#install > div');
 clickMeButton.onclick = function() {
