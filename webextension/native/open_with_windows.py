@@ -125,9 +125,8 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
-			devnull = open(os.devnull, 'w')
-			subprocess.Popen(receivedMessage, stdout=devnull, stderr=devnull)
-
+			CREATE_BREAKAWAY_FROM_JOB = 0x01000000
+			subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
 
 if __name__ == '__main__':
 	if len(sys.argv) == 2:

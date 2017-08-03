@@ -1,16 +1,22 @@
 /* globals chrome */
 chrome.runtime.getPlatformInfo(function(platformInfo) {
-	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os))
+	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
 });
 
 let clickMeButton = document.querySelector('#install > button');
 let clickMeResult = document.querySelector('#install > div');
 clickMeButton.onclick = function() {
+	function ffs() {
+		clickMeResult.textContent = 'ffs';
+	}
+
 	let port = chrome.runtime.connectNative('open_with');
+	port.onDisconnect.addListener(ffs);
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			clickMeResult.textContent = `Found version ${message.version} at ${message.file}`;
+			port.onDisconnect.removeListener(ffs);
 		} else {
 			clickMeResult.textContent = chrome.runtime.lastError;
 		}
