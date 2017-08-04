@@ -120,6 +120,10 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
+			for k, v in os.environ.iteritems():
+				if k.startswith('MOZ_'):
+					os.unsetenv(k)
+
 			devnull = open(os.devnull, 'w')
 			command = ['/usr/bin/open', '-a'] + receivedMessage
 			subprocess.Popen(command, stdout=devnull, stderr=devnull)

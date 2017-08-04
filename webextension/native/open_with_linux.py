@@ -144,6 +144,10 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
+			for k, v in os.environ.iteritems():
+				if k.startswith('MOZ_'):
+					os.unsetenv(k)
+
 			devnull = open(os.devnull, 'w')
 			subprocess.Popen(receivedMessage, stdout=devnull, stderr=devnull)
 

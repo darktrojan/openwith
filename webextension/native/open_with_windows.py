@@ -125,6 +125,10 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
+			for k, v in os.environ.iteritems():
+				if k.startswith('MOZ_'):
+					os.unsetenv(k)
+
 			CREATE_BREAKAWAY_FROM_JOB = 0x01000000
 			subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
 
