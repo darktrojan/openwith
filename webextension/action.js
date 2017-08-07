@@ -23,6 +23,20 @@ browsersList.onclick = function(event) {
 	});
 };
 
+document.querySelector('.panel-section-footer-button').onclick = function() {
+	let url = chrome.extension.getURL('options.html');
+	chrome.tabs.query({ url }, function(result) {
+		if (result.length > 0) {
+			let tab = result[0];
+			chrome.tabs.update(tab.id, { active: true });
+			chrome.windows.update(tab.windowId, { focused: true });
+		} else {
+			chrome.tabs.create({ url });
+		}
+		window.close();
+	});
+};
+
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;

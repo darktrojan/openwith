@@ -13,17 +13,27 @@
 	margin-inline-start: 8px;
 	white-space: nowrap;
 }
+.panel-section-footer-button {
+	margin: 0;
+}
 </style>
 </head>
-<body class="panel">
-<ul id="browsers">
-	<template>
-		<li class="panel-list-item">
-			<img class="icon" />
-			<div class="name text"></div>
-		</li>
-	</template>
-</ul>
+<body>
+<div class="panel">
+	<div class="panel-section panel-section-list">
+		<ul id="browsers">
+			<template>
+				<li class="panel-list-item">
+					<img class="icon" />
+					<div class="name text"></div>
+				</li>
+			</template>
+		</ul>
+	</div>
+	<div class="panel-section panel-section-footer">
+		<div class="panel-section-footer-button">Open With options&#x2026;</div>
+	</div>
+</div>
 <script type="text/javascript" src="action.js"></script>
 </body>
 </html>
