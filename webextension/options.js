@@ -80,6 +80,7 @@ browsersList.onclick = function(event) {
 		detailsForm.name.select();
 	}
 };
+let dragged, draggedNext;
 browsersList.ondragstart = function(event) {
 	let { target } = event;
 	while (target != this && target.localName != 'li') {
@@ -88,6 +89,9 @@ browsersList.ondragstart = function(event) {
 	if (target == this) {
 		return;
 	}
+
+	dragged = target;
+	draggedNext = target.nextElementSibling;
 
 	event.dataTransfer.setData('openwith/drag', target.dataset.id);
 	event.dataTransfer.effectAllowed = 'move';
@@ -101,9 +105,6 @@ browsersList.ondragenter = browsersList.ondragover = function(event) {
 		return;
 	}
 
-	let draggedId = event.dataTransfer.getData('openwith/drag');
-	let dragged = browsersList.querySelector('li[data-id="' + draggedId + '"]');
-
 	switch (target.compareDocumentPosition(dragged)) {
 	case Node.DOCUMENT_POSITION_FOLLOWING:
 		browsersList.insertBefore(dragged, target);
@@ -115,7 +116,15 @@ browsersList.ondragenter = browsersList.ondragover = function(event) {
 
 	event.preventDefault();
 };
-browsersList.ondrop = function() {
+browsersList.ondrop = function(event) {
+	dragged = draggedNext = null;
+};
+browsersList.ondragend = function(event) {
+	if (dragged) { // ondrop didn't happen
+		browsersList.insertBefore(dragged, draggedNext);
+		dragged = draggedNext = null;
+		return;
+	}
 	chrome.runtime.sendMessage({
 		action: 'order_browsers',
 		order: [...browsersList.querySelectorAll('li')].map(li => parseInt(li.dataset.id, 10))
