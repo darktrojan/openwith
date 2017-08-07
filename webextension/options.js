@@ -116,7 +116,7 @@ function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
 	li.dataset.icon = b.icon;
-	li.querySelector('img').src = 'icons/' + b.icon + '_64x64.png';
+	li.querySelector('img').src = 'logos/' + b.icon + '_64x64.png';
 	li.querySelector('div.name').textContent = b.name;
 	li.querySelector('div.command').textContent = Array.isArray(b.command) ? b.command.join(' ') : b.command;
 	browsersList.appendChild(li);
@@ -229,7 +229,7 @@ let logosTemplate = logosList.querySelector('template');
 for (let l of logos) {
 	let li = logosTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.name = l;
-	li.querySelector('img').src = 'icons/' + l + '_32x32.png';
+	li.querySelector('img').src = 'logos/' + l + '_32x32.png';
 	li.title = l.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');
 	logosList.appendChild(li);
 }
@@ -323,7 +323,7 @@ detailsForm.onsubmit = function() {
 		if (li.dataset.id == this.browser_id.value) {
 			if (data.icon) {
 				li.dataset.icon = data.icon;
-				li.querySelector('img').src = 'icons/' + data.icon + '_64x64.png';
+				li.querySelector('img').src = 'logos/' + data.icon + '_64x64.png';
 			}
 			li.querySelector('div.name').textContent = data.name;
 			li.querySelector('div.command').textContent = data.command;

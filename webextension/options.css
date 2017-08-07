@@ -123,6 +123,10 @@ ul#logos li {
 	background-color: highlight;
 	color: highlighttext;
 }
+#logosCredit {
+	text-align: right;
+	font-size: smaller;
+}
 .submit {
 	margin-top: 1em;
 	text-align: center;

@@ -26,7 +26,7 @@ browsersList.onclick = function(event) {
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
-	li.querySelector('img').src = 'icons/' + b.icon + '_16x16.png';
+	li.querySelector('img').src = 'logos/' + b.icon + '_16x16.png';
 	li.querySelector('div.name').textContent = b.name;
 	browsersList.appendChild(li);
 }
