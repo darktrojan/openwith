@@ -65,14 +65,14 @@ def install():
 		file.write('@echo off\ncall "%s" "%s"\n' % (sys.executable, this_file))
 
 	registry_locations = {
-		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
+		# 'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
 	}
 
 	for browser, registry_location in registry_locations.iteritems():
 		browser_manifest = manifest.copy()
 		if browser == 'firefox':
-			browser_manifest['allowed_extensions'] = ['newopenwith@darktrojan.net']
+			browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 		else:
 			browser_manifest['allowed_origins'] = ['chrome-extension://eboojgmpoadapdemnbhjnnlnnnoijefc/']
 
@@ -119,7 +119,7 @@ def listen():
 		receivedMessage = getMessage()
 		if receivedMessage == 'ping':
 			sendMessage({
-				'version': 7,
+				'version': '7.0b1',
 				'file': os.path.realpath(__file__)
 			})
 		elif receivedMessage == 'find':

@@ -4,21 +4,21 @@ chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.getElementById('install').hidden = false;
 });
 
-let clickMeButton = document.querySelector('#install > button');
-let clickMeResult = document.querySelector('#install > div');
-clickMeButton.onclick = function() {
-	function ffs() {
-		clickMeResult.textContent = 'ffs';
+let testButton = document.querySelector('#install > button');
+let testResult = document.querySelector('#install > div');
+testButton.onclick = function() {
+	function errorListener() {
+		testResult.textContent = 'Something went wrong. There might be more information in the Browser Console.';
 	}
 
 	let port = chrome.runtime.connectNative('open_with');
-	port.onDisconnect.addListener(ffs);
+	port.onDisconnect.addListener(errorListener);
 	port.onMessage.addListener(function(message) {
 		if (message) {
-			clickMeResult.textContent = `Found version ${message.version} at ${message.file}`;
-			port.onDisconnect.removeListener(ffs);
+			testResult.textContent = `Found version ${message.version} at ${message.file}.`;
+			port.onDisconnect.removeListener(errorListener);
 		} else {
-			clickMeResult.textContent = chrome.runtime.lastError;
+			testResult.textContent = chrome.runtime.lastError;
 		}
 		port.disconnect();
 	});

@@ -58,8 +58,8 @@ def install():
 		'type': 'stdio',
 	}
 	locations = {
-		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
-		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
+		# 'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
+		# 'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
@@ -71,7 +71,7 @@ def install():
 
 			browser_manifest = manifest.copy()
 			if browser == 'firefox':
-				browser_manifest['allowed_extensions'] = ['newopenwith@darktrojan.net']
+				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = ['chrome-extension://eboojgmpoadapdemnbhjnnlnnnoijefc/']
 
@@ -114,7 +114,7 @@ def listen():
 		receivedMessage = getMessage()
 		if receivedMessage == 'ping':
 			sendMessage({
-				'version': 7,
+				'version': '7.0b1',
 				'file': os.path.realpath(__file__)
 			})
 		elif receivedMessage == 'find':

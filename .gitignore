@@ -1,5 +1,5 @@
 args.json
 *.xpi
 *.pyc
-webextension/browser-logos
+browser-logos
 webextension/logos
