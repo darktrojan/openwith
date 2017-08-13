@@ -1,11 +1,11 @@
 {
 	"manifest_version": 2,
 	"name": "Open With",
-	"version": "7.0b2",
+	"version": "7.0b3",
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
-			"strict_min_version": "55.0"
+			"strict_min_version": "54.0"
 		}
 	},
 	"background": {

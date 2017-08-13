@@ -124,7 +124,10 @@ def listen():
 		else:
 			for k, v in os.environ.items():
 				if k.startswith('MOZ_'):
-					os.unsetenv(k)
+					try:
+						os.unsetenv(k)
+					except:
+						os.environ[k] = ''
 
 			devnull = open(os.devnull, 'w')
 			command = ['/usr/bin/open', '-a'] + receivedMessage

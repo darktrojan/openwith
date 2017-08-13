@@ -136,7 +136,10 @@ def listen():
 		else:
 			for k, v in os.environ.items():
 				if k.startswith('MOZ_'):
-					os.unsetenv(k)
+					try:
+						os.unsetenv(k)
+					except:
+						os.environ[k] = ''
 
 			CREATE_BREAKAWAY_FROM_JOB = 0x01000000
 			subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
