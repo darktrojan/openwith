@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import os
 import sys
 import json
@@ -48,7 +50,11 @@ except AttributeError:
 
 
 def install():
-	import sys, _winreg
+	import sys
+	try:
+		import winreg as _winreg
+	except:
+		import _winreg
 
 	this_file = os.path.realpath(__file__)
 	install_path = os.path.dirname(this_file)
@@ -69,7 +75,7 @@ def install():
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
 	}
 
-	for browser, registry_location in registry_locations.iteritems():
+	for browser, registry_location in registry_locations.items():
 		browser_manifest = manifest.copy()
 		if browser == 'firefox':
 			browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
@@ -90,7 +96,10 @@ def install():
 
 
 def find_browsers():
-	import _winreg
+	try:
+		import winreg as _winreg
+	except:
+		import _winreg
 
 	windir = os.getenv('windir')
 	key = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, os.path.join('Software', 'Clients', 'StartMenuInternet'))
@@ -125,7 +134,7 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
-			for k, v in os.environ.iteritems():
+			for k, v in os.environ.items():
 				if k.startswith('MOZ_'):
 					os.unsetenv(k)
 
@@ -138,7 +147,7 @@ if __name__ == '__main__':
 			install()
 			sys.exit(0)
 		elif sys.argv[1] == 'find_browsers':
-			print find_browsers()
+			print(find_browsers())
 			sys.exit(0)
 
 	listen()

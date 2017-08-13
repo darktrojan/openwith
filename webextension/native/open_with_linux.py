@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import print_function
+
 import os
 import sys
 import json
@@ -64,7 +66,7 @@ def install():
 	}
 	filename = 'open_with.json'
 
-	for browser, location in locations.iteritems():
+	for browser, location in locations.items():
 		if os.path.exists(os.path.dirname(location)):
 			if not os.path.exists(location):
 				os.mkdir(location)
@@ -144,7 +146,7 @@ def listen():
 		elif receivedMessage == 'find':
 			sendMessage(find_browsers())
 		else:
-			for k, v in os.environ.iteritems():
+			for k, v in os.environ.items():
 				if k.startswith('MOZ_'):
 					os.unsetenv(k)
 
@@ -158,7 +160,7 @@ if __name__ == '__main__':
 			install()
 			sys.exit(0)
 		elif sys.argv[1] == 'find_browsers':
-			print find_browsers()
+			print(find_browsers())
 			sys.exit(0)
 
 	listen()
