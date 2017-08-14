@@ -270,6 +270,7 @@ let logos = [
 	'pale-moon',
 	'safari',
 	'seamonkey',
+	'srware-iron',
 	'vivaldi',
 	'waterfox'
 ];
@@ -419,6 +420,9 @@ function find_icon(data) {
 		return name.includes(str) || command.includes(str);
 	}
 
+	if (matches(/\biron\b/)) {
+		return 'srware-iron';
+	}
 	if (matches('chrome')) {
 		if (matches('beta')) return 'chrome-beta';
 		if (matches('dev')) return 'chrome-dev';
