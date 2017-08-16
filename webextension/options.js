@@ -62,6 +62,7 @@ browsersList.onclick = function(event) {
 		selected.classList.remove('selected');
 	}
 	li.classList.add('selected');
+	li.scrollIntoView();
 
 	if (event.target.classList.contains('editBrowser')) {
 		detailsForm.browser_id.value = li.dataset.id;
@@ -170,6 +171,7 @@ function add_browser(b) {
 	li.querySelector('div.name').textContent = b.name;
 	li.querySelector('div.command').textContent = Array.isArray(b.command) ? b.command.join(' ') : b.command;
 	browsersList.appendChild(li);
+	return li;
 }
 
 function read_desktop_file(text) {
@@ -394,7 +396,13 @@ detailsForm.onsubmit = function() {
 
 	chrome.runtime.sendMessage({action: 'add_browser', data}, id => {
 		data.id = id;
-		add_browser(data);
+		let li = add_browser(data);
+		let selected = browsersList.querySelector('.selected');
+		if (selected) {
+			selected.classList.remove('selected');
+		}
+		li.classList.add('selected');
+		li.scrollIntoView();
 		this.reset();
 	});
 
