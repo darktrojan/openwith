@@ -401,6 +401,7 @@ detailsForm.onsubmit = function() {
 	return false;
 };
 detailsForm.onreset = function() {
+	detailsForm.browser_id.value = '';
 	let selected = logosList.querySelector('.selected');
 	if (selected) {
 		selected.classList.remove('selected');
