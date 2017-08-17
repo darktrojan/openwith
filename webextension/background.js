@@ -55,9 +55,17 @@ function openBrowser(browser_id, url) {
 		command.push(url);
 	}
 	console.log(command);
+
+	function errorListener(error) {
+		console.error(error, chrome.runtime.lastError);
+	}
 	let port = chrome.runtime.connectNative('open_with');
-	port.onMessage.addListener(e => console.log(e));
-	port.onDisconnect.addListener(e => console.error(e, chrome.runtime.lastError));
+	port.onDisconnect.addListener(errorListener);
+	port.onMessage.addListener(function(event) {
+		console.log(event)
+		port.onDisconnect.removeListener(errorListener);
+		port.disconnect();
+	});
 	port.postMessage(command);
 }
 
