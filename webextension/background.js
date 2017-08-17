@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions */
+/* globals chrome, compare_versions, VERSION_WARN */
 var browsers;
 var max_id = 0;
 
@@ -169,12 +169,11 @@ function test() {
 		chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
 	}
 
-	let version_warn = '7.0b1';
 	let port = chrome.runtime.connectNative('open_with');
 	port.onDisconnect.addListener(errorListener);
 	port.onMessage.addListener(function(message) {
 		if (message) {
-			if (compare_versions(message.version, version_warn) < 0) {
+			if (compare_versions(message.version, VERSION_WARN) < 0) {
 				chrome.browserAction.setBadgeText({text: '!'});
 				chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
 			}
