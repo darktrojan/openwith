@@ -1,4 +1,4 @@
-/* globals chrome */
+/* globals chrome, compare_versions */
 var browsers;
 var max_id = 0;
 
@@ -62,7 +62,7 @@ function openBrowser(browser_id, url) {
 	let port = chrome.runtime.connectNative('open_with');
 	port.onDisconnect.addListener(errorListener);
 	port.onMessage.addListener(function(event) {
-		console.log(event)
+		console.log(event);
 		port.onDisconnect.removeListener(errorListener);
 		port.disconnect();
 	});
@@ -162,3 +162,28 @@ function sortBrowsers() {
 		return isNaN(b.order) ? -1 : a.order - b.order;
 	});
 }
+
+function test() {
+	function errorListener() {
+		chrome.browserAction.setBadgeText({text: '!'});
+		chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
+	}
+
+	let version_warn = '7.0b1';
+	let port = chrome.runtime.connectNative('open_with');
+	port.onDisconnect.addListener(errorListener);
+	port.onMessage.addListener(function(message) {
+		if (message) {
+			if (compare_versions(message.version, version_warn) < 0) {
+				chrome.browserAction.setBadgeText({text: '!'});
+				chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
+			}
+		} else {
+			errorListener();
+		}
+		port.onDisconnect.removeListener(errorListener);
+		port.disconnect();
+	});
+	port.postMessage('ping');
+}
+test();

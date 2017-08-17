@@ -1,4 +1,4 @@
-/* globals chrome */
+/* globals chrome, compare_object_versions */
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
@@ -16,10 +16,10 @@ testButton.onclick = function() {
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			testResult.textContent = `Found version ${message.version} at ${message.file}.`;
-			port.onDisconnect.removeListener(errorListener);
 		} else {
-			testResult.textContent = chrome.runtime.lastError;
+			errorListener();
 		}
+		port.onDisconnect.removeListener(errorListener);
 		port.disconnect();
 	});
 	port.postMessage('ping');
@@ -206,48 +206,12 @@ function sort_alphabetically() {
 					id: parseInt(li.dataset.id, 10),
 					name: li.querySelector('.name').textContent
 				};
-			}).sort(version_aware_sort).map(function(e) {
+			}).sort(compare_object_versions).map(function(e) {
 				browsersList.appendChild(e.li);
 				return e.id;
 			}
 		)
 	});
-}
-
-function version_aware_sort(a, b) {
-	function split_apart(name) {
-		var parts = [];
-		var lastIsDigit = false;
-		var part = '';
-		for (let c of name) {
-			let currentIsDigit = c >= '0' && c <= '9';
-			if (lastIsDigit != currentIsDigit) {
-				if (part) parts.push(lastIsDigit ? parseInt(part, 10) : part);
-				part = c;
-			} else {
-				part += c;
-			}
-			lastIsDigit = currentIsDigit;
-		}
-		if (part) {
-			parts.push(lastIsDigit ? parseInt(part, 10) : part);
-		}
-		return parts;
-	}
-	let aParts = split_apart(a.name);
-	let bParts = split_apart(b.name);
-	let i;
-	for (i = 0; i < aParts.length && i < bParts.length; i++) {
-		if (aParts[i] < bParts[i]) {
-			return -1;
-		} else if (aParts[i] > bParts[i]) {
-			return 1;
-		}
-	}
-	if (aParts.length == bParts.length) {
-		return 0;
-	}
-	return i == aParts.length ? -1 : 1;
 }
 
 // NB: this list isn't quite in order.
@@ -464,7 +428,7 @@ function find_icon(data) {
 function find_new_browsers() {
 	let port = chrome.runtime.connectNative('open_with');
 	port.onMessage.addListener(function(results) {
-		for (let data of results.sort(version_aware_sort)) {
+		for (let data of results.sort(compare_object_versions)) {
 			data.command = data.command.replace(/%u/ig, '%s');
 
 			if ([...browsersList.querySelectorAll('li')].find(function(li) {

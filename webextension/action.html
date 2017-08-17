@@ -7,6 +7,19 @@
 body {
 	min-width: 180px;
 }
+#warning,
+#error {
+	display: none;
+	margin: 4px;
+	padding: 8px;
+	color: #fff;
+}
+#warning {
+	background-color: #f90;
+}
+#error {
+	background-color: #f30;
+}
 #browsers {
 	margin: 0;
 	padding: 0;
@@ -23,6 +36,12 @@ body {
 </head>
 <body>
 <div class="panel">
+	<div id="warning" class="panel-section">
+		You should update your Open With file.
+	</div>
+	<div id="error" class="panel-section">
+		Open With could not connect to the outside world.
+	</div>
 	<div class="panel-section panel-section-list">
 		<ul id="browsers">
 			<template>

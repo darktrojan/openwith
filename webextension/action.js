@@ -2,6 +2,17 @@
 let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
+chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
+	chrome.browserAction.setBadgeText({text: ''});
+	chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
+
+	if (color[1] == 51) {
+		document.getElementById('error').style.display = 'block';
+	} else if (color[1] == 153) {
+		document.getElementById('warning').style.display = 'block';
+	}
+});
+
 chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 	for (let b of browsers) {
 		add_browser(b);
