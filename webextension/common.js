@@ -8,9 +8,11 @@ function compare_versions(a, b) {
 		var part = '';
 		for (let c of name) {
 			let currentIsDigit = c >= '0' && c <= '9';
-			if (lastIsDigit != currentIsDigit) {
-				if (part) parts.push(lastIsDigit ? parseInt(part, 10) : part);
-				part = c;
+			if (c == '.' || lastIsDigit != currentIsDigit) {
+				if (part) {
+					parts.push(lastIsDigit ? parseInt(part, 10) : part);
+				}
+				part = c == '.' ? '' : c;
 			} else {
 				part += c;
 			}
@@ -21,20 +23,30 @@ function compare_versions(a, b) {
 		}
 		return parts;
 	}
-	let aParts = split_apart(a);
-	let bParts = split_apart(b);
-	let i;
-	for (i = 0; i < aParts.length && i < bParts.length; i++) {
-		if (aParts[i] < bParts[i]) {
+	function compare_parts(x, y) {
+		let xType = typeof x;
+		let yType = typeof y;
+
+		switch (xType) {
+		case yType:
+			return x == y ? 0 : (x < y ? -1 : 1);
+		case 'string':
 			return -1;
-		} else if (aParts[i] > bParts[i]) {
+		case 'undefined':
+			return yType == 'number' ? -1 : 1;
+		case 'number':
 			return 1;
 		}
 	}
-	if (aParts.length == bParts.length) {
-		return 0;
+	let aParts = split_apart(a);
+	let bParts = split_apart(b);
+	for (let i = 0; i <= aParts.length && i <= bParts.length; i++) {
+		let comparison = compare_parts(aParts[i], bParts[i]);
+		if (comparison !== 0) {
+			return comparison;
+		}
 	}
-	return i == aParts.length ? -1 : 1;
+	return 0;
 }
 
 function compare_object_versions(a, b) {
