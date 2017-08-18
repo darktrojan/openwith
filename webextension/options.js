@@ -24,7 +24,7 @@ testButton.onclick = function() {
 			testResultText.textContent = `Found version ${message.version} at ${message.file}.`;
 			if (compare_versions(message.version, VERSION_WARN) < 0) {
 			testResultIcon.src = 'status_warning.svg';
-				testResultText.textContent += '\nA newer version is available and you should replace it.'
+				testResultText.textContent += '\nA newer version is available and you should replace it.';
 			}
 		} else {
 			errorListener();
@@ -144,28 +144,28 @@ browsersList.ondragend = function(event) {
 
 let browsersTemplate = browsersList.querySelector('template');
 
-// let fileInput = document.querySelector('input[type='file']');
-// fileInput.onchange = function() {
-// 	let fr = new FileReader();
-// 	fr.readAsText(this.files[0]);
-// 	fr.onload = function() {
-// 		let data = read_desktop_file(this.result);
-// 		data.icon = find_icon(data);
+let fileInput = document.querySelector('input[type="file"]');
+fileInput.onchange = function() {
+	let fr = new FileReader();
+	fr.readAsText(this.files[0]);
+	fr.onload = function() {
+		let data = read_desktop_file(this.result);
+		data.icon = find_icon(data);
 
-// 		detailsForm.browser_id.value = '';
-// 		detailsForm.name.value = data.name;
-// 		detailsForm.command.value = data.command;
-// 		let selected = logosList.querySelector('.selected');
-// 		if (selected) {
-// 			selected.classList.remove('selected');
-// 		}
-// 		for (let l of logosList.children) {
-// 			if (l.dataset.name == data.icon) {
-// 				l.classList.add('selected');
-// 			}
-// 		}
-// 	};
-// };
+		detailsForm.browser_id.value = '';
+		detailsForm.name.value = data.name;
+		detailsForm.command.value = data.command;
+		let selected = logosList.querySelector('.selected');
+		if (selected) {
+			selected.classList.remove('selected');
+		}
+		for (let l of logosList.children) {
+			if (l.dataset.name == data.icon) {
+				l.classList.add('selected');
+			}
+		}
+	};
+};
 
 chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 	for (let b of browsers) {
@@ -176,8 +176,12 @@ chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
-	li.dataset.icon = b.icon;
-	li.querySelector('img').src = 'logos/' + b.icon + '_64x64.png';
+	if (b.icon) {
+		li.dataset.icon = b.icon;
+		li.querySelector('img').src = 'logos/' + b.icon + '_64x64.png';
+	} else {
+		li.querySelector('img').style.visibility = 'hidden';
+	}
 	li.querySelector('div.name').textContent = b.name;
 	li.querySelector('div.command').textContent = Array.isArray(b.command) ? b.command.join(' ') : b.command;
 	browsersList.appendChild(li);
@@ -351,6 +355,7 @@ detailsForm.onsubmit = function() {
 				li.dataset.icon = data.icon;
 				li.querySelector('img').src = 'logos/' + data.icon + '_64x64.png';
 			}
+			li.querySelector('img').style.visibility = data.icon ? null : 'hidden';
 			li.querySelector('div.name').textContent = data.name;
 			li.querySelector('div.command').textContent = data.command;
 

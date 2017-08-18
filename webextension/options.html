@@ -38,7 +38,7 @@
 		<button>Test Install</button>
 		<div id="result" style="display: none; margin: 8px;">
 			<img id="resulticon" src="" width="32" height="32">
-			<div id="resulttext" style="flex: 1; margin-inline-start: 8px;"></div>
+			<div id="resulttext" style="flex: 1; margin-inline-start: 8px; white-space: pre-wrap;"></div>
 		</div>
 	</div>
 	<div id="addbrowser">
@@ -74,13 +74,14 @@
 	<h2 class="adding">Add browser</h2>
 	<h2 class="editing">Edit browser</h2>
 	<input type="hidden" name="browser_id" />
-	<!-- <input type="file" /> -->
-	<!-- <hr /> -->
+	<label class="linux">Read from .desktop file:
+		<input type="file" />
+	</label>
 	<label>Name:
-		<input type="text" name="name" />
+		<input type="text" name="name" required="" />
 	</label>
 	<label>Command:
-		<input type="text" name="command" />
+		<input type="text" name="command" required="" />
 	</label>
 	<label>Icon:</label>
 	<ul id="logos" tabindex="0">
