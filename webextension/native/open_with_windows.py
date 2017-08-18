@@ -128,7 +128,7 @@ def listen():
 		receivedMessage = getMessage()
 		if receivedMessage == 'ping':
 			sendMessage({
-				'version': '7.0b1',
+				'version': '7.0b4',
 				'file': os.path.realpath(__file__)
 			})
 		elif receivedMessage == 'find':

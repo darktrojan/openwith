@@ -1,5 +1,5 @@
 /* exported VERSION_WARN, compare_versions, compare_object_versions */
-var VERSION_WARN = '7.0b3';
+var VERSION_WARN = '7.0b4';
 
 function compare_versions(a, b) {
 	function split_apart(name) {
