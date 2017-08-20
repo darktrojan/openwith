@@ -97,16 +97,15 @@ def find_browsers():
 		os.path.join(os.getenv('HOME'), 'Applications'),
 		'/Applications',
 	]
-	suffix = '.app'
 
 	results = []
 	for p in paths:
 		for a in apps:
-			fp = os.path.join(p, a) + suffix
+			fp = os.path.join(p, a) + '.app'
 			if os.path.exists(fp):
 				results.append({
 					'name': a,
-					'command': os.path.join(p, a)
+					'command': '"%s.app"' % os.path.join(p, a)
 				})
 	return results
 
