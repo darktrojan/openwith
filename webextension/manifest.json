@@ -5,8 +5,13 @@
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
-			"strict_min_version": "54.0"
+			"strict_min_version": "55.0"
 		}
+	},
+	"icons": {
+		"16": "openwith16.png",
+		"32": "openwith32.png",
+		"64": "openwith64.png"
 	},
 	"background": {
 		"scripts": [

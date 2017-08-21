@@ -4,13 +4,7 @@ var max_id = 0;
 
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = info.modifiers.includes('Ctrl') ? null : info.pageUrl;
-	open_browser(browser_id, url);
-}
-
-function context_menu_link_clicked(info) {
-	let browser_id = parseInt(info.menuItemId.substring(13), 10);
-	let url = info.modifiers.includes('Ctrl') ? null : info.linkUrl;
+	let url = info.modifiers.includes('Ctrl') ? null : (!!info.linkUrl ? info.linkUrl : info.pageUrl);
 	open_browser(browser_id, url);
 }
 
@@ -54,15 +48,13 @@ function open_browser(browser_id, url) {
 	if (url && !found) {
 		command.push(url);
 	}
-	console.log(command);
 
 	function error_listener(error) {
 		console.error(error, chrome.runtime.lastError);
 	}
 	let port = chrome.runtime.connectNative('open_with');
 	port.onDisconnect.addListener(error_listener);
-	port.onMessage.addListener(function(event) {
-		console.log(event);
+	port.onMessage.addListener(function() {
 		port.onDisconnect.removeListener(error_listener);
 		port.disconnect();
 	});
@@ -77,28 +69,28 @@ chrome.storage.local.get({'browsers': []}, result => {
 
 function make_menus() {
 	chrome.contextMenus.removeAll();
+	let contexts = ['page', 'link'];
+	if (navigator.userAgent.includes('Firefox')) {
+		contexts.push('tab');
+	}
 
 	for (let b of browsers) {
 		max_id = Math.max(max_id, b.id);
-		chrome.contextMenus.create({
+		let item = {
 			id: 'browser_' + b.id,
 			title: b.name,
-			contexts: ['page'/*, 'tab'*/],
+			contexts,
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: context_menu_clicked
-		});
-		chrome.contextMenus.create({
-			id: 'browser_link_' + b.id,
-			title: b.name,
-			contexts: ['link'],
-			documentUrlPatterns: ['<all_urls>', 'file:///*'],
-			onclick: context_menu_link_clicked
-		});
+		};
+		if (navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Firefox/55')) {
+			item.icons = {16: 'logos/' + b.icon + '_16x16.png'};
+		}
+		chrome.contextMenus.create(item);
 	}
 }
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-	console.log(message);
 	let {data} = message;
 	switch (message.action) {
 	case 'open_browser':
