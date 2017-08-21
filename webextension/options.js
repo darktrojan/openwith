@@ -464,16 +464,3 @@ function find_new_browsers() {
 	});
 	port.postMessage('find');
 }
-
-function pointless_sha1_function() {
-	fetch('open_with.py')
-		.then(r => r.arrayBuffer())
-		.then(ab => crypto.subtle.digest('sha-1', ab))
-		.then(sha => new Promise(resolve => {
-			let fr = new FileReader();
-			fr.onload = () => resolve(fr.result);
-			fr.readAsBinaryString(new Blob([sha]));
-		}))
-		.then(bs => Array.map(bs, a => a.charCodeAt(0).toString(16).padStart(2, '0')).join(''))
-		.then(console.log.bind(console));
-}
