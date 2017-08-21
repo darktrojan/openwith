@@ -95,7 +95,7 @@ browsersList.onclick = function(event) {
 };
 let dragged, draggedNext;
 browsersList.ondragstart = function(event) {
-	let { target } = event;
+	let {target} = event;
 	while (target != this && target.localName != 'li') {
 		target = target.parentNode;
 	}
@@ -110,7 +110,7 @@ browsersList.ondragstart = function(event) {
 	event.dataTransfer.effectAllowed = 'move';
 };
 browsersList.ondragenter = browsersList.ondragover = function(event) {
-	let { target } = event;
+	let {target} = event;
 	while (target != this && target.localName != 'li') {
 		target = target.parentNode;
 	}
@@ -204,8 +204,7 @@ function read_desktop_file(text) {
 
 		if (line.startsWith('Name=')) {
 			name = line.substring(5).trim();
-		}
-		else if (line.startsWith('Exec=')) {
+		} else if (line.startsWith('Exec=')) {
 			command = line.substring(5).trim().replace(/%u/ig, '%s');
 		}
 	}
@@ -414,24 +413,42 @@ function find_icon(data) {
 		return 'srware-iron';
 	}
 	if (matches('chrome')) {
-		if (matches('beta')) return 'chrome-beta';
-		if (matches('dev')) return 'chrome-dev';
-		if (matches('canary')) return 'chrome-canary';
+		if (matches('beta')) {
+			return 'chrome-beta';
+		}
+		if (matches('dev')) {
+			return 'chrome-dev';
+		}
+		if (matches('canary')) {
+			return 'chrome-canary';
+		}
 		return 'chrome';
 	}
 	if (matches('firefox')) {
-		if (matches('beta')) return 'firefox-beta';
-		if (matches('nightly')) return 'firefox-nightly';
+		if (matches('beta')) {
+			return 'firefox-beta';
+		}
+		if (matches('nightly')) {
+			return 'firefox-nightly';
+		}
 		return 'firefox';
 	}
 	if (matches('iexplore.exe') || matches(/\b(ms)?ie\d*\b/)) {
-		if (matches(/(explorer|ie) ?6/)) return 'internet-explorer_6';
-		if (matches(/(explorer|ie) ?[78]/)) return 'internet-explorer_7-8';
+		if (matches(/(explorer|ie) ?6/)) {
+			return 'internet-explorer_6';
+		}
+		if (matches(/(explorer|ie) ?[78]/)) {
+			return 'internet-explorer_7-8';
+		}
 		return 'internet-explorer_9-11';
 	}
 	if (matches('opera')) {
-		if (matches('beta')) return 'opera-beta';
-		if (matches('dev')) return 'opera-developer';
+		if (matches('beta')) {
+			return 'opera-beta';
+		}
+		if (matches('dev')) {
+			return 'opera-developer';
+		}
 		return 'opera';
 	}
 	for (let str of ['chromium', 'edge', 'pale-moon', 'safari', 'seamonkey', 'vivaldi', 'waterfox']) {

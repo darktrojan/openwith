@@ -24,7 +24,7 @@ browsersList.onclick = function(event) {
 	while (target && target.localName != 'li') {
 		target = target.parentNode;
 	}
-	chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.runtime.sendMessage({
 			action: 'open_browser',
 			id: target.dataset.id,
@@ -36,13 +36,13 @@ browsersList.onclick = function(event) {
 
 document.querySelector('.panel-section-footer-button').onclick = function() {
 	let url = chrome.extension.getURL('options.html');
-	chrome.tabs.query({ url }, function(result) {
+	chrome.tabs.query({url}, function(result) {
 		if (result && result.length > 0) {
 			let tab = result[0];
-			chrome.tabs.update(tab.id, { active: true });
-			chrome.windows.update(tab.windowId, { focused: true });
+			chrome.tabs.update(tab.id, {active: true});
+			chrome.windows.update(tab.windowId, {focused: true});
 		} else {
-			chrome.tabs.create({ url });
+			chrome.tabs.create({url});
 		}
 		window.close();
 	});
