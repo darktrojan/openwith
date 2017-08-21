@@ -1,7 +1,7 @@
 /* globals chrome */
-/* exported getVersionWarn, compare_versions, compare_object_versions */
+/* exported get_version_warn, compare_versions, compare_object_versions */
 var _version_warn = null;
-function getVersionWarn() {
+function get_version_warn() {
 	if (!!_version_warn) {
 		return Promise.resolve(_version_warn);
 	}

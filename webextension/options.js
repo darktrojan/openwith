@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions, compare_object_versions, getVersionWarn */
+/* globals chrome, compare_versions, compare_object_versions, get_version_warn */
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
@@ -9,29 +9,29 @@ let testResult = document.getElementById('result');
 let testResultIcon = document.getElementById('resulticon');
 let testResultText = document.getElementById('resulttext');
 testButton.onclick = function() {
-	function errorListener() {
+	function error_listener() {
 		testResult.style.display = 'flex';
 		testResultIcon.src = 'status_error.svg';
 		testResultText.textContent = 'Something went wrong. There might be more information in the Browser Console.';
 	}
 
 	let port = chrome.runtime.connectNative('open_with');
-	port.onDisconnect.addListener(errorListener);
+	port.onDisconnect.addListener(error_listener);
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			testResult.style.display = 'flex';
 			testResultIcon.src = 'status_ok.svg';
 			testResultText.textContent = `Found version ${message.version} at ${message.file}.`;
-			getVersionWarn().then(function(version_warn) {
+			get_version_warn().then(function(version_warn) {
 				if (compare_versions(message.version, version_warn) < 0) {
 					testResultIcon.src = 'status_warning.svg';
 					testResultText.textContent += '\nA newer version is available and you should replace it.';
 				}
 			});
 		} else {
-			errorListener();
+			error_listener();
 		}
-		port.onDisconnect.removeListener(errorListener);
+		port.onDisconnect.removeListener(error_listener);
 		port.disconnect();
 	});
 	port.postMessage('ping');

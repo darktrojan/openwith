@@ -1,21 +1,21 @@
-/* globals chrome, compare_versions, getVersionWarn */
+/* globals chrome, compare_versions, get_version_warn */
 var browsers;
 var max_id = 0;
 
-function contextMenuClicked(info) {
+function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
 	let url = info.modifiers.includes('Ctrl') ? null : info.pageUrl;
-	openBrowser(browser_id, url);
+	open_browser(browser_id, url);
 }
 
-function contextMenuLinkClicked(info) {
+function context_menu_link_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(13), 10);
 	let url = info.modifiers.includes('Ctrl') ? null : info.linkUrl;
-	openBrowser(browser_id, url);
+	open_browser(browser_id, url);
 }
 
-function openBrowser(browser_id, url) {
-	function splitArgs(argString) {
+function open_browser(browser_id, url) {
+	function split_args(argString) {
 		let args = [];
 
 		let temp = '';
@@ -43,7 +43,7 @@ function openBrowser(browser_id, url) {
 	}
 
 	let browser = browsers.find(b => b.id == browser_id);
-	let command = splitArgs(browser.command); // TODO: do this properly
+	let command = split_args(browser.command);
 	let found = false;
 	for (let i = 0; i < command.length; i++) {
 		if (command[i].includes('%s')) {
@@ -56,14 +56,14 @@ function openBrowser(browser_id, url) {
 	}
 	console.log(command);
 
-	function errorListener(error) {
+	function error_listener(error) {
 		console.error(error, chrome.runtime.lastError);
 	}
 	let port = chrome.runtime.connectNative('open_with');
-	port.onDisconnect.addListener(errorListener);
+	port.onDisconnect.addListener(error_listener);
 	port.onMessage.addListener(function(event) {
 		console.log(event);
-		port.onDisconnect.removeListener(errorListener);
+		port.onDisconnect.removeListener(error_listener);
 		port.disconnect();
 	});
 	port.postMessage(command);
@@ -71,11 +71,11 @@ function openBrowser(browser_id, url) {
 
 chrome.storage.local.get({'browsers': []}, result => {
 	browsers = result.browsers;
-	sortBrowsers();
-	makeMenus();
+	sort_browsers();
+	make_menus();
 });
 
-function makeMenus() {
+function make_menus() {
 	chrome.contextMenus.removeAll();
 
 	for (let b of browsers) {
@@ -85,14 +85,14 @@ function makeMenus() {
 			title: b.name,
 			contexts: ['page'/*, 'tab'*/],
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
-			onclick: contextMenuClicked
+			onclick: context_menu_clicked
 		});
 		chrome.contextMenus.create({
 			id: 'browser_link_' + b.id,
 			title: b.name,
 			contexts: ['link'],
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
-			onclick: contextMenuLinkClicked
+			onclick: context_menu_link_clicked
 		});
 	}
 }
@@ -102,7 +102,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	let {data} = message;
 	switch (message.action) {
 	case 'open_browser':
-		openBrowser(message.id, message.url);
+		open_browser(message.id, message.url);
 		return;
 	case 'get_browsers':
 		sendResponse(browsers);
@@ -111,7 +111,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		data.id = ++max_id;
 		browsers.push(data);
 		chrome.storage.local.set({browsers}, function() {
-			makeMenus();
+			make_menus();
 			sendResponse(data.id);
 		});
 		return true;
@@ -126,7 +126,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			}
 		}
 		chrome.storage.local.set({browsers}, function() {
-			makeMenus();
+			make_menus();
 			sendResponse(removed);
 		});
 		return true;
@@ -137,7 +137,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		browser.command = data.command;
 		browser.icon = data.icon;
 		chrome.storage.local.set({browsers}, function() {
-			makeMenus();
+			make_menus();
 			sendResponse(true);
 		});
 		return true;
@@ -145,16 +145,16 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		for (let b of browsers) {
 			b.order = message.order.indexOf(b.id);
 		}
-		sortBrowsers();
+		sort_browsers();
 		chrome.storage.local.set({browsers}, function() {
-			makeMenus();
+			make_menus();
 			sendResponse(true);
 		});
 		return true;
 	}
 });
 
-function sortBrowsers() {
+function sort_browsers() {
 	browsers.sort(function(a, b) {
 		if (isNaN(a.order)) {
 			return isNaN(b.order) ? 0 : 1;
@@ -163,14 +163,14 @@ function sortBrowsers() {
 	});
 }
 
-getVersionWarn().then(function test(version_warn) {
-	function errorListener() {
+get_version_warn().then(function(version_warn) {
+	function error_listener() {
 		chrome.browserAction.setBadgeText({text: '!'});
 		chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
 	}
 
 	let port = chrome.runtime.connectNative('open_with');
-	port.onDisconnect.addListener(errorListener);
+	port.onDisconnect.addListener(error_listener);
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			if (compare_versions(message.version, version_warn) < 0) {
@@ -178,9 +178,9 @@ getVersionWarn().then(function test(version_warn) {
 				chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
 			}
 		} else {
-			errorListener();
+			error_listener();
 		}
-		port.onDisconnect.removeListener(errorListener);
+		port.onDisconnect.removeListener(error_listener);
 		port.disconnect();
 	});
 	port.postMessage('ping');
