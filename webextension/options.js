@@ -2,6 +2,16 @@
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
+
+	if (platformInfo.os == 'win') {
+		let downloadAnchor = document.querySelector('a.win[download]');
+		fetch(downloadAnchor.href).then(function(response) {
+			return response.blob();
+		}).then(function(blob) {
+			downloadAnchor.href = URL.createObjectURL(blob);
+			downloadAnchor.download = 'open_with_windows.py';
+		});
+	}
 });
 
 let testButton = document.querySelector('#install > button');
