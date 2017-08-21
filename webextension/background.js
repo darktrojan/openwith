@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions, VERSION_WARN */
+/* globals chrome, compare_versions, getVersionWarn */
 var browsers;
 var max_id = 0;
 
@@ -163,7 +163,7 @@ function sortBrowsers() {
 	});
 }
 
-function test() {
+getVersionWarn().then(function test(version_warn) {
 	function errorListener() {
 		chrome.browserAction.setBadgeText({text: '!'});
 		chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
@@ -173,7 +173,7 @@ function test() {
 	port.onDisconnect.addListener(errorListener);
 	port.onMessage.addListener(function(message) {
 		if (message) {
-			if (compare_versions(message.version, VERSION_WARN) < 0) {
+			if (compare_versions(message.version, version_warn) < 0) {
 				chrome.browserAction.setBadgeText({text: '!'});
 				chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
 			}
@@ -184,5 +184,4 @@ function test() {
 		port.disconnect();
 	});
 	port.postMessage('ping');
-}
-test();
+});

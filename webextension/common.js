@@ -1,5 +1,17 @@
-/* exported VERSION_WARN, compare_versions, compare_object_versions */
-var VERSION_WARN = '7.0b4';
+/* globals chrome */
+/* exported getVersionWarn, compare_versions, compare_object_versions */
+var _version_warn = null;
+function getVersionWarn() {
+	if (!!_version_warn) {
+		return Promise.resolve(_version_warn);
+	}
+	return new Promise(function(resolve) {
+		chrome.runtime.getPlatformInfo(function(platformInfo) {
+			_version_warn = platformInfo.os == 'mac' ? '7.0b5' : '7.0b4';
+			resolve(_version_warn);
+		});
+	});
+}
 
 function compare_versions(a, b) {
 	function split_apart(name) {

@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions, compare_object_versions, VERSION_WARN */
+/* globals chrome, compare_versions, compare_object_versions, getVersionWarn */
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
@@ -22,10 +22,12 @@ testButton.onclick = function() {
 			testResult.style.display = 'flex';
 			testResultIcon.src = 'status_ok.svg';
 			testResultText.textContent = `Found version ${message.version} at ${message.file}.`;
-			if (compare_versions(message.version, VERSION_WARN) < 0) {
-			testResultIcon.src = 'status_warning.svg';
-				testResultText.textContent += '\nA newer version is available and you should replace it.';
-			}
+			getVersionWarn().then(function(version_warn) {
+				if (compare_versions(message.version, version_warn) < 0) {
+					testResultIcon.src = 'status_warning.svg';
+					testResultText.textContent += '\nA newer version is available and you should replace it.';
+				}
+			});
 		} else {
 			errorListener();
 		}
