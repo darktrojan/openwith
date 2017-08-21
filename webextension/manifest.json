@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Open With",
-	"version": "7.0b4",
+	"version": "7.0b5",
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
