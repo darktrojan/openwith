@@ -129,7 +129,10 @@ def listen():
 						os.environ[k] = ''
 
 			devnull = open(os.devnull, 'w')
-			command = ['/usr/bin/open', '-a'] + receivedMessage
+			if receivedMessage[0].endswith('.app'):
+				command = ['/usr/bin/open', '-a'] + receivedMessage
+			else:
+				command = receivedMessage
 			subprocess.Popen(command, stdout=devnull, stderr=devnull)
 
 
