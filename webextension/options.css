@@ -107,14 +107,14 @@ input[type="text"] {
 	box-sizing: border-box;
 	width: 100%;
 }
-ul#logos {
+ul#icons {
 	margin: 0;
 	border: 1px #999 solid;
 	padding: 2px;
 	list-style: none;
 	background-color: white;
 }
-ul#logos li {
+ul#icons li {
 	display: inline-block;
 	padding: 4px;
 	line-height: 0;
@@ -123,7 +123,7 @@ ul#logos li {
 	background-color: highlight;
 	color: highlighttext;
 }
-#logosCredit {
+#iconsCredit {
 	text-align: right;
 	font-size: smaller;
 }

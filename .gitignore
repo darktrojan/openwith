@@ -2,4 +2,4 @@ args.json
 *.xpi
 *.pyc
 browser-logos
-webextension/logos
+webextension/icons

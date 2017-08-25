@@ -1,6 +1,7 @@
 /* globals chrome, compare_versions, get_version_warn */
-var browsers;
-var max_id = 0;
+var browsers, icons;
+var max_browser_id = 0;
+var max_icon_id = 0;
 
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
@@ -61,10 +62,17 @@ function open_browser(browser_id, url) {
 	port.postMessage(command);
 }
 
-chrome.storage.local.get({'browsers': []}, result => {
+chrome.storage.local.get({
+	'browsers': [],
+	'icons': []
+}, result => {
 	browsers = result.browsers;
 	sort_browsers();
 	make_menus();
+	icons = result.icons;
+	max_icon_id = icons.reduce(function(previous, item) {
+		return Math.max(previous, item.id);
+	}, 0);
 });
 
 function make_menus() {
@@ -75,7 +83,7 @@ function make_menus() {
 	}
 
 	for (let b of browsers) {
-		max_id = Math.max(max_id, b.id);
+		max_browser_id = Math.max(max_browser_id, b.id);
 		let item = {
 			id: 'browser_' + b.id,
 			title: b.name,
@@ -84,7 +92,7 @@ function make_menus() {
 			onclick: context_menu_clicked
 		};
 		if (navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Firefox/55')) {
-			item.icons = {16: 'logos/' + b.icon + '_16x16.png'};
+			item.icons = {16: 'icons/' + b.icon + '_16x16.png'};
 		}
 		chrome.contextMenus.create(item);
 	}
@@ -100,7 +108,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		sendResponse(browsers);
 		return true;
 	case 'add_browser':
-		data.id = ++max_id;
+		data.id = ++max_browser_id;
 		browsers.push(data);
 		chrome.storage.local.set({browsers}, function() {
 			make_menus();
@@ -141,6 +149,16 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		chrome.storage.local.set({browsers}, function() {
 			make_menus();
 			sendResponse(true);
+		});
+		return true;
+	case 'get_icons':
+		sendResponse(icons);
+		return true;
+	case 'add_icon':
+		data.id = ++max_icon_id;
+		icons.push(data);
+		chrome.storage.local.set({icons}, function() {
+			sendResponse(data.id);
 		});
 		return true;
 	}

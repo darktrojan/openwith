@@ -90,11 +90,11 @@ browsersList.onclick = function(event) {
 		detailsForm.browser_id.value = li.dataset.id;
 		detailsForm.name.value = li.querySelector('.name').textContent;
 		detailsForm.command.value = li.querySelector('.command').textContent;
-		selected = logosList.querySelector('.selected');
+		selected = iconsList.querySelector('.selected');
 		if (selected) {
 			selected.classList.remove('selected');
 		}
-		for (let l of logosList.children) {
+		for (let l of iconsList.children) {
 			if (l.dataset.name == li.dataset.icon) {
 				l.classList.add('selected');
 			}
@@ -167,11 +167,11 @@ fileInput.onchange = function() {
 		detailsForm.browser_id.value = '';
 		detailsForm.name.value = data.name;
 		detailsForm.command.value = data.command;
-		let selected = logosList.querySelector('.selected');
+		let selected = iconsList.querySelector('.selected');
 		if (selected) {
 			selected.classList.remove('selected');
 		}
-		for (let l of logosList.children) {
+		for (let l of iconsList.children) {
 			if (l.dataset.name == data.icon) {
 				l.classList.add('selected');
 			}
@@ -179,9 +179,30 @@ fileInput.onchange = function() {
 	};
 };
 
-chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
-	for (let b of browsers) {
-		add_browser(b);
+let userIcons = new Map();
+chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
+	for (let l of result) {
+		userIcons.set(l.id, l);
+	}
+
+	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
+		for (let b of browsers) {
+			add_browser(b);
+		}
+	});
+
+	for (let l of icons) {
+		let li = iconsTemplate.content.firstElementChild.cloneNode(true);
+		li.dataset.name = l;
+		li.querySelector('img').src = 'icons/' + l + '_32x32.png';
+		li.title = l.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');
+		iconsList.appendChild(li);
+	}
+	for (let l of userIcons.values()) {
+		let li = iconsTemplate.content.firstElementChild.cloneNode(true);
+		li.dataset.name = 'user_icon_' + l.id;
+		li.querySelector('img').src = l['32'];
+		iconsList.appendChild(li);
 	}
 });
 
@@ -190,7 +211,11 @@ function add_browser(b) {
 	li.dataset.id = b.id;
 	if (b.icon) {
 		li.dataset.icon = b.icon;
-		li.querySelector('img').src = 'logos/' + b.icon + '_64x64.png';
+		if (b.icon.startsWith('user_icon_')) {
+			li.querySelector('img').src = userIcons.get(parseInt(b.icon.substring(10), 10))['64'];
+		} else {
+			li.querySelector('img').src = 'icons/' + b.icon + '_64x64.png';
+		}
 	} else {
 		li.querySelector('img').style.visibility = 'hidden';
 	}
@@ -240,7 +265,7 @@ function sort_alphabetically() {
 }
 
 // NB: this list isn't quite in order.
-let logos = [
+let icons = [
 	'chrome',
 	'chrome-beta',
 	'chrome-dev',
@@ -265,17 +290,10 @@ let logos = [
 	'vivaldi',
 	'waterfox'
 ];
-let logosList = document.getElementById('logos');
-let logosTemplate = logosList.querySelector('template');
-for (let l of logos) {
-	let li = logosTemplate.content.firstElementChild.cloneNode(true);
-	li.dataset.name = l;
-	li.querySelector('img').src = 'logos/' + l + '_32x32.png';
-	li.title = l.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');
-	logosList.appendChild(li);
-}
+let iconsList = document.getElementById('icons');
+let iconsTemplate = iconsList.querySelector('template');
 
-logosList.onclick = function(event) {
+iconsList.onclick = function(event) {
 	let target = event.target;
 	while (target != this && target.localName != 'li') {
 		target = target.parentNode;
@@ -290,7 +308,7 @@ logosList.onclick = function(event) {
 	}
 	target.classList.add('selected');
 };
-logosList.onkeypress = function(event) {
+iconsList.onkeypress = function(event) {
 	let selected = this.querySelector('.selected');
 	if (!selected) {
 		if (['ArrowRight', 'ArrowDown'].includes(event.key)) {
@@ -355,7 +373,7 @@ detailsForm.onsubmit = function() {
 		name: this.name.value,
 		command: this.command.value
 	};
-	let selected = logosList.querySelector('.selected');
+	let selected = iconsList.querySelector('.selected');
 	if (selected) {
 		data.icon = selected.dataset.name;
 	}
@@ -364,7 +382,11 @@ detailsForm.onsubmit = function() {
 		if (li.dataset.id == this.browser_id.value) {
 			if (data.icon) {
 				li.dataset.icon = data.icon;
-				li.querySelector('img').src = 'logos/' + data.icon + '_64x64.png';
+				if (data.icon.startsWith('user_icon_')) {
+					li.querySelector('img').src = userIcons.get(parseInt(data.icon.substring(10), 10))['64'];
+				} else {
+					li.querySelector('img').src = 'icons/' + data.icon + '_64x64.png';
+				}
 			}
 			li.querySelector('img').style.visibility = data.icon ? null : 'hidden';
 			li.querySelector('div.name').textContent = data.name;
@@ -400,7 +422,7 @@ detailsForm.onsubmit = function() {
 };
 detailsForm.onreset = function() {
 	detailsForm.browser_id.value = '';
-	let selected = logosList.querySelector('.selected');
+	let selected = iconsList.querySelector('.selected');
 	if (selected) {
 		selected.classList.remove('selected');
 	}

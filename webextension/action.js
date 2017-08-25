@@ -13,10 +13,17 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 	}
 });
 
-chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
-	for (let b of browsers) {
-		add_browser(b);
+let userIcons = new Map();
+chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
+	for (let l of result) {
+		userIcons.set(l.id, l);
 	}
+
+	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
+		for (let b of browsers) {
+			add_browser(b);
+		}
+	});
 });
 
 browsersList.onclick = function(event) {
@@ -51,7 +58,11 @@ document.querySelector('.panel-section-footer-button').onclick = function() {
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
-	li.querySelector('img').src = 'logos/' + b.icon + '_16x16.png';
+	if (b.icon.startsWith('user_icon_')) {
+		li.querySelector('img').src = userIcons.get(parseInt(b.icon.substring(10), 10))['16'];
+	} else {
+		li.querySelector('img').src = 'icons/' + b.icon + '_16x16.png';
+	}
 	li.querySelector('div.name').textContent = b.name;
 	browsersList.appendChild(li);
 }
