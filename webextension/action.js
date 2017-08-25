@@ -16,7 +16,7 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 let userIcons = new Map();
 chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
 	for (let l of result) {
-		userIcons.set(l.id, l);
+		userIcons.set(l.id.toString(), l);
 	}
 
 	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
@@ -59,7 +59,7 @@ function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
 	if (b.icon.startsWith('user_icon_')) {
-		li.querySelector('img').src = userIcons.get(parseInt(b.icon.substring(10), 10))['16'];
+		li.querySelector('img').src = userIcons.get(b.icon.substring(10))['16'];
 	} else {
 		li.querySelector('img').src = 'icons/' + b.icon + '_16x16.png';
 	}

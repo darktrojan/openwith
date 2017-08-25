@@ -35,16 +35,16 @@
 			</li>
 		</ol>
 
-		<button>Test Install</button>
+		<button id="test">Test Install</button>
 		<div id="result" style="display: none; margin: 8px;">
 			<img id="resulticon" src="" width="32" height="32">
 			<div id="resulttext" style="flex: 1; margin-inline-start: 8px; white-space: pre-wrap;"></div>
 		</div>
 	</div>
-	<div id="addbrowser">
-		<button>Look for browsers</button>
-		<button>Add browser</button>
-		<button>Sort list</button>
+	<div>
+		<button id="look">Look for browsers</button>
+		<button id="addbrowser">Add browser</button>
+		<button id="sort">Sort list</button>
 	</div>
 	<div style="flex-grow: 1"></div>
 	<div align="center">
@@ -75,7 +75,7 @@
 	<h2 class="editing">Edit browser</h2>
 	<input type="hidden" name="browser_id" />
 	<label class="linux">Read from .desktop file:
-		<input type="file" />
+		<input type="file" name="desktopFile" />
 	</label>
 	<label>Name:
 		<input type="text" name="name" required="" />
@@ -92,12 +92,20 @@
 		</template>
 	</ul>
 	<div id="iconsCredit"><a href="https://github.com/alrra/browser-logos">Browser Logos on Github</a></div>
+	<label hidden="">Custom icon?
+		<input type="file" name="userIcon" accept="image/*" />
+	</label>
 	<div class="submit">
 		<button class="adding">Add</button>
 		<button class="editing">Update</button>
 		<button type="reset">Cancel</button>
 	</div>
 </form>
+<div hidden="">
+	<canvas width="64" height="64"></canvas>
+	<canvas width="32" height="32"></canvas>
+	<canvas width="16" height="16"></canvas>
+</div>
 <script type="text/javascript" src="common.js"></script>
 <script type="text/javascript" src="options.js"></script>
 </body>
