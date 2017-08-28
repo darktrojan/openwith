@@ -61,7 +61,8 @@ ul#browsers li:not(:first-of-type) {
 	visibility: hidden;
 	transition: background-color 125ms, visibility 0s 125ms;
 }
-form[name="details"] {
+form[name="details"],
+form[name="userIcons"] {
 	position: fixed;
 	background: #fff;
 	padding: 1em;
@@ -82,22 +83,24 @@ form[name="details"] {
 	visibility: visible;
 	transition: background-color 125ms, visibility 0s;
 }
-:root[data-mode] form[name="details"] {
+:root[data-mode="adding"] form[name="details"],
+:root[data-mode="editing"] form[name="details"],
+:root[data-mode="icons"] form[name="userIcons"] {
 	display: block;
 }
+h1 {
+	margin-top: 0;
+}
 h2 {
+	margin: 0;
 	font-size: 2em;
 	font-weight: 100;
 }
-.adding,
-.editing {
+:root:not([data-mode="adding"]) .adding,
+:root:not([data-mode="editing"]) .editing {
 	display: none;
 }
-:root[data-mode="adding"] .adding,
-:root[data-mode="editing"] .editing {
-	display: unset;
-}
-label {
+label:not([hidden]) {
 	display: block;
 	margin-top: 0.5em;
 	line-height: 1.5;

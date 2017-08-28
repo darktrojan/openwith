@@ -8,7 +8,8 @@
 <body>
 <div id="left">
 	<div id="install" hidden="">
-		<h2 style="margin: 0">Install:</h2>
+		<h1>Open With Options</h1>
+		<h2>Install:</h2>
 		<p>Open With needs a file outside of the browser to communicate with.</p>
 		<ol>
 			<li class="win">
@@ -74,7 +75,7 @@
 	<h2 class="adding">Add browser</h2>
 	<h2 class="editing">Edit browser</h2>
 	<input type="hidden" name="browser_id" />
-	<label class="linux">Read from .desktop file:
+	<label class="adding linux">Read from .desktop file:
 		<input type="file" name="desktopFile" />
 	</label>
 	<label>Name:
@@ -92,13 +93,28 @@
 		</template>
 	</ul>
 	<div id="iconsCredit"><a href="https://github.com/alrra/browser-logos">Browser Logos on Github</a></div>
-	<label hidden="">Custom icon?
-		<input type="file" name="userIcon" accept="image/*" />
-	</label>
+	<div><button type="button" name="userIconsButton">Custom icons&hellip;</button></div>
 	<div class="submit">
 		<button class="adding">Add</button>
 		<button class="editing">Update</button>
 		<button type="reset">Cancel</button>
+	</div>
+</form>
+<form name="userIcons">
+	<h2>Custom icons</h2>
+	<ul style="list-style: none; padding: 0; text-align: center;">
+		<template>
+			<li style="display: inline-block; margin: 0.5em;">
+				<img src="" width="32" height="32" /><br />
+				<button type="button" class="removeIcon">Remove</button>
+			</li>
+		</template>
+	</ul>
+	<label style="text-align: center;">
+		<input type="file" name="userIcon" accept="image/*" />
+	</label>
+	<div class="submit">
+		<button type="reset">Done</button>
 	</div>
 </form>
 <div hidden="">

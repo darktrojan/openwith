@@ -33,6 +33,8 @@ let icons = [
 ];
 let iconsList = document.getElementById('icons');
 let detailsForm = document.forms.details;
+let userIconsForm = document.forms.userIcons;
+let userIconsList = userIconsForm.querySelector('ul');
 
 document.getElementById('test').onclick = function() {
 	function error_listener() {
@@ -179,15 +181,33 @@ browsersList.ondragend = function() {
 };
 
 document.getElementById('bg').onclick = function() {
-	detailsForm.reset();
-};
-
-document.documentElement.onkeypress = function(event) {
-	if (event.key == 'Escape') {
+	if (document.documentElement.dataset.oldmode) {
+		userIconsForm.reset();
+	} else {
 		detailsForm.reset();
 	}
 };
 
+document.documentElement.onkeypress = function(event) {
+	if (event.key == 'Escape') {
+		if (document.documentElement.dataset.oldmode) {
+			userIconsForm.reset();
+		} else {
+			detailsForm.reset();
+		}
+	}
+};
+
+detailsForm.userIconsButton.onclick = function() {
+	[...userIconsList.querySelectorAll('li')].forEach(li => {
+		li.querySelector('button').disabled = [...browsersList.children].some(b => {
+			return b.dataset.icon == li.dataset.name;
+		});
+	});
+
+	document.documentElement.dataset.oldmode = document.documentElement.dataset.mode;
+	document.documentElement.dataset.mode = 'icons';
+};
 detailsForm.onsubmit = function() {
 	let data = {
 		name: this.name.value,
@@ -334,6 +354,28 @@ iconsList.onkeypress = function(event) {
 	}
 };
 
+userIconsForm.querySelector('ul').onclick = function(event) {
+	let li = event.target;
+	while (li != this && li.localName != 'li') {
+		li = li.parentNode;
+	}
+	if (li == this) {
+		return;
+	}
+	if (event.target.classList.contains('removeIcon')) {
+		let id = parseInt(li.dataset.name.substring(10), 10);
+		chrome.runtime.sendMessage({action: 'remove_icon', id}, function() {
+			userIcons.delete(li.dataset.name.substring(10));
+			putIcon(li.dataset.name);
+		});
+		return;
+	}
+};
+userIconsForm.onreset = function() {
+	document.documentElement.dataset.mode = document.documentElement.dataset.oldmode;
+	delete document.documentElement.dataset.oldmode;
+};
+
 document.querySelector('input[type="file"][name="userIcon"]').onchange = function() {
 	let img = document.createElement('img');
 	img.onload = function() {
@@ -452,13 +494,27 @@ function read_desktop_file(text) {
 function putIcon(name) {
 	let iconsTemplate = iconsList.querySelector('template');
 	let li = iconsList.querySelector('li[data-name="' + name + '"]');
+	let userIconsTemplate = userIconsList.querySelector('template');
+	let userLi = userIconsList.querySelector('li[data-name="' + name + '"]');
+
+	if (name.startsWith('user_icon_') && !userIcons.has(name.substring(10))) {
+		li.remove();
+		userLi.remove();
+		return;
+	}
+
 	if (!li) {
 		li = iconsTemplate.content.firstElementChild.cloneNode(true);
 		li.dataset.name = name;
 		iconsList.appendChild(li);
 	}
 	if (name.startsWith('user_icon_')) {
-		li.querySelector('img').src = userIcons.get(name.substring(10))['32'];
+		if (!userLi) {
+			userLi = userIconsTemplate.content.firstElementChild.cloneNode(true);
+			userLi.dataset.name = name;
+			userIconsList.appendChild(userLi);
+		}
+		li.querySelector('img').src = userLi.querySelector('img').src = userIcons.get(name.substring(10))['32'];
 	} else {
 		li.querySelector('img').src = 'icons/' + name + '_32x32.png';
 		li.title = name.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');

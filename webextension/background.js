@@ -161,6 +161,18 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			sendResponse(data.id);
 		});
 		return true;
+	case 'remove_icon':
+		for (let i = 0; i < icons.length; i++) {
+			let b = icons[i];
+			if (b.id == message.id) {
+				icons.splice(i, 1);
+				break;
+			}
+		}
+		chrome.storage.local.set({icons}, function() {
+			sendResponse();
+		});
+		return true;
 	}
 });
 
