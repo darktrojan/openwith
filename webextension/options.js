@@ -218,46 +218,25 @@ detailsForm.onsubmit = function() {
 		data.icon = selected.dataset.name;
 	}
 
-	for (let li of browsersList.children) {
-		if (li.dataset.id == this.browser_id.value) {
-			if (data.icon) {
-				li.dataset.icon = data.icon;
-				if (data.icon.startsWith('user_icon_')) {
-					li.querySelector('img').src = userIcons.get(data.icon.substring(10))['64'];
-				} else {
-					li.querySelector('img').src = 'icons/' + data.icon + '_64x64.png';
-				}
+	if (this.browser_id.value) {
+		data.id = parseInt(this.browser_id.value, 10);
+		chrome.runtime.sendMessage({action: 'update_browser', data}, function() {
+			put_browser(data);
+		});
+	} else {
+		chrome.runtime.sendMessage({action: 'add_browser', data}, function(id) {
+			data.id = id;
+			let li = put_browser(data);
+			let selected = browsersList.querySelector('.selected');
+			if (selected) {
+				selected.classList.remove('selected');
 			}
-			li.querySelector('img').style.visibility = data.icon ? null : 'hidden';
-			li.querySelector('div.name').textContent = data.name;
-			li.querySelector('div.command').textContent = data.command;
-
-			chrome.runtime.sendMessage({
-				action: 'update_browser',
-				data: {
-					id: li.dataset.id,
-					icon: li.dataset.icon,
-					name: this.name.value,
-					command: this.command.value
-				}
-			});
-			this.reset();
-			return false;
-		}
+			li.classList.add('selected');
+			li.scrollIntoView();
+		});
 	}
 
-	chrome.runtime.sendMessage({action: 'add_browser', data}, id => {
-		data.id = id;
-		let li = add_browser(data);
-		let selected = browsersList.querySelector('.selected');
-		if (selected) {
-			selected.classList.remove('selected');
-		}
-		li.classList.add('selected');
-		li.scrollIntoView();
-		this.reset();
-	});
-
+	this.reset();
 	return false;
 };
 detailsForm.onreset = function() {
@@ -366,7 +345,7 @@ userIconsForm.querySelector('ul').onclick = function(event) {
 		let id = parseInt(li.dataset.name.substring(10), 10);
 		chrome.runtime.sendMessage({action: 'remove_icon', id}, function() {
 			userIcons.delete(li.dataset.name.substring(10));
-			putIcon(li.dataset.name);
+			put_icon(li.dataset.name);
 		});
 		return;
 	}
@@ -407,7 +386,7 @@ document.querySelector('input[type="file"][name="userIcon"]').onchange = functio
 					chrome.runtime.sendMessage({action: 'add_icon', data}, function(id) {
 						data.id = id;
 						userIcons.set(id.toString(), data);
-						putIcon('user_icon_' + id);
+						put_icon('user_icon_' + id);
 					});
 				}
 			};
@@ -438,34 +417,36 @@ chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
 	}
 
 	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
-		for (let b of browsers) {
-			add_browser(b);
-		}
+		browsers.forEach(put_browser);
 	});
 
-	icons.forEach(putIcon);
+	icons.forEach(put_icon);
 	for (let k of userIcons.keys()) {
-		putIcon('user_icon_' + k);
+		put_icon('user_icon_' + k);
 	}
 });
 
-function add_browser(b) {
+function put_browser(data) {
 	let browsersTemplate = browsersList.querySelector('template');
-	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
-	li.dataset.id = b.id;
-	if (b.icon) {
-		li.dataset.icon = b.icon;
-		if (b.icon.startsWith('user_icon_')) {
-			li.querySelector('img').src = userIcons.get(b.icon.substring(10))['64'];
+	let li = browsersList.querySelector('li[data-id="' + data.id + '"]');
+	if (!li) {
+		li = browsersTemplate.content.firstElementChild.cloneNode(true);
+		li.dataset.id = data.id;
+		browsersList.appendChild(li);
+	}
+	if (data.icon) {
+		li.dataset.icon = data.icon;
+		if (data.icon.startsWith('user_icon_')) {
+			li.querySelector('img').src = userIcons.get(data.icon.substring(10))['64'];
 		} else {
-			li.querySelector('img').src = 'icons/' + b.icon + '_64x64.png';
+			li.querySelector('img').src = 'icons/' + data.icon + '_64x64.png';
 		}
+		li.querySelector('img').style.visibility = null;
 	} else {
 		li.querySelector('img').style.visibility = 'hidden';
 	}
-	li.querySelector('div.name').textContent = b.name;
-	li.querySelector('div.command').textContent = Array.isArray(b.command) ? b.command.join(' ') : b.command;
-	browsersList.appendChild(li);
+	li.querySelector('div.name').textContent = data.name;
+	li.querySelector('div.command').textContent = data.command;
 	return li;
 }
 
@@ -491,7 +472,7 @@ function read_desktop_file(text) {
 	return {name, command};
 }
 
-function putIcon(name) {
+function put_icon(name) {
 	let iconsTemplate = iconsList.querySelector('template');
 	let li = iconsList.querySelector('li[data-name="' + name + '"]');
 	let userIconsTemplate = userIconsList.querySelector('template');
@@ -598,7 +579,7 @@ function find_new_browsers() {
 			data.icon = find_icon(data);
 			chrome.runtime.sendMessage({action: 'add_browser', data}, id => {
 				data.id = id;
-				add_browser(data);
+				put_browser(data);
 			});
 		}
 		port.disconnect();
