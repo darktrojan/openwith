@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+	<defs>
+		<radialGradient id="a" cx="0" cy="32" r="68" fx="0" fy="32" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#fff" stop-opacity="0"/>
+			<stop offset=".124" stop-color="#0c67f9" stop-opacity="0"/>
+			<stop offset=".426" stop-color="#0663f9" stop-opacity=".886"/>
+			<stop offset=".729" stop-color="#0562f2"/>
+			<stop offset="1" stop-color="#0454d4"/>
+		</radialGradient>
+		<linearGradient id="b" x1="46.029" x2="17.615" y1="20.029" y2="48.443" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+			<stop offset="0" stop-color="#055ce9" stop-opacity=".498"/>
+			<stop offset=".707" stop-color="#055ae5" stop-opacity=".063"/>
+			<stop offset=".916" stop-color="#0558df" stop-opacity=".024"/>
+			<stop offset="1" stop-color="#02368b" stop-opacity="0"/>
+		</linearGradient>
+		<linearGradient id="c" x1="2.228" x2="61.896" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#e61717"/>
+			<stop offset="1" stop-color="#eb3838"/>
+		</linearGradient>
+		<linearGradient id="d" x1="34.261" x2="31.038" y1="55.883" y2="54.865" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#095e35"/>
+			<stop offset="1" stop-color="#0e9352"/>
+		</linearGradient>
+		<filter id="e" width="1.048" height="1.048" x="-.024" y="-.024" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation=".384"/>
+		</filter>
+	</defs>
+	<path fill="url(#a)" d="M40.441 15.285V22.5L0 25.79v12.419l40.441 3.29v7.215L59.711 32z"/>
+	<path fill="none" stroke="url(#b)" d="M0 38.209l40.441 3.29v7.215L59.711 32l-19.27-16.715V22.5L0 25.79"/>
+	<path fill="url(#c)" d="M32 2A30 30 0 0 0 2.228 28.605C7.866 19.515 18.87 13.4 28.599 13.4c3.813 0 6.775.989 8.842 2.932V8.713l24.455 21.21A30 30 0 0 0 32 2z"/>
+	<path fill="#fec82f" d="M37.848 49.432l-7.041 12.314c.626.063 1.21.208 1.857.23a30 30 0 0 0 11.275-2.5l.004.004a30 30 0 0 0 .051-.025 30 30 0 0 0 2.307-1.142 30 30 0 0 0 .37-.192 30 30 0 0 0 2.173-1.363 30 30 0 0 0 .37-.24 30 30 0 0 0 1.98-1.538 30 30 0 0 0 .388-.31 30 30 0 0 0 .719-.621v-.063a30 30 0 0 0 9.654-21.078L37.941 54.191v-4.763l-.093.004z"/>
+	<path fill="url(#d)" d="M23.7 16.7C15.1 20.2 9.1 28 9.1 38.5c0 12.105 8.725 21.936 21.707 23.246l7.04-12.314a33.66 33.66 0 0 1-2.046.068c-7.364 0-13.338-2.732-15.166-8.066-1.646-4.803-1.65-10.436-1.135-15.235.386-3.601 2-7.3 4.2-9.5z"/>
+	<path fill-opacity=".497" d="M51.29 14.893L28.809 28.848l-15.7 24.658L35.59 35.551z" filter="url(#e)"/>
+	<path fill="#cf1414" d="M35.39 35.352l15.7-22.659L32 32z"/>
+	<path fill="#fe5351" d="M28.61 28.648l22.48-15.955L32 32z"/>
+	<path fill="#ededed" d="M28.61 28.648l-15.7 22.659L32 32z"/>
+	<path fill="#acacac" d="M35.39 35.352L12.91 51.307 32 32z"/>
+</svg>

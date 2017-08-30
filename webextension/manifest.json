@@ -9,9 +9,9 @@
 		}
 	},
 	"icons": {
-		"16": "openwith16.png",
-		"32": "openwith32.png",
-		"64": "openwith64.png"
+		"16": "openwith.svg",
+		"32": "openwith.svg",
+		"64": "openwith.svg"
 	},
 	"background": {
 		"scripts": [
@@ -27,9 +27,9 @@
 	],
 	"browser_action": {
 		"default_icon": {
-			"16": "openwith16.png",
-			"32": "openwith32.png",
-			"64": "openwith64.png"
+			"16": "openwith.svg",
+			"32": "openwith.svg",
+			"64": "openwith.svg"
 		},
 		"default_popup": "action.html",
 		"browser_style": true
