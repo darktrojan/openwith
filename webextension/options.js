@@ -48,12 +48,15 @@ document.getElementById('test').onclick = function() {
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			testResult.style.display = 'flex';
-			testResultIcon.src = 'status_ok.svg';
 			testResultText.textContent = `Found version ${message.version} at ${message.file}.`;
 			get_version_warn().then(function(version_warn) {
 				if (compare_versions(message.version, version_warn) < 0) {
 					testResultIcon.src = 'status_warning.svg';
 					testResultText.textContent += '\nA newer version is available and you should replace it.';
+				} else {
+					testResultIcon.src = 'status_ok.svg';
+					chrome.browserAction.setBadgeText({text: ''});
+					chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
 				}
 			});
 		} else {
@@ -399,16 +402,6 @@ document.querySelector('input[type="file"][name="userIcon"]').onchange = functio
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
-
-	if (platformInfo.os == 'win') {
-		let downloadAnchor = document.querySelector('a.win[download]');
-		fetch(downloadAnchor.href).then(function(response) {
-			return response.blob();
-		}).then(function(blob) {
-			downloadAnchor.href = URL.createObjectURL(blob);
-			downloadAnchor.download = 'open_with_windows.py';
-		});
-	}
 });
 
 chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {

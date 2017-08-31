@@ -1,4 +1,7 @@
 /* globals chrome */
+let errorMessage = document.getElementById('error');
+let warningMessage = document.getElementById('warning');
+let updateMessage = document.getElementById('update');
 let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
@@ -7,9 +10,37 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 	chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
 
 	if (color[1] == 51) {
-		document.getElementById('error').style.display = 'block';
+		errorMessage.style.display = 'block';
 	} else if (color[1] == 153) {
-		document.getElementById('warning').style.display = 'block';
+		warningMessage.style.display = 'block';
+	} else {
+		chrome.management.getSelf(function(self) {
+			let currentVersion = parseFloat(self.version, 10);
+			let now = new Date();
+
+			chrome.storage.local.get({
+				version: 0,
+				versionLastUpdate: new Date(0),
+				versionLastAck: new Date(0)
+			}, function(prefs) {
+				if (typeof prefs.versionLastUpdate == 'string') {
+					prefs.versionLastUpdate = new Date(prefs.versionLastUpdate);
+				}
+				if (typeof prefs.versionLastAck == 'string') {
+					prefs.versionLastAck = new Date(prefs.versionLastAck);
+				}
+
+				if (currentVersion > prefs.version) {
+					prefs.version = currentVersion;
+					prefs.versionLastUpdate = now;
+				}
+				if (now - prefs.versionLastUpdate < 43200000 && now - prefs.versionLastAck > 604800000) {
+					updateMessage.textContent = updateMessage.textContent.replace('%S', self.version);
+					updateMessage.style.display = 'block';
+				}
+				chrome.storage.local.set(prefs);
+			});
+		});
 	}
 });
 
@@ -41,7 +72,13 @@ browsersList.onclick = function(event) {
 	});
 };
 
-document.querySelector('.panel-section-footer-button').onclick = function() {
+errorMessage.onclick = warningMessage.onclick = updateMessage.onclick = function() {
+	chrome.storage.local.set({versionLastAck: new Date()});
+	open_options_tab();
+};
+document.querySelector('.panel-section-footer-button').onclick = open_options_tab;
+
+function open_options_tab() {
 	let url = chrome.extension.getURL('options.html');
 	chrome.tabs.query({url}, function(result) {
 		if (result && result.length > 0) {
@@ -53,7 +90,7 @@ document.querySelector('.panel-section-footer-button').onclick = function() {
 		}
 		window.close();
 	});
-};
+}
 
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
