@@ -1,7 +1,7 @@
 html {
 	font: message-box;
 	line-height: 1.33;
-	background-color: -moz-dialog;
+	background-color: #f2f1f0;
 	height: 100%;
 }
 body {
@@ -17,6 +17,15 @@ div#left {
 	display: flex;
 	flex-direction: column;
 	transition: filter 125ms;
+}
+div#result {
+	display: none;
+	margin: 8px;
+}
+div#resulttext {
+	flex: 1;
+	-webkit-margin-start: 8px;
+	margin-inline-start: 8px;
 }
 ul#browsers {
 	width: 40em;
@@ -133,4 +142,13 @@ ul#icons li {
 .submit {
 	margin-top: 1em;
 	text-align: center;
+}
+form[name="userIcons"] ul {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+form[name="userIcons"] li {
+	display: inline-block;
+	margin: 0.5em;
 }

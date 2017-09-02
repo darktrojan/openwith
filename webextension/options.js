@@ -39,7 +39,7 @@ let userIconsList = userIconsForm.querySelector('ul');
 document.getElementById('test').onclick = function() {
 	function error_listener() {
 		testResult.style.display = 'flex';
-		testResultIcon.src = 'status_error.svg';
+		testResultIcon.src = 'images/status_error.svg';
 		testResultText.textContent = 'Something went wrong. There might be more information in the Browser Console.';
 	}
 
@@ -48,13 +48,13 @@ document.getElementById('test').onclick = function() {
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			testResult.style.display = 'flex';
-			testResultText.textContent = `Found version ${message.version} at ${message.file}.`;
+			testResultText.textContent = `Found version ${message.version} at ${message.file}.`.replace(/[\/\\]/g, '$&\u200b');
 			get_version_warn().then(function(version_warn) {
 				if (compare_versions(message.version, version_warn) < 0) {
-					testResultIcon.src = 'status_warning.svg';
+					testResultIcon.src = 'images/status_warning.svg';
 					testResultText.textContent += '\nA newer version is available and you should replace it.';
 				} else {
-					testResultIcon.src = 'status_ok.svg';
+					testResultIcon.src = 'images/status_ok.svg';
 					chrome.browserAction.setBadgeText({text: ''});
 					chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
 				}

@@ -9,9 +9,12 @@
 		}
 	},
 	"icons": {
-		"16": "openwith.svg",
-		"32": "openwith.svg",
-		"64": "openwith.svg"
+		"16": "images/openwith16.png",
+		"24": "images/openwith24.png",
+		"32": "images/openwith32.png",
+		"48": "images/openwith48.png",
+		"64": "images/openwith64.png",
+		"96": "images/openwith96.png"
 	},
 	"background": {
 		"scripts": [
@@ -27,9 +30,12 @@
 	],
 	"browser_action": {
 		"default_icon": {
-			"16": "openwith.svg",
-			"32": "openwith.svg",
-			"64": "openwith.svg"
+			"16": "images/openwith16.png",
+			"24": "images/openwith24.png",
+			"32": "images/openwith32.png",
+			"48": "images/openwith48.png",
+			"64": "images/openwith64.png",
+			"96": "images/openwith96.png"
 		},
 		"default_popup": "action.html",
 		"browser_style": true

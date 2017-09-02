@@ -5,6 +5,10 @@ let updateMessage = document.getElementById('update');
 let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
+if (navigator.userAgent.includes('Firefox')) {
+	document.querySelector('style').disabled = true;
+}
+
 chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 	chrome.browserAction.setBadgeText({text: ''});
 	chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
