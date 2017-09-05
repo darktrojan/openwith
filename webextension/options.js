@@ -120,17 +120,20 @@ browsersList.onclick = function(event) {
 		detailsForm.browser_id.value = li.dataset.id;
 		detailsForm.name.value = li.querySelector('.name').textContent;
 		detailsForm.command.value = li.querySelector('.command').textContent;
-		selected = iconsList.querySelector('.selected');
-		if (selected) {
-			selected.classList.remove('selected');
-		}
-		for (let l of iconsList.children) {
-			if (l.dataset.name == li.dataset.icon) {
-				l.classList.add('selected');
-			}
-		}
+		select_icon(li.dataset.icon);
 		document.documentElement.dataset.mode = 'editing';
 		detailsForm.name.select();
+	} else if (event.target.classList.contains('cloneBrowser')) {
+		let data = {
+			name: li.querySelector('.name').textContent + ' (copy)',
+			command: li.querySelector('.command').textContent,
+			icon: li.dataset.icon
+		};
+		chrome.runtime.sendMessage({action: 'add_browser', data}, function(id) {
+			data.id = id;
+			put_browser(data);
+			select_browser(id);
+		});
 	}
 };
 browsersList.ondragstart = function(event) {
@@ -229,13 +232,8 @@ detailsForm.onsubmit = function() {
 	} else {
 		chrome.runtime.sendMessage({action: 'add_browser', data}, function(id) {
 			data.id = id;
-			let li = put_browser(data);
-			let selected = browsersList.querySelector('.selected');
-			if (selected) {
-				selected.classList.remove('selected');
-			}
-			li.classList.add('selected');
-			li.scrollIntoView();
+			put_browser(data);
+			select_browser(id);
 		});
 	}
 
@@ -244,10 +242,7 @@ detailsForm.onsubmit = function() {
 };
 detailsForm.onreset = function() {
 	detailsForm.browser_id.value = '';
-	let selected = iconsList.querySelector('.selected');
-	if (selected) {
-		selected.classList.remove('selected');
-	}
+	select_icon();
 	delete document.documentElement.dataset.mode;
 };
 
@@ -261,15 +256,7 @@ document.querySelector('input[type="file"][name="desktopFile"]').onchange = func
 		detailsForm.browser_id.value = '';
 		detailsForm.name.value = data.name;
 		detailsForm.command.value = data.command;
-		let selected = iconsList.querySelector('.selected');
-		if (selected) {
-			selected.classList.remove('selected');
-		}
-		for (let l of iconsList.children) {
-			if (l.dataset.name == data.icon) {
-				l.classList.add('selected');
-			}
-		}
+		select_icon(data.icon);
 	};
 };
 
@@ -281,12 +268,7 @@ iconsList.onclick = function(event) {
 	if (target == this) {
 		return;
 	}
-
-	let selected = this.querySelector('.selected');
-	if (selected) {
-		selected.classList.remove('selected');
-	}
-	target.classList.add('selected');
+	select_icon(target.dataset.name);
 };
 iconsList.onkeypress = function(event) {
 	let selected = this.querySelector('.selected');
@@ -443,6 +425,18 @@ function put_browser(data) {
 	return li;
 }
 
+function select_browser(id) {
+	let selected = browsersList.querySelector('.selected');
+	if (selected) {
+		selected.classList.remove('selected');
+	}
+	let li = browsersList.querySelector('[data-id="' + id + '"]');
+	if (li) {
+		li.classList.add('selected');
+		li.scrollIntoView();
+	}
+}
+
 function read_desktop_file(text) {
 	let current_section = null;
 	let name = null;
@@ -492,6 +486,18 @@ function put_icon(name) {
 	} else {
 		li.querySelector('img').src = 'icons/' + name + '_32x32.png';
 		li.title = name.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');
+	}
+}
+
+function select_icon(name) {
+	let selected = iconsList.querySelector('.selected');
+	if (selected) {
+		selected.classList.remove('selected');
+	}
+	for (let l of iconsList.children) {
+		if (l.dataset.name == name) {
+			l.classList.add('selected');
+		}
 	}
 }
 
