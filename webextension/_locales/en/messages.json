@@ -12,7 +12,13 @@
 		"message": "Duplicate"
 	},
 	"browserList_duplicate_newName": {
-		"message": "%S copy"
+		"message": "$ORIGINAL$ (copy)",
+		"placeholders": {
+			"original": {
+				"content": "$1",
+				"example": "Firefox"
+			}
+		}
 	},
 	"browserList_edit_button": {
 		"message": "Edit"

@@ -132,9 +132,9 @@ browsersList.onclick = function(event) {
 		chrome.runtime.sendMessage({action: 'hide_browser', id: li.dataset.id, hidden: false}, function() {
 			li.classList.remove('hiddenBrowser');
 		});
-	} else if (classList.contains('cloneBrowser')) {
+	} else if (classList.contains('duplicateBrowser')) {
 		let data = {
-			name: li.querySelector('.name').textContent + ' (copy)',
+			name: get_string('browserList_duplicate_newName', li.querySelector('.name').textContent),
 			command: li.querySelector('.command').textContent,
 			icon: li.dataset.icon
 		};
