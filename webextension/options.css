@@ -26,6 +26,7 @@ div#resulttext {
 	flex: 1;
 	-webkit-margin-start: 8px;
 	margin-inline-start: 8px;
+	white-space: pre-wrap;
 }
 ul#browsers {
 	width: 40em;

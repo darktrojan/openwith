@@ -1,5 +1,5 @@
 /* globals chrome */
-/* exported get_version_warn, compare_versions, compare_object_versions */
+/* exported get_version_warn, compare_versions, compare_object_versions, get_string, get_strings */
 var _version_warn = null;
 function get_version_warn() {
 	if (!!_version_warn) {
@@ -63,4 +63,18 @@ function compare_versions(a, b) {
 
 function compare_object_versions(a, b) {
 	return compare_versions(a.name, b.name);
+}
+
+function get_string(name, ...substitutions) {
+	let value = chrome.i18n.getMessage(name, substitutions);
+	if (!value) {
+		console.error('No string: ' + name);
+	}
+	return value;
+}
+
+function get_strings(element = document) {
+	element.querySelectorAll('[data-message]').forEach(n => {
+		n.textContent = get_string(n.dataset.message);
+	});
 }

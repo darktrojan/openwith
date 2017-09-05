@@ -1,4 +1,4 @@
-/* globals chrome */
+/* globals chrome, get_string, get_strings */
 let errorMessage = document.getElementById('error');
 let warningMessage = document.getElementById('warning');
 let updateMessage = document.getElementById('update');
@@ -6,8 +6,10 @@ let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
 if (navigator.userAgent.includes('Firefox')) {
-	document.querySelector('style').disabled = true;
+	document.styleSheets[0].disabled = true;
 }
+
+get_strings();
 
 chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 	chrome.browserAction.setBadgeText({text: ''});
@@ -39,7 +41,7 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
 					prefs.versionLastUpdate = now;
 				}
 				if (now - prefs.versionLastUpdate < 43200000 && now - prefs.versionLastAck > 604800000) {
-					updateMessage.textContent = updateMessage.textContent.replace('%S', self.version);
+					updateMessage.textContent = get_string('update_message', self.version);
 					updateMessage.style.display = 'block';
 				}
 				chrome.storage.local.set(prefs);

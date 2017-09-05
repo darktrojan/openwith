@@ -1,0 +1,37 @@
+body {
+	min-width: 180px;
+	max-width: 280px;
+}
+#update,
+#warning,
+#error {
+	display: none;
+	margin: 4px;
+	padding: 8px;
+	color: #fff;
+	white-space: wrap;
+	line-height: 1.4;
+	text-align: center;
+}
+#update {
+	background-color: #4a0;
+}
+#warning {
+	background-color: #f90;
+}
+#error {
+	background-color: #f30;
+}
+#browsers {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.name {
+	-webkit-margin-start: 8px;
+	margin-inline-start: 8px;
+	white-space: nowrap;
+}
+.panel-section-footer-button {
+	margin: 0;
+}

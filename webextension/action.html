@@ -3,129 +3,15 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<style type="text/css">
-/* This stylesheet is disabled in Firefox, which uses built-in styling. */
-html,
-body {
-	background: transparent;
-	box-sizing: border-box;
-	color: #222426;
-	cursor: default;
-	display: flex;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
-	user-select: none;
-}
-body * {
-	box-sizing: border-box;
-	text-align: start;
-}
-.panel-section {
-	display: flex;
-	flex-direction: row;
-}
-.panel-section-list {
-	flex-direction: column;
-	padding: 4px 0;
-}
-.panel-list-item {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	height: 24px;
-	padding: 0 16px;
-}
-.panel-list-item:not(.disabled):hover {
-	background-color: rgba(0, 0, 0, 0.06);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.panel-list-item:not(.disabled):hover:active {
-	background-color: rgba(0, 0, 0, 0.1);
-}
-.panel-list-item > .icon {
-	flex-grow: 0;
-	flex-shrink: 0;
-}
-.panel-list-item > .text {
-	flex-grow: 10;
-}
-.panel-section-footer {
-	background-color: rgba(0, 0, 0, 0.06);
-	border-top: 1px solid rgba(0, 0, 0, 0.15);
-	color: #1a1a1a;
-	display: flex;
-	flex-direction: row;
-	height: 41px;
-	margin-top: -1px;
-	padding: 0;
-}
-.panel-section-footer-button {
-	flex: 1 1 auto;
-	height: 100%;
-	margin: 0 -1px;
-	padding: 12px;
-	text-align: center;
-}
-.panel-section-footer-button:hover {
-	background-color: rgba(0, 0, 0, 0.06);
-}
-.panel-section-footer-button:hover:active {
-	background-color: rgba(0, 0, 0, 0.1);
-}
-</style>
-<style type="text/css">
-body {
-	min-width: 180px;
-	max-width: 280px;
-}
-#update,
-#warning,
-#error {
-	display: none;
-	margin: 4px;
-	padding: 8px;
-	color: #fff;
-	white-space: wrap;
-	line-height: 1.4;
-	text-align: center;
-}
-#update {
-	background-color: #4a0;
-}
-#warning {
-	background-color: #f90;
-}
-#error {
-	background-color: #f30;
-}
-#browsers {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.name {
-	-webkit-margin-start: 8px;
-	margin-inline-start: 8px;
-	white-space: nowrap;
-}
-.panel-section-footer-button {
-	margin: 0;
-}
-</style>
+<!-- This stylesheet is disabled in Firefox, which uses built-in styling. -->
+<link rel="stylesheet" type="text/css" href="action_browser.css" />
+<link rel="stylesheet" type="text/css" href="action.css" />
 </head>
 <body>
 <div class="panel">
-	<div id="update" class="panel-section">
-		Open With has been updated to version %S. Open With is free, but your donation is appreciated!
-	</div>
-	<div id="warning" class="panel-section">
-		You should update your Open With file.
-	</div>
-	<div id="error" class="panel-section">
-		Open With could not connect to the outside world.
-	</div>
+	<div id="update" class="panel-section"></div>
+	<div id="warning" class="panel-section" data-message="update_warning"></div>
+	<div id="error" class="panel-section" data-message="update_error"></div>
 	<div class="panel-section panel-section-list">
 		<ul id="browsers">
 			<template>
@@ -137,9 +23,10 @@ body {
 		</ul>
 	</div>
 	<div class="panel-section panel-section-footer">
-		<div class="panel-section-footer-button">Open With options&#x2026;</div>
+		<div class="panel-section-footer-button" data-message="popup_options_button"></div>
 	</div>
 </div>
+<script type="text/javascript" src="common.js"></script>
 <script type="text/javascript" src="action.js"></script>
 </body>
 </html>

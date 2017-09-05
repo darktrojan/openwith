@@ -2,55 +2,58 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Open With Options</title>
+<title data-message="options_title"></title>
 <link rel="stylesheet" type="text/css" href="options.css" />
 </head>
 <body>
 <div id="left">
 	<div id="install" hidden="">
-		<h1>Open With Options</h1>
-		<h2>Install:</h2>
-		<p>Open With needs a file outside of the browser to communicate with.</p>
+		<h1 data-message="options_title"></h1>
+		<h2 data-message="install_header"></h2>
+		<p data-message="install_introduction"></p>
 		<ol>
 			<li class="win">
-				You'll need to have Python installed for this to work.
-				<a href="https://www.python.org/downloads/">Fetch it from here.</a>
+				<span data-message="install_step1a"></span>
+				<a href="https://www.python.org/downloads/" data-message="install_step1b_link"></a>
 			</li>
 			<li>
-				<a href="native/open_with_linux.py" download="" class="linux">Click here to download</a>
-				<a href="native/open_with_mac.py" download="" class="mac">Click here to download</a>
-				<a href="native/open_with_windows.py" type="application/octet-stream" class="win">Click here to download</a>
-				and save the file to your computer.
+				<a href="native/open_with_linux.py" download="" class="linux" data-message="install_step2a_link"></a>
+				<a href="native/open_with_mac.py" download="" class="mac" data-message="install_step2a_link"></a>
+				<a href="native/open_with_windows.py" type="application/octet-stream" class="win" data-message="install_step2a_link"></a>
+				<span data-message="install_step2b"></span>
 			</li>
 			<li class="linux mac">
-				Ensure the file permissions allow you to run it ("x" permission):
+				<span data-message="install_step3"></span>
 				<pre class="linux">chmod u+x open_with_linux.py</pre>
 				<pre class="mac">chmod u+x open_with_mac.py</pre>
 			</li>
 			<li>
-				<span class="win">Open a command prompt. </span>Run the file with the argument "install", like this:
+				<span class="win" data-message="install_step4a"></span>
+				<span data-message="install_step4b"></span>
 				<pre class="linux">open_with_linux.py install</pre>
 				<pre class="mac">open_with_mac.py install</pre>
 				<pre class="win">open_with_windows.py install</pre>
-				If you move the file, you must run this step again.
+				<span data-message="install_step4c"></span>
 			</li>
 		</ol>
 
-		<button id="test">Test Install</button>
+		<button id="test" data-message="test_button"></button>
 		<div id="result">
 			<img id="resulticon" src="" width="32" height="32">
 			<div id="resulttext"></div>
 		</div>
 	</div>
 	<div>
-		<button id="look">Look for browsers</button>
-		<button id="addbrowser">Add browser</button>
-		<button id="sort">Sort list</button>
+		<button id="look" data-message="actions_look"></button>
+		<button id="addbrowser" data-message="actions_addbrowser"></button>
+		<button id="sort" data-message="actions_sort"></button>
 	</div>
 	<div style="flex-grow: 1"></div>
 	<div align="center">
-		<p>Open With is funded by user donations. <button>Donate</button></p>
-		<p><a href="https://github.com/darktrojan/openwith">Open With on GitHub</a></p>
+		<p>
+			<span data-message="donate_message"></span>
+			<button data-message="donate_button"></button></p>
+		<p><a href="https://github.com/darktrojan/openwith" data-message="github"></a></p>
 	</div>
 </div>
 <ul id="browsers">
@@ -63,11 +66,11 @@
 				<div class="name"></div>
 				<div class="command"></div>
 				<div class="controls">
-					<button class="editBrowser">Edit</button>
-					<button class="hideBrowser">Hide</button>
-					<button class="showBrowser">Show</button>
-					<button class="cloneBrowser">Clone</button>
-					<button class="removeBrowser">Remove</button>
+					<button class="editBrowser" data-message="browserList_edit_button"></button>
+					<button class="hideBrowser" data-message="browserList_hide_button"></button>
+					<button class="showBrowser" data-message="browserList_show_button"></button>
+					<button class="duplicateBrowser" data-message="browserList_duplicate_button"></button>
+					<button class="removeBrowser" data-message="browserList_remove_button"></button>
 				</div>
 			</div>
 		</li>
@@ -75,19 +78,19 @@
 </ul>
 <div id="bg"></div>
 <form name="details">
-	<h2 class="adding">Add browser</h2>
-	<h2 class="editing">Edit browser</h2>
+	<h2 class="adding" data-message="details_adding_header"></h2>
+	<h2 class="editing" data-message="details_editing_header"></h2>
 	<input type="hidden" name="browser_id" />
-	<label class="adding linux">Read from .desktop file:
+	<label class="adding linux"><span data-message="details_desktopFile_label"></span>
 		<input type="file" name="desktopFile" />
 	</label>
-	<label>Name:
+	<label><span data-message="details_name_label"></span>
 		<input type="text" name="name" required="" />
 	</label>
-	<label>Command:
+	<label><span data-message="details_command_label"></span>
 		<input type="text" name="command" required="" />
 	</label>
-	<label>Icon:</label>
+	<label data-message="details_icon_label">Icon:</label>
 	<ul id="icons" tabindex="0">
 		<template>
 			<li>
@@ -95,21 +98,21 @@
 			</li>
 		</template>
 	</ul>
-	<div id="iconsCredit"><a href="https://github.com/alrra/browser-logos">Browser Logos on Github</a></div>
-	<div><button type="button" name="userIconsButton">Custom icons&hellip;</button></div>
+	<div id="iconsCredit"><a href="https://github.com/alrra/browser-logos" data-message="details_iconsCredit"></a></div>
+	<div><button type="button" name="userIconsButton" data-message="details_customIcons_button"></button></div>
 	<div class="submit">
-		<button class="adding">Add</button>
-		<button class="editing">Update</button>
-		<button type="reset">Cancel</button>
+		<button class="adding" data-message="details_add_button"></button>
+		<button class="editing" data-message="details_update_button"></button>
+		<button type="reset" data-message="details_cancel_button"></button>
 	</div>
 </form>
 <form name="userIcons">
-	<h2>Custom icons</h2>
+	<h2 data-message="userIcons_header"></h2>
 	<ul>
 		<template>
 			<li>
 				<img src="" width="32" height="32" /><br />
-				<button type="button" class="removeIcon">Remove</button>
+				<button type="button" class="removeIcon" data-message="userIcons_remove_button"></button>
 			</li>
 		</template>
 	</ul>
@@ -117,7 +120,7 @@
 		<input type="file" name="userIcon" accept="image/*" />
 	</label>
 	<div class="submit">
-		<button type="reset">Done</button>
+		<button type="reset" data-message="userIcons_done_button"></button>
 	</div>
 </form>
 <div hidden="">

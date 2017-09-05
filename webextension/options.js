@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions, compare_object_versions, get_version_warn */
+/* globals chrome, compare_versions, compare_object_versions, get_version_warn, get_string, get_strings */
 let testResult = document.getElementById('result');
 let testResultIcon = document.getElementById('resulticon');
 let testResultText = document.getElementById('resulttext');
@@ -40,7 +40,7 @@ document.getElementById('test').onclick = function() {
 	function error_listener() {
 		testResult.style.display = 'flex';
 		testResultIcon.src = 'images/status_error.svg';
-		testResultText.textContent = 'Something went wrong. There might be more information in the Browser Console.';
+		testResultText.textContent = get_string('test_error');
 	}
 
 	let port = chrome.runtime.connectNative('open_with');
@@ -48,11 +48,11 @@ document.getElementById('test').onclick = function() {
 	port.onMessage.addListener(function(message) {
 		if (message) {
 			testResult.style.display = 'flex';
-			testResultText.textContent = `Found version ${message.version} at ${message.file}.`.replace(/[\/\\]/g, '$&\u200b');
+			testResultText.textContent = get_string('test_success', message.version, message.file.replace(/[\/\\]/g, '$&\u200b'));
 			get_version_warn().then(function(version_warn) {
 				if (compare_versions(message.version, version_warn) < 0) {
 					testResultIcon.src = 'images/status_warning.svg';
-					testResultText.textContent += '\nA newer version is available and you should replace it.';
+					testResultText.textContent += '\n' + get_string('test_warning');
 				} else {
 					testResultIcon.src = 'images/status_ok.svg';
 					chrome.browserAction.setBadgeText({text: ''});
@@ -390,6 +390,8 @@ document.querySelector('input[type="file"][name="userIcon"]').onchange = functio
 	}
 };
 
+get_strings();
+
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
@@ -416,6 +418,7 @@ function put_browser(data) {
 	if (!li) {
 		li = browsersTemplate.content.firstElementChild.cloneNode(true);
 		li.dataset.id = data.id;
+		get_strings(li);
 		browsersList.appendChild(li);
 	}
 	if (data.hidden) {
@@ -494,6 +497,7 @@ function put_icon(name) {
 		if (!userLi) {
 			userLi = userIconsTemplate.content.firstElementChild.cloneNode(true);
 			userLi.dataset.name = name;
+			get_strings(userLi);
 			userIconsList.appendChild(userLi);
 		}
 		li.querySelector('img').src = userLi.querySelector('img').src = userIcons.get(name.substring(10))['32'];

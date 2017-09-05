@@ -1,0 +1,162 @@
+{
+	"actions_addbrowser": {
+		"message": "Add browser"
+	},
+	"actions_look": {
+		"message": "Look for browsers"
+	},
+	"actions_sort": {
+		"message": "Sort list"
+	},
+	"browserList_duplicate_button": {
+		"message": "Duplicate"
+	},
+	"browserList_duplicate_newName": {
+		"message": "%S copy"
+	},
+	"browserList_edit_button": {
+		"message": "Edit"
+	},
+	"browserList_hide_button": {
+		"message": "Hide"
+	},
+	"browserList_remove_button": {
+		"message": "Remove"
+	},
+	"browserList_show_button": {
+		"message": "Show"
+	},
+	"details_add_button": {
+		"message": "Add"
+	},
+	"details_adding_header": {
+		"message": "Add browser"
+	},
+	"details_cancel_button": {
+		"message": "Cancel"
+	},
+	"details_command_label": {
+		"message": "Command:"
+	},
+	"details_customIcons_button": {
+		"message": "Custom icons…"
+	},
+	"details_desktopFile_label": {
+		"message": "Read from .desktop file:"
+	},
+	"details_editing_header": {
+		"message": "Edit browser"
+	},
+	"details_icon_label": {
+		"message": "Icon:"
+	},
+	"details_iconsCredit": {
+		"message": "Browser Logos on Github"
+	},
+	"details_name_label": {
+		"message": "Name:"
+	},
+	"details_update_button": {
+		"message": "Update"
+	},
+	"donate_button": {
+		"message": "Donate"
+	},
+	"donate_message": {
+		"message": "Open With is funded by user donations."
+	},
+	"extensionDescription": {
+		"message": "Quickly test out your web pages in Edge, Chrome, Safari, or Opera. Open With opens the current page in your other browsers with just one click."
+	},
+	"extensionName": {
+		"message": "Open With"
+	},
+	"github": {
+		"message": "Open With on GitHub"
+	},
+	"install_header": {
+		"message": "Install:"
+	},
+	"install_introduction": {
+		"message": "Open With needs a file outside of the browser to communicate with."
+	},
+	"install_step1a": {
+		"message": "You'll need to have Python installed for this to work."
+	},
+	"install_step1b_link": {
+		"message": "Fetch it from here."
+	},
+	"install_step2a_link": {
+		"message": "Click here to download"
+	},
+	"install_step2b": {
+		"message": "and save the file to your computer."
+	},
+	"install_step3": {
+		"message": "Ensure the file permissions allow you to run it (\"x\" permission):"
+	},
+	"install_step4a": {
+		"message": "Open a command prompt."
+	},
+	"install_step4b": {
+		"message": "Run the file with the argument \"install\", like this:"
+	},
+	"install_step4c": {
+		"message": "If you move the file, you must run this step again."
+	},
+	"options_title": {
+		"message": "Open With Options"
+	},
+	"popup_options_button": {
+		"message": "Open With options…"
+	},
+	"test_button": {
+		"message": "Test Install"
+	},
+	"test_error": {
+		"message": "Something went wrong. There might be more information in the Browser Console."
+	},
+	"test_success": {
+		"message": "Found version $VERSION$ at $LOCATION$.",
+		"placeholders": {
+			"location": {
+				"content": "$2",
+				"example": "/home/geoff/Desktop/open_with_linux.py"
+			},
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"test_warning": {
+		"message": "A newer version is available and you should replace it."
+	},
+	"update_changelog_button": {
+		"message": "What Changed?"
+	},
+	"update_error": {
+		"message": "Open With could not connect to the outside world."
+	},
+	"update_message": {
+		"message": "Open With was just updated to version $VERSION$. Open With is free, but your donation is appreciated!",
+		"placeholders": {
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"update_warning": {
+		"message": "You should update your Open With file."
+	},
+	"userIcons_done_button": {
+		"message": "Done"
+	},
+	"userIcons_header": {
+		"message": "Custom icons"
+	},
+	"userIcons_remove_button": {
+		"message": "Remove"
+	}
+}
