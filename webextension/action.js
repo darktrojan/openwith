@@ -56,6 +56,9 @@ chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
 
 	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
 		for (let b of browsers) {
+			if (b.hidden) {
+				continue;
+			}
 			add_browser(b);
 		}
 	});

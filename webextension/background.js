@@ -84,6 +84,9 @@ function make_menus() {
 
 	for (let b of browsers) {
 		max_browser_id = Math.max(max_browser_id, b.id);
+		if (b.hidden) {
+			continue;
+		}
 		let item = {
 			id: 'browser_' + b.id,
 			title: b.name,
@@ -100,6 +103,7 @@ function make_menus() {
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	let {data} = message;
+	let browser;
 	switch (message.action) {
 	case 'open_browser':
 		open_browser(message.id, message.url);
@@ -132,14 +136,31 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		return true;
 	case 'update_browser':
 		// Update the existing object to keep any stray stuff.
-		let browser = browsers.find(b => b.id == data.id);
-		browser.name = data.name;
-		browser.command = data.command;
-		browser.icon = data.icon;
-		chrome.storage.local.set({browsers}, function() {
-			make_menus();
-			sendResponse(true);
-		});
+		browser = browsers.find(b => b.id == data.id);
+		if (browser) {
+			browser.name = data.name;
+			browser.command = data.command;
+			browser.icon = data.icon;
+			chrome.storage.local.set({browsers}, function() {
+				make_menus();
+				sendResponse(true);
+			});
+		}
+		return true;
+	case 'hide_browser':
+		// Update the existing object to keep any stray stuff.
+		browser = browsers.find(b => b.id == message.id);
+		if (browser) {
+			if (message.hidden) {
+				browser.hidden = true;
+			} else {
+				delete browser.hidden;
+			}
+			chrome.storage.local.set({browsers}, function() {
+				make_menus();
+				sendResponse(true);
+			});
+		}
 		return true;
 	case 'order_browsers':
 		for (let b of browsers) {

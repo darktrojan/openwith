@@ -60,6 +60,18 @@ ul#browsers li:not(:first-of-type) {
 .controls {
 	text-align: right;
 }
+li.hiddenBrowser img {
+	filter: saturate(0) contrast(0.5);
+	opacity: 0.5;
+}
+li.hiddenBrowser .name,
+li.hiddenBrowser .command {
+	opacity: 0.5;
+}
+li.hiddenBrowser .hideBrowser,
+li:not(.hiddenBrowser) .showBrowser {
+	display: none;
+}
 #bg {
 	position: fixed;
 	top: 0;

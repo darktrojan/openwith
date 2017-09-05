@@ -102,7 +102,8 @@ browsersList.onclick = function(event) {
 	if (li == this) {
 		return;
 	}
-	if (event.target.classList.contains('removeBrowser')) {
+	let {classList} = event.target;
+	if (classList.contains('removeBrowser')) {
 		let id = parseInt(li.dataset.id, 10);
 		chrome.runtime.sendMessage({action: 'remove_browser', id}, function() {
 			li.remove();
@@ -116,14 +117,22 @@ browsersList.onclick = function(event) {
 	li.classList.add('selected');
 	li.scrollIntoView();
 
-	if (event.target.classList.contains('editBrowser')) {
+	if (classList.contains('editBrowser')) {
 		detailsForm.browser_id.value = li.dataset.id;
 		detailsForm.name.value = li.querySelector('.name').textContent;
 		detailsForm.command.value = li.querySelector('.command').textContent;
 		select_icon(li.dataset.icon);
 		document.documentElement.dataset.mode = 'editing';
 		detailsForm.name.select();
-	} else if (event.target.classList.contains('cloneBrowser')) {
+	} else if (classList.contains('hideBrowser')) {
+		chrome.runtime.sendMessage({action: 'hide_browser', id: li.dataset.id, hidden: true}, function() {
+			li.classList.add('hiddenBrowser');
+		});
+	} else if (classList.contains('showBrowser')) {
+		chrome.runtime.sendMessage({action: 'hide_browser', id: li.dataset.id, hidden: false}, function() {
+			li.classList.remove('hiddenBrowser');
+		});
+	} else if (classList.contains('cloneBrowser')) {
 		let data = {
 			name: li.querySelector('.name').textContent + ' (copy)',
 			command: li.querySelector('.command').textContent,
@@ -408,6 +417,11 @@ function put_browser(data) {
 		li = browsersTemplate.content.firstElementChild.cloneNode(true);
 		li.dataset.id = data.id;
 		browsersList.appendChild(li);
+	}
+	if (data.hidden) {
+		li.classList.add('hiddenBrowser');
+	} else {
+		li.classList.remove('hiddenBrowser');
 	}
 	if (data.icon) {
 		li.dataset.icon = data.icon;
