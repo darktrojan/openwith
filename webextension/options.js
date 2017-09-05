@@ -503,7 +503,7 @@ function put_icon(name) {
 		li.querySelector('img').src = userLi.querySelector('img').src = userIcons.get(name.substring(10))['32'];
 	} else {
 		li.querySelector('img').src = 'icons/' + name + '_32x32.png';
-		li.title = name.replace(/\b-?([a-z])/g, m => m.replace('-', ' ').toUpperCase()).replace('_', ' ');
+		li.title = get_string('icon_' + name.replace(/\W/g, '_'));
 	}
 }
 

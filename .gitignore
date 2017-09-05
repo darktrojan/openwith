@@ -1,5 +1,6 @@
-args.json
-*.xpi
 *.pyc
+*.xpi
+args.json
 browser-logos
+webextension/_locales/xyz
 webextension/icons
