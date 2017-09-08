@@ -88,15 +88,7 @@ errorMessage.onclick = warningMessage.onclick = updateMessage.onclick = function
 document.querySelector('.panel-section-footer-button').onclick = open_options_tab;
 
 function open_options_tab() {
-	let url = chrome.extension.getURL('options.html');
-	chrome.tabs.query({url}, function(result) {
-		if (result && result.length > 0) {
-			let tab = result[0];
-			chrome.tabs.update(tab.id, {active: true});
-			chrome.windows.update(tab.windowId, {focused: true});
-		} else {
-			chrome.tabs.create({url});
-		}
+	chrome.runtime.openOptionsPage(function() {
 		window.close();
 	});
 }
