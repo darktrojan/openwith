@@ -213,7 +213,12 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 			chrome.browserAction.setPopup({popup: 'installed.html'});
 			return;
 		} else if (previousVersion != currentVersion) { // This is an upgrade or downgrade.
-			chrome.storage.local.set({'version': currentVersion});
+			let newPrefs = {'version': currentVersion};
+			if (compare_versions(currentVersion, previousVersion) > 0 &&
+					(currentVersion.includes('b') || parseFloat(currentVersion, 10) != parseFloat(previousVersion, 10))) {
+				newPrefs.versionLastUpdate = new Date();
+			}
+			chrome.storage.local.set(newPrefs);
 		}
 
 		get_version_warn().then(function(version_warn) {

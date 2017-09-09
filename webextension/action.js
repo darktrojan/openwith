@@ -16,8 +16,7 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 	} else if (is_same_colour(colour, WARNING_COLOUR)) {
 		warningMessage.style.display = 'block';
 	} else {
-		chrome.management.getSelf(function(self) {
-			let currentVersion = parseFloat(self.version, 10);
+		chrome.management.getSelf(function({version: currentVersion}) {
 			let now = new Date();
 
 			chrome.storage.local.get({
@@ -31,13 +30,8 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 				if (typeof prefs.versionLastAck == 'string') {
 					prefs.versionLastAck = new Date(prefs.versionLastAck);
 				}
-
-				if (currentVersion > prefs.version) {
-					prefs.version = currentVersion;
-					prefs.versionLastUpdate = now;
-				}
 				if (now - prefs.versionLastUpdate < 43200000 && now - prefs.versionLastAck > 604800000) {
-					updateMessage.textContent = get_string('update_message', self.version);
+					updateMessage.textContent = get_string('update_message', currentVersion);
 					updateMessage.style.display = 'block';
 				}
 				chrome.storage.local.set(prefs);

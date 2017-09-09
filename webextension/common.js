@@ -19,7 +19,7 @@ function compare_versions(a, b) {
 		var parts = [];
 		var lastIsDigit = false;
 		var part = '';
-		for (let c of name) {
+		for (let c of name.toString()) {
 			let currentIsDigit = c >= '0' && c <= '9';
 			if (c == '.' || lastIsDigit != currentIsDigit) {
 				if (part) {
