@@ -72,7 +72,7 @@
 		"message": "Open With is funded by user donations."
 	},
 	"extensionDescription": {
-		"message": "Quickly test out your web pages in Edge, Chrome, Safari, or Opera. Open With opens the current page in your other browsers with just one click."
+		"message": "Quickly test out your web pages in Edge, Chrome, Safari, or Opera. Open With opens the current page in your other browsers with just two clicks."
 	},
 	"extensionName": {
 		"message": "Open With"
@@ -181,6 +181,15 @@
 	},
 	"options_title": {
 		"message": "Open With Options"
+	},
+	"popup_installed_header": {
+		"message": "Open With is now a WebExtension"
+	},
+	"popup_installed_text": {
+		"message": "There's a few more steps to complete installation."
+	},
+	"popup_nobrowsers": {
+		"message": "No browsers found!"
 	},
 	"popup_options_button": {
 		"message": "Open With options…"

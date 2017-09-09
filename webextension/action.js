@@ -5,10 +5,6 @@ let updateMessage = document.getElementById('update');
 let browsersList = document.getElementById('browsers');
 let browsersTemplate = browsersList.querySelector('template');
 
-if (navigator.userAgent.includes('Firefox')) {
-	document.styleSheets[0].disabled = true;
-}
-
 get_strings();
 
 chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
@@ -57,6 +53,9 @@ chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {
 	}
 
 	chrome.runtime.sendMessage({action: 'get_browsers'}, function(browsers) {
+		if (browsers.length === 0) {
+			document.getElementById('nobrowsers').style.display = 'block';
+		}
 		for (let b of browsers) {
 			if (b.hidden) {
 				continue;

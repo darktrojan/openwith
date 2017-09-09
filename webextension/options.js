@@ -59,6 +59,7 @@ document.getElementById('test').onclick = function() {
 					chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
 				}
 			});
+			chrome.browserAction.setPopup({popup: 'action.html'});
 		} else {
 			error_listener();
 		}

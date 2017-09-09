@@ -206,25 +206,37 @@ function sort_browsers() {
 	});
 }
 
-get_version_warn().then(function(version_warn) {
-	function error_listener() {
-		chrome.browserAction.setBadgeText({text: '!'});
-		chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
-	}
-
-	let port = chrome.runtime.connectNative('open_with');
-	port.onDisconnect.addListener(error_listener);
-	port.onMessage.addListener(function(message) {
-		if (message) {
-			if (compare_versions(message.version, version_warn) < 0) {
-				chrome.browserAction.setBadgeText({text: '!'});
-				chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
-			}
-		} else {
-			error_listener();
+chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
+	chrome.management.getSelf(function({version: currentVersion}) {
+		if (previousVersion == -1) { // This is a new install.
+			chrome.storage.local.set({'version': currentVersion});
+			chrome.browserAction.setPopup({popup: 'installed.html'});
+			return;
+		} else if (previousVersion != currentVersion) { // This is an upgrade or downgrade.
+			chrome.storage.local.set({'version': currentVersion});
 		}
-		port.onDisconnect.removeListener(error_listener);
-		port.disconnect();
+
+		get_version_warn().then(function(version_warn) {
+			function error_listener() {
+				chrome.browserAction.setBadgeText({text: '!'});
+				chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
+			}
+
+			let port = chrome.runtime.connectNative('open_with');
+			port.onDisconnect.addListener(error_listener);
+			port.onMessage.addListener(function(message) {
+				if (message) {
+					if (compare_versions(message.version, version_warn) < 0) {
+						chrome.browserAction.setBadgeText({text: '!'});
+						chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
+					}
+				} else {
+					error_listener();
+				}
+				port.onDisconnect.removeListener(error_listener);
+				port.disconnect();
+			});
+			port.postMessage('ping');
+		});
 	});
-	port.postMessage('ping');
 });

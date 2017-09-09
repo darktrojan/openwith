@@ -40,7 +40,7 @@
 			"96": "images/openwith96.png"
 		},
 		"default_popup": "action.html",
-		"browser_style": true
+		"browser_style": false
 	},
 	"options_ui": {
 		"browser_style": false,

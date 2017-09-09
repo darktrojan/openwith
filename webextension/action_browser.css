@@ -1,4 +1,3 @@
-/* This stylesheet is disabled in Firefox, which uses built-in styling. */
 html,
 body {
 	background: transparent;
@@ -9,7 +8,9 @@ body {
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
+	-moz-user-select: none;
 	user-select: none;
+	font: caption;
 }
 body * {
 	box-sizing: border-box;
