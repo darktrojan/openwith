@@ -1,5 +1,6 @@
 /* globals chrome */
-/* exported get_version_warn, compare_versions, compare_object_versions, get_string, get_strings */
+/* exported get_version_warn, compare_versions, compare_object_versions, get_string, get_strings,
+   ERROR_COLOUR, WARNING_COLOUR, is_same_colour */
 var _version_warn = null;
 function get_version_warn() {
 	if (!!_version_warn) {
@@ -77,4 +78,16 @@ function get_strings(element = document) {
 	element.querySelectorAll('[data-message]').forEach(n => {
 		n.textContent = get_string(n.dataset.message);
 	});
+}
+
+var ERROR_COLOUR = [232, 39, 39, 255];
+var WARNING_COLOUR = [254, 200, 47, 255];
+
+function is_same_colour(a, b) {
+	for (let i = 0; i < 4; i++) {
+		if (a[i] != b[i]) {
+			return false;
+		}
+	}
+	return true;
 }

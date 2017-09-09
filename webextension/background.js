@@ -1,4 +1,4 @@
-/* globals chrome, compare_versions, get_version_warn */
+/* globals chrome, compare_versions, get_version_warn, ERROR_COLOUR, WARNING_COLOUR */
 var browsers, icons;
 var max_browser_id = 0;
 var max_icon_id = 0;
@@ -219,7 +219,7 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 		get_version_warn().then(function(version_warn) {
 			function error_listener() {
 				chrome.browserAction.setBadgeText({text: '!'});
-				chrome.browserAction.setBadgeBackgroundColor({color: [255, 51, 0, 255]});
+				chrome.browserAction.setBadgeBackgroundColor({color: ERROR_COLOUR});
 			}
 
 			let port = chrome.runtime.connectNative('open_with');
@@ -228,7 +228,7 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 				if (message) {
 					if (compare_versions(message.version, version_warn) < 0) {
 						chrome.browserAction.setBadgeText({text: '!'});
-						chrome.browserAction.setBadgeBackgroundColor({color: [255, 153, 0, 255]});
+						chrome.browserAction.setBadgeBackgroundColor({color: WARNING_COLOUR});
 					}
 				} else {
 					error_listener();

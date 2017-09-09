@@ -1,4 +1,4 @@
-/* globals chrome, get_string, get_strings */
+/* globals chrome, get_string, get_strings, is_same_colour, ERROR_COLOUR, WARNING_COLOUR */
 let errorMessage = document.getElementById('error');
 let warningMessage = document.getElementById('warning');
 let updateMessage = document.getElementById('update');
@@ -7,13 +7,13 @@ let browsersTemplate = browsersList.querySelector('template');
 
 get_strings();
 
-chrome.browserAction.getBadgeBackgroundColor({}, function(color) {
+chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 	chrome.browserAction.setBadgeText({text: ''});
 	chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
 
-	if (color[1] == 51) {
+	if (is_same_colour(colour, ERROR_COLOUR)) {
 		errorMessage.style.display = 'block';
-	} else if (color[1] == 153) {
+	} else if (is_same_colour(colour, WARNING_COLOUR)) {
 		warningMessage.style.display = 'block';
 	} else {
 		chrome.management.getSelf(function(self) {

@@ -14,13 +14,13 @@ body {
 	text-align: center;
 }
 #update {
-	background-color: #4a0;
+	background-color: #0e9352;
 }
 #warning {
-	background-color: #f90;
+	background-color: #fec82f;
 }
 #error {
-	background-color: #f30;
+	background-color: #e82727;
 }
 #nobrowsers {
 	color: #222426;
