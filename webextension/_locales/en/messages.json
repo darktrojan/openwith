@@ -242,5 +242,12 @@
 	},
 	"userIcons_remove_button": {
 		"message": "Remove"
+	},
+	"webextension_info_label": {
+		"message": "More information…"
+	},
+	"webextension_info_url": {
+		"description": "This is a web page with information for users. Please contact me if you'd like to translate it too.",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
 	}
 }

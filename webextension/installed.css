@@ -8,6 +8,9 @@ div.panel > div {
 div#header {
 	font-weight: 600;
 }
+a {
+	color: #0454d4;
+}
 div#button {
 	margin-top: 8px;
 	text-align: right;

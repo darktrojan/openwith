@@ -78,6 +78,9 @@ function get_strings(element = document) {
 	element.querySelectorAll('[data-message]').forEach(n => {
 		n.textContent = get_string(n.dataset.message);
 	});
+	element.querySelectorAll('[data-href]').forEach(n => {
+		n.href = get_string(n.dataset.href);
+	});
 }
 
 var ERROR_COLOUR = [232, 39, 39, 255];
