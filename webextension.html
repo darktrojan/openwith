@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="description" content="Open With for Firefox, SeaMonkey and Thunderbird" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+    <title>Open With</title>
+  </head>
+
+  <body>
+    <div id="header_wrap" class="outer">
+      <header class="inner">
+        <h1><img src="../images/header-wide.png" width="573" height="110" alt="DarkTrojan" /></h1>
+      </header>
+    </div>
+
+    <div id="main_content_wrap" class="outer">
+      <div id="main_content" class="inner">
+        <a id="forkme_banner" href="https://github.com/darktrojan/openwith">View on GitHub</a>
+
+        <h2 id="page_title"><img src="../images/openwith.svg" width="128" height="128" />Open With WebExtension</h2>
+
+        <section>
+          <dl>
+            <dt>What is a WebExtension?</dt>
+            <dd>
+              <p>WebExtensions are Firefox's new type of extensions.</p>
+            </dd>
+
+            <dt>Why did Open With become a WebExtension?</dt>
+            <dd>
+              <p>From Firefox 57 onwards, all other forms of extension will no longer work. Thus Open With had to change or die.</p>
+            </dd>
+
+            <dt>What's actually different?</dt>
+            <dd>
+              <p>Open With can no longer start other applications directly. It needs to do so through a helper program that you will need to install. More on this below.</p>
+              <p>Open With can also no longer look for browsers on your computer, however the helper program can do this. It's not as good as the old way, but it will do.</p>
+              <p>You may also find you can't put Open With's buttons where you used to (in the developer tools, for example). It is now only possible to have the buttons in the context menus and on the toolbar.</p>
+            </dd>
+
+            <dt>Will Open With copy my settings from the old version?</dt>
+            <dd>
+              <p>No. While it is technically possible for an extension to do this (at least until Firefox 57), I have decided not to do so, due to the lack of time remaining, and because the upgrade process for other extensions has been totally stuffed up by bugs in Firefox.</p>
+              <p>You can however find all your old browser settings in <code>about:config</code>, they start with <code>extensions.openwith.manual</code>.</p>
+            </dd>
+
+            <dt>How do I install the helper program?</dt>
+            <dd>
+              <p>The program is packaged with the helper program. Visit the Open With options page, and follow the instructions.</p>
+            </dd>
+
+            <dt>What happens when I install the helper program?</dt>
+            <dd>
+              <p>The helper program will register itself with Firefox by adding some entries to the Windows registry, or on Linux/Mac, creating some files in specific places. This tells Firefox where to find the helper program, so they can communicate. On Windows, another file is also created in the same folder as the helper program to ensure it runs properly.</p>
+            </dd>
+
+            <dt>What is Python, why do I have to install it?</dt>
+            <dd>
+              <p>The helper program is written in the Python programming language. You need to have it installed before Open With can do anything. I'd rather you didn't have to do this, but it is the best option available.</p>
+              <p>You can install either Python 2.7 or Python 3, it doesn't matter which.</p>
+            </dd>
+
+            <dt>What do I do if something is broken?</dt>
+            <dd>
+              <p>You can <a href="https://github.com/darktrojan/openwith/issues">file a new issue on GitHub</a>, but <i>please</i> check to see if someone else has already done so. It's <i>very</i> frustrating getting a dozen complaints about the same thing (especially if there's nothing I can do about it).</p>
+            </dd>
+
+            <dt>Can I just keep using the old Open With?</dt>
+            <dd>
+              <p>Yes, but not in Firefox 57 onwards. You can remain using Firefox 56, but that is not recommended (it's a security risk).</p>
+              <p>To go back to the old version get it from <a href="https://addons.mozilla.org/addon/open-with/versions">the website</a>, and turn off updates for it through the Add-On Manager.</p>
+            </dd>
+
+            <dt>Will Open With continue to work on SeaMonkey/Thunderbird/Pale Moon?</dt>
+            <dd>
+              <p>Yes, although there will only be updates if absolutely necessary.</p>
+            </dd>
+
+            <dt>Will Open With ever come to Google Chrome?</dt>
+            <dd>
+              <p>Yes! the WebExtension can be converted for use on Chrome, although it is not ready yet. It is possible that Open With may be released for Edge and Opera too, but this is even less ready.</p>
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
