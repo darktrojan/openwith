@@ -31,7 +31,7 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 					prefs.versionLastAck = new Date(prefs.versionLastAck);
 				}
 				if (now - prefs.versionLastUpdate < 43200000 && now - prefs.versionLastAck > 604800000) {
-					updateMessage.textContent = get_string('update_message', currentVersion);
+					document.getElementById('update_message').textContent = get_string('update_message', currentVersion);
 					updateMessage.style.display = 'block';
 				}
 				chrome.storage.local.set(prefs);
@@ -74,7 +74,21 @@ browsersList.onclick = function(event) {
 	});
 };
 
-errorMessage.onclick = warningMessage.onclick = updateMessage.onclick = function() {
+updateMessage.onclick = function({target}) {
+	chrome.storage.local.set({versionLastAck: new Date()});
+	switch (target.dataset.message) {
+	case 'update_changelog_button':
+		chrome.management.getSelf(function({version}) {
+			chrome.tabs.create({url: 'https://addons.mozilla.org/addon/open-with/versions/' + version});
+		});
+		return;
+	case 'donate_button':
+		chrome.tabs.create({url: 'https://darktrojan.github.io/donate.html?openwith'});
+		return;
+	}
+	open_options_tab();
+};
+errorMessage.onclick = warningMessage.onclick = function() {
 	chrome.storage.local.set({versionLastAck: new Date()});
 	open_options_tab();
 };

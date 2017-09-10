@@ -7,8 +7,11 @@
 </head>
 <body>
 <div id="left">
+	<h1>
+		<img src="images/openwith.svg" width="48" height="48" style="vertical-align: middle;" />
+		<span data-message="options_title"></span>
+	</h1>
 	<div id="install" hidden="">
-		<h1 data-message="options_title"></h1>
 		<h2 data-message="install_header"></h2>
 		<p data-message="install_introduction"></p>
 		<ol>
@@ -36,24 +39,28 @@
 				<span data-message="install_step4c"></span>
 			</li>
 		</ol>
-
-		<button id="test" data-message="test_button"></button>
+		<div align="center">
+			<button id="test" data-message="test_button"></button>
+		</div>
 		<div id="result">
 			<img id="resulticon" src="" width="32" height="32">
 			<div id="resulttext"></div>
 		</div>
 	</div>
-	<div>
+	<div align="center">
 		<button id="look" data-message="actions_look"></button>
 		<button id="addbrowser" data-message="actions_addbrowser"></button>
 		<button id="sort" data-message="actions_sort"></button>
 	</div>
 	<div style="flex-grow: 1"></div>
-	<div align="center">
+	<div id="meta" align="center">
 		<p>
 			<span data-message="donate_message"></span>
-			<button data-message="donate_button"></button></p>
-		<p><a href="https://github.com/darktrojan/openwith" data-message="github"></a></p>
+			<button data-message="donate_button"></button>
+		</p>
+		<p>
+			<a href="https://github.com/darktrojan/openwith" data-message="github"></a>
+		</p>
 	</div>
 </div>
 <ul id="browsers">
@@ -116,7 +123,7 @@
 			</li>
 		</template>
 	</ul>
-	<label style="text-align: center;">
+	<label align="center">
 		<input type="file" name="userIcon" accept="image/*" />
 	</label>
 	<div class="submit">

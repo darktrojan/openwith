@@ -95,6 +95,10 @@ document.getElementById('sort').onclick = function() {
 	});
 };
 
+document.querySelector('button[data-message="donate_button"]').onclick = function() {
+	chrome.tabs.create({url: 'https://darktrojan.github.io/donate.html?openwith'});
+};
+
 browsersList.onclick = function(event) {
 	let li = event.target;
 	while (li != this && li.localName != 'li') {

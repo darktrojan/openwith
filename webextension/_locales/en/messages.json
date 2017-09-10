@@ -66,7 +66,7 @@
 		"message": "Update"
 	},
 	"donate_button": {
-		"message": "Donate"
+		"message": "Donate…"
 	},
 	"donate_message": {
 		"message": "Open With is funded by user donations."
@@ -150,7 +150,7 @@
 		"message": "Waterfox"
 	},
 	"install_header": {
-		"message": "Install:"
+		"message": "To complete installation:"
 	},
 	"install_introduction": {
 		"message": "Open With needs a file outside of the browser to communicate with."
@@ -195,7 +195,7 @@
 		"message": "Open With options…"
 	},
 	"test_button": {
-		"message": "Test Install"
+		"message": "Test Installation"
 	},
 	"test_error": {
 		"message": "Something went wrong. There might be more information in the Browser Console."

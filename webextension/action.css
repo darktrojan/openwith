@@ -16,6 +16,9 @@ body {
 #update {
 	background-color: #0e9352;
 }
+#update_message {
+	margin-bottom: 8px;
+}
 #warning {
 	background-color: #fec82f;
 }
