@@ -1,3 +1,4 @@
+*.crx
 *.pyc
 *.xpi
 args.json

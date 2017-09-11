@@ -60,8 +60,8 @@ def install():
 		'type': 'stdio',
 	}
 	locations = {
-		# 'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
-		# 'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
+		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
+		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
@@ -75,7 +75,7 @@ def install():
 			if browser == 'firefox':
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
-				browser_manifest['allowed_origins'] = ['chrome-extension://eboojgmpoadapdemnbhjnnlnnnoijefc/']
+				browser_manifest['allowed_origins'] = ['chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/']
 
 			with open(os.path.join(location, filename), 'w') as file:
 				file.write(

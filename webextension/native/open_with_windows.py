@@ -71,7 +71,7 @@ def install():
 		file.write('@echo off\ncall "%s" "%s"\n' % (sys.executable, this_file))
 
 	registry_locations = {
-		# 'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
+		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
 	}
 
@@ -80,7 +80,7 @@ def install():
 		if browser == 'firefox':
 			browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 		else:
-			browser_manifest['allowed_origins'] = ['chrome-extension://eboojgmpoadapdemnbhjnnlnnnoijefc/']
+			browser_manifest['allowed_origins'] = ['chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/']
 
 		filename = os.path.join(install_path, 'open_with_%s.json' % browser)
 		with open(filename, 'w') as file:

@@ -10,7 +10,8 @@ body {
 	padding: 0;
 	-moz-user-select: none;
 	user-select: none;
-	font: caption;
+	font: message-box;
+	font-size: 13.333px;
 }
 body * {
 	box-sizing: border-box;
