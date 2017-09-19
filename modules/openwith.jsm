@@ -5,6 +5,7 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 const ID = 'openwith@darktrojan.net';
+const ADDONS_VIEW = 'addons://detail/openwith%40darktrojan.net';
 
 const REAL_OPTIONS_URL = 'about:openwith';
 const BROWSER_TYPE = 'navigator:browser';
@@ -702,7 +703,7 @@ let OpenWithCore = {
 			if (appname == 'Thunderbird' && Services.vc.compare(oldVersion, 5.3) < 0) {
 				this.prefs.setBoolPref('contextmenulink.submenu', true);
 			}
-			this.showNotifications();
+			this.showNotifications(addon);
 		}).bind(this));
 	},
 	openOptionsTab: function() {
@@ -768,7 +769,7 @@ let OpenWithCore = {
 			recentWindow.openLinkExternally(url);
 		}
 	},
-	showNotifications: function() {
+	showNotifications: function(addon) {
 		let label, value, buttons;
 		let shouldRemind = true;
 
@@ -799,6 +800,48 @@ let OpenWithCore = {
 				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 				popup: null,
 				callback: this.openDonatePage.bind(this)
+			}];
+		} else if (Services.appinfo.name == 'Firefox' &&
+				!this.prefs.getBoolPref('webextensionnotice') &&
+				addon.applyBackgroundUpdates != AddonManager.AUTOUPDATE_DISABLE) {
+			label = this.strings.GetStringFromName('webextensionsMessage');
+			value = 'openwith-webextension';
+			buttons = [{
+				label: this.strings.GetStringFromName('webextensionsDisable'),
+				callback: () => {
+					addon.applyBackgroundUpdates = AddonManager.AUTOUPDATE_DISABLE;
+					function highlight(win) {
+						win.gViewController.loadView(ADDONS_VIEW);
+						let row = win.document.getElementById('detail-updates-row');
+						row.scrollIntoView();
+						row.animate([{
+							backgroundColor: 'transparent'
+						}, {
+							backgroundColor: '#f00c'
+						},{
+							backgroundColor: 'transparent'
+						}], {
+							duration: 750, iterations: 3
+						});
+					}
+					let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
+					if (recentWindow.switchToTabHavingURI('about:addons', false)) {
+						highlight(recentWindow.gBrowser.selectedBrowser.contentWindow);
+					} else {
+						function emloaded(win) { // jshint ignore:line
+							Services.obs.removeObserver(emloaded, 'EM-loaded');
+							highlight(win);
+						}
+						Services.obs.addObserver(emloaded, 'EM-loaded');
+						recentWindow.switchToTabHavingURI('about:addons', true);
+					}
+					this.prefs.setBoolPref('webextensionnotice', true);
+				}
+			}, {
+				label: this.strings.GetStringFromName('webextensionsIgnore'),
+				callback: () => {
+					this.prefs.setBoolPref('webextensionnotice', true);
+				}
 			}];
 		} else if (shouldRemind && Services.vc.compare(oldVersion, currentVersion) < 0) {
 			label = this.strings.formatStringFromName('versionChanged', [currentVersion], 1);

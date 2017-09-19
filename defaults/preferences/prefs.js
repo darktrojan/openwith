@@ -16,3 +16,4 @@ pref('extensions.openwith.toolbox', true);
 pref('extensions.openwith.toolbox.menu', false);
 pref('extensions.openwith.viewmenu', true);
 pref('extensions.openwith.viewmenu.submenu', false);
+pref('extensions.openwith.webextensionnotice', false);
