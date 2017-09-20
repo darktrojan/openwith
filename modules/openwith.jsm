@@ -803,39 +803,17 @@ let OpenWithCore = {
 			}];
 		} else if (Services.appinfo.name == 'Firefox' &&
 				!this.prefs.getBoolPref('webextensionnotice') &&
-				addon.applyBackgroundUpdates != AddonManager.AUTOUPDATE_DISABLE) {
+				(addon.applyBackgroundUpdates == AddonManager.AUTOUPDATE_ENABLE ||
+				addon.applyBackgroundUpdates == AddonManager.AUTOUPDATE_DEFAULT && AddonManager.autoUpdateDefault)) {
 			label = this.strings.GetStringFromName('webextensionsMessage');
 			value = 'openwith-webextension';
 			buttons = [{
 				label: this.strings.GetStringFromName('webextensionsDisable'),
 				callback: () => {
 					addon.applyBackgroundUpdates = AddonManager.AUTOUPDATE_DISABLE;
-					function highlight(win) {
-						win.gViewController.loadView(ADDONS_VIEW);
-						let row = win.document.getElementById('detail-updates-row');
-						row.scrollIntoView();
-						row.animate([{
-							backgroundColor: 'transparent'
-						}, {
-							backgroundColor: '#f00c'
-						},{
-							backgroundColor: 'transparent'
-						}], {
-							duration: 750, iterations: 3
-						});
-					}
-					let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-					if (recentWindow.switchToTabHavingURI('about:addons', false)) {
-						highlight(recentWindow.gBrowser.selectedBrowser.contentWindow);
-					} else {
-						function emloaded(win) { // jshint ignore:line
-							Services.obs.removeObserver(emloaded, 'EM-loaded');
-							highlight(win);
-						}
-						Services.obs.addObserver(emloaded, 'EM-loaded');
-						recentWindow.switchToTabHavingURI('about:addons', true);
-					}
+					highlightUpdateUI();
 					this.prefs.setBoolPref('webextensionnotice', true);
+					this.prefs.setBoolPref('webextensioncheck', true);
 				}
 			}, {
 				label: this.strings.GetStringFromName('webextensionsIgnore'),
@@ -873,7 +851,7 @@ let OpenWithCore = {
 			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 		}
 
-		if (value == 'openwith-donate') {
+		if (['openwith-donate', 'openwith-webextension'].includes(value)) {
 			idleService.addIdleObserver({
 				observe: function(service, state) {
 					if (state != 'idle') {
@@ -1011,3 +989,64 @@ if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_DEFAULT) {
 }
 
 OpenWithCore.versionUpdate();
+
+function highlightUpdateUI() {
+	function highlight(win) {
+		win.gViewController.loadView(ADDONS_VIEW);
+		let row = win.document.getElementById('detail-updates-row');
+		row.scrollIntoView();
+		row.animate([{
+			backgroundColor: 'transparent'
+		}, {
+			backgroundColor: '#f00c'
+		},{
+			backgroundColor: 'transparent'
+		}], {
+			duration: 750, iterations: 3
+		});
+	}
+	let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
+	if (recentWindow.switchToTabHavingURI('about:addons', false)) {
+		highlight(recentWindow.gBrowser.selectedBrowser.contentWindow);
+	} else {
+		function emloaded(win) { // jshint ignore:line
+			Services.obs.removeObserver(emloaded, 'EM-loaded');
+			highlight(win);
+		}
+		Services.obs.addObserver(emloaded, 'EM-loaded');
+		recentWindow.switchToTabHavingURI('about:addons', true);
+	}
+}
+
+if (OpenWithCore.prefs.getBoolPref('webextensioncheck')) {
+	idleService.addIdleObserver({
+		observe: function(service, state) {
+			if (state != 'idle') {
+				return;
+			}
+
+			AddonManager.getAllInstalls().then(installs => {
+				if (!installs.length) {
+					return;
+				}
+
+				idleService.removeIdleObserver(this, 30);
+				if (installs.some(i => i.existingAddon.id == ID && Services.vc.compare(i.version, 7) >= 0)) {
+					let label = OpenWithCore.strings.GetStringFromName('webextensionsUpdateAvailable');
+					let value = 'openwith-webextension';
+					let buttons = [{
+						label: OpenWithCore.strings.GetStringFromName('webextensionsGetUpdate'),
+						callback: highlightUpdateUI
+					}, {
+						label: OpenWithCore.strings.GetStringFromName('webextensionsNotNow'),
+						callback: function() {}
+					}];
+
+					let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
+					let notifyBox = recentWindow.document.getElementById('global-notificationbox');
+					notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
+				}
+			});
+		}
+	}, 30);
+}
