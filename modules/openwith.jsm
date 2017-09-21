@@ -136,7 +136,7 @@ let OpenWithCore = {
 			}
 		} else {
 			for (let app of ['google-chrome', 'chromium-browser', 'firefox', 'opera', 'seamonkey']) {
-				let desktopFile = FileUtils.getFile('ProfD', ['.local', 'share', 'applications'], true);
+				let desktopFile = FileUtils.getFile('Home', ['.local', 'share', 'applications', app + '.desktop'], true);
 				if (desktopFile.exists()) {
 					unsorted.push(this.readDesktopFile(desktopFile));
 					continue;
