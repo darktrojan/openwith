@@ -67,9 +67,9 @@ chrome.storage.local.get({
 	'icons': []
 }, result => {
 	browsers = result.browsers;
+	icons = result.icons;
 	sort_browsers();
 	make_menus();
-	icons = result.icons;
 	max_icon_id = icons.reduce(function(previous, item) {
 		return Math.max(previous, item.id);
 	}, 0);
@@ -95,7 +95,18 @@ function make_menus() {
 			onclick: context_menu_clicked
 		};
 		if (navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Firefox/55')) {
-			item.icons = {16: 'icons/' + b.icon + '_16x16.png'};
+			if (b.icon && b.icon.startsWith('user_icon_')) {
+				let icon = icons.find(i => i.id == parseInt(b.icon.substring(10)));
+				item.icons = {
+					16: icon['16'],
+					32: icon['32']
+				};
+			} else if (b.icon) {
+				item.icons = {
+					16: 'icons/' + b.icon + '_16x16.png',
+					32: 'icons/' + b.icon + '_32x32.png'
+				};
+			}
 		}
 		chrome.contextMenus.create(item);
 	}
