@@ -1,5 +1,6 @@
 html {
 	font: message-box;
+	font-size: 13.333px;
 	line-height: 1.5;
 	background-color: #f2f1f0;
 	height: 100%;
@@ -139,7 +140,7 @@ h1 {
 }
 h2 {
 	margin: 0;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: 100;
 	line-height: 1;
 }

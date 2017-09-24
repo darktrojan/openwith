@@ -12,6 +12,7 @@ body {
 	user-select: none;
 	font: message-box;
 	font-size: 13.333px;
+	line-height: 1.5;
 }
 body * {
 	box-sizing: border-box;
