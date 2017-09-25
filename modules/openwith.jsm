@@ -1030,7 +1030,7 @@ if (OpenWithCore.prefs.getBoolPref('webextensioncheck')) {
 					return;
 				}
 
-				idleService.removeIdleObserver(this, 30);
+				idleService.removeIdleObserver(this, 15);
 				if (installs.some(i => i.existingAddon.id == ID && Services.vc.compare(i.version, 7) >= 0)) {
 					let label = OpenWithCore.strings.GetStringFromName('webextensionsUpdateAvailable');
 					let value = 'openwith-webextension';
@@ -1048,5 +1048,5 @@ if (OpenWithCore.prefs.getBoolPref('webextensioncheck')) {
 				}
 			});
 		}
-	}, 30);
+	}, 15);
 }
