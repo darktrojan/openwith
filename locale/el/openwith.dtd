@@ -32,9 +32,9 @@
 <!ENTITY openwith-logging.label "Καταγραφή">
 <!ENTITY openwith-logging.checkbox.label "Ενεργοποίηση καταγραφής εξόδου στην κονσόλα περιηγητή">
 
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
+<!ENTITY openwith-datacollection.title "Συλλογή δεδομένων">
+<!ENTITY openwith-datacollection.optin "Βοηθήστε στη βελτίωση του «Άνοιγμα με» υποβάλλοντας ανώνυμα δεδομένα χρήσης">
+<!ENTITY openwith-datacollection.privacypolicy "Πολιτική απορρήτου">
 
 <!ENTITY openwith-donationsrequest "Το «Άνοιγμα με» χρηματοδοτείται από δωρεές χρηστών.">
 <!ENTITY openwith-donate "Δωρεά">
@@ -49,14 +49,14 @@
 <!ENTITY openwith-browserlist-editname.label "Όνομα…">
 <!ENTITY openwith-browserlist-editcommand.label "Εντολή…">
 <!ENTITY openwith-browserlist-editparams.label "Ορίσματα…">
-<!ENTITY openwith-browserlist-editaccesskey.label "Menu Access Key…">
+<!ENTITY openwith-browserlist-editaccesskey.label "Πλήκτρο πρόσβασης στοιχείων μενού…">
 <!ENTITY openwith-browserlist-editshortcut.label "Συντόμευση πληκτρολογίου…">
 <!-- "Duplicate" is a verb here. -->
 <!ENTITY openwith-browserlist-duplicate.label "Αντίτυπο">
 <!ENTITY openwith-browserlist-remove.label "Κατάργηση">
 
 <!-- This appears in the about:openwith context menu. "Copy" is a verb. -->
-<!ENTITY openwith-context-copykeyname.label "Copy identifier">
+<!ENTITY openwith-context-copykeyname.label "Αντιγραφή αναγνωριστικού">
 
 <!ENTITY openwith-browserlist-add.label "Προσθήκη…">
 <!ENTITY openwith-browserlist-restoreorder.label "Προκαθορισμένη ταξινόμηση">
