@@ -56,14 +56,14 @@
 <!ENTITY openwith-browserlist-remove.label "Supprimer">
 
 <!-- This appears in the about:openwith context menu. "Copy" is a verb. -->
-<!ENTITY openwith-context-copykeyname.label "Copy identifier">
+<!ENTITY openwith-context-copykeyname.label "Copier l'identifiant">
 
 <!ENTITY openwith-browserlist-add.label "Ajouter…">
 <!ENTITY openwith-browserlist-restoreorder.label "Réglage par défaut">
 
 <!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
      choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
+<!ENTITY openwith-ctrlkey "Ctrl">
 <!ENTITY openwith-cmdkey "Commande">
 <!ENTITY openwith-shiftkey "Maj">
 <!ENTITY openwith-altkey "Alt">
