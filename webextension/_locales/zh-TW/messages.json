@@ -1,0 +1,253 @@
+{
+	"actions_addbrowser": {
+		"message": "新增瀏覽器"
+	},
+	"actions_look": {
+		"message": "尋找瀏覽器"
+	},
+	"actions_sort": {
+		"message": "整理清單"
+	},
+	"browserList_duplicate_button": {
+		"message": "複製"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$ORIGINAL$ （複製）",
+		"placeholders": {
+			"original": {
+				"content": "$1",
+				"example": "Firefox"
+			}
+		}
+	},
+	"browserList_edit_button": {
+		"message": "編輯"
+	},
+	"browserList_hide_button": {
+		"message": "隱藏"
+	},
+	"browserList_remove_button": {
+		"message": "移除"
+	},
+	"browserList_show_button": {
+		"message": "顯示"
+	},
+	"details_add_button": {
+		"message": "新增"
+	},
+	"details_adding_header": {
+		"message": "新增瀏覽器"
+	},
+	"details_cancel_button": {
+		"message": "取消"
+	},
+	"details_command_label": {
+		"message": "指令："
+	},
+	"details_customIcons_button": {
+		"message": "自訂圖示……"
+	},
+	"details_desktopFile_label": {
+		"message": "從 .desktop 檔案讀取："
+	},
+	"details_editing_header": {
+		"message": "編輯瀏覽器"
+	},
+	"details_icon_label": {
+		"message": "圖示："
+	},
+	"details_iconsCredit": {
+		"message": "在 Github 上的瀏覽器圖示"
+	},
+	"details_name_label": {
+		"message": "名稱："
+	},
+	"details_update_button": {
+		"message": "更新"
+	},
+	"donate_button": {
+		"message": "捐款……"
+	},
+	"donate_message": {
+		"message": "Open With 是依靠使用者的捐款來支撐的。"
+	},
+	"extensionDescription": {
+		"message": "在 Firefox、Edge、Safari 或 Opera 中快速測試您的網頁。"
+	},
+	"extensionName": {
+		"message": "Open With"
+	},
+	"github": {
+		"message": "Open With 在 GitHub 上"
+	},
+	"icon_chrome": {
+		"message": "Chrome"
+	},
+	"icon_chrome_beta": {
+		"message": "Chrome Beta"
+	},
+	"icon_chrome_dev": {
+		"message": "Chrome Dev"
+	},
+	"icon_chrome_canary": {
+		"message": "Chrome Canary"
+	},
+	"icon_chromium": {
+		"message": "Chromium"
+	},
+	"icon_edge": {
+		"message": "Edge"
+	},
+	"icon_firefox_1_5_3": {
+		"message": "Firefox 1.5-3"
+	},
+	"icon_firefox_3_5_22": {
+		"message": "Firefox 3.5-22"
+	},
+	"icon_firefox": {
+		"message": "Firefox"
+	},
+	"icon_firefox_beta": {
+		"message": "Firefox Beta"
+	},
+	"icon_firefox_nightly": {
+		"message": "Firefox Nightly"
+	},
+	"icon_internet_explorer_6": {
+		"message": "Internet Explorer 6"
+	},
+	"icon_internet_explorer_7_8": {
+		"message": "Internet Explorer 7-8"
+	},
+	"icon_internet_explorer_9_11": {
+		"message": "Internet Explorer 9-11"
+	},
+	"icon_opera": {
+		"message": "Opera"
+	},
+	"icon_opera_beta": {
+		"message": "Opera Beta"
+	},
+	"icon_opera_developer": {
+		"message": "Opera Developer"
+	},
+	"icon_pale_moon": {
+		"message": "Pale Moon"
+	},
+	"icon_safari": {
+		"message": "Safari"
+	},
+	"icon_seamonkey": {
+		"message": "Seamonkey"
+	},
+	"icon_srware_iron": {
+		"message": "SRWare Iron"
+	},
+	"icon_vivaldi": {
+		"message": "Vivaldi"
+	},
+	"icon_waterfox": {
+		"message": "Waterfox"
+	},
+	"install_header": {
+		"message": "要完成安裝："
+	},
+	"install_introduction": {
+		"message": "Open With 需要一個在瀏覽器外可以溝通的檔案。"
+	},
+	"install_step1a": {
+		"message": "您將會需要安裝 Python 來讓它運作。"
+	},
+	"install_step1b_link": {
+		"message": "到此取得。"
+	},
+	"install_step2a_link": {
+		"message": "點選這裡來下載"
+	},
+	"install_step2b": {
+		"message": "並將檔案儲存至您的電腦中。"
+	},
+	"install_step3": {
+		"message": "確保檔案權限讓您可以執行它（\"x\" 權限）："
+	},
+	"install_step4a": {
+		"message": "開啟命令提示字元。"
+	},
+	"install_step4b": {
+		"message": "以參數 \"install\" 來執行檔案，像這樣："
+	},
+	"install_step4c": {
+		"message": "若您移動了檔案，您必須再次執行此步驟。"
+	},
+	"options_title": {
+		"message": "Open With 選項"
+	},
+	"popup_installed_header": {
+		"message": "Open With 現在是 WebExtension 了"
+	},
+	"popup_installed_text": {
+		"message": "完成安裝需要更多步驟。"
+	},
+	"popup_nobrowsers": {
+		"message": "找不到瀏覽器！"
+	},
+	"popup_options_button": {
+		"message": "Open With 選項……"
+	},
+	"test_button": {
+		"message": "測試安裝"
+	},
+	"test_error": {
+		"message": "好像有點問題。瀏覽器主控臺裡應該有更多資訊。"
+	},
+	"test_success": {
+		"message": "在 $LOCATION$ 找到版本 $VERSION$。",
+		"placeholders": {
+			"location": {
+				"content": "$2",
+				"example": "/home/geoff/Desktop/open_with_linux.py"
+			},
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"test_warning": {
+		"message": "有較新的版本可用，您應該取代它。"
+	},
+	"update_changelog_button": {
+		"message": "有什麼改變？"
+	},
+	"update_error": {
+		"message": "Open With 無法與外面的世界連繫。"
+	},
+	"update_message": {
+		"message": "Open With 已更新至版本 $VERSION$。Open With 是免費的，但非常需要您的捐款！",
+		"placeholders": {
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"update_warning": {
+		"message": "您應該更新您的 Open With 檔案。"
+	},
+	"userIcons_done_button": {
+		"message": "完成"
+	},
+	"userIcons_header": {
+		"message": "自訂圖示"
+	},
+	"userIcons_remove_button": {
+		"message": "移除"
+	},
+	"webextension_info_label": {
+		"message": "更多資訊……"
+	},
+	"webextension_info_url": {
+		"description": "這是一個提供使用者資訊的網頁。若您也想要翻譯它的話，請聯絡我。",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
