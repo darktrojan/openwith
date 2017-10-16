@@ -61,7 +61,7 @@ def install():
 
 	manifest = {
 		'name': 'open_with',
-		'description': 'Example host for native messaging',
+		'description': 'Open With native host',
 		'path': this_file,
 		'type': 'stdio',
 	}

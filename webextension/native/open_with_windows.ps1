@@ -26,7 +26,7 @@ function Install {
 call "powershell" -file "
 '@ + $PSCommandPath + '"') > $null
 
-	$manifest = @{name='open_with';type='stdio';path=$bat_path;description='Lame description'}
+	$manifest = @{name='open_with';type='stdio';path=$bat_path;description='Open With native host'}
 
 	foreach ($browser in $registry_locations.Keys) {
 		$registry_location = $registry_locations[$browser]
