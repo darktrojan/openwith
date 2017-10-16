@@ -7,7 +7,7 @@ function GetMessage {
 
 function SendReply {
 	param ($reply)
-	$replyBytes = [System.Text.Encoding]::UTF8.GetBytes($reply)
+	$replyBytes = [System.Text.Encoding]::UTF8.GetBytes(($reply | ConvertTo-Json))
 	$writer = New-Object System.IO.BinaryWriter([System.Console]::OpenStandardOutput())
 	$writer.Write($replyBytes.Count)
 	$writer.Write($replyBytes)
@@ -23,7 +23,7 @@ function Install {
 	$bat_path = (Join-Path $install_path -ChildPath 'open_with.bat')
 	New-Item -Force -Path $bat_path -Value (@'
 @echo off
-call "powershell" "
+call "powershell" -file "
 '@ + $PSCommandPath + '"') > $null
 
 	$manifest = @{name='open_with';type='stdio';path=$bat_path;description='Lame description'}
@@ -46,7 +46,7 @@ call "powershell" "
 			if ($browser -eq 'firefox') {
 				$browser_manifest['allowed_extensions'] = @('openwith@darktrojan.net')
 			} else {
-				$browser_manifest['allowed_origins'] = @('chrome-extension://eboojgmpoadapdemnbhjnnlnnnoijefc/')
+				$browser_manifest['allowed_origins'] = @('chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/')
 			}
 			New-Item -Force -Path $manifest_location -Value ($browser_manifest | ConvertTo-Json) > $null
 		}
@@ -55,8 +55,7 @@ call "powershell" "
 
 function FindBrowsers {
 	return (Get-ChildItem -Path 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet\' |
-		Select-Object -Property @{Name='name';Expression={$_.GetValue($null)}}, @{Name='command';Expression={$_.OpenSubKey('shell\open\command').GetValue($null)}} |
-		ConvertTo-Json)
+		Select-Object -Property @{Name='name';Expression={$_.GetValue($null)}}, @{Name='command';Expression={$_.OpenSubKey('shell\open\command').GetValue($null)}})
 }
 
 # From https://github.com/FuzzySecurity/PowerShell-Suite
@@ -141,14 +140,14 @@ if ($args.Length -eq 1) {
 		Install
 		Exit(0)
 	} elseif ($args[0] -eq 'find_browsers') {
-		echo (FindBrowsers)
+		FindBrowsers | Format-List
 		Exit(0)
 	}
 }
 
 $message = GetMessage
 if ($message -eq 'ping') {
-	SendReply (@{'version'='7.0b9';'file'=$PSCommandPath} | ConvertTo-Json)
+	SendReply @{'version'='7.0b9';'file'=$PSCommandPath}
 } elseif ($message -eq 'find') {
 	SendReply (FindBrowsers)
 } else {
@@ -158,5 +157,5 @@ if ($message -eq 'ping') {
 	} else {
 		Invoke-CreateProcess -Binary $message[0] -CreationFlags 0x01000000 -ShowWindow 1 -StartF 1
 	}
-	SendReply (@{'proc'=$message[0];'args'=$message[1..$c]} | ConvertTo-Json)
+	SendReply $null
 }
