@@ -46,14 +46,14 @@ function compare_versions(a, b) {
 		case 'string':
 			return -1;
 		case 'undefined':
-			return yType == 'number' ? -1 : 1;
+			return yType == 'number' ? (y === 0 ? 0 : -1) : 1;
 		case 'number':
-			return 1;
+			return x === 0 && yType == 'undefined' ? 0 : 1;
 		}
 	}
 	let aParts = split_apart(a);
 	let bParts = split_apart(b);
-	for (let i = 0; i <= aParts.length && i <= bParts.length; i++) {
+	for (let i = 0; i <= aParts.length || i <= bParts.length; i++) {
 		let comparison = compare_parts(aParts[i], bParts[i]);
 		if (comparison !== 0) {
 			return comparison;
