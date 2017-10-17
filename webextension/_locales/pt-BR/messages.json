@@ -1,0 +1,159 @@
+{
+	"actions_addbrowser": {
+		"message": "Adicionar navegador"
+	},
+	"actions_look": {
+		"message": "Procurar navegadores"
+	},
+	"actions_sort": {
+		"message": "Ordenar lista"
+	},
+	"browserList_duplicate_button": {
+		"message": "Duplicar"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$1 (cópia)"
+	},
+	"browserList_edit_button": {
+		"message": "Editar"
+	},
+	"browserList_hide_button": {
+		"message": "Ocultar"
+	},
+	"browserList_remove_button": {
+		"message": "Remover"
+	},
+	"browserList_show_button": {
+		"message": "Exibir"
+	},
+	"details_add_button": {
+		"message": "Adicionar"
+	},
+	"details_adding_header": {
+		"message": "Adicionar navegador"
+	},
+	"details_cancel_button": {
+		"message": "Cancelar"
+	},
+	"details_command_label": {
+		"message": "Comando:"
+	},
+	"details_customIcons_button": {
+		"message": "Ícones customizados…"
+	},
+	"details_desktopFile_label": {
+		"message": "Ler de um arquivo \"*.desktop\":"
+	},
+	"details_editing_header": {
+		"message": "Editar navegador"
+	},
+	"details_icon_label": {
+		"message": "Ícone:"
+	},
+	"details_iconsCredit": {
+		"message": "Browser Logos no Github"
+	},
+	"details_name_label": {
+		"message": "Nome:"
+	},
+	"details_update_button": {
+		"message": "Atualizar"
+	},
+	"donate_button": {
+		"message": "Doar…"
+	},
+	"donate_message": {
+		"message": "Open With é financiado com doações dos usuários."
+	},
+	"extensionDescription": {
+		"message": "Teste facilmente suas páginas web no Firefox, Edge, Safari, ou Opera."
+	},
+	"github": {
+		"message": "Open With no GitHub"
+	},
+	"install_header": {
+		"message": "Para completar a instalação:"
+	},
+	"install_introduction": {
+		"message": "Open With precisa se comunicar com um arquivo fora do navegador."
+	},
+	"install_step1a": {
+		"message": "Você precisa ter Python instalado para que iso funcione."
+	},
+	"install_step1b_link": {
+		"message": "Baixe-o a partir daqui."
+	},
+	"install_step2a_link": {
+		"message": "Clique aqui para baixar"
+	},
+	"install_step2b": {
+		"message": "e salvar o arquivo no seu computador."
+	},
+	"install_step3": {
+		"message": "Certifique-se de que as permissões do arquivo lhe permitem executá-lo (permissão \"x\"):"
+	},
+	"install_step4a": {
+		"message": "Abra um prompt de comando."
+	},
+	"install_step4b": {
+		"message": "Execute o arquivo com o argumento \"install\", desta forma:"
+	},
+	"install_step4c": {
+		"message": "Se você mover o arquivo, você precisará executar este passo novamento."
+	},
+	"options_title": {
+		"message": "Opções do Open With"
+	},
+	"popup_installed_header": {
+		"message": "O Open With agora é uma WebExtension"
+	},
+	"popup_installed_text": {
+		"message": "Alguns passos adicionais são necessários para completar a instalação."
+	},
+	"popup_nobrowsers": {
+		"message": "Nenhum navegador foi encontrado!"
+	},
+	"popup_options_button": {
+		"message": "Opções do Open With…"
+	},
+	"test_button": {
+		"message": "Testar a instalação"
+	},
+	"test_error": {
+		"message": "Algo deu errado. Pode haver mais informações no Console do Navegador."
+	},
+	"test_success": {
+		"message": "Encontrada versão $1 em $2."
+	},
+	"test_warning": {
+		"message": "Uma nova versão está disponível. Você precisa atualizar."
+	},
+	"update_changelog_button": {
+		"message": "O que há de novo?"
+	},
+	"update_error": {
+		"message": "O Open With não conseguiu se conectar à inetrnet."
+	},
+	"update_message": {
+		"message": "Open With acaba de ser atualizado para a versão $1. O Open With é gratuito, mas a sua doação é bom-vinda!"
+	},
+	"update_warning": {
+		"message": "Você precisa atualizar seu arquivo do Open With."
+	},
+	"userIcons_done_button": {
+		"message": "Pronto"
+	},
+	"userIcons_header": {
+		"message": "Ícones customizados"
+	},
+	"userIcons_remove_button": {
+		"message": "Remover"
+	},
+	"webextension_info_label": {
+		"message": "Mais informações…"
+	},
+	"webextension_info_url": {
+		"description": "Esta é uma página web com informação para os usuários. Por favor, entre em contato comigo se você gostaria de traduzí-la também.",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
