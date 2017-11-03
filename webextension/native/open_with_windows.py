@@ -6,6 +6,8 @@ import json
 import struct
 import subprocess
 
+VERSION = '7.0b10'
+
 try:
 	sys.stdin.buffer
 
@@ -68,7 +70,7 @@ def install():
 
 	manifest['path'] = filename = os.path.join(install_path, 'open_with.bat')
 	with open(filename, 'w') as file:
-		file.write('@echo off\ncall "%s" "%s"\n' % (sys.executable, this_file))
+		file.write('@echo off\r\ncall "%s" "%s" %1 %2\r\n' % (sys.executable, this_file))
 
 	registry_locations = {
 		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
@@ -124,25 +126,25 @@ def find_browsers():
 
 
 def listen():
-	while True:
-		receivedMessage = getMessage()
-		if receivedMessage == 'ping':
-			sendMessage({
-				'version': '7.0b4',
-				'file': os.path.realpath(__file__)
-			})
-		elif receivedMessage == 'find':
-			sendMessage(find_browsers())
-		else:
-			for k, v in os.environ.items():
-				if k.startswith('MOZ_'):
-					try:
-						os.unsetenv(k)
-					except:
-						os.environ[k] = ''
+	receivedMessage = getMessage()
+	if receivedMessage == 'ping':
+		sendMessage({
+			'version': VERSION,
+			'file': os.path.realpath(__file__)
+		})
+	elif receivedMessage == 'find':
+		sendMessage(find_browsers())
+	else:
+		for k, v in os.environ.items():
+			if k.startswith('MOZ_'):
+				try:
+					os.unsetenv(k)
+				except:
+					os.environ[k] = ''
 
-			CREATE_BREAKAWAY_FROM_JOB = 0x01000000
-			subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
+		CREATE_BREAKAWAY_FROM_JOB = 0x01000000
+		subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
+		sendMessage(None)
 
 if __name__ == '__main__':
 	if len(sys.argv) == 2:
@@ -153,4 +155,8 @@ if __name__ == '__main__':
 			print(find_browsers())
 			sys.exit(0)
 
-	listen()
+	if 'openwith@darktrojan.net' in sys.argv or 'chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/' in sys.argv:
+		listen()
+		sys.exit(0)
+
+	print('Open With native helper, version %s.' % VERSION)

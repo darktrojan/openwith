@@ -7,6 +7,8 @@ import json
 import struct
 import subprocess
 
+VERSION = '7.0b10'
+
 try:
 	sys.stdin.buffer
 
@@ -111,29 +113,29 @@ def find_browsers():
 
 
 def listen():
-	while True:
-		receivedMessage = getMessage()
-		if receivedMessage == 'ping':
-			sendMessage({
-				'version': '7.0b5',
-				'file': os.path.realpath(__file__)
-			})
-		elif receivedMessage == 'find':
-			sendMessage(find_browsers())
-		else:
-			for k, v in os.environ.items():
-				if k.startswith('MOZ_'):
-					try:
-						os.unsetenv(k)
-					except:
-						os.environ[k] = ''
+	receivedMessage = getMessage()
+	if receivedMessage == 'ping':
+		sendMessage({
+			'version': VERSION,
+			'file': os.path.realpath(__file__)
+		})
+	elif receivedMessage == 'find':
+		sendMessage(find_browsers())
+	else:
+		for k, v in os.environ.items():
+			if k.startswith('MOZ_'):
+				try:
+					os.unsetenv(k)
+				except:
+					os.environ[k] = ''
 
-			devnull = open(os.devnull, 'w')
-			if receivedMessage[0].endswith('.app'):
-				command = ['/usr/bin/open', '-a'] + receivedMessage
-			else:
-				command = receivedMessage
-			subprocess.Popen(command, stdout=devnull, stderr=devnull)
+		devnull = open(os.devnull, 'w')
+		if receivedMessage[0].endswith('.app'):
+			command = ['/usr/bin/open', '-a'] + receivedMessage
+		else:
+			command = receivedMessage
+		subprocess.Popen(command, stdout=devnull, stderr=devnull)
+		sendMessage(None)
 
 
 if __name__ == '__main__':
@@ -145,4 +147,8 @@ if __name__ == '__main__':
 			print(find_browsers())
 			sys.exit(0)
 
-	listen()
+	if 'openwith@darktrojan.net' in sys.argv or 'chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/' in sys.argv:
+		listen()
+		sys.exit(0)
+
+	print('Open With native helper, version %s.' % VERSION)
