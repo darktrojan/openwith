@@ -8,7 +8,7 @@ function get_version_warn() {
 	}
 	return new Promise(function(resolve) {
 		chrome.runtime.getPlatformInfo(function(platformInfo) {
-			_version_warn = '7.0b10';
+			_version_warn = platformInfo.os == 'win' ? '7.0b10.1' : '7.0b10';
 			resolve(_version_warn);
 		});
 	});

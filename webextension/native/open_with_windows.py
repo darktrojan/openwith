@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.0b10'
+VERSION = '7.0b10.1'
 
 try:
 	sys.stdin.buffer
@@ -70,7 +70,7 @@ def install():
 
 	manifest['path'] = filename = os.path.join(install_path, 'open_with.bat')
 	with open(filename, 'w') as file:
-		file.write('@echo off\r\ncall "%s" "%s" %1 %2\r\n' % (sys.executable, this_file))
+		file.write('@echo off\r\ncall "%s" "%s" %%1 %%2\r\n' % (sys.executable, this_file))
 
 	registry_locations = {
 		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
