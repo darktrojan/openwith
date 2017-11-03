@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.0b10.1'
+VERSION = '7.0b11'
 
 try:
 	sys.stdin.buffer
