@@ -1,0 +1,161 @@
+{
+	"actions_addbrowser": {
+		"message": "Добавяне на браузър"
+	},
+	"actions_look": {
+		"message": "Преглед за браузъри"
+	},
+	"actions_sort": {
+		"message": "Подреждане на списъка"
+	},
+	"browserList_duplicate_button": {
+		"message": "Дублиране"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$1 (копие)"
+	},
+	"browserList_edit_button": {
+		"message": "Редактиране"
+	},
+	"browserList_hide_button": {
+		"message": "Скриване"
+	},
+	"browserList_remove_button": {
+		"message": "Премахване"
+	},
+	"browserList_show_button": {
+		"message": "Показване"
+	},
+	"details_add_button": {
+		"message": "Добавяне"
+	},
+	"details_adding_header": {
+		"message": "Добавяне на браузър"
+	},
+	"details_cancel_button": {
+		"message": "Отказване"
+	},
+	"details_command_label": {
+		"message": "Команда:"
+	},
+	"details_customIcons_button": {
+		"message": "Потребителски икони…"
+	},
+	"details_desktopFile_label": {
+		"message": "Прочитане от файл .desktop:"
+	},
+	"details_editing_header": {
+		"message": "Редактиране на браузър"
+	},
+	"details_icon_label": {
+		"message": "Икона:"
+	},
+	"details_iconsCredit": {
+		"message": "Емблеми на браузъри на Github"
+	},
+	"details_name_label": {
+		"message": "Име:"
+	},
+	"details_update_button": {
+		"message": "Обновяване"
+	},
+	"donate_button": {
+		"message": "Даряване…"
+	},
+	"donate_message": {
+		"message": "„Отвори със“ се финансира с дарения от потребители."
+	},
+	"extensionDescription": {
+		"message": "Бърза проверка на вашите уеб страници в Firefox, Edge, Safari или Opera."
+	},
+	"extensionName": {
+		"message": "Отвори със"
+	},
+	"github": {
+		"message": "„Отвори със“ на GitHub"
+	},
+	"install_header": {
+		"message": "За завършване на инсталацията:"
+	},
+	"install_introduction": {
+		"message": "„Отвори със“ се нуждае от файл извън браузъра, с който да комуникира."
+	},
+	"install_step1a": {
+		"message": "Трябва да имате инсталиран Python, за да сработи това."
+	},
+	"install_step1b_link": {
+		"message": "Вземете го оттук."
+	},
+	"install_step1c": {
+		"message": "(Използвайте версия 2.7 или 3.x на Pyhton, това е без значение.)"
+	},
+	"install_step2a_link": {
+		"message": "Цъкнете тук, за да свалите"
+	},
+	"install_step2b": {
+		"message": "и запазите файла на компютъра си."
+	},
+	"install_step3": {
+		"message": "Уверете се, че файлът има разрешение да го стартирате (\"x\" разрешение):"
+	},
+	"install_step4a": {
+		"message": "Отворете командния ред."
+	},
+	"install_step4b": {
+		"message": "Стартирайте файла с аргумент \"install\", ето така:"
+	},
+	"install_step4c": {
+		"message": "Ако преместите файла, трябва да повторите тази стъпка отново."
+	},
+	"options_title": {
+		"message": "Настройки на „Отвори със“"
+	},
+	"popup_installed_header": {
+		"message": "„Отвори със“ сега е WebExtension"
+	},
+	"popup_installed_text": {
+		"message": "Има още няколко стъпки, за да приключи инсталацията."
+	},
+	"popup_nobrowsers": {
+		"message": "Не са намерени браузъри!"
+	},
+	"popup_options_button": {
+		"message": "Настройки"
+	},
+	"test_button": {
+		"message": "Проверка на инсталацията"
+	},
+	"test_error": {
+		"message": "Нещо се обърка. В конзолата на браузъра може да има повече информация."
+	},
+	"test_success": {
+		"message": "Намерена е версия $1 с местоположение $2."
+	},
+	"test_warning": {
+		"message": "Налична е нова версия и трябва да я замените."
+	},
+	"update_changelog_button": {
+		"message": "Какво се промени?"
+	},
+	"update_error": {
+		"message": "„Отвори със“ не може да се свърже с външния свят."
+	},
+	"update_message": {
+		"message": "„Отвори със“ беше току що обновена до версия $1. „Отвори със“ е безплатна, но дарението ви ще бъде оценено!"
+	},
+	"update_warning": {
+		"message": "Трява да си обновите „Отвори със“ файла."
+	},
+	"userIcons_done_button": {
+		"message": "Готово"
+	},
+	"userIcons_header": {
+		"message": "Потребителски икони"
+	},
+	"userIcons_remove_button": {
+		"message": "Премахване"
+	},
+	"webextension_info_label": {
+		"message": "Повече информация…"
+	}
+}
