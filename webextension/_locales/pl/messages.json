@@ -177,7 +177,7 @@
 		"message": "Otwórz wiersz polecenia."
 	},
 	"install_step4b": {
-		"message": "W ten sposób uruchom plik z argumentem \"install\":"
+		"message": "Uruchom plik z argumentem \"install\":"
 	},
 	"install_step4c": {
 		"message": "Jeśli plik zostanie przeniesiony, należy ponownie uruchomić ten krok."
@@ -217,16 +217,16 @@
 		}
 	},
 	"test_warning": {
-		"message": "Dostępna jest nowsza wersja i należy ją wymienić."
+		"message": "Dostępna jest nowsza wersja dodatku Open With. Wykonaj aktualizację."
 	},
 	"update_changelog_button": {
-		"message": "Co się zmieniło?"
+		"message": "Zmiany w nowej wersji"
 	},
 	"update_error": {
-		"message": "Open With nie mógł się połączyć ze światem zewnętrznym."
+		"message": "Open With nie mógł nawiązać połączenia z zewnętrznymi serwerami."
 	},
 	"update_message": {
-		"message": "Open With został właśnie zaktualizowany do wersji $VERSION$. Open With jest bezpłatny, ale Twoja darowizna jest doceniana!",
+		"message": "Open With został właśnie zaktualizowany do wersji $VERSION$. Open With jest bezpłatny, ale każda, nawet najmniejsza, darowizna wspomaga dalszy rozwój.",
 		"placeholders": {
 			"version": {
 				"content": "$1",
@@ -235,7 +235,7 @@
 		}
 	},
 	"update_warning": {
-		"message": "Powinieneś zaktualizować plik Open With."
+		"message": "Powinieneś zaktualizować dodatek Open With."
 	},
 	"userIcons_done_button": {
 		"message": "Gotowe"
@@ -250,7 +250,7 @@
 		"message": "Więcej informacji…"
 	},
 	"webextension_info_url": {
-		"description": "To jest strona internetowa zawierająca informacje dla użytkowników. Skontaktuj się ze mną, jeśli chcesz to przetłumaczyć.",
+		"description": "To jest strona internetowa zawierająca informacje dla użytkowników. Skontaktuj się ze mną, jeśli chcesz pomóc w tłumaczeniu.",
 		"message": "https://darktrojan.github.io/openwith/webextension.html"
 	}
 }
