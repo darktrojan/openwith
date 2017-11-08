@@ -11,8 +11,11 @@ body {
 	margin: 8px;
 	justify-content: center;
 }
+button {
+	font-size: 13.333px;
+}
 div#left {
-	width: 25em;
+	width: 30em;
 	-webkit-margin-end: 16px;
 	margin-inline-end: 16px;
 	display: flex;
@@ -54,7 +57,7 @@ div#meta p {
 	margin: 0;
 }
 ul#browsers {
-	width: 40em;
+	width: 45em;
 	margin: 0;
 	border: 1px #999 solid;
 	padding: 0.5em;

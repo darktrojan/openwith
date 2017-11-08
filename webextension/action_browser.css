@@ -17,6 +17,9 @@ body {
 body * {
 	box-sizing: border-box;
 }
+button {
+	font-size: 13.333px;
+}
 .panel-section {
 	display: flex;
 	flex-direction: row;
