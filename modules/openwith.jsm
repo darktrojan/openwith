@@ -783,7 +783,6 @@ let OpenWithCore = {
 			value = 'openwith-nobrowsers';
 			buttons = [{
 				label: this.strings.GetStringFromName('buttonLabel'),
-				accessKey: this.strings.GetStringFromName('buttonAccessKey'),
 				popup: null,
 				callback: this.openOptionsTab
 			}];
@@ -792,12 +791,10 @@ let OpenWithCore = {
 			value = 'openwith-installed';
 			buttons = [{
 				label: this.strings.GetStringFromName('buttonLabel'),
-				accessKey: this.strings.GetStringFromName('buttonAccessKey'),
 				popup: null,
 				callback: this.openOptionsTab
 			}, {
 				label: this.strings.GetStringFromName('donateButtonLabel'),
-				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 				popup: null,
 				callback: this.openDonatePage.bind(this)
 			}];
@@ -826,11 +823,9 @@ let OpenWithCore = {
 			value = 'openwith-donate';
 			buttons = [{
 				label: this.strings.GetStringFromName('changeLogLabel'),
-				accessKey: this.strings.GetStringFromName('changeLogAccessKey'),
 				callback: this.openChangelog.bind(this)
 			}, {
 				label: this.strings.GetStringFromName('donateButtonLabel'),
-				accessKey: this.strings.GetStringFromName('donateButtonAccessKey'),
 				popup: null,
 				callback: this.openDonatePage.bind(this)
 			}];
