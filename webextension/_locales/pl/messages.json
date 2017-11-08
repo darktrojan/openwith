@@ -45,7 +45,7 @@
 		"message": "Polecenie:"
 	},
 	"details_customIcons_button": {
-		"message": "Ikony niestandardowe..."
+		"message": "Ikony niestandardowe…"
 	},
 	"details_desktopFile_label": {
 		"message": "Odczytaj z pliku .desktop:"
@@ -66,7 +66,7 @@
 		"message": "Aktualizuj"
 	},
 	"donate_button": {
-		"message": "Wspomóż..."
+		"message": "Wspomóż…"
 	},
 	"donate_message": {
 		"message": "Open With jest finansowany przez darowizny użytkowników."
@@ -195,7 +195,7 @@
 		"message": "Nie znaleziono przeglądarek!"
 	},
 	"popup_options_button": {
-		"message": "Opcje Open With..."
+		"message": "Opcje Open With…"
 	},
 	"test_button": {
 		"message": "Przetestuj instalację"
@@ -226,7 +226,7 @@
 		"message": "Open With nie mógł nawiązać połączenia z zewnętrznymi serwerami."
 	},
 	"update_message": {
-		"message": "Open With został właśnie zaktualizowany do wersji $VERSION$. Open With jest bezpłatny, ale każda, nawet najmniejsza darowizna, wspomaga dalszy rozwój.",
+		"message": "Open With został właśnie zaktualizowany do wersji $VERSION$. Open With jest bezpłatny, ale każda, nawet najmniejsza, darowizna wspomaga dalszy rozwój.",
 		"placeholders": {
 			"version": {
 				"content": "$1",
@@ -247,7 +247,7 @@
 		"message": "Usuń"
 	},
 	"webextension_info_label": {
-		"message": "Więcej informacji..."
+		"message": "Więcej informacji…"
 	},
 	"webextension_info_url": {
 		"description": "To jest strona internetowa zawierająca informacje dla użytkowników. Skontaktuj się ze mną, jeśli chcesz pomóc w tłumaczeniu.",
