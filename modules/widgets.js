@@ -1,4 +1,4 @@
-/* globals Components, CustomizableUI, OpenWithCore, Iterator */
+/* globals Components, CustomizableUI, OpenWithCore */
 Components.utils.import('resource:///modules/CustomizableUI.jsm');
 
 let label = OpenWithCore.strings.GetStringFromName('openWithDropDownTooltip');
@@ -38,7 +38,7 @@ CustomizableUI.createWidget({
 		function updateCombinedWidgetStyle(aArea) {
 			let inPanel = aArea == CustomizableUI.AREA_PANEL;
 			let className = inPanel ? 'panel-combined-button' : 'toolbarbutton-1 toolbarbutton-combined';
-			for (let [, tbb] of Iterator(toolbaritem.querySelectorAll('toolbarbutton'))) {
+			for (let [, tbb] of Object.entries(toolbaritem.querySelectorAll('toolbarbutton'))) {
 				tbb.className = className;
 			}
 		}

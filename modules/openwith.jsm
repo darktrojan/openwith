@@ -871,7 +871,7 @@ let OpenWithCore = {
 	},
 	readDesktopFile: function(aFile) {
 		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
-		istream.init(aFile, 0x01, 0444, 0);
+		istream.init(aFile, 0x01, 0o444, 0);
 		istream.QueryInterface(Components.interfaces.nsILineInputStream);
 
 		let line = {};

@@ -41,6 +41,6 @@
 		</menu>
 	</menupopup>
 
-	<script src="chrome://openwith/content/openwith.js" type="application/javascript;version=1.7" />
+	<script src="chrome://openwith/content/openwith.js" />
 
 </overlay>

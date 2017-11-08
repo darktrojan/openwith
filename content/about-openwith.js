@@ -1,4 +1,4 @@
-/* globals Components, Iterator, openDialog, -name */
+/* globals Components, openDialog, -name */
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
@@ -141,7 +141,7 @@ function loadBrowserList() {
 
 	for (let entry of OpenWithCore.list) {
 		let item = document.createElement('richlistitem');
-		for (let [key, value] of Iterator(entry)) {
+		for (let [key, value] of Object.entries(entry)) {
 			switch (key) {
 			case 'auto':
 				item.setAttribute('auto', value);
@@ -396,7 +396,7 @@ function addNewItem() {
 			program.keyName = generateRandomKeyName();
 			program.manual = true;
 			program.params = program.params;
-			for (let [name, value] of Iterator(program)) {
+			for (let [name, value] of Object.entries(program)) {
 				item.setAttribute(name, value);
 			}
 			saveItemToPrefs(item, true);

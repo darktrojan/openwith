@@ -16,7 +16,6 @@
 		</hbox>
 	</hbox>
 
-	<script src="chrome://openwith/content/openwith-devtools.js"
-		type="application/javascript;version=1.7"></script>
+	<script src="chrome://openwith/content/openwith-devtools.js" />
 
 </overlay>

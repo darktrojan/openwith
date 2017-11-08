@@ -20,5 +20,5 @@
 	</hbox>
 	<label id="nomodifier" hidden="true" style="text-align: center; font-style: italic" value="&openwith-nomodifier;" />
 	<label id="comboinuse" hidden="true" style="text-align: center; font-style: italic" value="&openwith-comboinuse;" />
-	<script src="keyinfo.js" type="application/javascript;version=1.8"></script>
+	<script src="chrome://openwith/content/keyinfo.js" />
 </dialog>

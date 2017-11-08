@@ -160,6 +160,6 @@
 		<menuitem class="noauto" label="&openwith-browserlist-remove.label;" oncommand="removeItem(document.popupNode);" />
 	</menupopup>
 
-	<script src="chrome://openwith/content/about-openwith.js" type="application/javascript;version=1.7"></script>
+	<script src="chrome://openwith/content/about-openwith.js" />
 
 </page>
