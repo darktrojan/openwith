@@ -228,11 +228,15 @@ function editCommand(item) {
 	let file = new FileUtils.File(command);
 	fp.defaultString = file.leafName;
 	fp.displayDirectory = file.parent;
-	if (fp.show() == Ci.nsIFilePicker.returnOK) {
-		item.setAttribute('command', fp.file.path);
-		item.setAttribute('icon', OpenWithCore.findIconURL(fp.file, 32));
-		saveItemToPrefs(item);
-	}
+	fp.open({
+		done: function(result) {
+			if (result == Ci.nsIFilePicker.returnOK) {
+				item.setAttribute('command', fp.file.path);
+				item.setAttribute('icon', OpenWithCore.findIconURL(fp.file, 32));
+				saveItemToPrefs(item);
+			}
+		}
+	});
 }
 
 /* exported changeAttribute */
@@ -383,42 +387,46 @@ function addNewItem() {
 		fp.displayDirectory = appsDir;
 	}
 
-	if (fp.show() == Ci.nsIFilePicker.returnOK) {
-		appsDir = fp.file.parent;
-		let item = document.createElement('richlistitem');
+	fp.open({
+		done: function(result) {
+			if (result == Ci.nsIFilePicker.returnOK) {
+				appsDir = fp.file.parent;
+				let item = document.createElement('richlistitem');
 
-		if (/\.desktop$/.test(fp.file.leafName)) {
-			let program = OpenWithCore.readDesktopFile(fp.file, []);
-			delete program.hidden;
-			program.auto = false;
-			program.icon = program.icon.replace('?size=menu', '?size=dnd');
-			program.icon = program.icon.replace(/16/g, '32');
-			program.keyName = generateRandomKeyName();
-			program.manual = true;
-			program.params = program.params;
-			for (let [name, value] of Object.entries(program)) {
-				item.setAttribute(name, value);
+				if (/\.desktop$/.test(fp.file.leafName)) {
+					let program = OpenWithCore.readDesktopFile(fp.file, []);
+					delete program.hidden;
+					program.auto = false;
+					program.icon = program.icon.replace('?size=menu', '?size=dnd');
+					program.icon = program.icon.replace(/16/g, '32');
+					program.keyName = generateRandomKeyName();
+					program.manual = true;
+					program.params = program.params;
+					for (let [name, value] of Object.entries(program)) {
+						item.setAttribute(name, value);
+					}
+					saveItemToPrefs(item, true);
+				} else {
+					let name = fp.file.leafName.replace(/\.(app|exe)$/i, '');
+					let command = fp.file.path;
+					let icon = OpenWithCore.findIconURL(fp.file, 32);
+
+					item.setAttribute('auto', false);
+					item.setAttribute('manual', true);
+					item.setAttribute('keyName', generateRandomKeyName());
+					item.setAttribute('name', name);
+					item.setAttribute('command', command);
+					item.setAttribute('params', '');
+					item.setAttribute('icon', icon);
+
+					saveItemToPrefs(item, false);
+				}
+
+				list.appendChild(item);
+				list.selectItem(item);
 			}
-			saveItemToPrefs(item, true);
-		} else {
-			let name = fp.file.leafName.replace(/\.(app|exe)$/i, '');
-			let command = fp.file.path;
-			let icon = OpenWithCore.findIconURL(fp.file, 32);
-
-			item.setAttribute('auto', false);
-			item.setAttribute('manual', true);
-			item.setAttribute('keyName', generateRandomKeyName());
-			item.setAttribute('name', name);
-			item.setAttribute('command', command);
-			item.setAttribute('params', '');
-			item.setAttribute('icon', icon);
-
-			saveItemToPrefs(item, false);
 		}
-
-		list.appendChild(item);
-		list.selectItem(item);
-	}
+	});
 }
 
 /* exported removeItem */
