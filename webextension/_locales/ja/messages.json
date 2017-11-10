@@ -1,0 +1,165 @@
+{
+	"actions_addbrowser": {
+		"message": "ブラウザを追加"
+	},
+	"actions_look": {
+		"message": "ブラウザを探す"
+	},
+	"actions_sort": {
+		"message": "並べ替え"
+	},
+	"browserList_duplicate_button": {
+		"message": "複製"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$1 (コピー)"
+	},
+	"browserList_edit_button": {
+		"message": "編集"
+	},
+	"browserList_hide_button": {
+		"message": "隠す"
+	},
+	"browserList_remove_button": {
+		"message": "削除"
+	},
+	"browserList_show_button": {
+		"message": "表示"
+	},
+	"details_add_button": {
+		"message": "追加"
+	},
+	"details_adding_header": {
+		"message": "ブラウザを追加"
+	},
+	"details_cancel_button": {
+		"message": "キャンセル"
+	},
+	"details_command_label": {
+		"message": "コマンド:"
+	},
+	"details_customIcons_button": {
+		"message": "カスタムアイコン…"
+	},
+	"details_desktopFile_label": {
+		"message": ".desktopファイルから読み込む:"
+	},
+	"details_editing_header": {
+		"message": "ブラウザを編集"
+	},
+	"details_icon_label": {
+		"message": "アイコン:"
+	},
+	"details_iconsCredit": {
+		"message": "Github上のブラウザのロゴ"
+	},
+	"details_name_label": {
+		"message": "名前:"
+	},
+	"details_update_button": {
+		"message": "更新"
+	},
+	"donate_button": {
+		"message": "寄付する…"
+	},
+	"donate_message": {
+		"message": "Open Withはユーザーの寄付によって支えられています。"
+	},
+	"extensionDescription": {
+		"message": "Firefox、Edge、Safari、またはOperaでウェブページをすばやくテストできます。"
+	},
+	"extensionName": {
+		"message": "Open With"
+	},
+	"github": {
+		"message": "Open With on GitHub"
+	},
+	"install_header": {
+		"message": "インストールを完了するには:"
+	},
+	"install_introduction": {
+		"message": "Open Withはそれらと通信するために、ブラウザの外部にファイルが必要です。"
+	},
+	"install_step1a": {
+		"message": "このためにはPythonをインストールする必要があります。"
+	},
+	"install_step1b_link": {
+		"message": "ここから入手してください。"
+	},
+	"install_step1c": {
+		"message": "(Pythonバージョン2.7または3.x、どちらを使用しても問題ありません。)"
+	},
+	"install_step2a_link": {
+		"message": "ダウンロードするにはここをクリック"
+	},
+	"install_step2b": {
+		"message": "ファイルをコンピュータに保存します。"
+	},
+	"install_step3": {
+		"message": "ファイルを実行するにはアクセス許可を確認してください (\"実行\"権限):"
+	},
+	"install_step4a": {
+		"message": "コマンドプロンプトを開きます。"
+	},
+	"install_step4b": {
+		"message": "引数に\"install\"を指定してファイルを実行します:"
+	},
+	"install_step4c": {
+		"message": "ファイルを移動した場合、この手順を再度実行する必要があります。"
+	},
+	"options_title": {
+		"message": "Open Withオプション"
+	},
+	"popup_installed_header": {
+		"message": "Open WithはWebExtensionになりました"
+	},
+	"popup_installed_text": {
+		"message": "インストールを完了するにはいくつかの手順が必要です。"
+	},
+	"popup_nobrowsers": {
+		"message": "ブラウザが見つかりません！"
+	},
+	"popup_options_button": {
+		"message": "Open Withオプション…"
+	},
+	"test_button": {
+		"message": "インストールのテスト"
+	},
+	"test_error": {
+		"message": "何らかのエラーが発生しました、ブラウザのコンソールにより詳しい情報があります。"
+	},
+	"test_success": {
+		"message": "バージョン $1 が $2 で見つかりました。"
+	},
+	"test_warning": {
+		"message": "新しいバージョンが利用可能です、更新してください。"
+	},
+	"update_changelog_button": {
+		"message": "変更履歴"
+	},
+	"update_error": {
+		"message": "Open Withは外部と接続できませんでした。"
+	},
+	"update_message": {
+		"message": "Open Withはバージョン $1 に更新されました。Open Withは無料で利用できますが、寄付はいつでも歓迎です！"
+	},
+	"update_warning": {
+		"message": "Open Withのファイルを更新する必要があります。"
+	},
+	"userIcons_done_button": {
+		"message": "完了"
+	},
+	"userIcons_header": {
+		"message": "カスタムアイコン"
+	},
+	"userIcons_remove_button": {
+		"message": "削除"
+	},
+	"webextension_info_label": {
+		"message": "その他の情報…"
+	},
+	"webextension_info_url": {
+		"description": "こちらは一般ユーザー向けの情報を載せたウェブページです。あなたも翻訳に参加したい場合は、開発者に連絡してください。",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
