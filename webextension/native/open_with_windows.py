@@ -119,7 +119,7 @@ def find_browsers():
 	if os.path.exists(os.path.join(windir, 'SystemApps', 'Microsoft.MicrosoftEdge_8wekyb3d8bbwe', 'MicrosoftEdge.exe')):
 		browsers.append({
 			'name': 'Microsoft Edge',
-			'command': os.path.join(windir, 'explorer.exe') + ' microsoft-edge:%s'
+			'command': os.path.join(windir, 'explorer.exe') + ' "microsoft-edge:%s "'
 		})
 
 	return browsers
