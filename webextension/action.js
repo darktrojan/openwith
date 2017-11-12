@@ -103,10 +103,12 @@ function open_options_tab() {
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
-	if (b.icon.startsWith('user_icon_')) {
-		li.querySelector('img').src = userIcons.get(b.icon.substring(10))['16'];
-	} else {
-		li.querySelector('img').src = 'icons/' + b.icon + '_16x16.png';
+	if ('icon' in b) {
+		if (b.icon.startsWith('user_icon_')) {
+			li.querySelector('img').src = userIcons.get(b.icon.substring(10))['16'];
+		} else {
+			li.querySelector('img').src = 'icons/' + b.icon + '_16x16.png';
+		}
 	}
 	li.querySelector('div.name').textContent = b.name;
 	browsersList.appendChild(li);
