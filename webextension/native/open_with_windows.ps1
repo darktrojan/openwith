@@ -153,7 +153,7 @@ if ($message -eq 'ping') {
 } else {
 	if ($message.Length -gt 1) {
 		$c = $message.Length - 1
-		Invoke-CreateProcess -Binary $message[0] -Args ('"' + $message[0] + '" ' + [String]::Join(' ', $message[1..$c])) -CreationFlags 0x01000000 -ShowWindow 1 -StartF 1
+		Invoke-CreateProcess -Binary $message[0] -Args ('"' + $message[0] + '" ' + [String]::Join(' ', $message[1..$c])) -CreationFlags 0x01000010 -ShowWindow 1 -StartF 1
 	} else {
 		Invoke-CreateProcess -Binary $message[0] -CreationFlags 0x01000000 -ShowWindow 1 -StartF 1
 	}

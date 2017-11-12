@@ -143,7 +143,8 @@ def listen():
 					os.environ[k] = ''
 
 		CREATE_BREAKAWAY_FROM_JOB = 0x01000000
-		subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB)
+		CREATE_NEW_CONSOLE = 0x00000010
+		subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB|CREATE_NEW_CONSOLE)
 		sendMessage(None)
 
 if __name__ == '__main__':
