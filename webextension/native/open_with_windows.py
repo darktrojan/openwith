@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.0'
+VERSION = '7.0.1'
 
 try:
 	sys.stdin.buffer
@@ -144,7 +144,7 @@ def listen():
 
 		CREATE_BREAKAWAY_FROM_JOB = 0x01000000
 		CREATE_NEW_CONSOLE = 0x00000010
-		subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB|CREATE_NEW_CONSOLE)
+		subprocess.Popen(receivedMessage, creationflags=CREATE_BREAKAWAY_FROM_JOB | CREATE_NEW_CONSOLE)
 		sendMessage(None)
 
 if __name__ == '__main__':
