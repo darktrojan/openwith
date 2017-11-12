@@ -1,0 +1,184 @@
+{
+	"actions_addbrowser": {
+		"message": "Добавить браузер"
+	},
+	"actions_look": {
+		"message": "Поиск браузеров"
+	},
+	"actions_sort": {
+		"message": "Сортировать список"
+	},
+	"browserList_duplicate_button": {
+		"message": "Дублировать"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$ORIGINAL$ (копия)",
+		"placeholders": {
+			"original": {
+				"content": "$1",
+				"example": "Firefox"
+			}
+		}
+	},
+	"browserList_edit_button": {
+		"message": "Изменить"
+	},
+	"browserList_hide_button": {
+		"message": "Скрыть"
+	},
+	"browserList_remove_button": {
+		"message": "Удалить"
+	},
+	"browserList_show_button": {
+		"message": "Показать"
+	},
+	"details_add_button": {
+		"message": "Добавить"
+	},
+	"details_adding_header": {
+		"message": "Добавить браузер"
+	},
+	"details_cancel_button": {
+		"message": "Отмена"
+	},
+	"details_command_label": {
+		"message": "Команда:"
+	},
+	"details_customIcons_button": {
+		"message": "Сменить иконку…"
+	},
+	"details_desktopFile_label": {
+		"message": "Прочитать из файла .desktop:"
+	},
+	"details_editing_header": {
+		"message": "Редактировать браузер"
+	},
+	"details_icon_label": {
+		"message": "Иконка:"
+	},
+	"details_iconsCredit": {
+		"message": "Иконки браузеров на GitHub"
+	},
+	"details_name_label": {
+		"message": "Название:"
+	},
+	"details_update_button": {
+		"message": "Обновить"
+	},
+	"donate_button": {
+		"message": "Пожертвования…"
+	},
+	"donate_message": {
+		"message": "Open With разрабатывается благодаря пожертвованиям от пользователей."
+	},
+	"extensionDescription": {
+		"message": "Быстро проверить страницы в Firefox, Edge, Safari или Opera."
+	},
+	"github": {
+		"message": "Open With на GitHub"
+	},
+	"install_header": {
+		"message": "Для завершения установки:"
+	},
+	"install_introduction": {
+		"message": "Open With необходим файл на компьютере для взаимодействия с расширением."
+	},
+	"install_step1a": {
+		"message": "Вам необходимо иметь установленный на компьютере Python."
+	},
+	"install_step1b_link": {
+		"message": "Загрузить"
+	},
+	"install_step1c": {
+		"message": "(Используйте Python 2.7 или 3.x, это не имеет значения)."
+	},
+	"install_step2a_link": {
+		"message": "Кликните здесь для загрузки файла"
+	},
+	"install_step2b": {
+		"message": "и сохраните его на компьютере."
+	},
+	"install_step3": {
+		"message": "Убедитесь, что у файла выставлены права на выполнение (право \"x\"):"
+	},
+	"install_step4a": {
+		"message": "Откройте командную строку."
+	},
+	"install_step4b": {
+		"message": "Запустите файл с параметром \"install\", например:"
+	},
+	"install_step4c": {
+		"message": "Если вы переместите этот файл, вам будет необходимо повторить этот шаг."
+	},
+	"options_title": {
+		"message": "Настройки Open With"
+	},
+	"popup_installed_header": {
+		"message": "Open With теперь WebExtension"
+	},
+	"popup_installed_text": {
+		"message": "Осталось несколько шагов для завершения установки."
+	},
+	"popup_nobrowsers": {
+		"message": "Браузеры не найдены!"
+	},
+	"popup_options_button": {
+		"message": "Настройки Open With…"
+	},
+	"test_button": {
+		"message": "Проверить установку"
+	},
+	"test_error": {
+		"message": "Что-то пошло не так. В консоли браузера может быть дополнительная информация."
+	},
+	"test_success": {
+		"message": "Найдена версия $VERSION$ в папке $LOCATION$.",
+		"placeholders": {
+			"location": {
+				"content": "$2",
+				"example": "/home/geoff/Desktop/open_with_linux.py"
+			},
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"test_warning": {
+		"message": "Доступна новая версия файла, и его следует обновить."
+	},
+	"update_changelog_button": {
+		"message": "Что нового?"
+	},
+	"update_error": {
+		"message": "Open With не может подключиться к внешнему миру."
+	},
+	"update_message": {
+		"message": "Open With было обновлено до версии $VERSION$. Open With бесплатен, но ваши пожертвования приветствуются!",
+		"placeholders": {
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"update_warning": {
+		"message": "Вам необходимо обновить ваш Open With файл."
+	},
+	"userIcons_done_button": {
+		"message": "Готово"
+	},
+	"userIcons_header": {
+		"message": "Пользовательские иконки"
+	},
+	"userIcons_remove_button": {
+		"message": "Удалить"
+	},
+	"webextension_info_label": {
+		"message": "Узнать больше…"
+	},
+	"webextension_info_url": {
+		"description": "Это страница с информацией для пользователей. Пожалуйста, свяжитесь со мной, если вы хотите перевести её.",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
