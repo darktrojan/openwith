@@ -5,7 +5,10 @@ var max_icon_id = 0;
 
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = info.modifiers.includes('Ctrl') ? null : (!!info.linkUrl ? info.linkUrl : info.pageUrl);
+	let url = info.linkUrl ? info.linkUrl : info.pageUrl;
+	if ('modifiers' in info && info.modifiers.includes('Ctrl')) {
+		url = null;
+	}
 	open_browser(browser_id, url);
 }
 
