@@ -104,11 +104,17 @@
 	"icon_firefox_3_5_22": {
 		"message": "Firefox 3.5-22"
 	},
+	"icon_firefox_23_56": {
+		"message": "Firefox 23-56"
+	},
 	"icon_firefox": {
 		"message": "Firefox"
 	},
 	"icon_firefox_beta": {
 		"message": "Firefox Beta"
+	},
+	"icon_firefox_developer_edition": {
+		"message": "Firefox Developer Edition"
 	},
 	"icon_firefox_nightly": {
 		"message": "Firefox Nightly"
