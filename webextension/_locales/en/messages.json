@@ -75,6 +75,7 @@
 		"message": "Quickly test out your web pages in Firefox, Edge, Safari, or Opera."
 	},
 	"extensionName": {
+		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
 	},
 	"github": {

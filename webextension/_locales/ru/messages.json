@@ -74,6 +74,9 @@
 	"extensionDescription": {
 		"message": "Быстро проверить страницы в Firefox, Edge, Safari или Opera."
 	},
+	"extensionName": {
+		"message": "Open With"
+	},
 	"github": {
 		"message": "Open With на GitHub"
 	},

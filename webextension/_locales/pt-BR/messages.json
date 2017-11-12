@@ -68,6 +68,9 @@
 	"extensionDescription": {
 		"message": "Teste facilmente suas páginas web no Firefox, Edge, Safari, ou Opera."
 	},
+	"extensionName": {
+		"message": "Open With"
+	},
 	"github": {
 		"message": "Open With no GitHub"
 	},
