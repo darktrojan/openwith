@@ -1,0 +1,188 @@
+{
+	"actions_addbrowser": {
+		"message": "Browser hinzufügen"
+	},
+	"actions_look": {
+		"message": "Suche Browser"
+	},
+	"actions_sort": {
+		"message": "Liste sortieren"
+	},
+	"browserList_duplicate_button": {
+		"message": "Duplizieren"
+	},
+	"browserList_duplicate_newName": {
+		"message": "$ORIGINAL$ (kopieren)",
+		"placeholders": {
+			"original": {
+				"content": "$1",
+				"example": "Firefox"
+			}
+		}
+	},
+	"browserList_edit_button": {
+		"message": "Ändern"
+	},
+	"browserList_hide_button": {
+		"message": "Verstecken"
+	},
+	"browserList_remove_button": {
+		"message": "Löschen"
+	},
+	"browserList_show_button": {
+		"message": "Anzeigen"
+	},
+	"details_add_button": {
+		"message": "Hinzufügen"
+	},
+	"details_adding_header": {
+		"message": "Browser hinzufügen"
+	},
+	"details_cancel_button": {
+		"message": "Abbrechen"
+	},
+	"details_command_label": {
+		"message": "Aufruf:"
+	},
+	"details_customIcons_button": {
+		"message": "Anderes Bild…"
+	},
+	"details_desktopFile_label": {
+		"message": "Aus .desktop Verknüpfung gelesen:"
+	},
+	"details_editing_header": {
+		"message": "Browser ändern"
+	},
+	"details_icon_label": {
+		"message": "Bild:"
+	},
+	"details_iconsCredit": {
+		"message": "Browser Logos auf Github"
+	},
+	"details_name_label": {
+		"message": "Name:"
+	},
+	"details_update_button": {
+		"message": "Aktualisieren"
+	},
+	"donate_button": {
+		"message": "Spenden…"
+	},
+	"donate_message": {
+		"message": "Open With lebt von Ihrer Spende."
+	},
+	"extensionDescription": {
+		"message": "Dieselbe WebSeite überall testen: in Firefox, Edge, Safari oder Opera."
+	},
+	"extensionName": {
+		"description": "Please include this string, even if you keep the English version.",
+		"message": "Open With"
+	},
+	"github": {
+		"message": "Open With auf GitHub"
+	},
+	"install_header": {
+		"message": "Installation abschließen:"
+	},
+	"install_introduction": {
+		"message": "Open With benötigt ein Programm außerhalb des Browsers für Systemaufrufe."
+	},
+	"install_step1a": {
+		"message": "Eine Python-Installation ist erforderlich."
+	},
+	"install_step1b_link": {
+		"message": "Hier erhältlich."
+	},
+	"install_step1c": {
+		"message": "(Kompatibel mit Python Version 2.7 oder 3.x)"
+	},
+	"install_step2a_link": {
+		"message": "Python-Skript"
+	},
+	"install_step2b": {
+		"message": "(Rechtsklick / Ziel speichern unter) z.B. in ~/bin"
+	},
+	"install_step3": {
+		"message": "Machen Sie das Skript ausführbar:"
+	},
+	"install_step4a": {
+		"message": "Öffnen Sie ein Terminal."
+	},
+	"install_step4b": {
+		"message": "Rufen Sie das Skript mit Parameter \"install\" auf:"
+	},
+	"install_step4c": {
+		"message": "Falls das Skript verschoben wird, wiederholen Sie diesen Schritt."
+	},
+	"options_title": {
+		"message": "Open With Optionen"
+	},
+	"popup_installed_header": {
+		"message": "Open With ist jetzt eine WebExtension"
+	},
+	"popup_installed_text": {
+		"message": "Bitte prüfen Sie die Optionen zum Abschluss der Installation."
+	},
+	"popup_nobrowsers": {
+		"message": "Keine Browser gefunden!"
+	},
+	"popup_options_button": {
+		"message": "Open With Optionen…"
+	},
+	"test_button": {
+		"message": "Installation testen"
+	},
+	"test_error": {
+		"message": "Fehler: Weitere Informationen finden Sie in der Browser Konsole (Strg+Umschalt+J)."
+	},
+	"test_success": {
+		"message": "Version $VERSION$ gefunden in $LOCATION$.",
+		"placeholders": {
+			"location": {
+				"content": "$2",
+				"example": "/home/geoff/Desktop/open_with_linux.py"
+			},
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"test_warning": {
+		"message": "Eine neue Version ist verfügbar."
+	},
+	"update_changelog_button": {
+		"message": "Was hat sich geändert?"
+	},
+	"update_error": {
+		"message": "Open With konnte sich nicht verbinden."
+	},
+	"update_message": {
+		"message": "Open With wurde aktualisiert auf version $VERSION$. Open With ist kostenlos, doch Ihre Spenden sind herzlich willkommen!",
+		"placeholders": {
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"update_warning": {
+		"message": "Sie sollten Open With aktualisieren."
+	},
+	"userIcons_done_button": {
+		"message": "Fertig"
+	},
+	"userIcons_header": {
+		"message": "Eigene Bilder"
+	},
+	"userIcons_remove_button": {
+		"message": "Löschen"
+	},
+	"webextension_info_label": {
+		"message": "Weitere Informationen…"
+	},
+	"webextension_info_url": {
+		"description": "Häufig gestellte Fragen und weiterführende Hilfe (Englisch), z.B. um Fehler zu melden.",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
