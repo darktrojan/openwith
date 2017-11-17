@@ -75,6 +75,7 @@
 		"message": "Szybko testuj strony internetowe w Firefoksie, Edge, Safari albo Operze."
 	},
 	"extensionName": {
+		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
 	},
 	"github": {
@@ -104,11 +105,17 @@
 	"icon_firefox_3_5_22": {
 		"message": "Firefox 3.5-22"
 	},
+	"icon_firefox_23_56": {
+		"message": "Firefox 23-56"
+	},
 	"icon_firefox": {
 		"message": "Firefox"
 	},
 	"icon_firefox_beta": {
 		"message": "Firefox Beta"
+	},
+	"icon_firefox_developer_edition": {
+		"message": "Firefox Developer Edition"
 	},
 	"icon_firefox_nightly": {
 		"message": "Firefox Nightly"
@@ -149,6 +156,9 @@
 	"icon_waterfox": {
 		"message": "Waterfox"
 	},
+	"icon_yandex": {
+		"message": "Yandex Browser"
+	},
 	"install_header": {
 		"message": "Aby zakończyć instalację:"
 	},
@@ -169,6 +179,9 @@
 	},
 	"install_step2b": {
 		"message": "i zapisać plik na komputerze."
+	},
+	"install_step3a": {
+		"message": "Otwórz Terminal."
 	},
 	"install_step3b": {
 		"message": "Upewnij się, że uprawnienia do plików pozwalają na jego uruchomienie (uprawnienie \"x\"):"
