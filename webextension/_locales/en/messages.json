@@ -177,7 +177,10 @@
 	"install_step2b": {
 		"message": "and save the file to your computer."
 	},
-	"install_step3": {
+	"install_step3a": {
+		"message": "Open Terminal."
+	},
+	"install_step3b": {
 		"message": "Ensure the file permissions allow you to run it (\"x\" permission):"
 	},
 	"install_step4a": {

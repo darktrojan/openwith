@@ -167,7 +167,7 @@
 	"install_step2b": {
 		"message": "並將檔案儲存至您的電腦中。"
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "確保檔案權限讓您可以執行它（\"x\" 權限）："
 	},
 	"install_step4a": {

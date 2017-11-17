@@ -170,7 +170,7 @@
 	"install_step2b": {
 		"message": "i zapisać plik na komputerze."
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "Upewnij się, że uprawnienia do plików pozwalają na jego uruchomienie (uprawnienie \"x\"):"
 	},
 	"install_step4a": {

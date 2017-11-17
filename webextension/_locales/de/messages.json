@@ -102,7 +102,7 @@
 	"install_step2b": {
 		"message": "(Rechtsklick / Ziel speichern unter) z.B. in ~/bin"
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "Machen Sie das Skript ausführbar:"
 	},
 	"install_step4a": {

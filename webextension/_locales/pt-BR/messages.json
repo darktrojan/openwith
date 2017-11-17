@@ -92,7 +92,7 @@
 	"install_step2b": {
 		"message": "e salvar o arquivo no seu computador."
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "Certifique-se de que as permissões do arquivo lhe permitem executá-lo (permissão \"x\"):"
 	},
 	"install_step4a": {

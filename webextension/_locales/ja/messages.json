@@ -95,7 +95,7 @@
 	"install_step2b": {
 		"message": "ファイルをコンピュータに保存します。"
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "ファイルを実行するにはアクセス許可を確認してください (\"実行\"権限):"
 	},
 	"install_step4a": {

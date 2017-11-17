@@ -101,7 +101,7 @@
 	"install_step2b": {
 		"message": "и сохраните его на компьютере."
 	},
-	"install_step3": {
+	"install_step3b": {
 		"message": "Убедитесь, что у файла выставлены права на выполнение (право \"x\"):"
 	},
 	"install_step4a": {
