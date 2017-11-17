@@ -154,7 +154,11 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		if (browser) {
 			browser.name = data.name;
 			browser.command = data.command;
-			browser.icon = data.icon;
+			if (data.icon) {
+				browser.icon = data.icon;
+			} else {
+				delete browser.icon;
+			}
 			chrome.storage.local.set({browsers}, function() {
 				make_menus();
 				sendResponse(true);

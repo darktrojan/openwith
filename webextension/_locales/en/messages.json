@@ -156,6 +156,9 @@
 	"icon_waterfox": {
 		"message": "Waterfox"
 	},
+	"icon_yandex": {
+		"message": "Yandex Browser"
+	},
 	"install_header": {
 		"message": "To complete installation:"
 	},

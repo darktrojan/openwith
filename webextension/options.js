@@ -31,7 +31,8 @@ let icons = [
 	'seamonkey',
 	'srware-iron',
 	'vivaldi',
-	'waterfox'
+	'waterfox',
+	'yandex'
 ];
 let iconsList = document.getElementById('icons');
 let detailsForm = document.forms.details;
@@ -282,6 +283,11 @@ iconsList.onclick = function(event) {
 		target = target.parentNode;
 	}
 	if (target == this) {
+		select_icon();
+		return;
+	}
+	if (target.classList.contains('selected') && event.ctrlKey) {
+		select_icon();
 		return;
 	}
 	select_icon(target.dataset.name);
