@@ -89,12 +89,9 @@ def install():
 			file.write(
 				json.dumps(browser_manifest, indent=2, separators=(',', ': '), sort_keys=True).replace('  ', '\t') + '\n'
 			)
-		try:
-			_winreg.OpenKey(_winreg.HKEY_CURRENT_USER, os.path.dirname(registry_location))
-			key = _winreg.CreateKey(_winreg.HKEY_CURRENT_USER, registry_location)
-			_winreg.SetValue(key, 'open_with', _winreg.REG_SZ, filename)
-		except WindowsError:
-			pass
+
+		key = _winreg.CreateKey(_winreg.HKEY_CURRENT_USER, registry_location)
+		_winreg.SetValue(key, 'open_with', _winreg.REG_SZ, filename)
 
 
 def find_browsers():
