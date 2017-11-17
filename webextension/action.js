@@ -103,7 +103,7 @@ function open_options_tab() {
 function add_browser(b) {
 	let li = browsersTemplate.content.firstElementChild.cloneNode(true);
 	li.dataset.id = b.id;
-	if ('icon' in b) {
+	if ('icon' in b && b.icon) { // b.icon could be undefined if we stuffed up (#170)
 		if (b.icon.startsWith('user_icon_')) {
 			li.querySelector('img').src = userIcons.get(b.icon.substring(10))['16'];
 		} else {

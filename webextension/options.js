@@ -519,7 +519,7 @@ function select_icon(name) {
 	if (selected) {
 		selected.classList.remove('selected');
 	}
-	for (let l of iconsList.children) {
+	for (let l of iconsList.querySelectorAll('li')) {
 		if (l.dataset.name == name) {
 			l.classList.add('selected');
 		}
