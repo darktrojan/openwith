@@ -39,6 +39,19 @@ let detailsForm = document.forms.details;
 let userIconsForm = document.forms.userIcons;
 let userIconsList = userIconsForm.querySelector('ul');
 
+document.getElementById('install').onclick = function(event) {
+	let {target} = event;
+	if (target instanceof HTMLAnchorElement && target.getAttribute('href').startsWith('native/')) {
+		let {href} = target;
+		chrome.downloads.download({
+			url: href,
+			filename: href.substring(href.lastIndexOf('/') + 1),
+			saveAs: true
+		});
+		return false;
+	}
+};
+
 document.getElementById('test').onclick = function() {
 	function error_listener() {
 		testResult.style.display = 'flex';

@@ -26,6 +26,7 @@
 	},
 	"permissions": [
 		"contextMenus",
+		"downloads",
 		"nativeMessaging",
 		"storage",
 		"tabs"
