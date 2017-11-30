@@ -56,6 +56,9 @@
 	"details_name_label": {
 		"message": "名前:"
 	},
+	"details_shortcut_label": {
+		"message": "ショートカットキー:"
+	},
 	"details_update_button": {
 		"message": "更新"
 	},
@@ -94,6 +97,9 @@
 	},
 	"install_step2b": {
 		"message": "ファイルをコンピュータに保存します。"
+	},
+	"install_step3a": {
+		"message": "ターミナルを開きます。"
 	},
 	"install_step3b": {
 		"message": "ファイルを実行するにはアクセス許可を確認してください (\"実行\"権限):"
