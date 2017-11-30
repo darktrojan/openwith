@@ -142,6 +142,7 @@ browsersList.onclick = function(event) {
 		detailsForm.browser_id.value = li.dataset.id;
 		detailsForm.name.value = li.querySelector('.name').textContent;
 		detailsForm.command.value = li.querySelector('.command').textContent;
+		detailsForm.shortcut.value = li.dataset.shortcut;
 		select_icon(li.dataset.icon);
 		document.documentElement.dataset.mode = 'editing';
 		detailsForm.name.select();
@@ -249,6 +250,9 @@ detailsForm.onsubmit = function() {
 		name: this.name.value,
 		command: this.command.value
 	};
+	if (this.shortcut.value) {
+		data.shortcut = this.shortcut.value;
+	}
 	let selected = iconsList.querySelector('.selected');
 	if (selected) {
 		data.icon = selected.dataset.name;
@@ -417,6 +421,13 @@ document.querySelector('input[type="file"][name="userIcon"]').onchange = functio
 };
 
 get_strings();
+chrome.commands.getAll(function(commands) {
+	for (let c of commands) {
+		if (['open_1', 'open_2', 'open_3'].includes(c.name)) {
+			detailsForm.shortcut.querySelector('[value="' + c.name + '"]').textContent = c.shortcut;
+		}
+	}
+});
 
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
@@ -451,6 +462,11 @@ function put_browser(data) {
 		li.classList.add('hiddenBrowser');
 	} else {
 		li.classList.remove('hiddenBrowser');
+	}
+	if (data.shortcut) {
+		li.dataset.shortcut = data.shortcut;
+	} else {
+		delete li.dataset.shortcut;
 	}
 	if (data.icon) {
 		li.dataset.icon = data.icon;

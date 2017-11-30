@@ -62,6 +62,9 @@
 	"details_name_label": {
 		"message": "Name:"
 	},
+	"details_shortcut_label": {
+		"message": "Shortcut Key:"
+	},
 	"details_update_button": {
 		"message": "Update"
 	},

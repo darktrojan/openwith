@@ -135,6 +135,13 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		sendResponse(browsers);
 		return true;
 	case 'add_browser':
+		if (data.shortcut) {
+			let existing = browsers.find(b => b.shortcut == data.shortcut);
+			if (existing) {
+				delete existing.shortcut;
+			}
+		}
+
 		data.id = ++max_browser_id;
 		browsers.push(data);
 		chrome.storage.local.set({browsers}, function() {
@@ -167,6 +174,17 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 				browser.icon = data.icon;
 			} else {
 				delete browser.icon;
+			}
+			if (data.shortcut) {
+				if (browser.shortcut != data.shortcut) {
+					let existing = browsers.find(b => b.shortcut == data.shortcut);
+					if (existing) {
+						delete existing.shortcut;
+					}
+					browser.shortcut = data.shortcut;
+				}
+			} else {
+				delete browser.shortcut;
 			}
 			chrome.storage.local.set({browsers}, function() {
 				make_menus();
@@ -219,21 +237,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		}
 		chrome.storage.local.set({icons}, function() {
 			sendResponse();
-		});
-		return true;
-	case 'set_shortcut':
-		let {shortcut, id} = data;
-		let existing = browsers.find(b => b.shortcut == shortcut);
-		if (existing) {
-			delete existing.shortcut;
-		}
-		browser = browsers.find(b => b.id == id);
-		if (browser) {
-			browser.shortcut = shortcut;
-		}
-		chrome.storage.local.set({browsers}, function() {
-			make_menus();
-			sendResponse(true);
 		});
 		return true;
 	}
