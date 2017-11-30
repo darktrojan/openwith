@@ -47,5 +47,13 @@
 		"browser_style": false,
 		"open_in_tab": true,
 		"page": "options.html"
-	}
+	},
+        "commands": {
+                "run-default": {
+                      "suggested_key": {
+                            "default": "Alt+Shift+P"
+                      },
+                      "description": "run the default browser"
+                }
+        }
 }

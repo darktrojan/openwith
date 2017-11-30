@@ -2,6 +2,22 @@
 var browsers, icons;
 var max_browser_id = 0;
 var max_icon_id = 0;
+var currentTab;
+
+function getTabs(tabs) {
+    currentTab = tabs[0];
+}
+
+function onError(err){
+    console.error(err);
+}
+
+browser.commands.onCommand.addListener(function(command) {
+    if (command == "run-default") {
+        browser.tabs.query({currentWindow: true, active: true}).then(getTabs, onError);
+        open_browser("1", currentTab.url); 
+    }
+});
 
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
