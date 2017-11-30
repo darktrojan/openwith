@@ -3,6 +3,15 @@ var browsers, icons;
 var max_browser_id = 0;
 var max_icon_id = 0;
 
+chrome.commands.onCommand.addListener(function(command) {
+	chrome.tabs.query({currentWindow: true, active: true}, tabs => {
+		let browser = browsers.find(b => b.shortcut == command);
+		if (browser) {
+			open_browser(browser.id, tabs[0].url);
+		}
+	});
+});
+
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
 	let url = info.linkUrl ? info.linkUrl : info.pageUrl;
@@ -210,6 +219,21 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		}
 		chrome.storage.local.set({icons}, function() {
 			sendResponse();
+		});
+		return true;
+	case 'set_shortcut':
+		let {shortcut, id} = data;
+		let existing = browsers.find(b => b.shortcut == shortcut);
+		if (existing) {
+			delete existing.shortcut;
+		}
+		browser = browsers.find(b => b.id == id);
+		if (browser) {
+			browser.shortcut = shortcut;
+		}
+		chrome.storage.local.set({browsers}, function() {
+			make_menus();
+			sendResponse(true);
 		});
 		return true;
 	}

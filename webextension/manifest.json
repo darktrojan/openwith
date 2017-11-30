@@ -47,5 +47,25 @@
 		"browser_style": false,
 		"open_in_tab": true,
 		"page": "options.html"
+	},
+	"commands": {
+		"open_1": {
+			"suggested_key": {
+				"default": "Alt+Shift+I"
+			},
+			"description": "Browser shortcut #1"
+		},
+		"open_2": {
+			"suggested_key": {
+				"default": "Alt+Shift+O"
+			},
+			"description": "Browser shortcut #2"
+		},
+		"open_3": {
+			"suggested_key": {
+				"default": "Alt+Shift+P"
+			},
+			"description": "Browser shortcut #3"
+		}
 	}
 }
