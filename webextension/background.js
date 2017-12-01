@@ -106,7 +106,7 @@ function make_menus() {
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: context_menu_clicked
 		};
-		if (navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Firefox/55')) {
+		if (navigator.userAgent.includes('Firefox')) {
 			if (b.icon && b.icon.startsWith('user_icon_')) {
 				let icon = icons.find(i => i.id == parseInt(b.icon.substring(10)));
 				item.icons = {
