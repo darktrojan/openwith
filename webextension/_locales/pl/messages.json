@@ -62,6 +62,9 @@
 	"details_name_label": {
 		"message": "Nazwa:"
 	},
+	"details_shortcut_label": {
+		"message": "Klawisz skrótu:"
+	},
 	"details_update_button": {
 		"message": "Aktualizuj"
 	},
