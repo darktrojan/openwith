@@ -20,7 +20,6 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 			let now = new Date();
 
 			chrome.storage.local.get({
-				version: 0,
 				versionLastUpdate: new Date(0),
 				versionLastAck: new Date(0)
 			}, function(prefs) {

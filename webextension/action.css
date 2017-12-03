@@ -1,6 +1,5 @@
 body {
 	min-width: 180px;
-	max-width: 280px;
 }
 #update,
 #warning,
@@ -17,7 +16,8 @@ body {
 	background-color: #0e9352;
 }
 #update_message {
-	margin-bottom: 8px;
+	max-width: 280px;
+	margin: 0 auto 8px;
 }
 #warning {
 	background-color: #fec82f;
