@@ -72,13 +72,10 @@
 		"message": "Open With 是依靠使用者的捐款來支撐的。"
 	},
 	"extensionDescription": {
-		"message": "在 Firefox、Edge、Safari 或 Opera 中快速測試您的網頁。"
+		"message": "在 Chrome、Edge、Safari 或 Opera 中快速測試您的網頁。"
 	},
 	"extensionName": {
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With 在 GitHub 上"
 	},
 	"icon_chrome": {
 		"message": "Chrome"
@@ -178,6 +175,9 @@
 	},
 	"install_step4c": {
 		"message": "若您移動了檔案，您必須再次執行此步驟。"
+	},
+	"links_github": {
+		"message": "Open With 在 GitHub 上"
 	},
 	"options_title": {
 		"message": "Open With 選項"

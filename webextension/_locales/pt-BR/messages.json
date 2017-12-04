@@ -66,13 +66,10 @@
 		"message": "Open With é financiado com doações dos usuários."
 	},
 	"extensionDescription": {
-		"message": "Teste facilmente suas páginas web no Firefox, Edge, Safari, ou Opera."
+		"message": "Teste facilmente suas páginas web no Chrome, Edge, Safari, ou Opera."
 	},
 	"extensionName": {
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With no GitHub"
 	},
 	"install_header": {
 		"message": "Para completar a instalação:"
@@ -103,6 +100,9 @@
 	},
 	"install_step4c": {
 		"message": "Se você mover o arquivo, você precisará executar este passo novamento."
+	},
+	"links_github": {
+		"message": "Open With no GitHub"
 	},
 	"options_title": {
 		"message": "Opções do Open With"

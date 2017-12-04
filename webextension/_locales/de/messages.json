@@ -72,14 +72,11 @@
 		"message": "Open With lebt von Ihrer Spende."
 	},
 	"extensionDescription": {
-		"message": "Dieselbe WebSeite überall testen: in Firefox, Edge, Safari oder Opera."
+		"message": "Dieselbe WebSeite überall testen: in Chrome, Edge, Safari oder Opera."
 	},
 	"extensionName": {
 		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With auf GitHub"
 	},
 	"install_header": {
 		"message": "Installation abschließen:"
@@ -113,6 +110,9 @@
 	},
 	"install_step4c": {
 		"message": "Falls das Skript verschoben wird, wiederholen Sie diesen Schritt."
+	},
+	"links_github": {
+		"message": "Open With auf GitHub"
 	},
 	"options_title": {
 		"message": "Open With Optionen"

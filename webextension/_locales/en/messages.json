@@ -75,14 +75,20 @@
 		"message": "Open With is funded by user donations."
 	},
 	"extensionDescription": {
-		"message": "Quickly test out your web pages in Firefox, Edge, Safari, or Opera."
+		"message": "Quickly test out your web pages in Chrome, Edge, Safari, or Opera."
+	},
+	"extensionDescription_chrome": {
+		"message": "Quickly test out your web pages in Edge, Firefox, Safari, or Opera."
+	},
+	"extensionDescription_opera": {
+		"message": "Quickly test out your web pages in Chrome, Edge, Firefox, or Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Quickly test out your web pages in Chrome, Edge, Safari, or Opera. Open With opens the current page in your other browsers with just two clicks."
 	},
 	"extensionName": {
 		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With on GitHub"
 	},
 	"icon_chrome": {
 		"message": "Chrome"
@@ -198,6 +204,18 @@
 	"install_step4c": {
 		"message": "If you move the file, you must run this step again."
 	},
+	"links_chrome": {
+		"message": "Open With for Chrome"
+	},
+	"links_firefox": {
+		"message": "Open With for Firefox"
+	},
+	"links_github": {
+		"message": "Open With on GitHub"
+	},
+	"links_opera": {
+		"message": "Open With for Opera"
+	},
 	"options_title": {
 		"message": "Open With Options"
 	},
@@ -212,6 +230,15 @@
 	},
 	"popup_options_button": {
 		"message": "Open With options…"
+	},
+	"shortcut_open1": {
+		"message": "Browser shortcut #1"
+	},
+	"shortcut_open2": {
+		"message": "Browser shortcut #2"
+	},
+	"shortcut_open3": {
+		"message": "Browser shortcut #3"
 	},
 	"test_button": {
 		"message": "Test Installation"

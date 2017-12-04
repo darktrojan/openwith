@@ -12,8 +12,19 @@ body {
 	margin: 8px;
 	justify-content: center;
 }
+a {
+	white-space: nowrap;
+}
+a + a {
+	-webkit-margin-start: 8px;
+	margin-inline-start: 8px;
+}
 button {
 	font-size: 13.333px;
+}
+a > img {
+	-webkit-margin-end: 4px;
+	margin-inline-end: 4px;
 }
 div#left {
 	width: 30em;
@@ -55,7 +66,7 @@ div#meta {
 	margin-bottom: 0;
 }
 div#meta p {
-	margin: 0;
+	margin: 2px 0;
 }
 ul#browsers {
 	width: 45em;

@@ -69,13 +69,10 @@
 		"message": "Open Withはユーザーの寄付によって支えられています。"
 	},
 	"extensionDescription": {
-		"message": "Firefox、Edge、Safari、またはOperaでウェブページをすばやくテストできます。"
+		"message": "Chrome、Edge、Safari、またはOperaでウェブページをすばやくテストできます。"
 	},
 	"extensionName": {
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With on GitHub"
 	},
 	"install_header": {
 		"message": "インストールを完了するには:"
@@ -112,6 +109,9 @@
 	},
 	"install_step4c": {
 		"message": "ファイルを移動した場合、この手順を再度実行する必要があります。"
+	},
+	"links_github": {
+		"message": "Open With on GitHub"
 	},
 	"options_title": {
 		"message": "Open Withオプション"

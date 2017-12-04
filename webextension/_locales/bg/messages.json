@@ -69,13 +69,10 @@
 		"message": "„Отвори със“ се финансира с дарения от потребители."
 	},
 	"extensionDescription": {
-		"message": "Бърза проверка на вашите уеб страници в Firefox, Edge, Safari или Opera."
+		"message": "Бърза проверка на вашите уеб страници в Chrome, Edge, Safari или Opera."
 	},
 	"extensionName": {
 		"message": "Отвори със"
-	},
-	"github": {
-		"message": "„Отвори със“ на GitHub"
 	},
 	"install_header": {
 		"message": "За завършване на инсталацията:"
@@ -112,6 +109,9 @@
 	},
 	"install_step4c": {
 		"message": "Ако преместите файла, трябва да повторите тази стъпка отново."
+	},
+	"links_github": {
+		"message": "„Отвори със“ на GitHub"
 	},
 	"options_title": {
 		"message": "Настройки на „Отвори със“"

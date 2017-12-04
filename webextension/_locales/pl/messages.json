@@ -75,14 +75,11 @@
 		"message": "Open With jest finansowany przez darowizny użytkowników."
 	},
 	"extensionDescription": {
-		"message": "Szybko testuj strony internetowe w Firefoksie, Edge, Safari albo Operze."
+		"message": "Szybko testuj strony internetowe w Chrome, Edge, Safari albo Operze."
 	},
 	"extensionName": {
 		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With na GitHubie"
 	},
 	"icon_chrome": {
 		"message": "Chrome"
@@ -197,6 +194,9 @@
 	},
 	"install_step4c": {
 		"message": "Jeśli plik zostanie przeniesiony, należy ponownie uruchomić ten krok."
+	},
+	"links_github": {
+		"message": "Open With na GitHubie"
 	},
 	"options_title": {
 		"message": "Opcje Open With"

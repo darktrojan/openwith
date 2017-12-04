@@ -72,13 +72,10 @@
 		"message": "Open With разрабатывается благодаря пожертвованиям от пользователей."
 	},
 	"extensionDescription": {
-		"message": "Быстро проверить страницы в Firefox, Edge, Safari или Opera."
+		"message": "Быстро проверить страницы в Chrome, Edge, Safari или Opera."
 	},
 	"extensionName": {
 		"message": "Open With"
-	},
-	"github": {
-		"message": "Open With на GitHub"
 	},
 	"install_header": {
 		"message": "Для завершения установки:"
@@ -112,6 +109,9 @@
 	},
 	"install_step4c": {
 		"message": "Если вы переместите этот файл, вам будет необходимо повторить этот шаг."
+	},
+	"links_github": {
+		"message": "Open With на GitHub"
 	},
 	"options_title": {
 		"message": "Настройки Open With"
