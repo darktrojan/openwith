@@ -253,13 +253,10 @@ function sort_browsers() {
 
 chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 	chrome.management.getSelf(function({version: currentVersion}) {
-		if (previousVersion == -1) { // This is a new install.
-			chrome.storage.local.set({'version': currentVersion});
-			chrome.browserAction.setPopup({popup: 'installed.html'});
-			return;
-		} else if (previousVersion != currentVersion) { // This is an upgrade or downgrade.
+		if (previousVersion != currentVersion) { // This is an upgrade or downgrade.
 			let newPrefs = {'version': currentVersion};
-			if (compare_versions(currentVersion, previousVersion) > 0 &&
+			if (previousVersion != -1 &&
+					compare_versions(currentVersion, previousVersion) > 0 &&
 					(currentVersion.includes('b') || parseFloat(currentVersion, 10) != parseFloat(previousVersion, 10))) {
 				newPrefs.versionLastUpdate = new Date();
 			}
@@ -268,6 +265,10 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 
 		get_version_warn().then(function(version_warn) {
 			function error_listener() {
+				if (previousVersion == -1) { // This is a new install.
+					chrome.browserAction.setPopup({popup: 'installed.html'});
+					return;
+				}
 				chrome.browserAction.setBadgeText({text: '!'});
 				chrome.browserAction.setBadgeBackgroundColor({color: ERROR_COLOUR});
 			}
