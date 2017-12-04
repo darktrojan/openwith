@@ -1,15 +1,9 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_extensionName__",
-	"description": "__MSG_extensionDescription__",
-	"version": "7.1b2",
+	"description": "__MSG_extensionDescription_chrome__",
+	"version": "7.0.99.2",
 	"default_locale": "en",
-	"applications": {
-		"gecko": {
-			"id": "openwith@darktrojan.net",
-			"strict_min_version": "56.0"
-		}
-	},
 	"icons": {
 		"16": "images/openwith16.png",
 		"24": "images/openwith24.png",
@@ -40,11 +34,9 @@
 			"64": "images/openwith64.png",
 			"96": "images/openwith96.png"
 		},
-		"default_popup": "action.html",
-		"browser_style": false
+		"default_popup": "action.html"
 	},
 	"options_ui": {
-		"browser_style": false,
 		"open_in_tab": true,
 		"page": "options.html"
 	},
@@ -53,19 +45,19 @@
 			"suggested_key": {
 				"default": "Alt+Shift+I"
 			},
-			"description": "Browser shortcut #1"
+			"description": "__MSG_shortcut_open1__"
 		},
 		"open_2": {
 			"suggested_key": {
 				"default": "Alt+Shift+O"
 			},
-			"description": "Browser shortcut #2"
+			"description": "__MSG_shortcut_open2__"
 		},
 		"open_3": {
 			"suggested_key": {
 				"default": "Alt+Shift+P"
 			},
-			"description": "Browser shortcut #3"
+			"description": "__MSG_shortcut_open3__"
 		}
 	}
 }
