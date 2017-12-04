@@ -77,7 +77,10 @@ def install():
 			if browser == 'firefox':
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
-				browser_manifest['allowed_origins'] = ['chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/']
+				browser_manifest['allowed_origins'] = [
+					'chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/',  # Chrome
+					'chrome-extension://fbmcaggceafhobjkhnaakhgfmdaadhhg/',  # Opera
+				]
 
 			with open(os.path.join(location, filename), 'w') as file:
 				file.write(
@@ -147,8 +150,14 @@ if __name__ == '__main__':
 			print(find_browsers())
 			sys.exit(0)
 
-	if 'openwith@darktrojan.net' in sys.argv or 'chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/' in sys.argv:
-		listen()
-		sys.exit(0)
+	allowed_extensions = [
+		'openwith@darktrojan.net',
+		'chrome-extension://cogjlncmljjnjpbgppagklanlcbchlno/',
+		'chrome-extension://fbmcaggceafhobjkhnaakhgfmdaadhhg/',
+	]
+	for ae in allowed_extensions:
+		if ae in sys.argv:
+			listen()
+			sys.exit(0)
 
 	print('Open With native helper, version %s.' % VERSION)
