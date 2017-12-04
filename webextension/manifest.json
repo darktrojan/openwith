@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "__MSG_extensionName__",
-	"description": "__MSG_extensionDescription_chrome__",
+	"description": "__MSG_extensionDescription_opera__",
 	"version": "7.0.99.2",
 	"default_locale": "en",
 	"icons": {
