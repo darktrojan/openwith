@@ -107,9 +107,6 @@
 	"options_title": {
 		"message": "Opções do Open With"
 	},
-	"popup_installed_header": {
-		"message": "O Open With agora é uma WebExtension"
-	},
 	"popup_installed_text": {
 		"message": "Alguns passos adicionais são necessários para completar a instalação."
 	},

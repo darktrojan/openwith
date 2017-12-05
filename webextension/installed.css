@@ -1,5 +1,5 @@
 body {
-	max-width: 30em;
+	min-width: 25em;
 }
 div.panel {
 	display: flex;

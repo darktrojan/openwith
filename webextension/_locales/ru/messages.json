@@ -116,9 +116,6 @@
 	"options_title": {
 		"message": "Настройки Open With"
 	},
-	"popup_installed_header": {
-		"message": "Open With теперь WebExtension"
-	},
 	"popup_installed_text": {
 		"message": "Осталось несколько шагов для завершения установки."
 	},

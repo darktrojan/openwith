@@ -117,9 +117,6 @@
 	"options_title": {
 		"message": "Open With Optionen"
 	},
-	"popup_installed_header": {
-		"message": "Open With ist jetzt eine WebExtension"
-	},
 	"popup_installed_text": {
 		"message": "Bitte prüfen Sie die Optionen zum Abschluss der Installation."
 	},

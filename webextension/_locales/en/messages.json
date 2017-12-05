@@ -219,8 +219,8 @@
 	"options_title": {
 		"message": "Open With Options"
 	},
-	"popup_installed_header": {
-		"message": "Open With is now a WebExtension"
+	"popup_installed_header2": {
+		"message": "Open With is almost ready"
 	},
 	"popup_installed_text": {
 		"message": "There's a few more steps to complete installation."

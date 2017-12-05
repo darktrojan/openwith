@@ -182,9 +182,6 @@
 	"options_title": {
 		"message": "Open With 選項"
 	},
-	"popup_installed_header": {
-		"message": "Open With 現在是 WebExtension 了"
-	},
 	"popup_installed_text": {
 		"message": "完成安裝需要更多步驟。"
 	},

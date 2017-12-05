@@ -116,9 +116,6 @@
 	"options_title": {
 		"message": "Open Withオプション"
 	},
-	"popup_installed_header": {
-		"message": "Open WithはWebExtensionになりました"
-	},
 	"popup_installed_text": {
 		"message": "インストールを完了するにはいくつかの手順が必要です。"
 	},
