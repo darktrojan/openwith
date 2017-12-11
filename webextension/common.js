@@ -81,6 +81,9 @@ function get_strings(element = document) {
 	element.querySelectorAll('[data-href]').forEach(n => {
 		n.href = get_string(n.dataset.href);
 	});
+	element.querySelectorAll('[data-label]').forEach(n => {
+		n.parentNode.insertBefore(document.createTextNode(get_string(n.dataset.label)), n.nextSibling);
+	});
 }
 
 var ERROR_COLOUR = [232, 39, 39, 255];

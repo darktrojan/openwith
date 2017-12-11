@@ -111,6 +111,16 @@ document.getElementById('sort').onclick = function() {
 	});
 };
 
+document.getElementById('menu_contexts').onchange = function() {
+	let contexts = [];
+	for (let checkbox of this.querySelectorAll('input[type="checkbox"]')) {
+		if (checkbox.checked) {
+			contexts.push(checkbox.name);
+		}
+	}
+	chrome.storage.local.set({menu_contexts: contexts});
+};
+
 document.querySelector('button[data-message="donate_button"]').onclick = function() {
 	chrome.tabs.create({url: 'https://darktrojan.github.io/donate.html?openwith'});
 };
@@ -432,6 +442,19 @@ chrome.commands.getAll(function(commands) {
 chrome.runtime.getPlatformInfo(function(platformInfo) {
 	document.querySelectorAll('.linux, .mac, .win').forEach(e => e.hidden = !e.matches('.' + platformInfo.os));
 	document.getElementById('install').hidden = false;
+});
+
+chrome.storage.local.get({menu_contexts: null}, function({menu_contexts}) {
+	if (menu_contexts === null) {
+		menu_contexts = ['page', 'link'];
+		if (navigator.userAgent.includes('Firefox')) {
+			menu_contexts.push('tab');
+		}
+	}
+
+	for (let checkbox of document.querySelectorAll('#menu_contexts input[type="checkbox"]')) {
+		checkbox.checked = menu_contexts.includes(checkbox.name);
+	}
 });
 
 chrome.runtime.sendMessage({action: 'get_icons'}, function(result) {

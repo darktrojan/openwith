@@ -1,5 +1,5 @@
 /* globals chrome, compare_versions, get_version_warn, ERROR_COLOUR, WARNING_COLOUR */
-var browsers, icons;
+var browsers, icons, menu_contexts;
 var max_browser_id = 0;
 var max_icon_id = 0;
 
@@ -76,10 +76,12 @@ function open_browser(browser_id, url) {
 
 chrome.storage.local.get({
 	'browsers': [],
-	'icons': []
+	'icons': [],
+	'menu_contexts': null
 }, result => {
 	browsers = result.browsers;
 	icons = result.icons;
+	menu_contexts = result.menu_contexts;
 	sort_browsers();
 	make_menus();
 	max_icon_id = icons.reduce(function(previous, item) {
@@ -89,9 +91,15 @@ chrome.storage.local.get({
 
 function make_menus() {
 	chrome.contextMenus.removeAll();
-	let contexts = ['page', 'link'];
-	if (navigator.userAgent.includes('Firefox')) {
-		contexts.push('tab');
+	if (menu_contexts === null) {
+		menu_contexts = ['page', 'link'];
+		if (navigator.userAgent.includes('Firefox')) {
+			menu_contexts.push('tab');
+		}
+	}
+
+	if (menu_contexts.length === 0) {
+		return;
 	}
 
 	for (let b of browsers) {
@@ -102,7 +110,7 @@ function make_menus() {
 		let item = {
 			id: 'browser_' + b.id,
 			title: b.name,
-			contexts,
+			contexts: menu_contexts,
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: context_menu_clicked
 		};
@@ -123,6 +131,13 @@ function make_menus() {
 		chrome.contextMenus.create(item);
 	}
 }
+
+chrome.storage.onChanged.addListener(changes => {
+	if ('menu_contexts' in changes) {
+		menu_contexts = changes.menu_contexts.newValue;
+		make_menus();
+	}
+});
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	let {data} = message;

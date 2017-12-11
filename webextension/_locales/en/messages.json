@@ -216,6 +216,18 @@
 	"links_opera": {
 		"message": "Open With for Opera"
 	},
+	"menu_contexts_label": {
+		"message": "Show in context menus of:"
+	},
+	"menu_contexts_link": {
+		"message": "links"
+	},
+	"menu_contexts_page": {
+		"message": "pages"
+	},
+	"menu_contexts_tab": {
+		"message": "tabs"
+	},
 	"options_title": {
 		"message": "Open With Options"
 	},

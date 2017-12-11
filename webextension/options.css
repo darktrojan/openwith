@@ -62,6 +62,15 @@ div#resulttext {
 	margin-inline-start: 8px;
 	white-space: pre-wrap;
 }
+div#menu_contexts {
+	margin-top: 8px;
+}
+div#menu_contexts label {
+	display: inline;
+}
+div#menu_contexts input {
+	vertical-align: middle;
+}
 div#meta {
 	margin-bottom: 0;
 }
