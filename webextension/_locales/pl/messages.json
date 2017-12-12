@@ -57,7 +57,7 @@
 		"message": "Ikona:"
 	},
 	"details_iconsCredit": {
-		"message": "Loga przeglądarek na GitHubie"
+		"message": "Logo przeglądarek na GitHubie"
 	},
 	"details_name_label": {
 		"message": "Nazwa:"
@@ -76,6 +76,15 @@
 	},
 	"extensionDescription": {
 		"message": "Szybko testuj strony internetowe w Chrome, Edge, Safari albo Operze."
+	},
+	"extensionDescription_chrome": {
+		"message": "Szybko testuj strony internetowe w Edge, Firefoksie, Safari albo Operze."
+	},
+	"extensionDescription_opera": {
+		"message": "Szybko testuj strony internetowe w Chrome, Edge, Firefoksie albo Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Szybko testuj strony internetowe w Chrome, Edge, Safari albo Operze. Open With otwiera bieżącą stronę w innych przeglądarkach za pomocą zaledwie dwóch kliknięć."
 	},
 	"extensionName": {
 		"description": "Please include this string, even if you keep the English version.",
@@ -195,11 +204,23 @@
 	"install_step4c": {
 		"message": "Jeśli plik zostanie przeniesiony, należy ponownie uruchomić ten krok."
 	},
+	"links_chrome": {
+		"message": "Open With dla Chrome"
+	},
+	"links_firefox": {
+		"message": "Open With dla Firefoksa"
+	},
 	"links_github": {
 		"message": "Open With na GitHubie"
 	},
+	"links_opera": {
+		"message": "Open With dla Opery"
+	},
 	"options_title": {
 		"message": "Opcje Open With"
+	},
+	"popup_installed_header2": {
+		"message": "Open With jest prawie gotowy"
 	},
 	"popup_installed_text": {
 		"message": "Aby zakończyć instalację, wykonaj kilka dodatkowych kroków."
@@ -209,6 +230,15 @@
 	},
 	"popup_options_button": {
 		"message": "Opcje Open With…"
+	},
+	"shortcut_open1": {
+		"message": "Skrót przeglądarki #1"
+	},
+	"shortcut_open2": {
+		"message": "Skrót przeglądarki #2"
+	},
+	"shortcut_open3": {
+		"message": "Skrót przeglądarki #3"
 	},
 	"test_button": {
 		"message": "Przetestuj instalację"
