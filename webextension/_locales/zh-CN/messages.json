@@ -1,0 +1,252 @@
+{
+  "actions_addbrowser": {
+    "message": "新增浏览器"
+  },
+  "actions_look": {
+    "message": "寻找浏览器"
+  },
+  "actions_sort": {
+    "message": "整理清單"
+  },
+  "browserList_duplicate_button": {
+    "message": "复制"
+  },
+  "browserList_duplicate_newName": {
+    "message": "$ORIGINAL$ （复制）",
+    "placeholders": {
+      "original": {
+        "content": "$1",
+        "example": "Firefox"
+      }
+    }
+  },
+  "browserList_edit_button": {
+    "message": "编辑"
+  },
+  "browserList_hide_button": {
+    "message": "隐藏"
+  },
+  "browserList_remove_button": {
+    "message": "移除"
+  },
+  "browserList_show_button": {
+    "message": "显示"
+  },
+  "details_add_button": {
+    "message": "新增"
+  },
+  "details_adding_header": {
+    "message": "新增浏览器"
+  },
+  "details_cancel_button": {
+    "message": "取消"
+  },
+  "details_command_label": {
+    "message": "指令："
+  },
+  "details_customIcons_button": {
+    "message": "自定义图标……"
+  },
+  "details_desktopFile_label": {
+    "message": "从 .desktop 文件读取："
+  },
+  "details_editing_header": {
+    "message": "编辑浏览器"
+  },
+  "details_icon_label": {
+    "message": "图标："
+  },
+  "details_iconsCredit": {
+    "message": "在 GitHub 上的浏览器图标"
+  },
+  "details_name_label": {
+    "message": "名称："
+  },
+  "details_update_button": {
+    "message": "更新"
+  },
+  "donate_button": {
+    "message": "捐款……"
+  },
+  "donate_message": {
+    "message": "Open With 是依靠使用者的捐款來支撑的。"
+  },
+  "extensionDescription": {
+    "message": "在 Chrome、Edge、Safari 或 Opera 中快速测试您的网页。"
+  },
+  "extensionName": {
+    "message": "Open With"
+  },
+  "icon_chrome": {
+    "message": "Chrome"
+  },
+  "icon_chrome_beta": {
+    "message": "Chrome Beta"
+  },
+  "icon_chrome_dev": {
+    "message": "Chrome Dev"
+  },
+  "icon_chrome_canary": {
+    "message": "Chrome Canary"
+  },
+  "icon_chromium": {
+    "message": "Chromium"
+  },
+  "icon_edge": {
+    "message": "Edge"
+  },
+  "icon_firefox_1_5_3": {
+    "message": "Firefox 1.5-3"
+  },
+  "icon_firefox_3_5_22": {
+    "message": "Firefox 3.5-22"
+  },
+  "icon_firefox": {
+    "message": "Firefox"
+  },
+  "icon_firefox_beta": {
+    "message": "Firefox Beta"
+  },
+  "icon_firefox_nightly": {
+    "message": "Firefox Nightly"
+  },
+  "icon_internet_explorer_6": {
+    "message": "Internet Explorer 6"
+  },
+  "icon_internet_explorer_7_8": {
+    "message": "Internet Explorer 7-8"
+  },
+  "icon_internet_explorer_9_11": {
+    "message": "Internet Explorer 9-11"
+  },
+  "icon_opera": {
+    "message": "Opera"
+  },
+  "icon_opera_beta": {
+    "message": "Opera Beta"
+  },
+  "icon_opera_developer": {
+    "message": "Opera Developer"
+  },
+  "icon_pale_moon": {
+    "message": "Pale Moon"
+  },
+  "icon_safari": {
+    "message": "Safari"
+  },
+  "icon_seamonkey": {
+    "message": "Seamonkey"
+  },
+  "icon_srware_iron": {
+    "message": "SRWare Iron"
+  },
+  "icon_vivaldi": {
+    "message": "Vivaldi"
+  },
+  "icon_waterfox": {
+    "message": "Waterfox"
+  },
+  "install_header": {
+    "message": "要完成安裝："
+  },
+  "install_introduction": {
+    "message": "Open With 需要一个在浏览器外可以沟通的文件。"
+  },
+  "install_step1a": {
+    "message": "您将会需要安装 Python 来让它运作。"
+  },
+  {
+    "install_step1b_link\":{": null,
+    "message": "到此取得。"
+
+  },
+  "install_step2a_link": {
+    "message": "点选这里来下载"
+  },
+  "install_step2b": {
+    "message": "并将文件储存至您的电脑中。"
+  },
+  "install_step3b": {
+    "message": "确保文件权限让您可以执行它（\"x\" 权限）："
+  },
+  "install_step4a": {
+    "message": "开启命令提示符。"
+  },
+  "install_step4b": {
+    "message": "以参数 \"install\" 来执行文件，像这样："
+  },
+  "install_step4c": {
+    "message": "若您移动了文件，您必须再次执行此步骤。"
+  },
+  "links_github": {
+    "message": "Open With 在 GitHub 上"
+  },
+  "options_title": {
+    "message": "Open With 选项"
+  },
+  "popup_installed_text": {
+    "message": "完成安装需要更多步骤。"
+  },
+  "popup_nobrowsers": {
+    "message": "找不到浏览器！"
+  },
+  "popup_options_button": {
+    "message": "Open With 选项……"
+  },
+  "test_button": {
+    "message": "测试安装"
+  },
+  "test_error": {
+    "message": "好像有点问题。浏览器主控台里应该有更多资讯。"
+  },
+  "test_success": {
+    "message": "在 $LOCATION$ 找到版本 $VERSION$。",
+    "placeholders": {
+      "location": {
+        "content": "$2",
+        "example": "/home/geoff/Desktop/open_with_linux.py"
+      },
+      "version": {
+        "content": "$1",
+        "example": "7.0"
+      }
+    }
+  },
+  "test_warning": {
+    "message": "有较新的版本可用，您应该取代它。"
+  },
+  "update_changelog_button": {
+    "message": "有什么改变？"
+  },
+  "update_error": {
+    "message": "Open With 无法与外面的世界连系。"
+  },
+  "update_message": {
+    "message": "Open With 已更新至版本 $VERSION$。Open With 是免费的，但非常需要您的捐款！",
+    "placeholders": {
+      "version": {
+        "content": "$1",
+        "example": "7.0"
+      }
+    }
+  },
+  "update_warning": {
+    "message": "您应该更新您的 Open With 文件。"
+  },
+  "userIcons_done_button": {
+    "message": "完成"
+  },
+  "userIcons_header": {
+    "message": "自定义图标"
+  },
+  "userIcons_remove_button": {
+    "message": "移除"
+  },
+  "webextension_info_label": {
+    "message": "更多资讯……"
+  },
+  "webextension_info_url": {
+    "description": "这是一个提供使用者资讯的网页。若您也想要翻译它的话，请联络我。",
+    "message": "https://darktrojan.github.io/openwith/webextension.html"
+  }
+}
