@@ -71,6 +71,15 @@
 	"extensionDescription": {
 		"message": "Бърза проверка на вашите уеб страници в Chrome, Edge, Safari или Opera."
 	},
+	"extensionDescription_chrome": {
+		"message": "Бърза проверка на вашите уеб страници в Edge, Firefox, Safari или Opera."
+	},
+	"extensionDescription_opera": {
+		"message": "Бърза проверка на вашите уеб страници в Chrome, Edge, Firefox или Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Бърза проверка на вашите уеб страници в Chrome, Edge, Safari, или Opera. „Отвори със“ отваря настоящата страница в другите ви браузъри само с две цъквания на мишката."
+	},
 	"extensionName": {
 		"message": "Отвори със"
 	},
@@ -110,11 +119,35 @@
 	"install_step4c": {
 		"message": "Ако преместите файла, трябва да повторите тази стъпка отново."
 	},
+	"links_chrome": {
+		"message": "„Отвори със“ за Chrome"
+	},
+	"links_firefox": {
+		"message": "„Отвори със“ за Firefox"
+	},
 	"links_github": {
 		"message": "„Отвори със“ на GitHub"
 	},
+	"links_opera": {
+		"message": "„Отвори със“ за Opera"
+	},
+	"menu_contexts_label": {
+		"message": "Покажи в котекстните менюта на:"
+	},
+	"menu_contexts_link": {
+		"message": "линкове"
+	},
+	"menu_contexts_page": {
+		"message": "страници"
+	},
+	"menu_contexts_tab": {
+		"message": "раздели"
+	},
 	"options_title": {
 		"message": "Настройки на „Отвори със“"
+	},
+	"popup_installed_header2": {
+		"message": "„Отвори със“ е почти готово"
 	},
 	"popup_installed_text": {
 		"message": "Има още няколко стъпки, за да приключи инсталацията."
@@ -123,7 +156,16 @@
 		"message": "Не са намерени браузъри!"
 	},
 	"popup_options_button": {
-		"message": "Настройки"
+		"message": "Настройки…"
+	},
+	"shortcut_open1": {
+		"message": "Бърз достъп до браузър №1"
+	},
+	"shortcut_open2": {
+		"message": "Бърз достъп до браузър №2"
+	},
+	"shortcut_open3": {
+		"message": "Бърз достъп до браузър №3"
 	},
 	"test_button": {
 		"message": "Проверка на инсталацията"
