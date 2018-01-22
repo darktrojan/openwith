@@ -172,17 +172,7 @@
 		"message": "Något gick fel. Det kan finnas mer information i webbläsarkonsolen."
 	},
 	"test_success": {
-		"message": "Hittade version $VERSION$ vid $LOCATION$.",
-		"placeholders": {
-			"location": {
-				"content": "$2",
-				"example": "/home/geoff/Desktop/open_with_linux.py"
-			},
-			"version": {
-				"content": "$1",
-				"example": "7.0"
-			}
-		}
+		"message": "Hittade version $1 vid $2.",
 	},
 	"test_warning": {
 		"message": "En nyare version är tillgänglig och du borde uppdatera den."
@@ -194,13 +184,7 @@
 		"message": "Open With kunde inte ansluta sig till omvärlden."
 	},
 	"update_message": {
-		"message": "Open With uppdaterades precis till version $VERSION$. Open With är gratis, men din donation uppskattas!",
-		"placeholders": {
-			"version": {
-				"content": "$1",
-				"example": "7.0"
-			}
-		}
+		"message": "Open With uppdaterades precis till version $1. Open With är gratis, men din donation uppskattas!",
 	},
 	"update_warning": {
 		"message": "Du borde uppdatera Open With-filen."
