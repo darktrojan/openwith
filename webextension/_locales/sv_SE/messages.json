@@ -1,0 +1,224 @@
+{
+	"actions_addbrowser": {
+		"message": "Lägg till webbläsare"
+	},
+	"actions_look": {
+		"message": "Leta efter webbläsare"
+	},
+	"actions_sort": {
+		"message": "Sortera listan"
+	},
+	"browserList_duplicate_button": {
+		"message": "Gör kopia"
+	},
+	"browserList_edit_button": {
+		"message": "Redigera"
+	},
+	"browserList_hide_button": {
+		"message": "Dölj"
+	},
+	"browserList_remove_button": {
+		"message": "Ta bort"
+	},
+	"browserList_show_button": {
+		"message": "Visa"
+	},
+	"details_add_button": {
+		"message": "Lägg till webbläsare"
+	},
+	"details_adding_header": {
+		"message": "Lägg till webbläsare"
+	},
+	"details_cancel_button": {
+		"message": "Avbryt"
+	},
+	"details_command_label": {
+		"message": "Kommando:"
+	},
+	"details_customIcons_button": {
+		"message": "Egna ikoner…"
+	},
+	"details_desktopFile_label": {
+		"message": "Läs från .desktop-fil:"
+	},
+	"details_editing_header": {
+		"message": "Redigera webbläsare"
+	},
+	"details_icon_label": {
+		"message": "Ikon:"
+	},
+	"details_iconsCredit": {
+		"message": "Webbläsarlogotyper på Github"
+	},
+	"details_name_label": {
+		"message": "Namn:"
+	},
+	"details_shortcut_label": {
+		"message": "Snabbtangent:"
+	},
+	"details_update_button": {
+		"message": "Uppdatera"
+	},
+	"donate_button": {
+		"message": "Donera…"
+	},
+	"donate_message": {
+		"message": "Open With finansieras av donationer."
+	},
+	"extensionDescription": {
+		"message": "Testa snabbt dina hemsidor i Chrome, Edge, Safari, eller Opera."
+	},
+	"extensionDescription_chrome": {
+		"message": "Testa snabbt dina hemsidor i Edge, Firefox, Safari, eller Opera."
+	},
+	"extensionDescription_opera": {
+		"message": "Testa snabbt dina hemsidor i Chrome, Edge, Firefox, eller Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Testa snabbt dina hemsidor i Chrome, Edge, Safari, eller Opera. Open With öppnar aktuell sida i dina andra webbläsare med bara två klick."
+	},
+	"extensionName": {
+		"description": "Please include this string, even if you keep the English version.",
+		"message": "Open With"
+	},
+	"install_header": {
+		"message": "För att slutföra installationen:"
+	},
+	"install_introduction": {
+		"message": "Open With behöver en fil utanför webbläsaren till att kommunicera med."
+	},
+	"install_step1a": {
+		"message": "Du måste ha Python installerat för att detta ska fungera."
+	},
+	"install_step1b_link": {
+		"message": "Hämta det härifrån."
+	},
+	"install_step1c": {
+		"message": "(Du kan använda Python version 2.7 eller 3.x.)"
+	},
+	"install_step2a_link": {
+		"message": "Klicka här för att ladda ner"
+	},
+	"install_step2b": {
+		"message": "och spara filen till din dator."
+	},
+	"install_step3a": {
+		"message": "Öppna Terminal."
+	},
+	"install_step3b": {
+		"message": "Se till att filbehörigheterna tillåter dig att köra den (\"x\" behörighet):"
+	},
+	"install_step4a": {
+		"message": "Öppna ett kommandofönster."
+	},
+	"install_step4b": {
+		"message": "Kör filen med argumentet \"install\", så här:"
+	},
+	"install_step4c": {
+		"message": "Om du flyttar filen måste du köra det här steget igen."
+	},
+	"links_chrome": {
+		"message": "Open With för Chrome"
+	},
+	"links_firefox": {
+		"message": "Open With för Firefox"
+	},
+	"links_github": {
+		"message": "Open With på GitHub"
+	},
+	"links_opera": {
+		"message": "Open With för Opera"
+	},
+	"menu_contexts_label": {
+		"message": "Visa i innehållsmenyn av:"
+	},
+	"menu_contexts_link": {
+		"message": "länkar"
+	},
+	"menu_contexts_page": {
+		"message": "sidor"
+	},
+	"menu_contexts_tab": {
+		"message": "flikar"
+	},
+	"options_title": {
+		"message": "Open With alternativ"
+	},
+	"popup_installed_header2": {
+		"message": "Open With är nästan klar"
+	},
+	"popup_installed_text": {
+		"message": "Där är några steg kvar innan installationen är klar."
+	},
+	"popup_nobrowsers": {
+		"message": "Hittade inga webbläsare!"
+	},
+	"popup_options_button": {
+		"message": "Open With alternativ…"
+	},
+	"shortcut_open1": {
+		"message": "Webbläsargenväg #1"
+	},
+	"shortcut_open2": {
+		"message": "Webbläsargenväg #2"
+	},
+	"shortcut_open3": {
+		"message": "Webbläsargenväg #3"
+	},
+	"test_button": {
+		"message": "Testa installationen"
+	},
+	"test_error": {
+		"message": "Något gick fel. Det kan finnas mer information i webbläsarkonsolen."
+	},
+	"test_success": {
+		"message": "Hittade version $VERSION$ vid $LOCATION$.",
+		"placeholders": {
+			"location": {
+				"content": "$2",
+				"example": "/home/geoff/Desktop/open_with_linux.py"
+			},
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"test_warning": {
+		"message": "En nyare version är tillgänglig och du borde uppdatera den."
+	},
+	"update_changelog_button": {
+		"message": "Vad är ändrat?"
+	},
+	"update_error": {
+		"message": "Open With kunde inte ansluta sig till omvärlden."
+	},
+	"update_message": {
+		"message": "Open With uppdaterades precis till version $VERSION$. Open With är gratis, men din donation uppskattas!",
+		"placeholders": {
+			"version": {
+				"content": "$1",
+				"example": "7.0"
+			}
+		}
+	},
+	"update_warning": {
+		"message": "Du borde uppdatera Open With-filen."
+	},
+	"userIcons_done_button": {
+		"message": "Klar"
+	},
+	"userIcons_header": {
+		"message": "Egna ikoner"
+	},
+	"userIcons_remove_button": {
+		"message": "Ta bort"
+	},
+	"webextension_info_label": {
+		"message": "Mer information…"
+	},
+	"webextension_info_url": {
+		"description": "Detta är en webbsida med information för användaren. Kontakta mig om du vill översätta den med.",
+		"message": "https://darktrojan.github.io/openwith/webextension.html"
+	}
+}
