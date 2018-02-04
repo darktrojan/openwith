@@ -2,12 +2,12 @@
 	"manifest_version": 2,
 	"name": "__MSG_extensionName__",
 	"description": "__MSG_extensionDescription__",
-	"version": "7.1b3",
+	"version": "7.1",
 	"default_locale": "en",
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
-			"strict_min_version": "56.0"
+			"strict_min_version": "57.0"
 		}
 	},
 	"icons": {
