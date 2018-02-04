@@ -20,20 +20,23 @@ chrome.browserAction.getBadgeBackgroundColor({}, function(colour) {
 			let now = new Date();
 
 			chrome.storage.local.get({
-				versionLastUpdate: new Date(0),
-				versionLastAck: new Date(0)
-			}, function(prefs) {
-				if (typeof prefs.versionLastUpdate == 'string') {
-					prefs.versionLastUpdate = new Date(prefs.versionLastUpdate);
+				versionLastUpdate: '1970-01-01T00:00:00.000Z',
+				versionLastAck: '1970-01-01T00:00:00.000Z'
+			}, function({versionLastUpdate, versionLastAck}) {
+				if (typeof versionLastUpdate == 'string') {
+					versionLastUpdate = new Date(versionLastUpdate);
 				}
-				if (typeof prefs.versionLastAck == 'string') {
-					prefs.versionLastAck = new Date(prefs.versionLastAck);
+				if (typeof versionLastAck == 'string') {
+					versionLastAck = new Date(versionLastAck);
 				}
-				if (now - prefs.versionLastUpdate < 43200000 && now - prefs.versionLastAck > 604800000) {
+				if (now - versionLastUpdate < 43200000 && now - versionLastAck > 604800000) {
 					document.getElementById('update_message').textContent = get_string('update_message', currentVersion);
 					updateMessage.style.display = 'block';
 				}
-				chrome.storage.local.set(prefs);
+				chrome.storage.local.set({
+					versionLastUpdate: versionLastUpdate.toJSON(),
+					versionLastAck: versionLastAck.toJSON()
+				});
 			});
 		});
 	}
@@ -74,7 +77,7 @@ browsersList.onclick = function(event) {
 };
 
 updateMessage.onclick = function({target}) {
-	chrome.storage.local.set({versionLastAck: new Date()});
+	chrome.storage.local.set({versionLastAck: new Date().toJSON()});
 	switch (target.dataset.message) {
 	case 'update_changelog_button':
 		chrome.management.getSelf(function({version}) {
@@ -88,7 +91,7 @@ updateMessage.onclick = function({target}) {
 	open_options_tab();
 };
 errorMessage.onclick = warningMessage.onclick = function() {
-	chrome.storage.local.set({versionLastAck: new Date()});
+	chrome.storage.local.set({versionLastAck: new Date().toJSON()});
 	open_options_tab();
 };
 document.querySelector('.panel-section-footer-button').onclick = open_options_tab;

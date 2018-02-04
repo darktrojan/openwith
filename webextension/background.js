@@ -273,7 +273,7 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 			if (previousVersion != -1 &&
 					compare_versions(currentVersion, previousVersion) > 0 &&
 					(currentVersion.includes('b') || parseFloat(currentVersion, 10) != parseFloat(previousVersion, 10))) {
-				newPrefs.versionLastUpdate = new Date();
+				newPrefs.versionLastUpdate = new Date().toJSON();
 			}
 			chrome.storage.local.set(newPrefs);
 		}
