@@ -1,20 +1,32 @@
 /* globals Components, Services, XPCOMUtils, OpenWithCore, gContextMenu */
 Components.utils.import('resource://gre/modules/Services.jsm');
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
+Components.utils.import('chrome://openwith/content/openwith.jsm');
+
+{
+	let menupopup = document.getElementById('mailContext');
+	if (menupopup) {
+		let menuitem = document.createElement('menuitem');
+		menuitem.setAttribute('id', 'openwith-contextmenulinkplaceholder');
+		menupopup.appendChild(menuitem);
+
+		let menu = document.createElement('menu');
+		menu.setAttribute('id', 'openwith-contextlinksubmenu');
+		menu.setAttribute('label', OpenWithCore.strings.formatStringFromName('openLinkWithLabel', [''], 1));
+
+		let submenupopup = document.createElement('menupopup');
+		submenupopup.setAttribute('id', 'openwith-contextlinksubmenupopup');
+		menu.appendChild(submenupopup);
+		menupopup.appendChild(menu);
+	}
+}
 
 /* globals OpenWith */
 this.OpenWith = {
 
 	locations: [],
 
-	onLoad: function() {
-		window.removeEventListener('load', OpenWith.onLoad, false);
-		OpenWith.init();
-	},
-
 	init: function() {
-		Components.utils.import('resource://openwith/openwith.jsm');
-
 		let contextMenu = document.getElementById('mailContext');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);
@@ -46,6 +58,21 @@ this.OpenWith = {
 
 		Services.obs.addObserver(this, 'openWithListChanged', true);
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
+	},
+
+	destroy: function() {
+		for (let id of ['openwith-contextmenulinkplaceholder', 'openwith-contextlinksubmenu']) {
+			let element = document.getElementById(id);
+			if (element) {
+				element.remove();
+			}
+		}
+
+		Services.obs.removeObserver(this, 'openWithListChanged');
+		Services.obs.removeObserver(this, 'openWithLocationsChanged');
+
+		window.OpenWith = null;
+		window.OpenWithCore = null;
 	},
 
 	QueryInterface: XPCOMUtils.generateQI([
@@ -105,4 +132,4 @@ this.OpenWith = {
 	}
 };
 
-window.addEventListener('load', OpenWith.onLoad, false);
+OpenWith.init();

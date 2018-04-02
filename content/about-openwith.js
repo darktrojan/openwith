@@ -7,12 +7,10 @@ const Cu = Components.utils;
 Cu.import('resource://gre/modules/FileUtils.jsm');
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
-Cu.import('resource://openwith/openwith.jsm');
+Cu.import('chrome://openwith/content/openwith.jsm');
 
 /* globals clipboardHelper */
 XPCOMUtils.defineLazyServiceGetter(this, 'clipboardHelper', '@mozilla.org/widget/clipboardhelper;1', 'nsIClipboardHelper');
-
-let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 
 let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 fp.init(this, document.title, Ci.nsIFilePicker.modeOpen);
@@ -44,58 +42,9 @@ let locationObserver = {
 		let appname = Services.appinfo.name;
 		document.documentElement.setAttribute('appname', appname);
 
-		if (appname == 'Thunderbird') {
-			$('openwith-viewmenu-row').collapsed = true;
-			$('openwith-contextmenu-row').collapsed = true;
-			$('openwith-placescontext-row').collapsed = true;
-			$('openwith-tabmenu-row').collapsed = true;
-			$('openwith-tabbar-row').collapsed = true;
-			$('openwith-toolbar-row').collapsed = true;
-		}
-
-		$('openwith-viewmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('viewmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('viewmenu.submenu') ? 2 : 0);
-
-		$('openwith-contextmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('contextmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('contextmenu.submenu') ? 2 : 0);
-
 		$('openwith-contextmenulink-group').selectedIndex =
 				OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
 				(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
-
-		$('openwith-placescontext-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('placescontext') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('placescontext.submenu') ? 2 : 0);
-
-		$('openwith-tabmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('tabmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('tabmenu.submenu') ? 2 : 0);
-
-		if (browserWindow && browserWindow.OpenWith.tabButtonContainer) {
-			$('openwith-tabbar-group').selectedIndex =
-					OpenWithCore.prefs.getBoolPref('tabbar') ? 1 :
-					(OpenWithCore.prefs.getBoolPref('tabbar.menu') ? 2 : 0);
-		} else {
-			$('openwith-tabbar-row').collapsed = true;
-		}
-
-		if (browserWindow && browserWindow.OpenWith.toolbarButtonContainer) {
-			$('openwith-toolbar-group').selectedIndex =
-					OpenWithCore.prefs.getBoolPref('toolbar') ? 0 : 1;
-		} else {
-			$('openwith-toolbar-row').collapsed = true;
-		}
-
-		if (appname == 'Firefox' || appname == 'Pale Moon') {
-			$('openwith-toolbox-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
-					(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
-		} else {
-			$('openwith-toolbox-row').collapsed = true;
-			$('openwith-toolbarhelp').collapsed = true;
-		}
 
 		loadingDropDowns = false;
 	},
@@ -127,9 +76,8 @@ CheckboxObserver.prototype = {
 		Components.interfaces.nsISupports
 	])
 };
-/* exported loggingObserver, dataCollectionObserver */
+/* exported loggingObserver */
 let loggingObserver = new CheckboxObserver('logging', 'log.enabled');
-let dataCollectionObserver = new CheckboxObserver('datacollection', 'datacollection.optin');
 
 let list = $('list');
 loadBrowserList();
@@ -139,6 +87,7 @@ function loadBrowserList() {
 		list.removeItemAt(0);
 	}
 
+	OpenWithCore.loadList();
 	for (let entry of OpenWithCore.list) {
 		let item = document.createElement('richlistitem');
 		for (let [key, value] of Object.entries(entry)) {
@@ -586,7 +535,3 @@ list.addEventListener('dragend', function(event) {
 	}
 	itemToMove = itemToPlaceBefore = null;
 });
-
-/* globals OpenWithDataCollector */
-Cu.import('resource://openwith/dataCollection.jsm');
-OpenWithDataCollector.incrementCount('aboutOpenWithOpened');

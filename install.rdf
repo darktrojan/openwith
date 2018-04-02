@@ -5,6 +5,7 @@
 		<em:id>openwith@darktrojan.net</em:id>
 		<em:version>6.8.6</em:version>
 		<em:type>2</em:type>
+		<em:bootstrap>true</em:bootstrap>
 		<em:name>Open With</em:name>
 		<em:description>Quickly test out your web pages in Internet Explorer, Chrome, Safari, or Opera. Open With opens the current page in your other browsers with just one click.</em:description>
 		<em:creator>Geoff Lankow</em:creator>
@@ -17,30 +18,9 @@
 
 		<em:targetApplication>
 			<Description>
-				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id><!-- firefox -->
-				<em:minVersion>45.0</em:minVersion>
-				<em:maxVersion>56.*</em:maxVersion>
-			</Description>
-		</em:targetApplication>
-		<em:targetApplication>
-			<Description>
-				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id><!-- seamonkey -->
-				<em:minVersion>2.40</em:minVersion>
-				<em:maxVersion>2.46.*</em:maxVersion>
-			</Description>
-		</em:targetApplication>
-		<em:targetApplication>
-			<Description>
 				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id><!-- thunderbird -->
-				<em:minVersion>38.0</em:minVersion>
-				<em:maxVersion>54.0a1</em:maxVersion>
-			</Description>
-		</em:targetApplication>
-		<em:targetApplication>
-			<Description>
-				<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id><!-- Pale Moon -->
-				<em:minVersion>27.0</em:minVersion>
-				<em:maxVersion>*</em:maxVersion>
+				<em:minVersion>52.0</em:minVersion>
+				<em:maxVersion>61.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 

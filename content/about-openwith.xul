@@ -20,26 +20,6 @@
 				<caption label="&openwith-display-choose.label;" />
 				<grid>
 					<rows>
-						<row align="center" id="openwith-viewmenu-row">
-							<label value="&openwith-display-pane.viewmenu.label;:" />
-							<menulist id="openwith-viewmenu-group" oncommand="updatePrefs('viewmenu', 'viewmenu.submenu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-menuitems.label;" />
-									<menuitem label="&openwith-display-submenu.label;" />
-								</menupopup>
-							</menulist>
-						</row>
-						<row align="center" id="openwith-contextmenu-row">
-							<label value="&openwith-display-pane.contextmenu.label;:" />
-							<menulist id="openwith-contextmenu-group" oncommand="updatePrefs('contextmenu', 'contextmenu.submenu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-menuitems.label;" />
-									<menuitem label="&openwith-display-submenu.label;" />
-								</menupopup>
-							</menulist>
-						</row>
 						<row align="center" id="openwith-contextmenulink-row">
 							<label value="&openwith-display-pane.contextmenulink.label;:" />
 							<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
@@ -50,72 +30,13 @@
 								</menupopup>
 							</menulist>
 						</row>
-						<row align="center" id="openwith-placescontext-row">
-							<label value="&openwith-display-pane.placescontext.label;:" />
-							<menulist id="openwith-placescontext-group" oncommand="updatePrefs('placescontext', 'placescontext.submenu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-menuitems.label;" />
-									<menuitem label="&openwith-display-submenu.label;" />
-								</menupopup>
-							</menulist>
-						</row>
-						<row align="center" id="openwith-tabmenu-row">
-							<label value="&openwith-display-pane.tabmenu.label;:" />
-							<menulist id="openwith-tabmenu-group" oncommand="updatePrefs('tabmenu', 'tabmenu.submenu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-menuitems.label;" />
-									<menuitem label="&openwith-display-submenu.label;" />
-								</menupopup>
-							</menulist>
-						</row>
-						<row align="center" id="openwith-tabbar-row">
-							<label value="&openwith-display-pane.tabbar.label;:" />
-							<menulist id="openwith-tabbar-group" oncommand="updatePrefs('tabbar', 'tabbar.menu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-buttons.label;" />
-									<menuitem label="&openwith-display-dropdown.label;" />
-								</menupopup>
-							</menulist>
-						</row>
-						<row align="center" id="openwith-toolbar-row">
-							<label value="&openwith-display-pane.toolbar.label;:" />
-							<menulist id="openwith-toolbar-group" oncommand="updatePrefs('toolbar', 'toolbar.menu', this.selectedIndex + 1);">
-								<menupopup>
-									<menuitem label="&openwith-display-buttons.label;" />
-									<menuitem label="&openwith-display-dropdown.label;" />
-								</menupopup>
-							</menulist>
-						</row>
-						<row align="center" id="openwith-toolbox-row">
-							<label value="&openwith-display-pane.toolbox.label;:" />
-							<menulist id="openwith-toolbox-group" oncommand="updatePrefs('toolbox', 'toolbox.menu', this.selectedIndex);">
-								<menupopup>
-									<menuitem label="&openwith-display-none.label;" />
-									<menuitem label="&openwith-display-buttons.label;" />
-									<menuitem label="&openwith-display-dropdown.label;" />
-								</menupopup>
-							</menulist>
-						</row>
 					</rows>
 				</grid>
-				<description id="openwith-toolbarhelp">&openwith-display-toolbarhelp;</description>
 			</groupbox>
 			<groupbox>
 				<caption label="&openwith-logging.label;" />
 				<checkbox id="logging" label="&openwith-logging.checkbox.label;"
 					oncommand="loggingObserver.enable();" />
-			</groupbox>
-			<groupbox>
-				<caption label="&openwith-datacollection.title;" />
-				<checkbox id="datacollection" label="&openwith-datacollection.optin;"
-					oncommand="dataCollectionObserver.enable();" />
-				<hbox align="baseline" pack="center">
-					<label class="text-link" value="&openwith-datacollection.privacypolicy;"
-						href="https://addons.mozilla.org/addon/open-with/privacy/" />
-				</hbox>
 			</groupbox>
 			<vbox align="center">
 				<hbox align="baseline">

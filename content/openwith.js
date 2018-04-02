@@ -13,7 +13,7 @@ this.OpenWith = {
 	},
 
 	init: function() {
-		Components.utils.import('resource://openwith/openwith.jsm');
+		Components.utils.import('chrome://openwith/content/openwith.jsm');
 
 		let appname = Services.appinfo.name;
 
