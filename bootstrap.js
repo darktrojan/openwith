@@ -16,17 +16,7 @@ function uninstall() {
 function startup(params) {
 	let defaultBranch = Services.prefs.getDefaultBranch('');
 	for (let [k, v] of Object.entries(defaultPrefs)) {
-		switch (typeof v) {
-		case 'boolean':
-			defaultBranch.setBoolPref(k, v);
-			break;
-		case 'number':
-			defaultBranch.setIntPref(k, v);
-			break;
-		case 'string':
-			defaultBranch.setCharPref(k, v);
-			break;
-		}
+		defaultBranch.setBoolPref(k, v);
 	}
 
 	Services.scriptloader.loadSubScript(params.resourceURI.spec + 'components/about-openwith.js', aboutPage);
