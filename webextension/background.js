@@ -55,8 +55,6 @@ function get_target_url(info) {
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
 
-	console.error(info.menuItemId);
-	console.error(JSON.stringify(info));
 	//extract target URL using the helper function
 	let url = get_target_url(info);
 
