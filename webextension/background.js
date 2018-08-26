@@ -12,9 +12,52 @@ chrome.commands.onCommand.addListener(function(command) {
 	});
 });
 
+
+/**
+ * Takes onClickData, returns what you'd probably expect the URL to be, based on what you clicked
+ * e.g. frameUrl if the context was 'frame', pageUrl if the context was 'page', etc..
+ * 
+ * @param {menus.OnClickData} info an instance of menus.OnClickData describing the element that was clicked on passed down from the listener for menus.onClicked 
+ * @returns {string} what you'd probably expect the URL to be, based on what you clicked
+ */
+function get_target_url(info) {
+
+	//if no match is found, this string should alert the user that something's gone very wrong
+	let url = "somethingwentwronginopenwith";
+	
+	//is the target a link?
+	if (info.linkUrl){
+		url = info.linkUrl;
+	}//is the target an img, audio, or video element?
+	else if (info.srcUrl) {
+		url= info.srcUrl;
+	}//is the element an iframe?
+	else if (info.frameUrl) {
+		url = info.frameUrl;
+	}//is there a URL selected?
+	else if (info.selectionText && info.selectionText.match("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$")) {
+		url = info.selectionText;
+	}//if there's nothing else, return the page URL
+	else {
+		url = info.pageUrl;
+	}
+
+	return url;
+
+}
+
+
+/**
+ * Callback function for menus.onClicked
+ * 
+ * @param {menus.OnClickData} info an instance of menus.OnClickData describing the element that was clicked on
+ */
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = info.linkUrl ? info.linkUrl : info.pageUrl;
+
+	//extract target URL using the helper function
+	let url = get_target_url(info);
+
 	if ('modifiers' in info && info.modifiers.includes('Ctrl')) {
 		url = null;
 	}
@@ -92,7 +135,7 @@ chrome.storage.local.get({
 function make_menus() {
 	chrome.contextMenus.removeAll();
 	if (menu_contexts === null) {
-		menu_contexts = ['page', 'link'];
+		menu_contexts = ['page', 'link', 'image', 'video', 'audio', 'frame', 'selection'];
 		if (navigator.userAgent.includes('Firefox')) {
 			menu_contexts.push('tab');
 		}
