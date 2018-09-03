@@ -219,6 +219,9 @@
 	"menu_contexts_label": {
 		"message": "Show in context menus of:"
 	},
+	"menu_contexts_image": {
+		"message": "images, videos, and audio"
+	},
 	"menu_contexts_link": {
 		"message": "links"
 	},

@@ -67,6 +67,7 @@ div#menu_contexts {
 }
 div#menu_contexts label {
 	display: inline;
+	white-space: nowrap;
 }
 div#menu_contexts input {
 	vertical-align: middle;

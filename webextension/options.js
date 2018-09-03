@@ -446,7 +446,7 @@ chrome.runtime.getPlatformInfo(function(platformInfo) {
 
 chrome.storage.local.get({menu_contexts: null}, function({menu_contexts}) {
 	if (menu_contexts === null) {
-		menu_contexts = ['page', 'link'];
+		menu_contexts = ['page', 'link', 'image'];
 		if (navigator.userAgent.includes('Firefox')) {
 			menu_contexts.push('tab');
 		}

@@ -12,9 +12,22 @@ chrome.commands.onCommand.addListener(function(command) {
 	});
 });
 
+function get_target_url(info) {
+	if (info.linkUrl) {
+		return info.linkUrl;
+	} else if (info.srcUrl) { // Is the target an img, audio, or video element?
+		return info.srcUrl;
+	} else if (info.frameUrl) { // Is the element an iframe?
+		return info.frameUrl;
+	} else if (info.selectionText && /^(?:https?|ftp):/i.test(info.selectionText)) { // Is there an URL selected?
+		return info.selectionText;
+	}
+	return info.pageUrl;
+}
+
 function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = info.linkUrl ? info.linkUrl : info.pageUrl;
+	let url = get_target_url(info);
 	if ('modifiers' in info && info.modifiers.includes('Ctrl')) {
 		url = null;
 	}
@@ -82,6 +95,16 @@ chrome.storage.local.get({
 	browsers = result.browsers;
 	icons = result.icons;
 	menu_contexts = result.menu_contexts;
+	if (menu_contexts.includes('page')) {
+		menu_contexts.push('frame');
+	}
+	if (menu_contexts.includes('link')) {
+		menu_contexts.push('selection');
+	}
+	if (menu_contexts.includes('image')) {
+		menu_contexts.push('video');
+		menu_contexts.push('audio');
+	}
 	sort_browsers();
 	make_menus();
 	max_icon_id = icons.reduce(function(previous, item) {
@@ -92,7 +115,7 @@ chrome.storage.local.get({
 function make_menus() {
 	chrome.contextMenus.removeAll();
 	if (menu_contexts === null) {
-		menu_contexts = ['page', 'link'];
+		menu_contexts = ['page', 'link', 'image', 'video', 'audio', 'frame', 'selection'];
 		if (navigator.userAgent.includes('Firefox')) {
 			menu_contexts.push('tab');
 		}
@@ -266,7 +289,7 @@ function sort_browsers() {
 	});
 }
 
-chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
+chrome.storage.local.get({'menu_contexts': null, 'version': -1}, function({menu_contexts, version: previousVersion}) {
 	chrome.management.getSelf(function({version: currentVersion}) {
 		if (previousVersion != currentVersion) { // This is an upgrade or downgrade.
 			let newPrefs = {'version': currentVersion};
@@ -274,6 +297,10 @@ chrome.storage.local.get({'version': -1}, function({version: previousVersion}) {
 					compare_versions(currentVersion, previousVersion) > 0 &&
 					(currentVersion.includes('b') || parseFloat(currentVersion, 10) != parseFloat(previousVersion, 10))) {
 				newPrefs.versionLastUpdate = new Date().toJSON();
+			}
+			if (compare_versions(previousVersion, '7.1') <= 0 && Array.isArray(menu_contexts)) {
+				newPrefs.menu_contexts = menu_contexts;
+				newPrefs.menu_contexts.push('image');
 			}
 			chrome.storage.local.set(newPrefs);
 		}
