@@ -4,6 +4,7 @@ const Cu = Components.utils;
 
 Cu.import('resource://gre/modules/Services.jsm');
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
+const generateQI = 'generateQI' in XPCOMUtils ? XPCOMUtils.generateQI : ChromeUtils.generateQI;
 
 function OpenWithAboutHandler() {
 }
@@ -24,7 +25,7 @@ OpenWithAboutHandler.prototype = {
 	classDescription: 'About OpenWith Page',
 	classID: Components.ID('97ce549f-5ec6-460e-ad11-55a7bd190185'),
 	contractID: '@mozilla.org/network/protocol/about;1?what=openwith',
-	QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule])
+	QueryInterface: generateQI([Ci.nsIAboutModule])
 };
 
 this.NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);

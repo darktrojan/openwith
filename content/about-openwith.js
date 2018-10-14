@@ -48,7 +48,7 @@ let locationObserver = {
 
 		loadingDropDowns = false;
 	},
-	QueryInterface: XPCOMUtils.generateQI([
+	QueryInterface: OpenWithCore.generateQI([
 		Components.interfaces.nsIObserver,
 		Components.interfaces.nsISupportsWeakReference,
 		Components.interfaces.nsISupports
@@ -70,7 +70,7 @@ CheckboxObserver.prototype = {
 	observe: function() {
 		this.checkbox.checked = OpenWithCore.prefs.getBoolPref(this.pref);
 	},
-	QueryInterface: XPCOMUtils.generateQI([
+	QueryInterface: OpenWithCore.generateQI([
 		Components.interfaces.nsIObserver,
 		Components.interfaces.nsISupportsWeakReference,
 		Components.interfaces.nsISupports

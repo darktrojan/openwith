@@ -737,15 +737,7 @@ let OpenWithCore = {
 			}
 		} else {
 			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
-			// from extensions.js
-			let features = 'chrome,titlebar,toolbar,centerscreen';
-			try {
-				let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
-				features += instantApply ? ',dialog=no' : ',modal';
-			} catch (e) {
-				features += ',modal';
-			}
-			recentWindow.openDialog(REAL_OPTIONS_URL, null, features);
+			recentWindow.openContentTab(REAL_OPTIONS_URL);
 		}
 	},
 	openChangelog: function() {
@@ -941,6 +933,12 @@ let OpenWithCore = {
 			}
 			dump(message + '\n');
 		}
+	},
+	get generateQI() {
+		if ('generateQI' in XPCOMUtils) {
+			return XPCOMUtils.generateQI;
+		}
+		return ChromeUtils.generateQI;
 	}
 };
 XPCOMUtils.defineLazyGetter(OpenWithCore, 'prefs', function() {

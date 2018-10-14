@@ -1,6 +1,5 @@
-/* globals Components, Services, XPCOMUtils, OpenWithCore, gContextMenu */
+/* globals Components, Services, OpenWithCore, gContextMenu */
 Components.utils.import('resource://gre/modules/Services.jsm');
-Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 Components.utils.import('chrome://openwith/content/openwith.jsm');
 
 {
@@ -75,7 +74,7 @@ this.OpenWith = {
 		window.OpenWithCore = null;
 	},
 
-	QueryInterface: XPCOMUtils.generateQI([
+	QueryInterface: OpenWithCore.generateQI([
 		Components.interfaces.nsIObserver,
 		Components.interfaces.nsISupportsWeakReference,
 		Components.interfaces.nsISupports
