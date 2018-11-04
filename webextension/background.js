@@ -95,16 +95,6 @@ chrome.storage.local.get({
 	browsers = result.browsers;
 	icons = result.icons;
 	menu_contexts = result.menu_contexts;
-	if (menu_contexts.includes('page')) {
-		menu_contexts.push('frame');
-	}
-	if (menu_contexts.includes('link')) {
-		menu_contexts.push('selection');
-	}
-	if (menu_contexts.includes('image')) {
-		menu_contexts.push('video');
-		menu_contexts.push('audio');
-	}
 	sort_browsers();
 	make_menus();
 	max_icon_id = icons.reduce(function(previous, item) {
@@ -115,13 +105,30 @@ chrome.storage.local.get({
 function make_menus() {
 	chrome.contextMenus.removeAll();
 	if (menu_contexts === null) {
-		menu_contexts = ['page', 'link', 'image', 'video', 'audio', 'frame', 'selection'];
+		menu_contexts = ['page', 'link', 'image'];
 		if (navigator.userAgent.includes('Firefox')) {
 			menu_contexts.push('tab');
 		}
 	}
 
-	if (menu_contexts.length === 0) {
+	let real_menu_contexts = [];
+	if (menu_contexts.includes('page')) {
+		real_menu_contexts.push('page');
+		real_menu_contexts.push('frame');
+	}
+	if (menu_contexts.includes('link')) {
+		real_menu_contexts.push('link');
+		real_menu_contexts.push('selection');
+	}
+	if (menu_contexts.includes('image')) {
+		real_menu_contexts.push('image');
+		real_menu_contexts.push('video');
+		real_menu_contexts.push('audio');
+	}
+	if (menu_contexts.includes('tab')) {
+		real_menu_contexts.push('tab');
+	}
+	if (real_menu_contexts.length === 0) {
 		return;
 	}
 
@@ -133,7 +140,7 @@ function make_menus() {
 		let item = {
 			id: 'browser_' + b.id,
 			title: b.name,
-			contexts: menu_contexts,
+			contexts: real_menu_contexts,
 			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: context_menu_clicked
 		};
