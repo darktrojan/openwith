@@ -47,12 +47,6 @@ richlistbox:focus > richlistitem[selected="true"] {
 .browserName {
 	font-weight: bold;
 }
-richlistitem:not([keyInfoHuman]) .browserKeyInfoIcon {
-	visibility: collapse;
-}
-.browserKeyInfo {
-	-moz-margin-start: 5px;
-}
 .buttons {
 	visibility: collapse;
 	margin-top: 3px;
@@ -60,8 +54,7 @@ richlistitem:not([keyInfoHuman]) .browserKeyInfoIcon {
 .buttons > button {
 	margin: 0 2px;
 }
-:root[appname="Thunderbird"] richlistitem[auto="true"] .edit,
-:root[appname="Thunderbird"] .editkeyinfo {
+richlistitem[auto="true"] .edit {
 	visibility: collapse;
 }
 richlistitem[selected="true"] .buttons {

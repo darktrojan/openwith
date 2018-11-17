@@ -170,7 +170,7 @@ let OpenWithCore = {
 		let manual = this.prefs.getChildList('manual.', {});
 		manual.sort();
 		for (let name of manual) {
-			if (/\.(accesskey|icon|keyinfo|name|usefilepath)$/.test(name)) {
+			if (/\.(accesskey|icon|name|usefilepath)$/.test(name)) {
 				continue;
 			}
 			let value;
@@ -205,7 +205,7 @@ let OpenWithCore = {
 		}
 
 		for (let item of unsorted) {
-			for (let k of ['accessKey', 'keyInfo']) {
+			for (let k of ['accessKey']) {
 				let t = item.auto ? 'auto.' : 'manual.';
 				let k_lc = k.toLowerCase();
 				if (this.prefs.getPrefType(t + item.keyName + '.' + k_lc) == Ci.nsIPrefBranch.PREF_STRING) {
@@ -362,37 +362,6 @@ let OpenWithCore = {
 						location.container.appendChild(menuItem);
 					}
 				}
-			}
-
-			if (keyTargetType && item.keyInfo) {
-				let keys = item.keyInfo.split('+');
-				let keycode = keys.pop();
-				let modifiers = [];
-				for (let m of ['accel', 'shift', 'alt']) {
-					if (keys.indexOf(m) >= 0) {
-						modifiers.push(m);
-					}
-				}
-
-				let key = document.createElement('key');
-				if (keycode.startsWith('VK_')) {
-					key.setAttribute('keycode', keycode);
-				} else {
-					key.setAttribute('key', keycode);
-				}
-				key.setAttribute('modifiers', modifiers.join(','));
-				switch (keyTargetType) {
-				case OpenWithCore.TARGET_STANDARD:
-					// This can't be replaced with an event listener (bug 371900)
-					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, gBrowser.selectedBrowser.currentURI);');
-					break;
-				case OpenWithCore.TARGET_DEVTOOLS:
-					// This can't be replaced with an event listener (bug 371900)
-					key.setAttribute('oncommand', 'OpenWithCore.doCommand(event, OpenWith.toolbox.target.url);');
-					break;
-				}
-				OpenWithCore.addItemToElement(key, item);
-				keyset.appendChild(key);
 			}
 		}
 
@@ -699,10 +668,6 @@ let OpenWithCore = {
 		AddonManager.getAddonByID(ID, (function(addon) {
 			currentVersion = parseVersion(addon.version);
 			this.prefs.setCharPref('version', addon.version);
-
-			if (appname == 'Thunderbird' && Services.vc.compare(oldVersion, 5.3) < 0) {
-				this.prefs.setBoolPref('contextmenulink.submenu', true);
-			}
 			this.showNotifications(addon);
 		}).bind(this));
 	},

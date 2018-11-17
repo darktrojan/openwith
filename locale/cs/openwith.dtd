@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Open With">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Open with…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Položky Open With">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Odkazy Open With">
-<!ENTITY openwith-submenu.label "Otevřít v">
 <!ENTITY openwith-linksubmenu.label "Otevřít odkaz v">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Možnosti Open With">
 
 <!ENTITY openwith-display-choose.label "Vyberte jak chcete zobrazovat položky Open With:">
-<!ENTITY openwith-display-pane.viewmenu.label "Zobrazit menu">
-<!ENTITY openwith-display-pane.contextmenu.label "Hlavní kontextové menu">
 <!ENTITY openwith-display-pane.contextmenulink.label "Hlavní kontextové menu (odkazy)">
-<!ENTITY openwith-display-pane.placescontext.label "Kontextové menu záložek">
-<!ENTITY openwith-display-pane.tabmenu.label "Panel kontextového menu">
-<!ENTITY openwith-display-pane.tabbar.label "Panel nástrojů">
-<!ENTITY openwith-display-pane.toolbar.label "Lišta nástrojů">
-<!ENTITY openwith-display-pane.toolbox.label "Vývojářské nástroje">
 
 <!ENTITY openwith-display-none.label "Nezobrazovat">
 <!ENTITY openwith-display-menuitems.label "Zobrazit jako položky v menu">
 <!ENTITY openwith-display-submenu.label "Zobrazit jako &quot;podmenu&quot;">
-<!ENTITY openwith-display-buttons.label "Zobrazit jako tlačítka">
-<!ENTITY openwith-display-dropdown.label "Zobrazit jako rozbalovací menu">
-
-<!ENTITY openwith-display-toolbarhelp "Pro přidání Open With do vaší lišty nástrojů nebo do panelového menu, otevřete panelové menu a klikněte na 'Přizpůsobit'.">
 
 <!ENTITY openwith-logging.label "Logování">
 <!ENTITY openwith-logging.checkbox.label "Povolit výstupní log do konzole prohlížeče">
-
-<!ENTITY openwith-datacollection.title "Sběr dat">
-<!ENTITY openwith-datacollection.optin "Pomozte nám vylepšit Open With odesláním anonymních data o používání">
-<!ENTITY openwith-datacollection.privacypolicy "Zásady ochrany soukromí">
 
 <!ENTITY openwith-donationsrequest "Open With je financováno z uživatelských darů.">
 <!ENTITY openwith-donate "Přispět">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Přidat…">
 <!ENTITY openwith-browserlist-restoreorder.label "Výchozí pořadí">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Ctrl">
-<!ENTITY openwith-cmdkey "Cmd">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Zatrhněte alespoň jednu možnost.">
-<!ENTITY openwith-comboinuse "Tato klávesová zkratka se již používá.">
-<!ENTITY openwith-removecombo "Odstranit kl. zkratku">

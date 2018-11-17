@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Birlikte Aç">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Birlikte Aç…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Birlikte Aç Nesneleri">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Birlikte Aç link nesneleri">
-<!ENTITY openwith-submenu.label "Birlikte Aç">
 <!ENTITY openwith-linksubmenu.label "Linki Beraber Aç">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Birlikte Aç Seçenekleri">
 
 <!ENTITY openwith-display-choose.label "Open With'in nesneleri nasıl göstereceğini seçin:">
-<!ENTITY openwith-display-pane.viewmenu.label "Menüyü göster">
-<!ENTITY openwith-display-pane.contextmenu.label "Ana Ek menü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Ana Ek menü(linkler)">
-<!ENTITY openwith-display-pane.placescontext.label "Yer imleri menüsü">
-<!ENTITY openwith-display-pane.tabmenu.label "Sekme ek menüsü">
-<!ENTITY openwith-display-pane.tabbar.label "Sekme çubuğu">
-<!ENTITY openwith-display-pane.toolbar.label "Araç çubuğu">
-<!ENTITY openwith-display-pane.toolbox.label "Geliştirici Araçları">
 
 <!ENTITY openwith-display-none.label "Gösterme">
 <!ENTITY openwith-display-menuitems.label "Menü öğesi olarak göster">
 <!ENTITY openwith-display-submenu.label "Alt menü olarak göster">
-<!ENTITY openwith-display-buttons.label "Buton olarak göster">
-<!ENTITY openwith-display-dropdown.label "Açılır menü olarak göster">
-
-<!ENTITY openwith-display-toolbarhelp "Birlikte Aç'ı araç çubuğuna veya panele eklemek için panel menüsünü açın ve Özelleştir'e tıklayın">
 
 <!ENTITY openwith-logging.label "Günlüğe yazma">
 <!ENTITY openwith-logging.checkbox.label "Tarayıcının konsoluna günlük çıktısını onayla">
-
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
 
 <!ENTITY openwith-donationsrequest "Birlikte Aç kullanıcı bağışlarıyla giderleri karşılanan bir eklentidir.">
 <!ENTITY openwith-donate "Bağış Yap">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Ekle…">
 <!ENTITY openwith-browserlist-restoreorder.label "Varsayılan">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Command">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "En az bir modifier seçin.">
-<!ENTITY openwith-comboinuse "Bu tuş kombinasyonu kullanılmakta gözüküyor.">
-<!ENTITY openwith-removecombo "Kısayolu Kaldır">

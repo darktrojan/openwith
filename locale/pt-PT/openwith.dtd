@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Open With">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Abrir com…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Itens do Open With">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Itens de ligação do Open With">
-<!ENTITY openwith-submenu.label "Abrir com">
 <!ENTITY openwith-linksubmenu.label "Abrir ligação com">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Opções do Open With">
 
 <!ENTITY openwith-display-choose.label "Escolher como mostrar os itens do Open With:">
-<!ENTITY openwith-display-pane.viewmenu.label "Menu Ver">
-<!ENTITY openwith-display-pane.contextmenu.label "Menu principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu principal (ligações)">
-<!ENTITY openwith-display-pane.placescontext.label "Menu de contexto dos marcadores">
-<!ENTITY openwith-display-pane.tabmenu.label "Menu separadores">
-<!ENTITY openwith-display-pane.tabbar.label "Barra de separadores">
-<!ENTITY openwith-display-pane.toolbar.label "Barra de ferramentas">
-<!ENTITY openwith-display-pane.toolbox.label "Ferramentas de Programador">
 
 <!ENTITY openwith-display-none.label "Não mostrar">
 <!ENTITY openwith-display-menuitems.label "Mostrar como itens do menu">
 <!ENTITY openwith-display-submenu.label "Mostrar como um sub-menu">
-<!ENTITY openwith-display-buttons.label "Mostrar como botões">
-<!ENTITY openwith-display-dropdown.label "Mostrar como um menu deslizante">
-
-<!ENTITY openwith-display-toolbarhelp "Para adicionar Open With à barra de ferramentas ou menu do Firefox, abra o menu e clique em 'Personalizar'.">
 
 <!ENTITY openwith-logging.label "Logging">
 <!ENTITY openwith-logging.checkbox.label "Ativar output de logs para a Consola Web">
-
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
 
 <!ENTITY openwith-donationsrequest "Open With é fundado por doações de utilizadores.">
 <!ENTITY openwith-donate "Doar">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Adicionar…">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordem pré-definida">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Command">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Selecione pelo menos um modificador.">
-<!ENTITY openwith-comboinuse "Esta combinação está a ser usada.">
-<!ENTITY openwith-removecombo "Remover Atalho">

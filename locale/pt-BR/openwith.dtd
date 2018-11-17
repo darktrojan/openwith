@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Open With">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Abrir com…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Itens do Open With">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Itens de link do Open With">
-<!ENTITY openwith-submenu.label "Abrir com">
 <!ENTITY openwith-linksubmenu.label "Abrir link com">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Opções do Open With">
 
 <!ENTITY openwith-display-choose.label "Escolher como exibir os itens do Open With:">
-<!ENTITY openwith-display-pane.viewmenu.label "Menu Exibir">
-<!ENTITY openwith-display-pane.contextmenu.label "Menu de contexto principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menu de contexto principal (links)">
-<!ENTITY openwith-display-pane.placescontext.label "Menu de contexto dos Favoritos">
-<!ENTITY openwith-display-pane.tabmenu.label "Menu de contexto de abas">
-<!ENTITY openwith-display-pane.tabbar.label "Barra de abas">
-<!ENTITY openwith-display-pane.toolbar.label "Barra de ferramentas">
-<!ENTITY openwith-display-pane.toolbox.label "Ferramentas para desenvolvedores">
 
 <!ENTITY openwith-display-none.label "Não exibir">
 <!ENTITY openwith-display-menuitems.label "Exibir como itens de menu">
 <!ENTITY openwith-display-submenu.label "Exibir como um submenu">
-<!ENTITY openwith-display-buttons.label "Exibir como botões">
-<!ENTITY openwith-display-dropdown.label "Exibir como um menu suspenso">
-
-<!ENTITY openwith-display-toolbarhelp "Para adicionar Open With à sua barra de ferramentas ou ao painel do menu, abra o painel do menu e clique em 'Personalizar'.">
 
 <!ENTITY openwith-logging.label "Adicionando ao log">
 <!ENTITY openwith-logging.checkbox.label "Habilitar mensagens de log no Console do Navegador">
-
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
 
 <!ENTITY openwith-donationsrequest "Open With é mantido por doações de usuários.">
 <!ENTITY openwith-donate "Doar">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Adicionar…">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordem Padrão">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Super">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Escolha pelo menos um modificador.">
-<!ENTITY openwith-comboinuse "Esta combinação de teclas parece já estar em uso.">
-<!ENTITY openwith-removecombo "Remover Atalho">

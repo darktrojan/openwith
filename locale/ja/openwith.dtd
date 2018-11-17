@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Open With">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Open with…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Open With 項目">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Open With リンク項目">
-<!ENTITY openwith-submenu.label "アプリで開く">
 <!ENTITY openwith-linksubmenu.label "リンクを他のアプリで開く">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Open With オプション">
 
 <!ENTITY openwith-display-choose.label "Open With の項目の表示方法を選択してください。">
-<!ENTITY openwith-display-pane.viewmenu.label "メニュー">
-<!ENTITY openwith-display-pane.contextmenu.label "コンテクストメニュー">
 <!ENTITY openwith-display-pane.contextmenulink.label "コンテクストメニュー (リンク)">
-<!ENTITY openwith-display-pane.placescontext.label "ブックマークコンテクストメニュー">
-<!ENTITY openwith-display-pane.tabmenu.label "タブメニュー">
-<!ENTITY openwith-display-pane.tabbar.label "タブバー">
-<!ENTITY openwith-display-pane.toolbar.label "ツールバー">
-<!ENTITY openwith-display-pane.toolbox.label "開発者ツール">
 
 <!ENTITY openwith-display-none.label "非表示">
 <!ENTITY openwith-display-menuitems.label "メニュー項目として表示">
 <!ENTITY openwith-display-submenu.label "サブメニューとして表示">
-<!ENTITY openwith-display-buttons.label "ボタンとして表示">
-<!ENTITY openwith-display-dropdown.label "ドロップダウンメニューとして表示">
-
-<!ENTITY openwith-display-toolbarhelp "ツールバーやパネルメニューにOpen Withを追加するには、パネルメニューを開き『カスタマイズ』をクリックしてください。">
 
 <!ENTITY openwith-logging.label "Logging">
 <!ENTITY openwith-logging.checkbox.label "Enable log output to Browser Console">
-
-<!ENTITY openwith-datacollection.title "Data collection">
-<!ENTITY openwith-datacollection.optin "Help improve Open With by submitting anonymous usage data">
-<!ENTITY openwith-datacollection.privacypolicy "Privacy Policy">
 
 <!ENTITY openwith-donationsrequest "Open Withはユーザーの皆様の寄付により作られております。">
 <!ENTITY openwith-donate "寄付する">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "追加">
 <!ENTITY openwith-browserlist-restoreorder.label "元の順に戻す">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Command">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Select at least one modifier.">
-<!ENTITY openwith-comboinuse "This key combination appears to be in use.">
-<!ENTITY openwith-removecombo "Remove Shortcut">

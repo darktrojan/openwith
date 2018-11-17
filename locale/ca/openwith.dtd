@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Obre amb">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Obre amb…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Elements de l’Obre amb">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Elements d’enllaços de l’Obre amb">
-<!ENTITY openwith-submenu.label "Obre amb">
 <!ENTITY openwith-linksubmenu.label "Obre l’enllaç amb">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Opcions de l’Obre amb">
 
 <!ENTITY openwith-display-choose.label "Trieu com voleu mostrar els elements de l’Obre amb:">
-<!ENTITY openwith-display-pane.viewmenu.label "Menú Visualitza">
-<!ENTITY openwith-display-pane.contextmenu.label "Menú contextual principal">
 <!ENTITY openwith-display-pane.contextmenulink.label "Menú contextual principal (enllaços)">
-<!ENTITY openwith-display-pane.placescontext.label "Menú contextual de les adreces d’interès">
-<!ENTITY openwith-display-pane.tabmenu.label "Menú contextual de les pestanyes">
-<!ENTITY openwith-display-pane.tabbar.label "Barra de pestanyes">
-<!ENTITY openwith-display-pane.toolbar.label "Barra d’eines">
-<!ENTITY openwith-display-pane.toolbox.label "Eines de desenvolupament">
 
 <!ENTITY openwith-display-none.label "No ho mostris">
 <!ENTITY openwith-display-menuitems.label "Mostra com a elements del menú">
 <!ENTITY openwith-display-submenu.label "Mostra com a submenú">
-<!ENTITY openwith-display-buttons.label "Mostra com a botons">
-<!ENTITY openwith-display-dropdown.label "Mostra com a menú desplegable">
-
-<!ENTITY openwith-display-toolbarhelp "Si voleu afegir l’Obre amb a la barra d’eines o al menú de panell, obriu aquest menú i feu clic a «Personalitza».">
 
 <!ENTITY openwith-logging.label "Enregistrament">
 <!ENTITY openwith-logging.checkbox.label "Habilita la sortida del registre a la consola del navegador">
-
-<!ENTITY openwith-datacollection.title "Recol·lecció de dades">
-<!ENTITY openwith-datacollection.optin "Envieu dades anònimes d’ús i ajudeu a millorar l’Obre amb">
-<!ENTITY openwith-datacollection.privacypolicy "Política de privadesa">
 
 <!ENTITY openwith-donationsrequest "L’Obre amb es financia amb donatius dels usuaris.">
 <!ENTITY openwith-donate "Feu un donatiu">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Afegeix…">
 <!ENTITY openwith-browserlist-restoreorder.label "Ordenació per defecte">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Ctrl">
-<!ENTITY openwith-cmdkey "Ordre">
-<!ENTITY openwith-shiftkey "Maj">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Seleccioneu un modificador com a mínim.">
-<!ENTITY openwith-comboinuse "Sembla que aquesta combinació de tecles ja s’està fent servir.">
-<!ENTITY openwith-removecombo "Elimina la drecera">

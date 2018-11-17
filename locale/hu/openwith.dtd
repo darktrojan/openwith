@@ -1,40 +1,19 @@
-<!ENTITY openwith-name "Open With">
-<!-- This should match openWithDropDownTooltip in openwith.properties. -->
-<!ENTITY openwith-dropdown.tooltip "Megnyitás a következővel…">
-<!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
-<!ENTITY openwith-placeholder.label "Open With elemek">
 <!-- This is a placeholder for where the menu items will appear. Most users will never see it. -->
 <!ENTITY openwith-linkplaceholder.label "Open With hivatkozáselemek">
-<!ENTITY openwith-submenu.label "Megnyitás ezzel:">
 <!ENTITY openwith-linksubmenu.label "Hivatkozás megnyitása ezzel:">
 
 <!-- These strings appear on the left-hand side of about:openwith. -->
 <!ENTITY openwith-options.title "Open With beállítások">
 
 <!ENTITY openwith-display-choose.label "Válassza ki, hogyan jelenjenek meg az Open With elemek:">
-<!ENTITY openwith-display-pane.viewmenu.label "Nézet menü">
-<!ENTITY openwith-display-pane.contextmenu.label "Helyi menü">
 <!ENTITY openwith-display-pane.contextmenulink.label "Helyi menü (hivatkozások)">
-<!ENTITY openwith-display-pane.placescontext.label "Könyvjelzők helyi menüje">
-<!ENTITY openwith-display-pane.tabmenu.label "Lapok helyi menüje">
-<!ENTITY openwith-display-pane.tabbar.label "Lapsáv">
-<!ENTITY openwith-display-pane.toolbar.label "Eszköztár">
-<!ENTITY openwith-display-pane.toolbox.label "Fejlesztői eszközök">
 
 <!ENTITY openwith-display-none.label "Ne jelenjen meg">
 <!ENTITY openwith-display-menuitems.label "Megjelenítés menüelemekként">
 <!ENTITY openwith-display-submenu.label "Megjelenítés almenüként">
-<!ENTITY openwith-display-buttons.label "Megjelenítés gombokként">
-<!ENTITY openwith-display-dropdown.label "Megjelenítés legördülő menüként">
-
-<!ENTITY openwith-display-toolbarhelp "Az Open With eszköztárhoz vagy menühöz való hozzáadásához nyissa meg a menüt és kattintson a Testreszabás gombra.">
 
 <!ENTITY openwith-logging.label "Naplózás">
 <!ENTITY openwith-logging.checkbox.label "A böngésző konzoljába történő naplózás engedélyezése">
-
-<!ENTITY openwith-datacollection.title "Adatgyűjtés">
-<!ENTITY openwith-datacollection.optin "Az Open With fejlesztésének támogatása névtelen használati adatok küldésével">
-<!ENTITY openwith-datacollection.privacypolicy "Adatvédelmi irányelvek">
 
 <!ENTITY openwith-donationsrequest "Az Open With-et a felhasználói adományok finanszírozzák.">
 <!ENTITY openwith-donate "Adományozás">
@@ -61,12 +40,3 @@
 <!ENTITY openwith-browserlist-add.label "Hozzáadás…">
 <!ENTITY openwith-browserlist-restoreorder.label "Alapértelmezett sorrend">
 
-<!-- These strings appear in the keyboard shortcut dialog. In about:openwith,
-     choose a browser, then Edit, Keyboard Shortcut. -->
-<!ENTITY openwith-ctrlkey "Control">
-<!ENTITY openwith-cmdkey "Command">
-<!ENTITY openwith-shiftkey "Shift">
-<!ENTITY openwith-altkey "Alt">
-<!ENTITY openwith-nomodifier "Válasszon ki legalább egy speciális billentyűt.">
-<!ENTITY openwith-comboinuse "Ez a billentyűkombináció már használatban van.">
-<!ENTITY openwith-removecombo "Billentyűkombináció eltávolítása">

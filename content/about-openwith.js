@@ -44,58 +44,9 @@ let locationObserver = {
 		let appname = Services.appinfo.name;
 		document.documentElement.setAttribute('appname', appname);
 
-		if (appname == 'Thunderbird') {
-			$('openwith-viewmenu-row').collapsed = true;
-			$('openwith-contextmenu-row').collapsed = true;
-			$('openwith-placescontext-row').collapsed = true;
-			$('openwith-tabmenu-row').collapsed = true;
-			$('openwith-tabbar-row').collapsed = true;
-			$('openwith-toolbar-row').collapsed = true;
-		}
-
-		$('openwith-viewmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('viewmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('viewmenu.submenu') ? 2 : 0);
-
-		$('openwith-contextmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('contextmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('contextmenu.submenu') ? 2 : 0);
-
 		$('openwith-contextmenulink-group').selectedIndex =
 				OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
 				(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
-
-		$('openwith-placescontext-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('placescontext') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('placescontext.submenu') ? 2 : 0);
-
-		$('openwith-tabmenu-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('tabmenu') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('tabmenu.submenu') ? 2 : 0);
-
-		if (browserWindow && browserWindow.OpenWith.tabButtonContainer) {
-			$('openwith-tabbar-group').selectedIndex =
-					OpenWithCore.prefs.getBoolPref('tabbar') ? 1 :
-					(OpenWithCore.prefs.getBoolPref('tabbar.menu') ? 2 : 0);
-		} else {
-			$('openwith-tabbar-row').collapsed = true;
-		}
-
-		if (browserWindow && browserWindow.OpenWith.toolbarButtonContainer) {
-			$('openwith-toolbar-group').selectedIndex =
-					OpenWithCore.prefs.getBoolPref('toolbar') ? 0 : 1;
-		} else {
-			$('openwith-toolbar-row').collapsed = true;
-		}
-
-		if (appname == 'Firefox' || appname == 'Pale Moon') {
-			$('openwith-toolbox-group').selectedIndex =
-				OpenWithCore.prefs.getBoolPref('toolbox') ? 1 :
-					(OpenWithCore.prefs.getBoolPref('toolbox.menu') ? 2 : 0);
-		} else {
-			$('openwith-toolbox-row').collapsed = true;
-			$('openwith-toolbarhelp').collapsed = true;
-		}
 
 		loadingDropDowns = false;
 	},
@@ -159,12 +110,6 @@ function loadBrowserList() {
 			case 'params':
 				item.setAttribute(key, value);
 				break;
-			case 'keyInfo':
-				if (value !== null) {
-					item.setAttribute(key, value);
-					item.setAttribute('keyInfoHuman', getHumanKeyInfo(value));
-				}
-				break;
 			default:
 				if (value !== null) {
 					item.setAttribute(key, value);
@@ -174,16 +119,6 @@ function loadBrowserList() {
 		}
 		list.appendChild(item);
 	}
-}
-
-function getHumanKeyInfo(value) {
-	value = value.replace('VK_', '');
-	value = value.replace('accel', Services.appinfo.OS == 'Darwin' ?
-			OpenWithCore.strings.GetStringFromName('cmdkey') :
-			OpenWithCore.strings.GetStringFromName('ctrlkey'));
-	value = value.replace('shift', OpenWithCore.strings.GetStringFromName('shiftkey'));
-	value = value.replace('alt', OpenWithCore.strings.GetStringFromName('altkey'));
-	return value;
 }
 
 /* exported updatePrefs */
@@ -287,54 +222,6 @@ function changeAttribute(item, attrName) {
 	}
 }
 
-/* exported editKeyInfo */
-function editKeyInfo(item) {
-	let current = item.getAttribute('keyInfo');
-	let existingKeys = ['VK_F7'];
-	for (let k of getTopWindow().document.getElementsByTagName('key')) {
-		let key = (k.getAttribute('key') || k.getAttribute('keycode')).toUpperCase();
-		let modifiers = k.getAttribute('modifiers') || [];
-
-		if (!Array.isArray(modifiers)) {
-			modifiers = modifiers.split(',');
-		}
-		modifiers.push(key);
-		existingKeys.push(modifiers.join('+'));
-	}
-
-	let returnValues = Object.create(null);
-	if (current) {
-		returnValues.previous = current.split('+');
-		let index = existingKeys.indexOf(current);
-		if (index >= 0) {
-			existingKeys.splice(index, 1);
-		}
-	}
-	returnValues.promptText =
-			OpenWithCore.strings.formatStringFromName('keyinfoPromptText', [item.getAttribute('name')], 1);
-	returnValues.existingKeys = existingKeys;
-	openDialog('chrome://openwith/content/keyinfo.xul', 'keyinfo', 'centerscreen,modal', returnValues);
-	if (returnValues.removeKeyInfo === true) {
-		item.removeAttribute('keyInfo');
-		item.removeAttribute('keyInfoHuman');
-	} else if (Array.isArray(returnValues.keyInfo)) {
-		let value = returnValues.keyInfo.join('+');
-		item.setAttribute('keyInfo', value);
-		item.setAttribute('keyInfoHuman', getHumanKeyInfo(value));
-	}
-	saveItemToPrefs(item);
-}
-
-function getTopWindow() {
-	return window.QueryInterface(Ci.nsIInterfaceRequestor)
-		.getInterface(Ci.nsIWebNavigation)
-		.QueryInterface(Ci.nsIDocShellTreeItem)
-		.rootTreeItem
-		.QueryInterface(Ci.nsIInterfaceRequestor)
-		.getInterface(Ci.nsIDOMWindow)
-		.wrappedJSObject;
-}
-
 function saveItemToPrefs(item, saveIcon) {
 	let name = item.getAttribute('name');
 	let keyName = item.getAttribute('keyName');
@@ -344,7 +231,7 @@ function saveItemToPrefs(item, saveIcon) {
 
 	OpenWithCore.suppressLoadList = true;
 
-	for (let k of ['accessKey', 'keyInfo']) {
+	for (let k of ['accessKey']) {
 		let k_lc = k.toLowerCase();
 		let v = item.getAttribute(k);
 		if (v) {
