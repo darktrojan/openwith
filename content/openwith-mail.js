@@ -1,6 +1,5 @@
-/* globals Components, Services, XPCOMUtils, OpenWithCore, gContextMenu */
+/* globals Components, Services, OpenWithCore, gContextMenu */
 Components.utils.import('resource://gre/modules/Services.jsm');
-Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');
 
 /* globals OpenWith */
 this.OpenWith = {
@@ -48,7 +47,7 @@ this.OpenWith = {
 		Services.obs.addObserver(this, 'openWithLocationsChanged', true);
 	},
 
-	QueryInterface: XPCOMUtils.generateQI([
+	QueryInterface: ChromeUtils.generateQI([
 		Components.interfaces.nsIObserver,
 		Components.interfaces.nsISupportsWeakReference,
 		Components.interfaces.nsISupports

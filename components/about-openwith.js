@@ -24,7 +24,7 @@ OpenWithAboutHandler.prototype = {
 	classDescription: 'About OpenWith Page',
 	classID: Components.ID('97ce549f-5ec6-460e-ad11-55a7bd190185'),
 	contractID: '@mozilla.org/network/protocol/about;1?what=openwith',
-	QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule])
+	QueryInterface: ChromeUtils.generateQI([Ci.nsIAboutModule])
 };
 
 this.NSGetFactory = XPCOMUtils.generateNSGetFactory([OpenWithAboutHandler]);

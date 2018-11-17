@@ -1,0 +1,8 @@
+{
+	"extensionDescription": {
+		"message": "この拡張機能により表示メニュー、タブメニュー、コンテクストメニュー、そしてタブバーに閲覧中のページを他のブラウザで開くという項目を加えることができます。"
+	},
+	"extensionName": {
+		"message": "Open With"
+	}
+}
