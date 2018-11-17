@@ -1,31 +1,20 @@
-/* globals Components, dump */
 this.EXPORTED_SYMBOLS = ['OpenWithCore'];
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
 
 const ID = 'openwith@darktrojan.net';
-const ADDONS_VIEW = 'addons://detail/openwith%40darktrojan.net';
 
 const REAL_OPTIONS_URL = 'about:openwith';
-const BROWSER_TYPE = 'navigator:browser';
 const MAIL_TYPE = 'mail:3pane';
 
 /* globals Services, XPCOMUtils, FileUtils */
-Cu.import('resource://gre/modules/Services.jsm');
-Cu.import('resource://gre/modules/XPCOMUtils.jsm');
-Cu.import('resource://gre/modules/FileUtils.jsm');
+ChromeUtils.import('resource://gre/modules/Services.jsm');
+ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
+ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 
-/* globals AddonManager, OS, Preferences, idleService, profileService, socketTransportService */
-XPCOMUtils.defineLazyModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
-XPCOMUtils.defineLazyModuleGetter(this, 'OS', 'resource://gre/modules/osfile.jsm');
-XPCOMUtils.defineLazyModuleGetter(this, 'Preferences', 'resource://gre/modules/Preferences.jsm');
+/* globals AddonManager, Preferences, idleService */
+ChromeUtils.defineModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
+ChromeUtils.defineModuleGetter(this, 'Preferences', 'resource://gre/modules/Preferences.jsm');
 XPCOMUtils.defineLazyServiceGetter(this, 'idleService',
 	'@mozilla.org/widget/idleservice;1', 'nsIIdleService');
-XPCOMUtils.defineLazyServiceGetter(this, 'profileService',
-	'@mozilla.org/toolkit/profile-service;1', 'nsIToolkitProfileService');
-XPCOMUtils.defineLazyServiceGetter(this, 'socketTransportService',
-	'@mozilla.org/network/socket-transport-service;1', 'nsISocketTransportService');
 
 const WINDOWS = '@mozilla.org/windows-registry-key;1' in Cc;
 const OS_X = !WINDOWS && 'nsILocalFileMac' in Ci;
@@ -56,7 +45,7 @@ let OpenWithCore = {
 			if (!registryKey) {
 				registryKey = Cc['@mozilla.org/windows-registry-key;1'].createInstance(Ci.nsIWindowsRegKey);
 				registryKey.open(Ci.nsIWindowsRegKey.ROOT_KEY_LOCAL_MACHINE,
-						'SOFTWARE\\Clients\\StartMenuInternet', Ci.nsIWindowsRegKey.ACCESS_READ);
+					'SOFTWARE\\Clients\\StartMenuInternet', Ci.nsIWindowsRegKey.ACCESS_READ);
 				env = Cc['@mozilla.org/process/environment;1'].getService(Ci.nsIEnvironment);
 			}
 
@@ -77,7 +66,7 @@ let OpenWithCore = {
 					});
 
 					let file = new FileUtils.File(command);
-					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
+					let keyName = name.replace(/[^\w.-]/g, '_').toLowerCase();
 
 					unsorted.push({
 						auto: true,
@@ -123,7 +112,7 @@ let OpenWithCore = {
 				let appFile = locAppDir.clone();
 				appFile.append(name + '.app');
 				if (appFile.exists()) {
-					let keyName = name.replace(/[^\w\.-]/g, '_').toLowerCase();
+					let keyName = name.replace(/[^\w.-]/g, '_').toLowerCase();
 					unsorted.push({
 						auto: true,
 						keyName: keyName,
@@ -283,6 +272,7 @@ let OpenWithCore = {
 				}
 			}
 		} catch (e) {
+			// Ignore
 		}
 		return 'chrome://openwith/content/openwith' + size + '.png';
 	},
@@ -298,7 +288,7 @@ let OpenWithCore = {
 			Services.obs.notifyObservers(null, 'openWithLocationsChanged', data);
 		}
 	},
-	refreshUI: function(document, locations, { keyTargetType }) {
+	refreshUI: function(document, locations) {
 		for (let location of locations) {
 			if (typeof location.empty == 'function') {
 				location.empty.apply(location);
@@ -505,7 +495,7 @@ let OpenWithCore = {
 				uriParam = uri.QueryInterface(Ci.nsIFileURL).file.path;
 			} else {
 				uriParam = uri.spec;
-				let match = /^openwith:((auto|manual)\.([\w\.-]+)):(.*)$/.exec(uriParam);
+				let match = /^openwith:((auto|manual)\.([\w.-]+)):(.*)$/.exec(uriParam);
 				if (match) {
 					uriParam = match[4];
 				}
@@ -548,48 +538,15 @@ let OpenWithCore = {
 		}
 		this.doCommandInternal(item.command, params, uri);
 	},
-	doCommandInternal: function(command, params, uri) {
+	doCommandInternal: function(command, params) {
 		if (Services.appinfo.processType != Services.appinfo.PROCESS_TYPE_DEFAULT) {
 			throw new Error('OpenWithCore.doCommandInternal called from child process');
 		}
 
-		OpenWithDataCollector.incrementCount('browserOpened');
 		try {
 			let file = new FileUtils.File(command);
 			if (!file.exists()) {
 				throw 'File not found';
-			}
-
-			if (uri && Services.appinfo.name == 'Firefox' &&
-					['firefox', 'firefox.exe', 'Firefox.app'].indexOf(file.leafName) >= 0) {
-				for (let i = 0; i < params.length; i++) {
-					if (params[i] != '-P') {
-						continue;
-					}
-
-					try {
-						let profileName = params[i + 1];
-						let profile = profileService.getProfileByName(profileName);
-						if (!profile) {
-							continue;
-						}
-
-						let socketFile = profile.rootDir.clone();
-						socketFile.append('openwith-socket');
-						if (socketFile.exists()) {
-							this.log(
-								'OpenWith: opening with IPC\n' +
-								'\tCommand: ' + file.path + '\n' +
-								'\tProfile: ' + profileName + '\n' +
-								'\tURL: ' + uri
-							);
-							this.doCommandIPC(socketFile, uri);
-							return;
-						}
-					} catch (ex) {
-						Cu.reportError(ex);
-					}
-				}
 			}
 
 			let fileToRun;
@@ -610,27 +567,6 @@ let OpenWithCore = {
 			}
 		} catch (e) {
 			Cu.reportError(e);
-		}
-	},
-	doCommandIPC: function(socketFile, message) {
-		function finish() {
-			let output = client.openOutputStream(0, 0, 0);
-			output.write(message, message.length);
-		}
-
-		let client;
-		try {
-			client = socketTransportService.createUnixDomainTransport(socketFile);
-			finish();
-		} catch (ex) {
-			OS.File.read(socketFile.path).then(function(message) {
-				message = new TextDecoder().decode(message);
-				let port = parseInt(message.split(/\s/, 2)[0], 10);
-				if (port) {
-					client = socketTransportService.createTransport(null, 0, 'localhost', port, null);
-					finish();
-				}
-			});
 		}
 	},
 	versionUpdate: function() {
@@ -672,47 +608,8 @@ let OpenWithCore = {
 		}).bind(this));
 	},
 	openOptionsTab: function() {
-		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-		if (recentWindow) {
-			if ('switchToTabHavingURI' in recentWindow) {
-				recentWindow.switchToTabHavingURI(REAL_OPTIONS_URL, true);
-			} else {
-				let found = false;
-				let browserEnumerator = Services.wm.getEnumerator(BROWSER_TYPE);
-				while (!found && browserEnumerator.hasMoreElements()) {
-					let browserWin = browserEnumerator.getNext();
-					let tabbrowser = browserWin.gBrowser;
-
-					let numTabs = tabbrowser.browsers.length;
-					for (let index = 0; index < numTabs; index++) {
-						let currentBrowser = tabbrowser.getBrowserAtIndex(index);
-						if (REAL_OPTIONS_URL == currentBrowser.currentURI.spec) {
-							tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[index];
-							browserWin.focus();
-
-							found = true;
-							break;
-						}
-					}
-				}
-
-				if (!found) {
-					recentWindow.gBrowser.selectedTab = recentWindow.gBrowser.addTab(REAL_OPTIONS_URL);
-					recentWindow.focus();
-				}
-			}
-		} else {
-			recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
-			// from extensions.js
-			let features = 'chrome,titlebar,toolbar,centerscreen';
-			try {
-				let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
-				features += instantApply ? ',dialog=no' : ',modal';
-			} catch (e) {
-				features += ',modal';
-			}
-			recentWindow.openDialog(REAL_OPTIONS_URL, null, features);
-		}
+		let recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+		recentWindow.openContentTab(REAL_OPTIONS_URL);
 	},
 	openChangelog: function() {
 		let version = this.prefs.getCharPref('version');
@@ -721,20 +618,11 @@ let OpenWithCore = {
 	openDonatePage: function() {
 		this.openURL('https://darktrojan.github.io/donate.html?openwith');
 	},
-	openURL: function(url, useExisting = true) {
-		let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE) || Services.wm.getMostRecentWindow(MAIL_TYPE);
-		if ('switchToTabHavingURI' in recentWindow) {
-			if (useExisting) {
-				recentWindow.switchToTabHavingURI(url, true);
-			} else {
-				recentWindow.openLinkIn(url, 'tab', {});
-				recentWindow.focus();
-			}
-		} else {
-			recentWindow.openLinkExternally(url);
-		}
+	openURL: function(url) {
+		let recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+		recentWindow.openLinkExternally(url);
 	},
-	showNotifications: function(addon) {
+	showNotifications: function() {
 		let label, value, buttons;
 		let shouldRemind = true;
 
@@ -763,26 +651,6 @@ let OpenWithCore = {
 				popup: null,
 				callback: this.openDonatePage.bind(this)
 			}];
-		} else if (Services.appinfo.name == 'Firefox' &&
-				!this.prefs.getBoolPref('webextensionnotice') &&
-				(addon.applyBackgroundUpdates == AddonManager.AUTOUPDATE_ENABLE ||
-				addon.applyBackgroundUpdates == AddonManager.AUTOUPDATE_DEFAULT && AddonManager.autoUpdateDefault)) {
-			label = this.strings.GetStringFromName('webextensionsMessage');
-			value = 'openwith-webextension';
-			buttons = [{
-				label: this.strings.GetStringFromName('webextensionsDisable'),
-				callback: () => {
-					addon.applyBackgroundUpdates = AddonManager.AUTOUPDATE_DISABLE;
-					highlightUpdateUI();
-					this.prefs.setBoolPref('webextensionnotice', true);
-					this.prefs.setBoolPref('webextensioncheck', true);
-				}
-			}, {
-				label: this.strings.GetStringFromName('webextensionsIgnore'),
-				callback: () => {
-					this.prefs.setBoolPref('webextensionnotice', true);
-				}
-			}];
 		} else if (shouldRemind && Services.vc.compare(oldVersion, currentVersion) < 0) {
 			label = this.strings.formatStringFromName('versionChanged', [currentVersion], 1);
 			value = 'openwith-donate';
@@ -799,19 +667,12 @@ let OpenWithCore = {
 		}
 
 		function callback() {
-			let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-			let notifyBox;
-			if (recentWindow) {
-				notifyBox = recentWindow.document.getElementById('global-notificationbox') ||
-					recentWindow.gBrowser.getNotificationBox();
-			} else {
-				recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
-				notifyBox = recentWindow.document.getElementById('mail-notification-box');
-			}
+			let recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
+			let notifyBox = recentWindow.document.getElementById('mail-notification-box');
 			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 		}
 
-		if (['openwith-donate', 'openwith-webextension'].includes(value)) {
+		if (value == 'openwith-donate') {
 			idleService.addIdleObserver({
 				observe: function(service, state) {
 					if (state != 'idle') {
@@ -832,7 +693,7 @@ let OpenWithCore = {
 	readDesktopFile: function(aFile) {
 		let istream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream);
 		istream.init(aFile, 0x01, 0o444, 0);
-		istream.QueryInterface(Components.interfaces.nsILineInputStream);
+		istream.QueryInterface(Ci.nsILineInputStream);
 
 		let line = {};
 		let notEOF;
@@ -879,7 +740,7 @@ let OpenWithCore = {
 		name = name || aFile.leafName.replace(/\.desktop$/i, '');
 		istream.close();
 
-		let keyName = aFile.leafName.replace(/[^\w\.-]/g, '_').toLowerCase();
+		let keyName = aFile.leafName.replace(/[^\w.-]/g, '_').toLowerCase();
 
 		return {
 			auto: true,
@@ -931,82 +792,4 @@ XPCOMUtils.defineLazyGetter(OpenWithCore, 'strings', function() {
 	return Services.strings.createBundle('chrome://openwith/locale/openwith.properties');
 });
 
-if (Services.appinfo.processType == Services.appinfo.PROCESS_TYPE_DEFAULT) {
-	if (Services.appinfo.name == 'Firefox') {
-		Services.scriptloader.loadSubScript('resource://openwith/listener.js');
-		Services.scriptloader.loadSubScript('resource://openwith/widgets.js');
-	}
-
-	/* globals OpenWithDataCollector */
-	Cu.import('resource://openwith/dataCollection.jsm');
-
-	if (!!Services.ppmm) {
-		Services.ppmm.addMessageListener('OpenWith:OpenURI', function(message) {
-			OpenWithCore.doCommandWithListItem(message.data.keyName, message.data.uri);
-		});
-		Services.ppmm.loadProcessScript('resource://openwith/process.js', true);
-	}
-}
-
 OpenWithCore.versionUpdate();
-
-function highlightUpdateUI() {
-	function highlight(win) {
-		win.gViewController.loadView(ADDONS_VIEW);
-		let row = win.document.getElementById('detail-updates-row');
-		row.scrollIntoView();
-		row.animate([{
-			backgroundColor: 'transparent'
-		}, {
-			backgroundColor: '#f00c'
-		},{
-			backgroundColor: 'transparent'
-		}], {
-			duration: 750, iterations: 3
-		});
-	}
-	let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-	if (recentWindow.switchToTabHavingURI('about:addons', false)) {
-		highlight(recentWindow.gBrowser.selectedBrowser.contentWindow);
-	} else {
-		function emloaded(win) { // jshint ignore:line
-			Services.obs.removeObserver(emloaded, 'EM-loaded');
-			highlight(win);
-		}
-		Services.obs.addObserver(emloaded, 'EM-loaded');
-		recentWindow.switchToTabHavingURI('about:addons', true);
-	}
-}
-
-if (OpenWithCore.prefs.getBoolPref('webextensioncheck')) {
-	idleService.addIdleObserver({
-		observe: function(service, state) {
-			if (state != 'idle') {
-				return;
-			}
-
-			AddonManager.getAllInstalls().then(installs => {
-				if (!installs.length) {
-					return;
-				}
-
-				idleService.removeIdleObserver(this, 15);
-				if (installs.some(i => i.existingAddon.id == ID && Services.vc.compare(i.version, 7) >= 0)) {
-					let label = OpenWithCore.strings.GetStringFromName('webextensionsUpdateAvailable');
-					let value = 'openwith-webextension';
-					let buttons = [{
-						label: OpenWithCore.strings.GetStringFromName('webextensionsGetUpdate'),
-						callback: highlightUpdateUI
-					}, {
-						label: OpenWithCore.strings.GetStringFromName('webextensionsNotNow'),
-						callback: function() {}
-					}];
-
-					let recentWindow = Services.wm.getMostRecentWindow(BROWSER_TYPE);
-					let notifyBox = recentWindow.document.getElementById('global-notificationbox');
-					notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
-				}
-			});
-		}
-	}, 15);
-}

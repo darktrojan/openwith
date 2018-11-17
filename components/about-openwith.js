@@ -1,9 +1,6 @@
-/* globals Components, Services, XPCOMUtils */
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-
-Cu.import('resource://gre/modules/Services.jsm');
-Cu.import('resource://gre/modules/XPCOMUtils.jsm');
+/* globals Services, XPCOMUtils */
+ChromeUtils.import('resource://gre/modules/Services.jsm');
+ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
 
 function OpenWithAboutHandler() {
 }

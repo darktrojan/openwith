@@ -1,5 +1,5 @@
-/* globals Components, Services, OpenWithCore, gContextMenu */
-Components.utils.import('resource://gre/modules/Services.jsm');
+/* globals Services, OpenWithCore, gContextMenu */
+ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 /* globals OpenWith */
 this.OpenWith = {
@@ -12,7 +12,7 @@ this.OpenWith = {
 	},
 
 	init: function() {
-		Components.utils.import('resource://openwith/openwith.jsm');
+		ChromeUtils.import('resource://openwith/openwith.jsm');
 
 		let contextMenu = document.getElementById('mailContext');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
@@ -48,9 +48,9 @@ this.OpenWith = {
 	},
 
 	QueryInterface: ChromeUtils.generateQI([
-		Components.interfaces.nsIObserver,
-		Components.interfaces.nsISupportsWeakReference,
-		Components.interfaces.nsISupports
+		Ci.nsIObserver,
+		Ci.nsISupportsWeakReference,
+		Ci.nsISupports
 	]),
 
 	observe: function() {

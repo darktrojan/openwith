@@ -6,7 +6,7 @@
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
-			"strict_min_version": "65"
+			"strict_min_version": "65.0a1"
 		}
 	},
 	"author": "Geoff Lankow",

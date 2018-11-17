@@ -1,18 +1,11 @@
-/* globals Components, openDialog, -name */
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-
 /* globals FileUtils, Services, XPCOMUtils, OpenWithCore */
-Cu.import('resource://gre/modules/FileUtils.jsm');
-Cu.import('resource://gre/modules/Services.jsm');
-Cu.import('resource://gre/modules/XPCOMUtils.jsm');
-Cu.import('resource://openwith/openwith.jsm');
+ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+ChromeUtils.import('resource://gre/modules/Services.jsm');
+ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
+ChromeUtils.import('resource://openwith/openwith.jsm');
 
 /* globals clipboardHelper */
 XPCOMUtils.defineLazyServiceGetter(this, 'clipboardHelper', '@mozilla.org/widget/clipboardhelper;1', 'nsIClipboardHelper');
-
-let browserWindow = Services.wm.getMostRecentWindow('navigator:browser');
 
 let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 fp.init(this, document.title, Ci.nsIFilePicker.modeOpen);
@@ -46,14 +39,14 @@ let locationObserver = {
 
 		$('openwith-contextmenulink-group').selectedIndex =
 				OpenWithCore.prefs.getBoolPref('contextmenulink') ? 1 :
-				(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
+					(OpenWithCore.prefs.getBoolPref('contextmenulink.submenu') ? 2 : 0);
 
 		loadingDropDowns = false;
 	},
 	QueryInterface: ChromeUtils.generateQI([
-		Components.interfaces.nsIObserver,
-		Components.interfaces.nsISupportsWeakReference,
-		Components.interfaces.nsISupports
+		Ci.nsIObserver,
+		Ci.nsISupportsWeakReference,
+		Ci.nsISupports
 	])
 };
 locationObserver.observe();
@@ -73,14 +66,11 @@ CheckboxObserver.prototype = {
 		this.checkbox.checked = OpenWithCore.prefs.getBoolPref(this.pref);
 	},
 	QueryInterface: ChromeUtils.generateQI([
-		Components.interfaces.nsIObserver,
-		Components.interfaces.nsISupportsWeakReference,
-		Components.interfaces.nsISupports
+		Ci.nsIObserver,
+		Ci.nsISupportsWeakReference,
+		Ci.nsISupports
 	])
 };
-/* exported loggingObserver, dataCollectionObserver */
-let loggingObserver = new CheckboxObserver('logging', 'log.enabled');
-let dataCollectionObserver = new CheckboxObserver('datacollection', 'datacollection.optin');
 
 let list = $('list');
 loadBrowserList();
@@ -101,12 +91,13 @@ function loadBrowserList() {
 			case 'hidden':
 				item.setAttribute('browserHidden', value);
 				break;
-			case 'icon':
+			case 'icon': {
 				let icon = value;
 				icon = icon.replace('?size=menu', '?size=dnd');
 				icon = icon.replace(/16/g, '32');
 				item.setAttribute(key, icon);
 				break;
+			}
 			case 'params':
 				item.setAttribute(key, value);
 				break;
@@ -183,10 +174,11 @@ function changeAttribute(item, attrName) {
 	case 'name':
 		text = OpenWithCore.strings.GetStringFromName('namePromptText');
 		break;
-	case 'params':
+	case 'params': {
 		let file = new FileUtils.File(item.getAttribute('command'));
 		text = OpenWithCore.strings.formatStringFromName('paramsPromptText', [file.leafName], 1);
 		break;
+	}
 	case 'accessKey':
 		text = OpenWithCore.strings.GetStringFromName('accessKeyPromptText');
 		break;
@@ -288,7 +280,6 @@ function addNewItem() {
 					program.icon = program.icon.replace(/16/g, '32');
 					program.keyName = generateRandomKeyName();
 					program.manual = true;
-					program.params = program.params;
 					for (let [name, value] of Object.entries(program)) {
 						item.setAttribute(name, value);
 					}
@@ -458,7 +449,7 @@ list.addEventListener('dragexit', function(event) {
 	}
 });
 list.addEventListener('drop', function(event) {
-	if (!!event.dataTransfer.getData('openwith/drag')) {
+	if (event.dataTransfer.getData('openwith/drag')) {
 		event.preventDefault();
 	}
 });
@@ -473,7 +464,3 @@ list.addEventListener('dragend', function(event) {
 	}
 	itemToMove = itemToPlaceBefore = null;
 });
-
-/* globals OpenWithDataCollector */
-Cu.import('resource://openwith/dataCollection.jsm');
-OpenWithDataCollector.incrementCount('aboutOpenWithOpened');
