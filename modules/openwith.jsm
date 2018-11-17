@@ -601,11 +601,11 @@ let OpenWithCore = {
 			this.prefs.clearUserPref('hide');
 		}
 
-		AddonManager.getAddonByID(ID, (function(addon) {
+		AddonManager.getAddonByID(ID).then(addon => {
 			currentVersion = parseVersion(addon.version);
 			this.prefs.setCharPref('version', addon.version);
 			this.showNotifications(addon);
-		}).bind(this));
+		});
 	},
 	openOptionsTab: function() {
 		let recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
