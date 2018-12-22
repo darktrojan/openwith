@@ -613,7 +613,7 @@ let OpenWithCore = {
 	},
 	openChangelog: function() {
 		let version = this.prefs.getCharPref('version');
-		this.openURL('https://addons.mozilla.org/addon/open-with/versions/' + version);
+		this.openURL('https://addons.thunderbird.net/addon/open-with/versions/' + version);
 	},
 	openDonatePage: function() {
 		this.openURL('https://darktrojan.github.io/donate.html?openwith');
