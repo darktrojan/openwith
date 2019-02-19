@@ -5,10 +5,9 @@ const ID = 'openwith@darktrojan.net';
 const REAL_OPTIONS_URL = 'about:openwith';
 const MAIL_TYPE = 'mail:3pane';
 
-/* globals Services, XPCOMUtils, FileUtils */
-ChromeUtils.import('resource://gre/modules/Services.jsm');
-ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
-ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+const { XPCOMUtils } = ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
+const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 
 /* globals AddonManager, Preferences, idleService */
 ChromeUtils.defineModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
@@ -24,7 +23,6 @@ let currentVersion = 0;
 let oldVersion = 0;
 
 let OpenWithCore = {
-
 	TARGET_STANDARD: 1,
 	TARGET_LINK: 2,
 	TARGET_TAB: 3,

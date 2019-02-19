@@ -1,19 +1,16 @@
-/* globals Services, OpenWithCore, gContextMenu */
-ChromeUtils.import('resource://gre/modules/Services.jsm');
+/* globals gContextMenu, OpenWithCore */
+var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
-/* globals OpenWith */
-this.OpenWith = {
-
+var OpenWith = {
 	locations: [],
 
 	onLoad: function() {
+		window.OpenWithCore = ChromeUtils.import('resource://openwith/openwith.jsm').OpenWithCore;
 		window.removeEventListener('load', OpenWith.onLoad, false);
 		OpenWith.init();
 	},
 
 	init: function() {
-		ChromeUtils.import('resource://openwith/openwith.jsm');
-
 		let contextMenu = document.getElementById('mailContext');
 		contextMenu.addEventListener('popupshowing', this.popupShowing, false);
 		contextMenu.addEventListener('popuphidden', this.popupHidden, false);

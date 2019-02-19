@@ -1,8 +1,7 @@
-/* globals FileUtils, Services, XPCOMUtils, OpenWithCore */
-ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
-ChromeUtils.import('resource://gre/modules/Services.jsm');
-ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
-ChromeUtils.import('resource://openwith/openwith.jsm');
+const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+const { XPCOMUtils } = ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
+const { OpenWithCore } = ChromeUtils.import('resource://openwith/openwith.jsm');
 
 /* globals clipboardHelper */
 XPCOMUtils.defineLazyServiceGetter(this, 'clipboardHelper', '@mozilla.org/widget/clipboardhelper;1', 'nsIClipboardHelper');
