@@ -137,7 +137,7 @@ def listen():
 			command = ['/usr/bin/open', '-a'] + receivedMessage
 		else:
 			command = receivedMessage
-		subprocess.Popen(command, stdout=devnull, stderr=devnull)
+		subprocess.Popen(command, stdin=devnull, stdout=devnull, stderr=devnull)
 		sendMessage(None)
 
 

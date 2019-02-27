@@ -158,7 +158,7 @@ def listen():
 					os.environ[k] = ''
 
 		devnull = open(os.devnull, 'w')
-		subprocess.Popen(receivedMessage, stdout=devnull, stderr=devnull)
+		subprocess.Popen(receivedMessage, stdin=devnull, stdout=devnull, stderr=devnull)
 		sendMessage(None)
 
 
