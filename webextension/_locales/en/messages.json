@@ -108,6 +108,15 @@
 	"icon_edge": {
 		"message": "Edge"
 	},
+	"icon_edge_beta": {
+		"message": "Edge Beta"
+	},
+	"icon_edge_canary": {
+		"message": "Edge Canary"
+	},
+	"icon_edge_dev": {
+		"message": "Edge Dev"
+	},
 	"icon_firefox_1_5_3": {
 		"message": "Firefox 1.5-3"
 	},
