@@ -666,7 +666,7 @@ let OpenWithCore = {
 
 		function callback() {
 			let recentWindow = Services.wm.getMostRecentWindow(MAIL_TYPE);
-			let notifyBox = recentWindow.document.getElementById('mail-notification-box');
+			let notifyBox = recentWindow.specialTabs.msgNotificationBar;
 			notifyBox.appendNotification(label, value, 'chrome://openwith/content/openwith16.png', notifyBox.PRIORITY_INFO_LOW, buttons);
 		}
 
