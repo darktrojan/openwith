@@ -314,7 +314,7 @@ let OpenWithCore = {
 
 		let keyset = document.getElementById('openwith-keyset');
 		if (keyset === null) {
-			keyset = document.createElement('keyset');
+			keyset = document.createXULElement('keyset');
 			keyset.id = 'openwith-keyset';
 		}
 		while (keyset.lastChild) {
@@ -356,16 +356,16 @@ let OpenWithCore = {
 		for (let location of locations) {
 			let item;
 			if (location.submenu || location.menu) {
-				item = document.createElement('menuitem');
+				item = document.createXULElement('menuitem');
 				item.setAttribute('class', 'openwith menuitem-iconic');
 			} else if (location.targetType == OpenWithCore.TARGET_PANEL_UI) {
-				item = document.createElement('toolbarbutton');
+				item = document.createXULElement('toolbarbutton');
 				item.className = 'subviewbutton';
 			} else {
 				continue;
 			}
 
-			let separator = document.createElement('menuseparator');
+			let separator = document.createXULElement('menuseparator');
 			separator.setAttribute('class', 'openwith');
 
 			item.setAttribute('label', OpenWithCore.strings.GetStringFromName('buttonLabel'));
@@ -391,7 +391,7 @@ let OpenWithCore = {
 		}
 	},
 	createMenuItem: function(document, item, label, targetType = OpenWithCore.TARGET_STANDARD) {
-		let menuItem = document.createElement('menuitem');
+		let menuItem = document.createXULElement('menuitem');
 		menuItem.setAttribute('class', 'openwith menuitem-iconic menuitem-with-favicon');
 		menuItem.setAttribute('image', item.icon);
 		menuItem.setAttribute('label', label);
@@ -434,7 +434,7 @@ let OpenWithCore = {
 		return menuItem;
 	},
 	createToolbarButton: function(document, item, tooltip, targetType = OpenWithCore.TARGET_STANDARD) {
-		let toolbarButton = document.createElement('toolbarbutton');
+		let toolbarButton = document.createXULElement('toolbarbutton');
 		if (targetType == OpenWithCore.TARGET_PANEL_UI) {
 			toolbarButton.setAttribute('label', tooltip);
 		} else {

@@ -80,7 +80,7 @@ function loadBrowserList() {
 	}
 
 	for (let entry of OpenWithCore.list) {
-		let item = document.createElement('richlistitem');
+		let item = document.createXULElement('richlistitem');
 		for (let [key, value] of Object.entries(entry)) {
 			switch (key) {
 			case 'auto':
@@ -269,7 +269,7 @@ function addNewItem() {
 		done: function(result) {
 			if (result == Ci.nsIFilePicker.returnOK) {
 				appsDir = fp.file.parent;
-				let item = document.createElement('richlistitem');
+				let item = document.createXULElement('richlistitem');
 
 				if (/\.desktop$/.test(fp.file.leafName)) {
 					let program = OpenWithCore.readDesktopFile(fp.file, []);
@@ -347,7 +347,7 @@ function restoreOrder() {
 /* exported duplicateItem */
 function duplicateItem(srcItem) {
 	let name = OpenWithCore.strings.formatStringFromName('duplicatedBrowserNewName', [srcItem.getAttribute('name')], 1);
-	let item = document.createElement('richlistitem');
+	let item = document.createXULElement('richlistitem');
 	item.setAttribute('auto', 'false');
 	item.setAttribute('manual', 'true');
 	item.setAttribute('name', name);
@@ -379,7 +379,7 @@ function copyKeyName(item) {
 }
 
 let itemToMove, itemToPlaceBefore;
-let dummy = document.createElement('richlistitem');
+let dummy = document.createXULElement('richlistitem');
 dummy.id = 'dummy';
 dummy.className = 'placebefore';
 function cleanUpDrag() {
