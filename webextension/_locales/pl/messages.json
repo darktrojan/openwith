@@ -77,6 +77,15 @@
 	"extensionDescription": {
 		"message": "Szybko testuj strony internetowe w Chrome, Edge, Safari albo Operze."
 	},
+	"extensionDescription_chrome": {
+		"message": "Quickly test out your web pages in Edge, Firefox, Safari, or Opera."
+	},
+	"extensionDescription_opera": {
+		"message": "Quickly test out your web pages in Chrome, Edge, Firefox, or Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Quickly test out your web pages in Chrome, Edge, Safari, or Opera. Open With opens the current page in your other browsers with just two clicks."
+	},
 	"extensionName": {
 		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
@@ -98,6 +107,15 @@
 	},
 	"icon_edge": {
 		"message": "Edge"
+	},
+	"icon_edge_beta": {
+		"message": "Edge Beta"
+	},
+	"icon_edge_canary": {
+		"message": "Edge Canary"
+	},
+	"icon_edge_dev": {
+		"message": "Edge Dev"
 	},
 	"icon_firefox_1_5_3": {
 		"message": "Firefox 1.5-3"
@@ -195,11 +213,38 @@
 	"install_step4c": {
 		"message": "Jeśli plik zostanie przeniesiony, należy ponownie uruchomić ten krok."
 	},
+		"links_chrome": {
+		"message": "Open With dla Chrome"
+	},
+	"links_firefox": {
+		"message": "Open With dla Firefoksa"
+	},
 	"links_github": {
 		"message": "Open With na GitHubie"
 	},
+	"links_opera": {
+		"message": "Open With dla Opery"
+	},
+	"menu_contexts_label": {
+		"message": "Pokazuj w menu kontekstowym dla:"
+	},
+	"menu_contexts_image": {
+		"message": "zdjęć, plików wideo i audio"
+	},
+	"menu_contexts_link": {
+		"message": "odnośniki"
+	},
+	"menu_contexts_page": {
+		"message": "strony"
+	},
+	"menu_contexts_tab": {
+		"message": "karty"
+	},
 	"options_title": {
 		"message": "Opcje Open With"
+	},
+	"popup_installed_header2": {
+		"message": "Open With jest już prawie gotowe"
 	},
 	"popup_installed_text": {
 		"message": "Aby zakończyć instalację, wykonaj kilka dodatkowych kroków."
@@ -209,6 +254,15 @@
 	},
 	"popup_options_button": {
 		"message": "Opcje Open With…"
+	},
+	"shortcut_open1": {
+		"message": "Skrót do przeglądarki #1"
+	},
+	"shortcut_open2": {
+		"message": "Skrót do przeglądarki #2"
+	},
+	"shortcut_open3": {
+		"message": "Skrót do przeglądarki #3"
 	},
 	"test_button": {
 		"message": "Przetestuj instalację"
@@ -248,7 +302,7 @@
 		}
 	},
 	"update_warning": {
-		"message": "Powinieneś zaktualizować dodatek Open With."
+		"message": "Powinieneś zaktualizować plik pomocnika Open With."
 	},
 	"userIcons_done_button": {
 		"message": "Gotowe"
