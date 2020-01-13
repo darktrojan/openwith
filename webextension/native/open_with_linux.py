@@ -63,6 +63,8 @@ def install():
 	}
 	locations = {
 		'chrome': os.path.join(home_path, '.config', 'google-chrome', 'NativeMessagingHosts'),
+		'chrome-beta': os.path.join(home_path, '.config', 'google-chrome-beta', 'NativeMessagingHosts'),
+		'chrome-unstable': os.path.join(home_path, '.config', 'google-chrome-unstable', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, '.config', 'chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, '.mozilla', 'native-messaging-hosts'),
 	}
