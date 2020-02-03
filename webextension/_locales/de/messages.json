@@ -1,9 +1,9 @@
 {
 	"actions_addbrowser": {
-		"message": "Browser hinzufügen"
+		"message": "Browser hinzufügen…"
 	},
 	"actions_look": {
-		"message": "Suche Browser"
+		"message": "Browser suchen"
 	},
 	"actions_sort": {
 		"message": "Liste sortieren"
@@ -21,7 +21,7 @@
 		}
 	},
 	"browserList_edit_button": {
-		"message": "Ändern"
+		"message": "Ändern…"
 	},
 	"browserList_hide_button": {
 		"message": "Verstecken"
@@ -48,7 +48,7 @@
 		"message": "Anderes Bild…"
 	},
 	"details_desktopFile_label": {
-		"message": "Aus .desktop Verknüpfung gelesen:"
+		"message": "Aus .desktop-Verknüpfung gelesen:"
 	},
 	"details_editing_header": {
 		"message": "Browser ändern"
@@ -57,10 +57,13 @@
 		"message": "Bild:"
 	},
 	"details_iconsCredit": {
-		"message": "Browser Logos auf Github"
+		"message": "Browser-Logos auf Github"
 	},
 	"details_name_label": {
 		"message": "Name:"
+	},
+	"details_shortcut_label": {
+		"message": "Tastaturkürzel:"
 	},
 	"details_update_button": {
 		"message": "Aktualisieren"
@@ -72,10 +75,19 @@
 		"message": "Open With lebt von Ihrer Spende."
 	},
 	"extensionDescription": {
-		"message": "Dieselbe WebSeite überall testen: in Chrome, Edge, Safari oder Opera."
+		"message": "Dieselbe Webseite überall testen: in Chrome, Edge, Safari oder Opera."
+	},
+	"extensionDescription_chrome": {
+		"message": "Testen Sie schnell Ihre Webseiten in Edge, Firefox, Safari oder Opera."
+	},
+	"extensionDescription_opera": {
+		"message": "Testen Sie schnell Ihre Webseiten in Chrome, Edge, Firefox oder Safari."
+	},
+	"extensionLongDescription": {
+		"message": "Testen Sie schnell Ihre Webseiten in Chrome, Edge, Safari oder Opera. Open With öffnet die aktuelle Seite in Ihren anderen Browsern mit nur zwei Klicks."
 	},
 	"extensionName": {
-		"description": "Please include this string, even if you keep the English version.",
+		"description": "Bitte fügen Sie diese Zeichenfolge ein, auch wenn Sie die englische Version behalten.",
 		"message": "Open With"
 	},
 	"install_header": {
@@ -91,13 +103,16 @@
 		"message": "Hier erhältlich."
 	},
 	"install_step1c": {
-		"message": "(Kompatibel mit Python Version 2.7 oder 3.x)"
+		"message": "(Kompatibel mit Python-Version 2.7 oder 3.x)"
 	},
 	"install_step2a_link": {
 		"message": "Python-Skript"
 	},
 	"install_step2b": {
-		"message": "(Rechtsklick / Ziel speichern unter) z.B. in ~/bin"
+		"message": "(Rechtsklick / Ziel speichern unter) z. B. in ~/bin"
+	},
+	"install_step3a": {
+		"message": "Terminal öffnen."
 	},
 	"install_step3b": {
 		"message": "Machen Sie das Skript ausführbar:"
@@ -106,16 +121,43 @@
 		"message": "Öffnen Sie ein Terminal."
 	},
 	"install_step4b": {
-		"message": "Rufen Sie das Skript mit Parameter \"install\" auf:"
+		"message": "Rufen Sie das Skript mit dem Parameter \"install\" auf:"
 	},
 	"install_step4c": {
 		"message": "Falls das Skript verschoben wird, wiederholen Sie diesen Schritt."
 	},
+	"links_chrome": {
+		"message": "Open With für Chrome"
+	},
+	"links_firefox": {
+		"message": "Open With für Firefox"
+	},
 	"links_github": {
 		"message": "Open With auf GitHub"
 	},
+	"links_opera": {
+		"message": "Open With für Opera"
+	},
+	"menu_contexts_label": {
+		"message": "Im Kontextmenü anzeigen von:"
+	},
+	"menu_contexts_image": {
+		"message": "Bildern, Videos und Audios"
+	},
+	"menu_contexts_link": {
+		"message": "Links"
+	},
+	"menu_contexts_page": {
+		"message": "Seiten"
+	},
+	"menu_contexts_tab": {
+		"message": "Tabs"
+	},
 	"options_title": {
-		"message": "Open With Optionen"
+		"message": "Open With-Optionen"
+	},
+	"popup_installed_header2": {
+		"message": "Open With ist fast fertig."
 	},
 	"popup_installed_text": {
 		"message": "Bitte prüfen Sie die Optionen zum Abschluss der Installation."
@@ -124,13 +166,22 @@
 		"message": "Keine Browser gefunden!"
 	},
 	"popup_options_button": {
-		"message": "Open With Optionen…"
+		"message": "Open With-Optionen…"
+	},
+	"shortcut_open1": {
+		"message": "Browser-Tastaturkürzel #1"
+	},
+	"shortcut_open2": {
+		"message": "Browser-Tastaturkürzel #2"
+	},
+	"shortcut_open3": {
+		"message": "Browser-Tastaturkürzel #3"
 	},
 	"test_button": {
 		"message": "Installation testen"
 	},
 	"test_error": {
-		"message": "Fehler: Weitere Informationen finden Sie in der Browser Konsole (Strg+Umschalt+J)."
+		"message": "Fehler: Weitere Informationen finden Sie in der Browser-Konsole (Strg+Umschalt+J)."
 	},
 	"test_success": {
 		"message": "Version $VERSION$ gefunden in $LOCATION$.",
@@ -155,7 +206,7 @@
 		"message": "Open With konnte sich nicht verbinden."
 	},
 	"update_message": {
-		"message": "Open With wurde aktualisiert auf version $VERSION$. Open With ist kostenlos, doch Ihre Spenden sind herzlich willkommen!",
+		"message": "Open With wurde aktualisiert auf Version $VERSION$. Open With ist kostenlos, doch Ihre Spenden sind herzlich willkommen!",
 		"placeholders": {
 			"version": {
 				"content": "$1",
@@ -179,7 +230,7 @@
 		"message": "Weitere Informationen…"
 	},
 	"webextension_info_url": {
-		"description": "Häufig gestellte Fragen und weiterführende Hilfe (Englisch), z.B. um Fehler zu melden.",
+		"description": "Häufig gestellte Fragen und weiterführende Hilfe (englisch), z. B., um Fehler zu melden.",
 		"message": "https://darktrojan.github.io/openwith/webextension.html"
 	}
 }
