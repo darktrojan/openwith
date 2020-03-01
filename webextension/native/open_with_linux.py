@@ -76,7 +76,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser == 'firefox':
+			if browser == 'firefox' or browser == 'waterfox-current':
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
