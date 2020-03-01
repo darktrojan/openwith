@@ -129,6 +129,7 @@ def find_browsers():
 		'SeaMonkey',
 		'seamonkey',
 		'Waterfox Current',
+		'waterfox-current',
 	]
 	paths = [
 		os.path.join(os.getenv('HOME'), '.local/share/applications'),
