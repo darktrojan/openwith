@@ -73,13 +73,15 @@ def install():
 		file.write('@echo off\r\ncall "%s" "%s" %%1 %%2\r\n' % (sys.executable, this_file))
 
 	registry_locations = {
+		'brave': os.path.join('Software', 'BraveSoftware', 'Brave-Browser-Dev', 'NativeMessagingHosts'),
 		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
+		'waterfox-current': os.path.join('Software', 'Waterfox', 'Waterfox Current 68.0', 'NativeMessagingHosts'),
 	}
 
 	for browser, registry_location in registry_locations.items():
 		browser_manifest = manifest.copy()
-		if browser == 'firefox':
+		if browser == 'firefox' or browser == 'waterfox-current':
 			browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 		else:
 			browser_manifest['allowed_origins'] = [
