@@ -108,6 +108,7 @@ def find_browsers():
 	count = _winreg.QueryInfoKey(key)[0]
 
 	browsers = []
+	found_msedge = False
 	while count > 0:
 		subkey = _winreg.EnumKey(key, count - 1)
 		try:
@@ -115,11 +116,14 @@ def find_browsers():
 				'name': _winreg.QueryValue(key, subkey),
 				'command': _winreg.QueryValue(key, os.path.join(subkey, 'shell', 'open', 'command'))
 			})
+			if subkey == 'Microsoft Edge':
+				found_msedge = True
 		except:
 			pass
 		count -= 1
 
-	if os.path.exists(os.path.join(windir, 'SystemApps', 'Microsoft.MicrosoftEdge_8wekyb3d8bbwe', 'MicrosoftEdge.exe')):
+	if not found_msedge and \
+		os.path.exists(os.path.join(windir, 'SystemApps', 'Microsoft.MicrosoftEdge_8wekyb3d8bbwe', 'MicrosoftEdge.exe')):
 		browsers.append({
 			'name': 'Microsoft Edge',
 			'command': os.path.join(windir, 'explorer.exe') + ' "microsoft-edge:%s "'

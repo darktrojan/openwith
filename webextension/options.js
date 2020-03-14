@@ -617,6 +617,9 @@ function find_icon(data) {
 		}
 		return 'chrome';
 	}
+	if (matches('explorer.exe') && matches('microsoft-edge')) {
+		return 'edge_12-18';
+	}
 	if (matches('firefox')) {
 		if (matches('beta')) {
 			return 'firefox-beta';
