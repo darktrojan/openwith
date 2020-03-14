@@ -147,7 +147,7 @@ if ($args.Length -eq 1) {
 
 $message = GetMessage
 if ($message -eq 'ping') {
-	SendReply @{'version'='7.0b9';'file'=$PSCommandPath}
+	SendReply @{'version'='7.2.2';'file'=$PSCommandPath}
 } elseif ($message -eq 'find') {
 	SendReply (FindBrowsers)
 } else {
