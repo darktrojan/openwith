@@ -213,7 +213,7 @@
 	"install_step4c": {
 		"message": "Jeśli plik zostanie przeniesiony, należy ponownie uruchomić ten krok."
 	},
-		"links_chrome": {
+	"links_chrome": {
 		"message": "Open With dla Chrome"
 	},
 	"links_firefox": {
