@@ -74,6 +74,7 @@ def install():
 
 	registry_locations = {
 		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
+		'chromium': os.path.join('Software', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
 	}
 
