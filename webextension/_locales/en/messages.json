@@ -90,6 +90,9 @@
 		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
 	},
+	"icon_brave": {
+		"message": "Brave"
+	},
 	"icon_chrome": {
 		"message": "Chrome"
 	},
@@ -104,6 +107,9 @@
 	},
 	"icon_chromium": {
 		"message": "Chromium"
+	},
+	"icon_edge_12_18": {
+		"message": "Edge 12-18"
 	},
 	"icon_edge": {
 		"message": "Edge"
@@ -125,6 +131,9 @@
 	},
 	"icon_firefox_23_56": {
 		"message": "Firefox 23-56"
+	},
+	"icon_firefox_57_70": {
+		"message": "Firefox 57-70"
 	},
 	"icon_firefox": {
 		"message": "Firefox"

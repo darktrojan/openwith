@@ -7,11 +7,13 @@ let dragged, draggedNext;
 let userIcons = new Map();
 // NB: this list isn't quite in order.
 let icons = [
+	'brave',
 	'chrome',
 	'chrome-beta',
 	'chrome-dev',
 	'chrome-canary',
 	'chromium',
+	'edge_12-18',
 	'edge',
 	'edge-beta',
 	'edge-dev',
@@ -19,6 +21,7 @@ let icons = [
 	'firefox_1.5-3',
 	'firefox_3.5-22',
 	'firefox_23-56',
+	'firefox_57-70',
 	'firefox',
 	'firefox-beta',
 	'firefox-developer-edition',
