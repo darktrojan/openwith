@@ -62,11 +62,13 @@ def install():
 		'type': 'stdio',
 	}
 	locations = {
+		'brave': os.path.join(home_path, '.config', 'BraveSoftware', 'Brave-Browser-Dev', 'NativeMessagingHosts'),
 		'chrome': os.path.join(home_path, '.config', 'google-chrome', 'NativeMessagingHosts'),
 		'chrome-beta': os.path.join(home_path, '.config', 'google-chrome-beta', 'NativeMessagingHosts'),
 		'chrome-unstable': os.path.join(home_path, '.config', 'google-chrome-unstable', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, '.config', 'chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, '.mozilla', 'native-messaging-hosts'),
+		'waterfox-current': os.path.join(home_path, '.waterfox', 'native-messaging-hosts'),
 	}
 	filename = 'open_with.json'
 
@@ -76,7 +78,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser == 'firefox':
+			if browser == 'firefox' or browser == 'waterfox-current':
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
@@ -114,6 +116,9 @@ def _read_desktop_file(path):
 
 def find_browsers():
 	apps = [
+		'brave',
+		'brave-browser',
+		'brave-browser-dev',
 		'Chrome',
 		'Chromium',
 		'chromium-browser',
@@ -125,6 +130,8 @@ def find_browsers():
 		'Opera',
 		'SeaMonkey',
 		'seamonkey',
+		'Waterfox Current',
+		'waterfox-current',
 	]
 	paths = [
 		os.path.join(os.getenv('HOME'), '.local/share/applications'),

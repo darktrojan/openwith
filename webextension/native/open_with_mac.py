@@ -62,9 +62,11 @@ def install():
 		'type': 'stdio',
 	}
 	locations = {
+		'brave': os.path.join(home_path, 'Library', 'Application Support', 'BraveSoftware', 'Brave-Browser-Dev', 'NativeMessagingHosts'),
 		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
+		'waterfox-current': os.path.join(home_path, 'Library', 'Application Support', 'Waterfox', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
 
@@ -74,7 +76,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser == 'firefox':
+			if browser == 'firefox' or browser == 'waterfox-current':
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
@@ -90,6 +92,7 @@ def install():
 
 def find_browsers():
 	apps = [
+		'Brave',
 		'Chrome',
 		'Chromium',
 		'Firefox',
@@ -97,6 +100,7 @@ def find_browsers():
 		'Opera',
 		'Safari',
 		'SeaMonkey',
+		'Waterfox Current',
 	]
 	paths = [
 		os.path.join(os.getenv('HOME'), 'Applications'),
