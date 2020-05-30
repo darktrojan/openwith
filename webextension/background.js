@@ -25,9 +25,9 @@ function get_target_url(info) {
 	return info.pageUrl;
 }
 
-function context_menu_clicked(info) {
+function context_menu_clicked(info, tab) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = get_target_url(info);
+	let url = tab ? tab.url : get_target_url(info);
 	if ('modifiers' in info && info.modifiers.includes('Ctrl')) {
 		url = null;
 	}
