@@ -67,6 +67,7 @@ def install():
 		'chrome-unstable': os.path.join(home_path, '.config', 'google-chrome-unstable', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, '.config', 'chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, '.mozilla', 'native-messaging-hosts'),
+		'ungoogled-chromium': os.path.join(home_path, '.config', 'ungoogled-chromium', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
 
@@ -117,6 +118,8 @@ def find_browsers():
 		'Chrome',
 		'Chromium',
 		'chromium-browser',
+		'ungoogled-chromium',
+		'chromium-browser-privacy', # alt name for ungoogled-chromium
 		'firefox',
 		'Firefox',
 		'Google Chrome',
