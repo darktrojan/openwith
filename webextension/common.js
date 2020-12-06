@@ -2,16 +2,26 @@
 /* exported get_version_warn, compare_versions, compare_object_versions, get_string, get_strings,
    ERROR_COLOUR, WARNING_COLOUR, is_same_colour */
 var _version_warn = null;
-function get_version_warn() {
+async function get_version_warn() {
 	if (!!_version_warn) {
-		return Promise.resolve(_version_warn);
+		return _version_warn;
 	}
-	return new Promise(function(resolve) {
-		chrome.runtime.getPlatformInfo(function(platformInfo) {
-			_version_warn = platformInfo.os == 'win' ? '7.0.1' : '7.0b10';
-			resolve(_version_warn);
-		});
-	});
+
+	if ('browser' in this && 'runtime' in this.browser && 'getBrowserInfo' in this.browser.runtime) {
+		browserInfo = await browser.runtime.getBrowserInfo();
+		if (browserInfo.name == 'Thunderbird') {
+			return '7.2.3';
+		}
+	}
+
+	return '7.0.1';
+
+	// return new Promise(function(resolve) {
+	// 	chrome.runtime.getPlatformInfo(function(platformInfo) {
+	// 		_version_warn = platformInfo.os == 'win' ? '7.0.1' : '7.0b10';
+	// 		resolve(_version_warn);
+	// 	});
+	// });
 }
 
 function compare_versions(a, b) {

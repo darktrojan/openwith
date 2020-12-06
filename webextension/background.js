@@ -103,7 +103,8 @@ chrome.storage.local.get({
 });
 
 function make_menus() {
-	chrome.contextMenus.removeAll();
+	let api = 'contextMenus' in chrome ? chrome.contextMenus : browser.menus;
+	api.removeAll();
 	if (menu_contexts === null) {
 		menu_contexts = ['page', 'link', 'image'];
 		if (navigator.userAgent.includes('Firefox')) {
@@ -141,10 +142,9 @@ function make_menus() {
 			id: 'browser_' + b.id,
 			title: b.name,
 			contexts: real_menu_contexts,
-			documentUrlPatterns: ['<all_urls>', 'file:///*'],
 			onclick: context_menu_clicked
 		};
-		if (navigator.userAgent.includes('Firefox')) {
+		if (navigator.userAgent.includes('Firefox') || navigator.userAgent.includes('Thunderbird')) {
 			if (b.icon && b.icon.startsWith('user_icon_')) {
 				let icon = icons.find(i => i.id == parseInt(b.icon.substring(10)));
 				item.icons = {
@@ -158,7 +158,7 @@ function make_menus() {
 				};
 			}
 		}
-		chrome.contextMenus.create(item);
+		api.create(item);
 	}
 }
 

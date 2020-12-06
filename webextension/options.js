@@ -104,16 +104,15 @@ document.getElementById('sort').onclick = function() {
 	chrome.runtime.sendMessage({
 		action: 'order_browsers',
 		order: [...browsersList.querySelectorAll('li')].map(function(li) {
-				return {
-					li,
-					id: parseInt(li.dataset.id, 10),
-					name: li.querySelector('.name').textContent
-				};
-			}).sort(compare_object_versions).map(function(e) {
-				browsersList.appendChild(e.li);
-				return e.id;
-			}
-		)
+			return {
+				li,
+				id: parseInt(li.dataset.id, 10),
+				name: li.querySelector('.name').textContent
+			};
+		}).sort(compare_object_versions).map(function(e) {
+			browsersList.appendChild(e.li);
+			return e.id;
+		})
 	});
 };
 

@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.2.2'
+VERSION = '7.2.3'
 
 try:
 	sys.stdin.buffer
@@ -76,11 +76,12 @@ def install():
 		'chrome': os.path.join('Software', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'chromium': os.path.join('Software', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join('Software', 'Mozilla', 'NativeMessagingHosts'),
+		'thunderbird': os.path.join('Software', 'Thunderbird', 'NativeMessagingHosts'),
 	}
 
 	for browser, registry_location in registry_locations.items():
 		browser_manifest = manifest.copy()
-		if browser == 'firefox':
+		if browser in ['firefox', 'thunderbird']:
 			browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 		else:
 			browser_manifest['allowed_origins'] = [

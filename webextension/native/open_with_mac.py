@@ -7,7 +7,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.2.2'
+VERSION = '7.2.3'
 
 try:
 	sys.stdin.buffer
@@ -65,6 +65,7 @@ def install():
 		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
+		'thunderbird': os.path.join(home_path, 'Library', 'Application Support', 'Thunderbird', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
 
@@ -74,7 +75,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser == 'firefox':
+			if browser in ['firefox', 'thunderbird']:
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
