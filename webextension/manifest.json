@@ -7,7 +7,7 @@
 	"applications": {
 		"gecko": {
 			"id": "openwith@darktrojan.net",
-			"strict_min_version": "63.0"
+			"strict_min_version": "78.5.0"
 		}
 	},
 	"icons": {
@@ -25,8 +25,9 @@
 		]
 	},
 	"permissions": [
-		"contextMenus",
 		"downloads",
+		"menus",
+		"messagesRead",
 		"nativeMessaging",
 		"storage",
 		"tabs"
