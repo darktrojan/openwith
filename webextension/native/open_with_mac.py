@@ -73,7 +73,7 @@ def install():
 	for browser, location in locations.items():
 		if os.path.exists(os.path.dirname(location)):
 			if not os.path.exists(location):
-				os.mkdir(location)
+				os.makedirs(location, exist_ok=True)
 
 			browser_manifest = manifest.copy()
 			if browser in ['firefox', 'thunderbird']:
