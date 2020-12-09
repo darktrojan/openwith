@@ -64,6 +64,7 @@ def install():
 	locations = {
 		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
+		'edge': os.path.join(home_path, 'Library', 'Application Support', 'Microsoft Edge', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
 		'thunderbird1': os.path.join(home_path, 'Library', 'Application Support', 'Thunderbird', 'NativeMessagingHosts'),
 		'thunderbird2': os.path.join(home_path, 'Library', 'Mozilla', 'NativeMessagingHosts'),
@@ -73,7 +74,7 @@ def install():
 	for browser, location in locations.items():
 		if os.path.exists(os.path.dirname(location)):
 			if not os.path.exists(location):
-				os.mkdir(location)
+				os.makedirs(location, exist_ok=True)
 
 			browser_manifest = manifest.copy()
 			if browser in ['firefox', 'thunderbird1', 'thunderbird2']:
@@ -96,6 +97,7 @@ def find_browsers():
 		'Chromium',
 		'Firefox',
 		'Google Chrome',
+		'Microsoft Edge',
 		'Opera',
 		'Safari',
 		'SeaMonkey',
