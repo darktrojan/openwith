@@ -95,6 +95,7 @@ def find_browsers():
 		'Chromium',
 		'Firefox',
 		'Google Chrome',
+		'Microsoft Edge',
 		'Opera',
 		'Safari',
 		'SeaMonkey',
