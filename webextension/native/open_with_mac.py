@@ -76,7 +76,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser in ['firefox', 'thunderbird']:
+			if browser in ['firefox', 'thunderbird1', 'thunderbird2']:
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
