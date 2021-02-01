@@ -234,6 +234,9 @@
 	"links_opera": {
 		"message": "Open With for Opera"
 	},
+	"links_thunderbird": {
+		"message": "Open With for Thunderbird"
+	},
 	"menu_contexts_label": {
 		"message": "Show in context menus of:"
 	},
