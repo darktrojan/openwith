@@ -17,7 +17,7 @@ function get_target_url(info) {
 		return info.linkUrl;
 	} else if (info.srcUrl) { // Is the target an img, audio, or video element?
 		return info.srcUrl;
-	} else if (info.frameUrl) { // Is the element an iframe?
+	} else if (info.frameUrl && info.viewType !== 'sidebar') { // Is the element an iframe and not in a sidebar?
 		return info.frameUrl;
 	} else if (info.selectionText && /^(?:https?|ftp):/i.test(info.selectionText)) { // Is there an URL selected?
 		return info.selectionText;
@@ -25,9 +25,9 @@ function get_target_url(info) {
 	return info.pageUrl;
 }
 
-function context_menu_clicked(info, tab) {
+function context_menu_clicked(info) {
 	let browser_id = parseInt(info.menuItemId.substring(8), 10);
-	let url = tab ? tab.url : get_target_url(info);
+	let url = get_target_url(info);
 	if ('modifiers' in info && info.modifiers.includes('Ctrl')) {
 		url = null;
 	}
