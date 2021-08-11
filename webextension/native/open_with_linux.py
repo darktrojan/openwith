@@ -117,6 +117,7 @@ def find_browsers():
 	apps = [
 		'Chrome',
 		'Chromium',
+		'chromium',
 		'chromium-browser',
 		'firefox',
 		'Firefox',
