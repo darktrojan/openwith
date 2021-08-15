@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.2.3'
+VERSION = '7.2.6'
 
 try:
 	sys.stdin.buffer
@@ -32,23 +32,8 @@ try:
 
 except AttributeError:
 	# Python 2.x version (if sys.stdin.buffer is not defined)
-	# Read a message from stdin and decode it.
-	def getMessage():
-		rawLength = sys.stdin.read(4)
-		if len(rawLength) == 0:
-			sys.exit(0)
-		messageLength = struct.unpack('@I', rawLength)[0]
-		message = sys.stdin.read(messageLength)
-		return json.loads(message)
-
-	# Send an encoded message to stdout
-	def sendMessage(messageContent):
-		encodedContent = json.dumps(messageContent)
-		encodedLength = struct.pack('@I', len(encodedContent))
-
-		sys.stdout.write(encodedLength)
-		sys.stdout.write(encodedContent)
-		sys.stdout.flush()
+	print('Python 3.2 or newer is required.')
+	sys.exit(-1)
 
 
 def install():
@@ -175,4 +160,5 @@ if __name__ == '__main__':
 			listen()
 			sys.exit(0)
 
-	print('Open With native helper, version %s.' % VERSION)
+	print('This is the Open With native helper, version %s.' % VERSION)
+	print('Run this script again with the word "install" after the file name to install.')
