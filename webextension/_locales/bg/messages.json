@@ -95,9 +95,6 @@
 	"install_step1b_link": {
 		"message": "Вземете го оттук."
 	},
-	"install_step1c": {
-		"message": "(Използвайте версия 2.7 или 3.x на Pyhton, това е без значение.)"
-	},
 	"install_step2a_link": {
 		"message": "Цъкнете тук, за да свалите"
 	},

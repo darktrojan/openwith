@@ -102,9 +102,6 @@
 	"install_step1b_link": {
 		"message": "Hier erhältlich."
 	},
-	"install_step1c": {
-		"message": "(Kompatibel mit Python-Version 2.7 oder 3.x)"
-	},
 	"install_step2a_link": {
 		"message": "Python-Skript"
 	},

@@ -93,9 +93,6 @@
 	"install_step1b_link": {
 		"message": "Hämta det härifrån."
 	},
-	"install_step1c": {
-		"message": "(Du kan använda Python version 2.7 eller 3.x.)"
-	},
 	"install_step2a_link": {
 		"message": "Klicka här för att ladda ner"
 	},

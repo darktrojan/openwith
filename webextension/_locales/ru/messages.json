@@ -89,9 +89,6 @@
 	"install_step1b_link": {
 		"message": "Загрузить"
 	},
-	"install_step1c": {
-		"message": "(Используйте Python 2.7 или 3.x, это не имеет значения)."
-	},
 	"install_step2a_link": {
 		"message": "Кликните здесь для загрузки файла"
 	},

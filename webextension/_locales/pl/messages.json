@@ -189,9 +189,6 @@
 	"install_step1b_link": {
 		"message": "Pobierz stąd."
 	},
-	"install_step1c": {
-		"message": "(Użyj Pythona w wersji 2.7 albo 3.x, nie ma to znaczenia.)"
-	},
 	"install_step2a_link": {
 		"message": "Kliknij tutaj, aby pobrać"
 	},

@@ -86,9 +86,6 @@
 	"install_step1b_link": {
 		"message": "ここから入手してください。"
 	},
-	"install_step1c": {
-		"message": "(Pythonバージョン2.7または3.x、どちらを使用しても問題ありません。)"
-	},
 	"install_step2a_link": {
 		"message": "ダウンロードするにはここをクリック"
 	},
