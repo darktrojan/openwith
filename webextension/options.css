@@ -15,10 +15,6 @@ body {
 a {
 	white-space: nowrap;
 }
-a + a {
-	-webkit-margin-start: 8px;
-	margin-inline-start: 8px;
-}
 button {
 	font-size: 13.333px;
 }
@@ -77,6 +73,10 @@ div#meta {
 }
 div#meta p {
 	margin: 2px 0;
+}
+div#meta a + a {
+	-webkit-margin-start: 8px;
+	margin-inline-start: 8px;
 }
 ul#browsers {
 	width: 45em;
