@@ -52,6 +52,7 @@ def install():
 		'chrome-unstable': os.path.join(home_path, '.config', 'google-chrome-unstable', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, '.config', 'chromium', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, '.mozilla', 'native-messaging-hosts'),
+		'librewolf': os.path.join(home_path, '.librewolf', 'native-messaging-hosts'),
 		'thunderbird': os.path.join(home_path, '.thunderbird', 'native-messaging-hosts'),
 	}
 	filename = 'open_with.json'
@@ -62,7 +63,7 @@ def install():
 				os.mkdir(location)
 
 			browser_manifest = manifest.copy()
-			if browser in ['firefox', 'thunderbird']:
+			if browser in ['firefox', 'thunderbird', 'librewolf']:
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
@@ -112,6 +113,9 @@ def find_browsers():
 		'Opera',
 		'SeaMonkey',
 		'seamonkey',
+        'librewolf',
+        'Librewolf',
+        'LibreWolf'
 	]
 	paths = [
 		os.path.join(os.getenv('HOME'), '.local/share/applications'),
