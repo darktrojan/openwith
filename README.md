@@ -9,9 +9,6 @@ Released versions can be downloaded from https://addons.mozilla.org/firefox/addo
 
 Beta versions are sometimes available from https://addons.mozilla.org/firefox/addon/open-with/versions/beta
 
-### Chrome/Chromium
-Download from the Chrome store https://chrome.google.com/webstore/detail/open-with/cogjlncmljjnjpbgppagklanlcbchlno. This version also works in Opera.
-
 Hacking
 -------
 
