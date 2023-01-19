@@ -6,7 +6,7 @@
 		"message": "寻找浏览器"
 	},
 	"actions_sort": {
-		"message": "整理清單"
+		"message": "整理清单"
 	},
 	"browserList_duplicate_button": {
 		"message": "复制"
@@ -62,6 +62,9 @@
 	"details_name_label": {
 		"message": "名称："
 	},
+	"details_shortcut_label": {
+		"message": "快捷键："
+	},
 	"details_update_button": {
 		"message": "更新"
 	},
@@ -74,8 +77,21 @@
 	"extensionDescription": {
 		"message": "在 Chrome、Edge、Safari 或 Opera 中快速测试您的网页。"
 	},
+	"extensionDescription_chrome": {
+		"message": "在 Edge、Firefox、Safari 或 Opera 中快速测试您的网页。"
+	},
+	"extensionDescription_opera": {
+		"message": "在 Chrome, Edge, Firefox, or Safari 中快速测试您的网页。"
+	},
+	"extensionLongDescription": {
+		"message": "在 Chrome, Edge, Safari, or Opera 中快速测试您的网页。只要单击两下，Open With 就可以在其他浏览器中打开当前页面。"
+	},
 	"extensionName": {
+		"description": "Please include this string, even if you keep the English version.",
 		"message": "Open With"
+	},
+	"icon_brave": {
+		"message": "Brave"
 	},
 	"icon_chrome": {
 		"message": "Chrome"
@@ -83,11 +99,11 @@
 	"icon_chrome_beta": {
 		"message": "Chrome Beta"
 	},
-	"icon_chrome_dev": {
-		"message": "Chrome Dev"
-	},
 	"icon_chrome_canary": {
 		"message": "Chrome Canary"
+	},
+	"icon_chrome_dev": {
+		"message": "Chrome Dev"
 	},
 	"icon_chromium": {
 		"message": "Chromium"
@@ -95,17 +111,38 @@
 	"icon_edge": {
 		"message": "Edge"
 	},
-	"icon_firefox_1_5_3": {
-		"message": "Firefox 1.5-3"
+	"icon_edge_12_18": {
+		"message": "Edge 12-18"
 	},
-	"icon_firefox_3_5_22": {
-		"message": "Firefox 3.5-22"
+	"icon_edge_beta": {
+		"message": "Edge Beta"
+	},
+	"icon_edge_canary": {
+		"message": "Edge Canary"
+	},
+	"icon_edge_dev": {
+		"message": "Edge Dev"
 	},
 	"icon_firefox": {
 		"message": "Firefox"
 	},
+	"icon_firefox_1_5_3": {
+		"message": "Firefox 1.5-3"
+	},
+	"icon_firefox_23_56": {
+		"message": "Firefox 23-56"
+	},
+	"icon_firefox_3_5_22": {
+		"message": "Firefox 3.5-22"
+	},
+	"icon_firefox_57_70": {
+	  "message": "Firefox 57-70"
+	},
 	"icon_firefox_beta": {
 		"message": "Firefox Beta"
+	},
+	"icon_firefox_developer_edition": {
+		"message": "Firefox Developer Edition"
 	},
 	"icon_firefox_nightly": {
 		"message": "Firefox Nightly"
@@ -146,11 +183,14 @@
 	"icon_waterfox": {
 		"message": "Waterfox"
 	},
+	"icon_yandex": {
+	   "message": "Yandex Browser"
+	},
 	"install_header": {
 		"message": "要完成安裝："
 	},
 	"install_introduction": {
-		"message": "Open With 需要一个在浏览器外可以沟通的文件。"
+		"message": "Open With 需要一个在浏览器外用来通信的文件。"
 	},
 	"install_step1a": {
 		"message": "您将会需要安装 Python 来让它运作。"
@@ -164,6 +204,9 @@
 	"install_step2b": {
 		"message": "并将文件储存至您的电脑中。"
 	},
+	"install_step3a": {
+	   "message": "打开终端。"
+	},
 	"install_step3b": {
 		"message": "确保文件权限让您可以执行它（\"x\" 权限）："
 	},
@@ -176,11 +219,41 @@
 	"install_step4c": {
 		"message": "若您移动了文件，您必须再次执行此步骤。"
 	},
+	"links_chrome": {
+	   "message": "Open With 用于 Chrome"
+	},
+	"links_firefox": {
+	   "message": "Open With 用于 Firefox"
+	},
 	"links_github": {
 		"message": "Open With 在 GitHub 上"
 	},
+	"links_opera": {
+	   "message": "Open With 用于 Opera"
+	},
+	"links_thunderbird": {
+	   "message": "Open With 用于 Thunderbird"
+	},
+	"menu_contexts_image": {
+	   "message": "图片、视频和音频"
+	},
+	"menu_contexts_label": {
+	   "message": "显示在下列菜单里："
+	},
+	"menu_contexts_link": {
+	   "message": "链接"
+	},
+	"menu_contexts_page": {
+	   "message": "网页"
+	},
+	"menu_contexts_tab": {
+	   "message": "标签"
+	},
 	"options_title": {
 		"message": "Open With 选项"
+ 	},
+	"popup_installed_header2": {
+	   "message": "Open With 已经就绪"
 	},
 	"popup_installed_text": {
 		"message": "完成安装需要更多步骤。"
@@ -190,6 +263,15 @@
 	},
 	"popup_options_button": {
 		"message": "Open With 选项……"
+	},
+	"shortcut_open1": {
+	   "message": "浏览器快捷方式 #1"
+	},
+	"shortcut_open2": {
+	   "message": "浏览器快捷方式 #2"
+	},
+	"shortcut_open3": {
+	   "message": "浏览器快捷方式 #3"
 	},
 	"test_button": {
 		"message": "测试安装"
